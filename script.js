@@ -59,3 +59,77 @@ document.addEventListener("DOMContentLoaded", function() {
     // Start observing the Factsaboutus section
     observer.observe(factsSection);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Inject CSS for arrow click animation
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes arrowClick {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+      .animate-arrow {
+        animation: arrowClick 0.3s ease-in-out;
+      }
+    `;
+    document.head.appendChild(style);
+  
+    // Select all review containers within the Ourteam section
+    const reviews = document.querySelectorAll(".Ourteam .review");
+  
+    reviews.forEach((review) => {
+      const slides = review.querySelectorAll(".slide");
+      let currentSlide = 0;
+  
+      // Ensure the first slide is active if none is already set
+      if (slides.length > 0 && !slides[0].classList.contains("active")) {
+        slides[0].classList.add("active");
+      }
+  
+      const leftArrow = review.querySelector(".arrow.left");
+      const rightArrow = review.querySelector(".arrow.right");
+  
+      // Function to update the active slide
+      function updateSlide(newIndex) {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = newIndex;
+        slides[currentSlide].classList.add("active");
+      }
+  
+      // Function to add click animation to arrow
+      function animateArrow(arrow) {
+        arrow.classList.add("animate-arrow");
+        arrow.addEventListener(
+          "animationend",
+          function () {
+            arrow.classList.remove("animate-arrow");
+          },
+          { once: true }
+        );
+      }
+  
+      // Move to the previous slide
+      function prevSlide(e) {
+        e.preventDefault();
+        animateArrow(leftArrow);
+        const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+        updateSlide(newIndex);
+      }
+  
+      // Move to the next slide
+      function nextSlide(e) {
+        e.preventDefault();
+        animateArrow(rightArrow);
+        const newIndex = (currentSlide + 1) % slides.length;
+        updateSlide(newIndex);
+      }
+  
+      // Add both click and touchstart event listeners for mobile compatibility
+      leftArrow.addEventListener("click", prevSlide);
+      rightArrow.addEventListener("click", nextSlide);
+      leftArrow.addEventListener("touchstart", prevSlide);
+      rightArrow.addEventListener("touchstart", nextSlide);
+    });
+  });
+  

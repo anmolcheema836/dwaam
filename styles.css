@@ -13,6 +13,13 @@ body {
     color: #000;
     width: 100%;
 }
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* or auto, depending on your needs */
+    overflow-y: auto;
+  }
+  
 span{
     color:#0262A6;
 }
@@ -219,7 +226,6 @@ ul, ol {
 
 .hero {
     padding-top: 50px;
-    padding: -100vw;
     height: 700px;
     width: auto;
     background-image: url(assets/herobg.png);
@@ -262,8 +268,8 @@ ul, ol {
     }
 
     .hero h1 {
-        margin-top: 40px; /* Remove previous padding */
-        font-size: 20px;
+        margin-top: 50px; /* Remove previous padding */
+        font-size: 18px;
         padding-left: 2vw;
         padding-right: 2vw;
     }
@@ -597,6 +603,8 @@ ul, ol {
 .Factsaboutus {
     align-items: center;
     text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #0262A6;
 }
 
 .Factsaboutus .facts {
@@ -637,3 +645,493 @@ ul, ol {
         max-width: 100%;
     }
 }
+/*Why we love what we do*/
+.Whywelove {
+    padding: 5vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 1px solid #0262A6;
+}
+
+.Whywelove img {
+    width: 100%;
+    max-width: 600px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.Whywelove .right {
+    padding-left: 5vw;
+    text-align: center;
+    max-width: 600px;
+}
+
+.Whywelove .right h1 {
+    padding-bottom: 5vh;
+    font-size: xx-large;
+}
+
+.Whywelove .right h4 {
+    padding-bottom: 5vh;
+    font-weight: 400;
+    text-align: left;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .Whywelove {
+        flex-direction: column;
+        text-align: center;
+        padding: 5vw 3vw;
+    }
+
+    .Whywelove img {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .Whywelove .right {
+        padding-left: 0;
+    }
+
+    .Whywelove .right h1 {
+        font-size: x-large;
+    }
+
+    .Whywelove .right h4 {
+        text-align: center;
+    }
+}
+
+/*Our Happy Clients Section*/
+.Ourhappyclients {
+    background-color: #78a1be14;
+    padding-bottom: 80px;
+    border-bottom: 1px solid #0262A6;
+    margin-top: -25px;
+}
+.Ourhappyclients h1 {
+    padding-top: 40px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.Ourhappyclients h3 {
+    text-align: center;
+    font-weight: 400;
+}
+
+.Ourhappyclients .clientcont h3{
+    margin-top: -80px;
+}
+
+.Ourhappyclients h4 {
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.Ourhappyclients .allclients {
+    padding-top: 15vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Ourhappyclients .clientcont {
+    background-color: white;
+    padding: 2vw;
+    height: 700px;
+    width: 250px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.Ourhappyclients .allclients .clientcont .img-container {
+    width: 200px;
+    height: 120px;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: visible;
+    z-index:10; 
+}
+
+.Ourhappyclients .allclients .clientcont .img-container img {
+    height: 120px;
+    width: 200px;
+    object-fit: cover;
+    position: absolute;
+    top: -70%; /* Pushes the image halfway out of the container */
+    left: 0;
+}
+
+.Ourhappyclients .allclients .clientcont h3 {
+    text-align: center;
+    font-weight: normal;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.Ourhappyclients .allclients .clientcont h4 {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 800;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    /* Stack the client containers vertically */
+    .Ourhappyclients .allclients {
+        flex-direction: column;
+        padding-top: 8vh; /* Reduced padding for mobile */
+    }
+    
+    /* Make client containers full-width (with some margin) and let height adjust */
+    .Ourhappyclients .clientcont {
+        width: 80%;
+        padding-top: 5vh;
+        height: auto;
+        margin-bottom: 60px;
+    }
+    
+    /* Remove negative margin on h3 for better mobile spacing */
+    .Ourhappyclients .clientcont h3 {
+        margin-top: -11vh;
+    }
+    
+    /* Adjust the image container to be responsive */
+    .Ourhappyclients .clientcont .img-container {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    
+    .Ourhappyclients .clientcont .img-container img {
+        position: static;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+    }
+    
+    /* Change h4 positioning so it flows with the content */
+    .Ourhappyclients .allclients .clientcont h4 {
+        position: relative;
+        bottom: auto;
+        margin-top: 10px;
+    }
+}
+
+/*Our work*/
+.Ourwork h1 {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 800;
+  }
+  
+  .work-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(207, 207, 207, 0.529);
+    border: 1px solid #0262A6;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.405);
+    margin-bottom: 50px;
+    margin-top: 100px;
+  }
+  
+  /* Header Section */
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .work-header .client-info h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .work-header .client-info h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #555;
+  }
+  
+  /* Main Content */
+  .work-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .work-text {
+    flex: 1;
+  }
+  
+  .work-text h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-decoration: underline;
+  }
+  
+  .work-text ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  /* Right Column with Image */
+  .work-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .work-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .Ourwork .work-container .logo {
+    height: 125px;
+    margin-top: -20vh;
+    margin-right: 10vw;
+    width: 250px;
+  }
+  
+  .Ourwork .work-container .logo img {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .Ourwork .work-container .Whitneylogo {
+    height: 125px;
+    margin-top: -20vh;
+    margin-right: 5vw;
+    width: 450px;
+  }
+
+  .Ourwork {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid #0262A6;
+    padding-bottom: 50px;
+  }
+  
+  .Ourwork .work-container .Whitneylogo img {
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .work-container{
+        width: 80%;
+    }
+    /* Stack content vertically */
+    .work-content {
+      flex-direction: column;
+    }
+    
+    /* Center header items */
+    .work-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    /* Adjust logo positioning for mobile */
+    .Ourwork .work-container .logo,
+    .Ourwork .work-container .Whitneylogo {
+      margin-top: 0;
+      margin-right: auto;
+      margin-left: auto;
+      width: 80%;
+      max-width: 100%;
+    }
+  }
+  
+   /* OUR TEAM SECTION */
+   .Ourteam {
+    margin-bottom: 50vh;
+    background-color: #F5F8FA;
+    padding-top: 5vh;
+    padding-bottom: 50vh;
+  }
+  .Ourteam h1 {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 800;
+  }
+  .Ourteam h3 {
+    text-align: center;
+    font-size: large;
+    font-weight: 400;
+  }
+  .Ourteam .cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 35vh;
+    flex-wrap: wrap;
+  }
+  .Ourteam h6 {
+    font-weight: 200;
+    font-size: 13px;
+  }
+  .Ourteam .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 0;
+    height: 800px;
+    width: 350px;
+    margin-bottom: 40px;
+  }
+  .Ourteam .cardtop img {
+    height: 400px;
+    margin-bottom: -1vh;
+    width: 350px;
+    object-fit: cover;
+  }
+  .Ourteam .carddown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid rgba(219, 219, 219, 0.367);
+    width: 350px;
+    height: 800px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a shadow */
+  }
+  
+  /* REVIEW SECTION WITH SLIDER */
+  .Ourteam .review {
+    position: relative;
+    overflow: visible; /* Allow arrows to be visible outside the box */
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 0 40px;
+    text-align: center;
+    border: 2px solid #0262A6;
+    border-radius: 25px;
+    height: 650px;
+    box-sizing: border-box;
+  }
+  .Ourteam .review .review-slides {
+    overflow: hidden; /* Hide extra slide content */
+    height: 100%;
+  }
+  .Ourteam .review .slide {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .Ourteam .review .slide.active {
+    display: flex;
+  }
+  .Ourteam .review .slide img {
+    height: 100px;
+    width: auto;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+  .Ourteam .review .slide h5 {
+    margin: 10px 0;
+  }
+  .Ourteam .review .slide h6 {
+    margin: 10px 0;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+  .Ourteam .review .slide h7 {
+    margin-top: auto;
+    color: green;
+    margin-bottom: 10px;
+  }
+  /* Navigation Arrows Outside the Review Box */
+  .Ourteam .review .review-nav {
+    position: absolute;
+    top: 50%;
+    width: calc(100% + 95px);
+    left: -45px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+  }
+  .Ourteam .review-nav img {
+    width: 40px;
+    height: 40px;
+  }
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .Ourteam .cards {
+      flex-direction: column;
+      margin-top: 10vh;
+    }
+    .Ourteam .card {
+      width: 80%;
+      height: auto;
+    }
+    .Ourteam .card h3 {
+      margin-top: -2vh;
+    }
+    .Ourteam .cardtop img,
+    .Ourteam .carddown {
+      width: 100%;
+      height: auto;
+    }
+    .Ourteam .cardtop {
+      background-color: #F5F8FA;
+    }
+    .Ourteam .carddown {
+      padding-top: 4vh;
+    }
+    .Ourteam .cardtop img {
+      height: auto;
+      width: 100%;
+    }
+    .Ourteam .review {
+      margin: 30px;
+      height: auto;
+    }
+    .Ourteam .review .review-nav {
+      width: calc(100% + 60px);
+      left: -30px;
+    }
+    .Ourteam .review-nav img {
+        width: 25px;
+        height: 25px;
+      }
+  }
