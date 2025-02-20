@@ -325,7 +325,10 @@ ul, ol {
     animation-delay:calc((6s/6)* (var(--position)) );
 }
 .slider .list .item img{
-    width: 100%;
+
+  max-width: 100%;
+  height: auto;
+
 }
 @keyframes autorun{
     from{
@@ -455,29 +458,30 @@ ul, ol {
     </h1>
   </section>
 
-  <!-- Logo Slider Section -->
-  <section class="slider">
-    <div class="list">
-      <div class="item" style="--position: 1">
-        <img src="assets/airbnblogo.webp" alt="Airbnb Logo" loading="lazy" />
-      </div>
-      <div class="item" style="--position: 2">
-        <img src="assets/p&glogo.webp" alt="P&G Logo" loading="lazy"/>
-      </div>
-      <div class="item" style="--position: 3">
-        <img src="assets/unilogo.webp" alt="Unilever Logo" loading="lazy"/>
-      </div>
-      <div class="item" style="--position: 4">
-        <img src="assets/warnerbg.webp" alt="Warner Bros Logo" loading="lazy"  />
-      </div>
-      <div class="item" style="--position: 5">
-        <img src="assets/talentlogo.webp" alt="Talent Logo" loading="lazy" />
-      </div>
-      <div class="item" style="--position: 6">
-        <img src="assets/mercylogo.webp" alt="Mercy Logo" loading="lazy" />
-      </div>
+ <!-- Logo Slider Section -->
+<section class="slider">
+  <div class="list">
+    <div class="item" style="--position: 1">
+      <img src="assets/airbnblogo.webp" alt="Airbnb Logo" loading="lazy" width="150" height="100" />
     </div>
-  </section>
+    <div class="item" style="--position: 2">
+      <img src="assets/p&glogo.webp" alt="P&G Logo" loading="lazy" width="150" height="100" />
+    </div>
+    <div class="item" style="--position: 3">
+      <img src="assets/unilogo.webp" alt="Unilever Logo" loading="lazy" width="150" height="100" />
+    </div>
+    <div class="item" style="--position: 4">
+      <img src="assets/warnerbg.webp" alt="Warner Bros Logo" loading="lazy" width="150" height="100" />
+    </div>
+    <div class="item" style="--position: 5">
+      <img src="assets/talentlogo.webp" alt="Talent Logo" loading="lazy" width="150" height="100" />
+    </div>
+    <div class="item" style="--position: 6">
+      <img src="assets/mercylogo.webp" alt="Mercy Logo" loading="lazy" width="150" height="100" />
+    </div>
+  </div>
+</section>
+
 
   <!-- About Us Section -->
   <section class="aboutus">
@@ -576,7 +580,7 @@ ul, ol {
   <!-- Why We Love What We Do Section -->
   <section class="Whywelove">
     <div class="left">
-      <img src="assets/cat.webp" alt="Cat GIF" loading="lazy" width="600" height="auto" />
+      <img src="assets/cat.webp" alt="Cat GIF" loading="lazy" width="600" height="600" />
     </div>
     <div class="right">
       <h1>

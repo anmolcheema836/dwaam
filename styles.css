@@ -654,6 +654,7 @@ ul, ol {
 .Whywelove img {
     width: 100%;
     max-width: 600px;
+    height: auto;
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
 }
