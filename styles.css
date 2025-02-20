@@ -249,7 +249,7 @@ ul, ol {
     margin-bottom: 5px;
     margin-left: 4vw;
 }
-@media screen and (max-width: 666px) {
+@media screen and (max-width: 768px) {
     .hero {
         margin-top: -60px;
         height: 800px;
