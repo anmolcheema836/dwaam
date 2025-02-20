@@ -7,6 +7,11 @@
     <title>Responsive Navigation Bar</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+        <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
 </head>
 <body>
 
@@ -173,7 +178,7 @@
     </section>
     -->
 
-    <!--Facts About us-->
+    <!--Facts About us
     <section class="Factsaboutus">
         <h1><span>Facts</span> About Us</h1>
         <div class="facts">
@@ -229,6 +234,7 @@
             </div>
         </div>
     </section>
+    -->
     <!--Why we love what we do6-->
     <section class="Whywelove">
         <div class="left">
@@ -557,6 +563,125 @@
       </div>
     </div>
   </section>
+  <!-- Contact Us Section -->
+  <section class="contactus">
+    <div class="contactleft">
+      <img src="assets/offices.png" alt="Our Offices Image">
+      <img src="assets/ourclients.png" alt="Our Clients Image">
+    </div>
+    <div class="contactright">
+      <div class="form-container">
+        <h2>BOOK A HAPPY MEETING WITH US<br>The Coffee (or tea) is on us!</h2>
+        <form action="send_mail.php" method="POST">
+          <label for="fullName">Your Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+      
+          <label for="phone">Mobile Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your mobile number" required>
+      
+          <label for="linkedin">Your LinkedIn URL</label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn URL" required>
+      
+          <label for="services">Services You Require</label>
+          <select id="services" name="services" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="web-dev">Web Development</option>
+            <option value="seo">SEO & Marketing</option>
+            <option value="design">Graphic Design</option>
+          </select>
+      
+          <label for="Jobtitle">Your Job Title</label>
+          <input type="text" id="Jobtitle" name="Jobtitle" placeholder="Enter your job title" required>
+      
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+      
+          <label for="budget">Estimate Budget</label>
+          <select id="budget" name="budget" required>
+            <option value="" disabled selected>Select your estimated budget</option>
+            <option value="10k-50k">USD 10,000 - 50,000</option>
+            <option value="50k-100k">USD 50,000 - 100,000</option>
+            <option value="100k+">USD 100,000+</option>
+          </select>
+      
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+      
+          <label class="container">
+            Email me DigitalWorks Advertising's Company Profile.
+            <input type="checkbox" name="company_profile">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Send me monthly advertising, marketing & event management tips.
+            <input type="checkbox" name="tips">
+            <span class="checkmark"></span>
+          </label>
+      
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Include intl-tel-input JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+      var input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+        initialCountry: "my",
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+      });
+    </script>
+  </section>
 
+
+  <section class="quote">
+    <img src="assets/quote.png" alt="QUOTE Image">
+  </section>
+
+
+  <footer>
+    <div class="footer-container">
+      <!-- Left Column -->
+      <div class="footer-column about-section">
+        <h2>DigitalWorks Advertising &amp; More</h2>
+        <p>
+          We were looking for an advertising agency of our dreams to work for.
+          We could not find one. So we built one.
+        </p>
+      </div>
+      
+      <!-- Middle Column -->
+      <div class="footer-column links-section">
+        <h3>Our Links</h3>
+        <div class="footlink">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="#">Our Team</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Quizzes</a></li>
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="footer-column socials-section">
+        <h3>Socials</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+        </ul>
+      </div>      
+    </div>
+    <div class="footerimage">
+        <img src="assets/footerimg.png" alt="Designed With Love image">
+    </div>
+  </footer>
 </body>
 </html>
