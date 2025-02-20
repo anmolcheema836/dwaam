@@ -1146,7 +1146,7 @@ ul, ol {
     flex-direction: column;
   }
   .contactus .contactleft img {
-    width: 400px;
+    width: 350px;
     height: auto;
     padding-bottom: 2vh;
     max-height: 500px;
@@ -1321,7 +1321,7 @@ ul, ol {
       width: 109%;
     }
     .contactright input[type="tel"] {
-      width: 154% !important;
+      width: 130% !important;
       padding: 1.5vh;
     }
     .submit-btn {
