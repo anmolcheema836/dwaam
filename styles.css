@@ -228,7 +228,7 @@ ul, ol {
     padding-top: 50px;
     height: 700px;
     width: auto;
-    background-image: url(assets/herobg.png);
+    background-image: url(assets/herobg.webp);
     background-size: cover; /* Makes the image cover the entire background */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Ensures the image doesn't repeat */
@@ -254,7 +254,7 @@ ul, ol {
         margin-top: -60px;
         height: 800px;
         width: 100%;
-        background-image: url(assets/heromob.png);
+        background-image: url(assets/heromob.webp);
         background-size: contain;
         background-position: center center;
         background-repeat: no-repeat;
