@@ -6,14 +6,14 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #000;
-    width: 100%;
+    width: 100vw;
+    height: 100%;
+    overflow-x: hidden;
 }
 html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* or auto, depending on your needs */
-    overflow-y: auto;
-  }
+  overflow-x: hidden;
+  width: 100%;
+}
   
 span{
     color:#0262A6;
@@ -248,7 +248,7 @@ ul, ol {
 @media screen and (max-width: 768px) {
   .hero {
       margin-top: 0vh;
-      height: 750px;
+      height: 500px;
       width: 100%;
       background-image: url(assets/heromob.webp);
       background-size: cover;  /* Use cover for full background coverage */
@@ -292,83 +292,68 @@ ul, ol {
   }
 }
 
-.brandhead{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.brandhead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.brandhead h1 span{
-    color:#0262A6;
+.brandhead h1 span {
+  color: #0262A6;
 }
-.slider{
-    width: 100%;
-    height: 100px;
-    overflow: hidden;
-    border: 0.5px solid #0262A6;
-    mask-image: linear-gradient(to right,transparent,black 10% 90%,transparent);
+.slider {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  border: 0.5px solid #0262A6;
+  /* Creates fading edges on left/right */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
-.slider .list{
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    min-width: calc(150px*6);
+/* Remove keyframes & absolute positioning */
+.slider .list {
+  display: flex;
+  flex-wrap: nowrap;
+  /* No fixed width needed; items will align inline */
+  width: auto;
 }
-.slider .list .item{
-    width: 150px;
-    height: 200px;
-    position:absolute;
-    left: 100%;
-    animation:autorun 6s linear infinite;
-    animation-delay:calc((6s/6)* (var(--position)) );
+.slider .list .item {
+  width: 150px;
+  height: 200px;
+  flex: 0 0 auto;
+  margin: 0 10px;
 }
-.slider .list .item img{
-    width: 100%;
+.slider .list .item img {
+  width: 100%;
+  height: auto;
 }
-@keyframes autorun{
-    from{
-        left:100%
-    }to{
-        left:calc(200px*-1)
-    }
-}
-.slider:hover .item{
-    animation-play-state: paused;
-}
-
 @media (max-width: 768px) {
-    .brandhead h1{
-        font-size: 8px;
-        text-align: center;
-    }
-    .slider {
-        height: 80px;
-        overflow: -moz-hidden-unscrollable;
-    }
-
-    .slider .list .item {
-        width:100px;
-        height: 100px;
-    }
+  .brandhead h1 {
+    font-size: 8px;
+    text-align: center;
+  }
+  .slider {
+    height: 80px;
+  }
+  .slider .list .item {
+    width: 100px;
+    height: 100px;
+  }
 }
-
 @media (max-width: 480px) {
-    .brandhead h1{
-        padding: 1.2vw;
-        margin-top: -50px;
-        font-size: 16px;
-    }
-    .slider {
-        height: 80px;
-        overflow: hidden;
-    }
-
-    .slider .list .item {
-        width: 90px;
-        height: 90px;
-    }
+  .brandhead h1 {
+    padding: 1.2vw;
+    margin-top: -50px;
+    font-size: 16px;
+  }
+  .slider {
+    height: 80px;
+    overflow: hidden;
+  }
+  .slider .list .item {
+    width: 90px;
+    height: 90px;
+  }
 }
-
 .aboutus {
     padding: 50px;
     display: flex;
@@ -422,6 +407,16 @@ ul, ol {
         align-items: center;
         text-align: center;
     }
+    
+.aboutus h3 {
+  font-weight: 400;
+  font-size: small;
+}
+
+.aboutus h2 {
+  font-weight: 600;
+  font-size: small;
+}
 
     .aboutus h1 {
         width: 100%;
@@ -458,100 +453,158 @@ ul, ol {
 
 /* Our services */
 .OurServices h1 {
-    color: black;
-    text-align: center;
+  color: black;
+  text-align: center;
 }
 
 .OurServices h4 {
-    color: black;
-    font-weight: 400;
-    text-align: center;
-    padding-bottom: 4vh;
+  color: black;
+  font-weight: 400;
+  text-align: center;
+  padding-bottom: 4vh;
 }
 
 .OurServices .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    border-bottom: 1px solid #0262A6;
+  position:sticky;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid #0262A6;
 }
 
 .OurServices .services > * {
-    flex: 1 1 calc(20% - 20px);
-    max-width: calc(20% - 20px);
-    margin: 20px;
+  flex: 1 1 calc(20% - 20px);
+  max-width: calc(20% - 20px);
+  margin: 20px;
 }
 
 .OurServices .services .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: all 0.3s ease-in-out;
 }
 
 .OurServices h5 {
-    color: #0262A6;
+  color: #0262A6;
 }
 
 .OurServices .container img {
-    width: 100px;
-    height: 100px;
-}
-
-.OurServices .services .container {
-    transition: all 0.3s ease-in-out;
+  width: 100px;
+  height: 100px;
 }
 
 .OurServices .services .container:hover {
-    border: 1px solid rgba(128, 128, 128, 0.305);
-    border-radius: 20px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
+  border: 1px solid rgba(128, 128, 128, 0.305);
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-    .OurServices .services > * {
-        flex: 1 1 calc(50% - 20px); /* Two items per row on tablets */
-        max-width: calc(50% - 20px);
-    }
+  .OurServices .services > * {
+      flex: 1 1 calc(50% - 20px); /* Two items per row on tablets */
+      max-width: calc(50% - 20px);
+  }
 
-    .OurServices h1, .OurServices h4 {
-        font-size: 1.2rem; /* Adjust the text size for smaller screens */
-    }
+  .OurServices h1,
+  .OurServices h4 {
+      font-size: 1.2rem; /* Adjust the text size for smaller screens */
+  }
 
-    .OurServices .container img {
-        width: 80px;
-        height: 80px; /* Resize images for mobile */
-    }
+  .OurServices .container img {
+      width: 80px;
+      height: 80px; /* Resize images for mobile tablets */
+  }
 }
 
 @media (max-width: 480px) {
-    .OurServices .services > * {
-        flex: 1 1 calc(40% - 20px); /* One item per row on mobile */
-        max-width: calc(40% - 20px);
-    }
+  .OurServices .services > * {
+      flex: 1 1 calc(40.33% - 20px); /* Three items per row on mobile */
+      max-width: calc(33.33% - 20px);
+      margin: 5px;
+  }
 
-    .OurServices h1 {
-        font-size: 1.2rem; /* Further adjust text size for smaller screens */
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
-    .OurServices h4{
-        font-size: 0.8rem;
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
+  .OurServices h1 {
+      font-size: 1.2rem; /* Adjust text size for very small screens */
+      padding-left: 5vw;
+      padding-right: 5vw;
+  }
 
-    .OurServices .container img {
-        width: 60px;
-        height: 60px; /* Resize images further for very small screens */
-    }
+  .OurServices h4 {
+      font-size: 0.8rem;
+      padding-left: 5vw;
+      padding-right: 5vw;
+  }
+
+  .OurServices .container img {
+    padding-top: 2vh;
+      width:50px;
+      height: 50px; /* Resize images for very small screens */
+  }
+
+  .OurServices h5,
+  .OurServices h6 {
+      padding-left: 1vw;
+      padding-right: 1vw;
+  }
+  .OurServices h6{
+    font-size: 0.5rem;
+  }
+
+  .OurServices .container {
+      border: 2px solid #0262a66b;
+      border-radius: 20px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      overflow: hidden;
+      height: 17vh;
+      width: 100%;  /* Let the container fill its flex item */
+  }
 }
+
+    /*.OurServices .container .content{
+      z-index: 1;
+      padding-top: 5.4vh;
+      padding-bottom: 5.4vh;
+      margin-right: 0.3vw;
+      padding-left: 0.3vw;
+      background: white;
+      border-radius: 22px;
+    }
+    .OurServices .container::before{
+      position: absolute;
+      content: '';
+      width: 50%;
+      height: 180%;
+      background:#0883DA;
+      transform: rotate(45deg);
+      animation: animate 6s linear infinite;
+    }
+    @keyframes animate {
+      from{
+        transform: rotate(0deg);
+      }
+      to{
+        transform: rotate(360deg);
+      }
+    }
+    .OurServices .container::after{
+      position: absolute;
+      content: '';
+      inset: 10px;
+      border-radius: 8px;
+    }*/
+
+
 
 /* Our process */
 .OurProcess {
@@ -711,13 +764,14 @@ ul, ol {
 
     .Whywelove .right h4 {
         text-align: center;
+        font-size: small;
     }
 }
 
 /*Our Happy Clients Section*/
 .Ourhappyclients {
     background-color: #78a1be14;
-    padding-bottom: 80px;
+    padding-bottom: 1vh;
     border-bottom: 1px solid #0262A6;
     margin-top: -25px;
 }
@@ -818,6 +872,7 @@ ul, ol {
     /* Remove negative margin on h3 for better mobile spacing */
     .Ourhappyclients .clientcont h3 {
         margin-top: -11vh;
+        font-size: small;
     }
     
     /* Adjust the image container to be responsive */
@@ -859,8 +914,8 @@ ul, ol {
     border: 1px solid #0262A6;
     border-radius: 8px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.405);
-    margin-bottom: 50px;
-    margin-top: 100px;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
   }
   
   /* Header Section */
@@ -956,8 +1011,11 @@ ul, ol {
   
   /* Mobile Responsive Adjustments */
   @media (max-width: 768px) {
+
     .work-container{
         width: 80%;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
     }
     /* Stack content vertically */
     .work-content {
@@ -1104,6 +1162,9 @@ ul, ol {
   }
   /* Mobile Responsive */
   @media (max-width: 768px) {
+    .Ourteam {
+      padding-bottom: 2vh;
+    }
     .Ourteam .cards {
       flex-direction: column;
       margin-top: 10vh;

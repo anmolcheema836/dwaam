@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marquee Slider Example</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+    /* Slider Section Styling */
+    .slider {
+      padding: 20px;
+      background: #fff;
+    }
+    .slider h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    /* List & Item Styling */
+    .list {
+      display: flex;
+      align-items: center;
+    }
+    .item {
+      margin: 0 20px;
+    }
+    .item img {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <section class="slider">
+    <h2>Our Partners</h2>
+    <!-- Using the marquee tag to scroll the logos horizontally -->
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      <div class="list">
+        <div class="item" style="--position: 1">
+          <img src="assets/airbnblogo.webp" alt="Airbnb Logo" loading="lazy" width="150" height="100" />
+        </div>
+        <div class="item" style="--position: 2">
+          <img src="assets/p&glogo.webp" alt="P&G Logo" loading="lazy" width="150" height="100" />
+        </div>
+        <div class="item" style="--position: 3">
+          <img src="assets/unilogo.webp" alt="Unilever Logo" loading="lazy" width="150" height="100" />
+        </div>
+        <div class="item" style="--position: 4">
+          <img src="assets/warnerbg.webp" alt="Warner Bros Logo" loading="lazy" width="150" height="100" />
+        </div>
+        <div class="item" style="--position: 5">
+          <img src="assets/talentlogo.webp" alt="Talent Logo" loading="lazy" width="150" height="100" />
+        </div>
+        <div class="item" style="--position: 6">
+          <img src="assets/mercylogo.webp" alt="Mercy Logo" loading="lazy" width="150" height="100" />
+        </div>
+      </div>
+    </marquee>
+  </section>
+</body>
+</html>
