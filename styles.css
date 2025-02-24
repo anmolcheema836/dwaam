@@ -248,7 +248,7 @@ ul, ol {
 @media screen and (max-width: 768px) {
   .hero {
       margin-top: 0vh;
-      height: 500px;
+      height: 700px;
       width: 100%;
       background-image: url(assets/heromob.webp);
       background-size: cover;  /* Use cover for full background coverage */
@@ -566,7 +566,7 @@ ul, ol {
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
       transform: translateY(-5px);
       overflow: hidden;
-      height: 17vh;
+      height: 18vh;
       width: 100%;  /* Let the container fill its flex item */
   }
 }
@@ -1030,180 +1030,214 @@ ul, ol {
     }
     
     /* Adjust logo positioning for mobile */
-    .Ourwork .work-container .logo,
+    .Ourwork .work-container .logo{
+      margin-top: 0;
+      margin-right: auto;
+      margin-left: auto;
+      width: 50%;
+      height: auto;
+      max-width: 50%;
+    }
     .Ourwork .work-container .Whitneylogo {
       margin-top: 0;
       margin-right: auto;
       margin-left: auto;
-      width: 80%;
-      max-width: 100%;
+      width: 60%;
+      height: auto;
+      max-width: 60%;
     }
   }
   
    /* OUR TEAM SECTION */
-   .Ourteam {
-    margin-bottom: 10vh;
-    background-color: #F5F8FA;
-    padding-top: 5vh;
-    padding-bottom: 25vh;
+.Ourteam {
+  margin-bottom: 10vh;
+  background-color: #F5F8FA;
+  padding-top: 5vh;
+  padding-bottom: 25vh;
+}
+.Ourteam h1 {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 800;
+}
+.Ourteam h3 {
+  text-align: center;
+  font-size: large;
+  font-weight: 400;
+}
+.Ourteam .cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 35vh;
+  flex-wrap: wrap;
+}
+.Ourteam h6 {
+  font-weight: 200;
+  font-size: 13px;
+}
+.Ourteam .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 0;
+  height: 800px;
+  width: 350px;
+  margin-bottom: 40px;
+}
+.Ourteam .cardtop {
+  background: linear-gradient(to bottom, #F5F8FA 60%, #0882DB 50%);
+}
+
+.Ourteam .cardtop img {
+  height: 400px;
+  margin-bottom: -1vh;
+  width: 350px;
+  object-fit: cover;
+}
+.Ourteam .carddown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid rgba(219, 219, 219, 0.367);
+  width: 350px;
+  height: 800px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* REVIEW SECTION WITH SLIDER */
+.Ourteam .review {
+  position: relative;
+  overflow: visible; /* Allow arrows to be visible outside the box */
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 0 40px;
+  text-align: center;
+  border: 2px solid #0262A6;
+  border-radius: 25px;
+  height: 650px;
+  box-sizing: border-box;
+}
+.Ourteam .review .review-slides {
+  overflow: hidden; /* Hide extra slide content */
+  height: 100%;
+}
+.Ourteam .review .slide {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.Ourteam .review .slide.active {
+  display: flex;
+}
+.Ourteam .review .slide img {
+  height: 100px;
+  width: auto;
+  max-width: 180px;
+  margin: 0 auto;
+}
+.Ourteam .review .slide h5 {
+  margin: 10px 0;
+}
+.Ourteam .review .slide h6 {
+  margin: 10px 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+.Ourteam .review .slide h7 {
+  margin-top: auto;
+  color: green;
+  margin-bottom: 10px;
+}
+/* Navigation Arrows Outside the Review Box */
+.Ourteam .review .review-nav {
+  position: absolute;
+  top: 50%;
+  width: calc(100% + 95px);
+  left: -45px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+.Ourteam .review-nav img {
+  width: 40px;
+  height: 40px;
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .Ourteam {
+    padding-top: 3vh;
+    padding-bottom: 1vh;
+    margin-bottom: 5vh;
   }
   .Ourteam h1 {
-    text-align: center;
-    font-size: xx-large;
-    font-weight: 800;
+    font-size: x-large;
   }
   .Ourteam h3 {
-    text-align: center;
-    font-size: large;
-    font-weight: 400;
+    font-size: medium;
   }
   .Ourteam .cards {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    margin-top: 35vh;
-    flex-wrap: wrap;
-  }
-  .Ourteam h6 {
-    font-weight: 200;
-    font-size: 13px;
+    margin-top: 10vh;
   }
   .Ourteam .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: white;
-    padding: 0;
-    height: 800px;
-    width: 350px;
-    margin-bottom: 40px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
   }
   .Ourteam .cardtop img {
-    height: 400px;
-    margin-bottom: -1vh;
-    width: 350px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
   }
   .Ourteam .carddown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-    border: 1px solid rgba(219, 219, 219, 0.367);
-    width: 350px;
-    height: 800px;
-    padding: 10px;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a shadow */
+    width: 100%;
+    height: auto;
   }
-  
-  /* REVIEW SECTION WITH SLIDER */
   .Ourteam .review {
-    position: relative;
-    overflow: visible; /* Allow arrows to be visible outside the box */
-    display: flex;
-    flex-direction: column;
+    margin: 0 20px;
+    height: auto;
     padding: 15px;
-    margin: 0 40px;
-    text-align: center;
-    border: 2px solid #0262A6;
-    border-radius: 25px;
-    height: 650px;
-    box-sizing: border-box;
-  }
-  .Ourteam .review .review-slides {
-    overflow: hidden; /* Hide extra slide content */
-    height: 100%;
   }
   .Ourteam .review .slide {
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    box-sizing: border-box;
+    height: auto;
   }
-  .Ourteam .review .slide.active {
-    display: flex;
-  }
-  .Ourteam .review .slide img {
-    height: 100px;
-    width: auto;
-    max-width: 180px;
-    margin: 0 auto;
-  }
-  .Ourteam .review .slide h5 {
-    margin: 10px 0;
-  }
-  .Ourteam .review .slide h6 {
-    margin: 10px 0;
-    overflow-y: auto;
-    flex-grow: 1;
-  }
-  .Ourteam .review .slide h7 {
-    margin-top: auto;
-    color: green;
-    margin-bottom: 10px;
-  }
-  /* Navigation Arrows Outside the Review Box */
   .Ourteam .review .review-nav {
-    position: absolute;
-    top: 50%;
-    width: calc(100% + 95px);
-    left: -45px;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
+    width: calc(100% + 60px);
+    left: -30px;
   }
   .Ourteam .review-nav img {
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: auto;
+    padding: 2px;
   }
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .Ourteam {
-      padding-bottom: 2vh;
-    }
-    .Ourteam .cards {
-      flex-direction: column;
-      margin-top: 10vh;
-    }
-    .Ourteam .card {
-      width: 80%;
-      height: auto;
-    }
-    .Ourteam .card h3 {
-      margin-top: -2vh;
-    }
-    .Ourteam .cardtop img,
-    .Ourteam .carddown {
-      width: 100%;
-      height: auto;
-    }
-    .Ourteam .cardtop {
-      background-color: #F5F8FA;
-    }
-    .Ourteam .carddown {
-      padding-top: 4vh;
-    }
-    .Ourteam .cardtop img {
-      height: auto;
-      width: 100%;
-    }
-    .Ourteam .review {
-      margin: 30px;
-      height: auto;
-    }
-    .Ourteam .review .review-nav {
-      width: calc(100% + 60px);
-      left: -30px;
-    }
-    .Ourteam .review-nav img {
-        width: 25px;
-        height: 25px;
-      }
+}
+
+@media (max-width: 480px) {
+  .Ourteam h1 {
+    font-size: large;
   }
+  .Ourteam h3 {
+    font-size: small;
+  }
+  .Ourteam .card {
+    width: 80%;
+  }
+  .Ourteam .review {
+    padding: 10px;
+  }
+}
+
 
  /* Contact Us Desktop Styles */
  .contactus {
