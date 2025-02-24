@@ -877,7 +877,7 @@ ul, ol {
     
     /* Adjust the image container to be responsive */
     .Ourhappyclients .clientcont .img-container {
-        width: 100%;
+        width: 80%;
         height: auto;
         margin-bottom: 10px;
         position: relative;
@@ -885,7 +885,7 @@ ul, ol {
     
     .Ourhappyclients .clientcont .img-container img {
         position: static;
-        width: 100%;
+        width: 60%;
         height: auto;
         top: 0;
         left: 0;
@@ -1011,6 +1011,12 @@ ul, ol {
   
   /* Mobile Responsive Adjustments */
   @media (max-width: 768px) {
+    .Ourwork .work-container span{
+      font-size:medium;
+    }
+    .Ourwork .work-container strong{
+      font-size: small;
+    }
 
     .work-container{
         width: 80%;
