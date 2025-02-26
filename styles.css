@@ -1011,17 +1011,26 @@ ul, ol {
   
   /* Mobile Responsive Adjustments */
   @media (max-width: 768px) {
+    .work-container h2{
+      margin-top: 0;
+    }
     .Ourwork .work-container span{
       font-size:medium;
+      margin-top: 0;
     }
     .Ourwork .work-container strong{
       font-size: small;
+    }
+    .work-text{
+      margin-top: 0;
     }
     
   .work-text ul{
     justify-content: left;
   }
-
+.work-header{
+  margin-bottom: 0;
+}
     .work-container{
         width: 80%;
         margin-top: 1vh;
@@ -1048,14 +1057,16 @@ ul, ol {
       width: 50%;
       height: auto;
       max-width: 50%;
+      margin-bottom: 0;
     }
     .Ourwork .work-container .Whitneylogo {
       margin-top: 0;
       margin-right: auto;
       margin-left: auto;
-      width: 60%;
+      width: 70%;
       height: auto;
-      max-width: 60%;
+      max-width: 70%;
+      margin-bottom: 0;
     }
   }
   
