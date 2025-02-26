@@ -2,67 +2,423 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marquee Slider Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="365 Tech Controls delivers cutting-edge IT, AV, Security, and Telecommunications solutions to enhance business operations. Smart Solutions. Reliable Performance." />
+  <title>365 Tech Controls - Smart Solutions. Reliable Performance</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Reset & Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+    
+    :root {
+      --primary: #00ff9d;
+      --dark: #0a0a0a;
+      --gray: #1a1a1a;
+      --light: #fff;
     }
-    body {
-      font-family: sans-serif;
-      background: #f5f5f5;
+    
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    
+    /* Header & Navigation */
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(10,10,10,0.95);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
-    /* Slider Section Styling */
-    .slider {
-      padding: 20px;
-      background: #fff;
-    }
-    .slider h2 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    /* List & Item Styling */
-    .list {
+    nav {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      height: 70px;
     }
-    .item {
-      margin: 0 20px;
+    .logo { width: 180px; }
+    .nav-links {
+      display: flex;
+      gap: 20px;
     }
-    .item img {
-      display: block;
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-links a:hover {
+      background: var(--primary);
+      color: var(--dark);
+      border-radius: 5px;
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 70px; /* account for fixed header */
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero button {
+      background: var(--primary);
+      color: var(--dark);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .hero button:hover { background: #00e68a; }
+    
+    /* About Section */
+    section.about {
+      padding: 100px 20px 50px;
+      background: var(--dark);
+      text-align: center;
+    }
+    section.about h2 { font-size: 2.8rem; margin-bottom: 20px; }
+    section.about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    /* Services Section */
+    section.services {
+      padding: 50px 20px;
+      background: var(--gray);
+    }
+    section.services h2 { text-align: center; margin-bottom: 50px; font-size: 2.8rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .service-card {
+      background: #141414;
+      padding: 30px 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+    .service-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+    .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+    .service-card p { font-size: 1rem; line-height: 1.6; }
+    
+    /* CTA Section */
+    section.cta {
+      padding: 80px 20px;
+      background: var(--dark);
+      text-align: center;
+    }
+    section.cta h2 { font-size: 2.8rem; margin-bottom: 20px; }
+    section.cta p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    section.cta button {
+      background: var(--primary);
+      color: var(--dark);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    section.cta button:hover { background: #00e68a; }
+    
+    /* Contact Section */
+    section.contact {
+      padding: 50px 20px;
+      background: var(--gray);
+    }
+    section.contact h2 { text-align: center; margin-bottom: 40px; font-size: 2.8rem; }
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    form.contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: #141414;
+      padding: 30px;
+      border-radius: 10px;
+    }
+    form.contact-form input,
+    form.contact-form textarea {
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      background: var(--dark);
+      color: var(--light);
+      font-size: 1rem;
+    }
+    form.contact-form input::placeholder,
+    form.contact-form textarea::placeholder { color: #aaa; }
+    form.contact-form button {
+      background: var(--primary);
+      color: var(--dark);
+      border: none;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    form.contact-form button:hover { background: #00e68a; }
+    .contact-details {
+      background: #141414;
+      padding: 30px;
+      border-radius: 10px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .contact-details h3 { margin-bottom: 15px; }
+    .contact-details a { color: var(--primary); text-decoration: none; }
+    .map {
+      margin-top: 20px;
+      border: none;
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+    }
+    
+    /* Footer */
+    footer {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(10,10,10,0.95);
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .hamburger { display: block; }
+      .contact-container { grid-template-columns: 1fr; }
     }
   </style>
+  <!-- Google Analytics (placeholder snippet) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
+  -->
 </head>
 <body>
-  <section class="slider">
-    <h2>Our Partners</h2>
-    <!-- Using the marquee tag to scroll the logos horizontally -->
-    <marquee behavior="scroll" direction="left" scrollamount="5">
-      <div class="list">
-        <div class="item" style="--position: 1">
-          <img src="assets/airbnblogo.webp" alt="Airbnb Logo" loading="lazy" width="150" height="100" />
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home"><img src="logo.png" alt="365 Tech Controls" class="logo" /></a>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Products & Services</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div class="item" style="--position: 2">
-          <img src="assets/p&glogo.webp" alt="P&G Logo" loading="lazy" width="150" height="100" />
-        </div>
-        <div class="item" style="--position: 3">
-          <img src="assets/unilogo.webp" alt="Unilever Logo" loading="lazy" width="150" height="100" />
-        </div>
-        <div class="item" style="--position: 4">
-          <img src="assets/warnerbg.webp" alt="Warner Bros Logo" loading="lazy" width="150" height="100" />
-        </div>
-        <div class="item" style="--position: 5">
-          <img src="assets/talentlogo.webp" alt="Talent Logo" loading="lazy" width="150" height="100" />
-        </div>
-        <div class="item" style="--position: 6">
-          <img src="assets/mercylogo.webp" alt="Mercy Logo" loading="lazy" width="150" height="100" />
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Smart Solutions. Reliable Performance</h1>
+        <p>
+          365 Tech Controls is a specialist provider of IT, AV, Security, and Telecommunications solutions.
+          We deliver cutting-edge technology integration to enhance business operations—ensuring seamless connectivity, security, and performance.
+        </p>
+        <div class="btn-group">
+          <button onclick="window.location.href='#contact'">Get a Quote</button>
+          <button onclick="window.location.href='#contact'">Contact Us</button>
         </div>
       </div>
-    </marquee>
-  </section>
+    </section>
+    
+    <!-- About Us Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>
+          365 Tech Controls is a specialist provider of IT, AV, Security, and Telecommunications solutions.
+          We deliver cutting-edge technology integration to enhance business operations, ensuring seamless connectivity, security, and performance.
+          Our expertise spans commercial IT infrastructure, audio-visual installations, advanced security systems, and telecommunications solutions.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Products & Services Section -->
+    <section class="services" id="services">
+      <div class="container">
+        <h2>Products & Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <i class="fas fa-network-wired service-icon"></i>
+            <h3>IT Solutions</h3>
+            <p>
+              Comprehensive IT infrastructure, networking, Office 365, G-Suite, cloud solutions, and data security to keep businesses connected and efficient.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-video service-icon"></i>
+            <h3>AV Installations</h3>
+            <p>
+              Professional AV solutions including video conferencing, digital displays, and integrated sound systems.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-shield-alt service-icon"></i>
+            <h3>Security Systems</h3>
+            <p>
+              Advanced security solutions including CCTV, access control, alarm systems, and motion sensors for enhanced protection.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-phone-alt service-icon"></i>
+            <h3>Telecommunications</h3>
+            <p>
+              Scalable VoIP systems, structured cabling, and unified communication solutions for seamless connectivity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call-to-Action Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Upgrade Your Business Today</h2>
+        <p>
+          Upgrade your business with expert IT, AV, Security, and Telecommunications solutions from 365 Tech Controls.
+          Contact us today to discuss your project and discover how we can enhance your operations with tailored, high-performance technology.
+        </p>
+        <button onclick="window.location.href='#contact'">Get a Quote</button>
+      </div>
+    </section>
+    
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+          <form class="contact-form" action="#" method="post">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="tel" name="phone" placeholder="Phone" required />
+            <textarea name="message" placeholder="Message" rows="5" required></textarea>
+            <!-- Honeypot for spam protection -->
+            <input type="text" name="hp" style="display:none;" tabindex="-1" autocomplete="off" />
+            <button type="submit">Send Message</button>
+          </form>
+          <div class="contact-details">
+            <h3>Contact Details</h3>
+            <p>Call us: [Your Phone Number]</p>
+            <p>Email: <a href="mailto:[Your Email Address]">[Your Email Address]</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/company/365-tech-controls" target="_blank">365 Tech Controls</a></p>
+            <!-- Embedded Google Map (adjust location if needed) -->
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0866212610577!2d144.9630583153186!3d-37.81410797975167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1d6d249%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1614339586923!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 365 Tech Controls. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <!-- JavaScript for Mobile Navigation -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Hero with Fairy Magic</title>
+  <style>
+    body { margin: 0; padding: 0; }
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: #f0f0f0;
+      overflow: hidden;
+      text-align: center;
+    }
+    #logo {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+    }
+    #fairy {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      width: 100px;
+      cursor: pointer;
+    }
+    #service {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      font-weight: bold;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="hero">
+    <img id="logo" src="your-animated-logo.svg" alt="Animated Logo">
+    <img id="fairy" src="fairy.png" alt="Fairy">
+    <div id="service"></div>
+  </div>
+
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script>
+    // Array of services to display
+    const services = [
+      "PAY PER CLICK ADVERTISING",
+      "WEBSITE DESIGN & DEVELOPMENT"
+      // Add additional services as needed
+    ];
+    let currentService = 0;
+    const fairy = document.getElementById("fairy");
+    const serviceEl = document.getElementById("service");
+
+    function sprinkleDust() {
+      // Animate the fairy as if she's sprinkling magic dust
+      gsap.fromTo(fairy, 
+        { scale: 1 },
+        { scale: 1.2, duration: 0.2, yoyo: true, repeat: 1, onComplete: () => {
+            // Update and fade in the service text
+            serviceEl.textContent = services[currentService];
+            gsap.fromTo(serviceEl, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+            currentService = (currentService + 1) % services.length;
+          }
+        }
+      );
+    }
+
+    // Trigger the sprinkle effect every 5 seconds
+    setInterval(sprinkleDust, 5000);
+  </script>
+</body>
+</html>

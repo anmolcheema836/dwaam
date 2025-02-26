@@ -720,8 +720,6 @@ ul, ol {
     width: 100%;
     max-width: 600px;
     height: auto;
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px;
 }
 
 .Whywelove .right {
@@ -770,133 +768,133 @@ ul, ol {
 
 /*Our Happy Clients Section*/
 .Ourhappyclients {
-    background-color: #78a1be14;
-    padding-bottom: 1vh;
-    border-bottom: 1px solid #0262A6;
-    margin-top: -25px;
+  background-color: #78a1be14;
+  padding-bottom: 1vh;
+  border-bottom: 1px solid #0262A6;
+  margin-top: -25px;
 }
 .Ourhappyclients h1 {
-    padding-top: 40px;
-    text-align: center;
-    font-size: xx-large;
-    font-weight: 600;
+  padding-top: 40px;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 600;
 }
 
 .Ourhappyclients h3 {
-    text-align: center;
-    font-weight: 400;
+  text-align: center;
+  font-weight: 400;
 }
 
 .Ourhappyclients .clientcont h3{
-    margin-top: -80px;
+  margin-top: -80px;
 }
 
 .Ourhappyclients h4 {
-    text-align: center;
-    font-weight: 800;
-    margin-bottom: 0;
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 0;
 }
 
 .Ourhappyclients .allclients {
-    padding-top: 15vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+  padding-top: 15vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .Ourhappyclients .clientcont {
-    background-color: white;
-    padding: 2vw;
-    height: 700px;
-    width: 250px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
+  background-color: white;
+  padding: 2vw;
+  height: 700px;
+  width: 250px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
 .Ourhappyclients .allclients .clientcont .img-container {
-    width: 200px;
-    height: 120px;
-    position: relative;
-    margin-bottom: 20px;
-    overflow: visible;
-    z-index:10; 
+  width: 200px;
+  height: 120px;
+  position: relative;
+  margin-bottom: 20px;
+  overflow: visible;
+  z-index:10; 
 }
 
 .Ourhappyclients .allclients .clientcont .img-container img {
-    height: 120px;
-    width: 200px;
-    object-fit: cover;
-    position: absolute;
-    top: -70%; /* Pushes the image halfway out of the container */
-    left: 0;
+  height: 120px;
+  width: 200px;
+  object-fit: cover;
+  position: absolute;
+  top: -70%; /* Pushes the image halfway out of the container */
+  left: 0;
 }
 
 .Ourhappyclients .allclients .clientcont h3 {
-    text-align: center;
-    font-weight: normal;
-    padding: 0;
-    flex-grow: 1;
+  text-align: center;
+  font-weight: normal;
+  padding: 0;
+  flex-grow: 1;
 }
 
 .Ourhappyclients .allclients .clientcont h4 {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-weight: 800;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 800;
 }
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    /* Stack the client containers vertically */
-    .Ourhappyclients .allclients {
-        flex-direction: column;
-        padding-top: 8vh; /* Reduced padding for mobile */
-    }
-    
-    /* Make client containers full-width (with some margin) and let height adjust */
-    .Ourhappyclients .clientcont {
-        width: 80%;
-        padding-top: 5vh;
-        height: auto;
-        margin-bottom: 60px;
-    }
-    
-    /* Remove negative margin on h3 for better mobile spacing */
-    .Ourhappyclients .clientcont h3 {
-        margin-top: -11vh;
-        font-size: small;
-    }
-    
-    /* Adjust the image container to be responsive */
-    .Ourhappyclients .clientcont .img-container {
-        width: 80%;
-        height: auto;
-        margin-bottom: 10px;
-        position: relative;
-    }
-    
-    .Ourhappyclients .clientcont .img-container img {
-        position: static;
-        width: 60%;
-        height: auto;
-        top: 0;
-        left: 0;
-    }
-    
-    /* Change h4 positioning so it flows with the content */
-    .Ourhappyclients .allclients .clientcont h4 {
-        position: relative;
-        bottom: auto;
-        margin-top: 10px;
-    }
+  /* Stack the client containers vertically */
+  .Ourhappyclients .allclients {
+      flex-direction: column;
+      padding-top: 8vh; /* Reduced padding for mobile */
+  }
+  
+  /* Make client containers full-width (with some margin) and let height adjust */
+  .Ourhappyclients .clientcont {
+      width: 80%;
+      padding-top: 5vh;
+      height: auto;
+      margin-bottom: 60px;
+  }
+  
+  /* Remove negative margin on h3 for better mobile spacing */
+  .Ourhappyclients .clientcont h3 {
+      margin-top: -11vh;
+      font-size: small;
+  }
+  
+  /* Adjust the image container to be responsive */
+  .Ourhappyclients .clientcont .img-container {
+      width: 80%;
+      height: auto;
+      margin-bottom: 10px;
+      position: relative;
+  }
+  
+  .Ourhappyclients .clientcont .img-container img {
+      position: static;
+      width: 60%;
+      height: auto;
+      top: 0;
+      left: 0;
+  }
+  
+  /* Change h4 positioning so it flows with the content */
+  .Ourhappyclients .allclients .clientcont h4 {
+      position: relative;
+      bottom: auto;
+      margin-top: 10px;
+  }
 }
 
 /*Our work*/
@@ -949,17 +947,19 @@ ul, ol {
   }
   
   .work-text h4 {
-    margin-bottom: 10px;
+    margin-bottom:0;
     font-size: 1.1rem;
-    text-decoration: underline;
   }
-  
+  .work-text h4::before {
+    content: "• ";
+  }
   .work-text ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-left: 0; /* Aligns to the leftmost side */
+    padding-left: 0; /* Removes any extra padding */
     line-height: 1.5;
-  }
+    text-align: left; /* Ensures text is left-aligned */
+}
   
   /* Right Column with Image */
   .work-image {
@@ -1017,11 +1017,16 @@ ul, ol {
     .Ourwork .work-container strong{
       font-size: small;
     }
+    
+  .work-text ul{
+    justify-content: left;
+  }
 
     .work-container{
         width: 80%;
         margin-top: 1vh;
         margin-bottom: 1vh;
+        overflow: hidden;
     }
     /* Stack content vertically */
     .work-content {
@@ -1070,6 +1075,7 @@ ul, ol {
   text-align: center;
   font-size: large;
   font-weight: 400;
+  margin-bottom: 0;
 }
 .Ourteam .cards {
   display: flex;
@@ -1081,6 +1087,7 @@ ul, ol {
 .Ourteam h6 {
   font-weight: 200;
   font-size: 13px;
+  margin-top: 0;
 }
 .Ourteam .card {
   display: flex;
@@ -1146,7 +1153,8 @@ ul, ol {
   display: flex;
 }
 .Ourteam .review .slide img {
-  height: 100px;
+  max-height: 100px;
+  height: auto;
   width: auto;
   max-width: 180px;
   margin: 0 auto;
@@ -1513,6 +1521,7 @@ ul, ol {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20vw;
     padding-right: 5vw;
 }
 
