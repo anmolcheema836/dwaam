@@ -1080,6 +1080,9 @@ ul, ol {
   
   /* Mobile Responsive Adjustments */
   @media (max-width: 768px) {
+    .work-content{
+      gap: 0;
+    }
     .work-text h4{
       margin-top: 0;
       padding-top: 0;
