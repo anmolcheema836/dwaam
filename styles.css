@@ -507,7 +507,6 @@ ul, ol {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 1px solid #0262A6;
 }
 
 .OurServices .services > * {
