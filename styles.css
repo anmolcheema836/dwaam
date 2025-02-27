@@ -663,7 +663,6 @@ ul, ol {
     flex-direction: column;
     background-color: #78a1be73;
     padding-bottom: 40px;
-    border-bottom: 1px solid #0262A6;
 }
 
 .OurProcess h1 {
@@ -713,7 +712,6 @@ ul, ol {
     align-items: center;
     text-align: center;
     margin-bottom: 40px;
-    border-bottom: 1px solid #0262A6;
 }
 
 .Factsaboutus .facts {
@@ -762,7 +760,6 @@ ul, ol {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    border-bottom: 1px solid #0262A6;
 }
 
 .Whywelove img {
@@ -822,7 +819,6 @@ ul, ol {
 .Ourhappyclients {
   background-color: #78a1be14;
   padding-bottom: 1vh;
-  border-bottom: 1px solid #0262A6;
   margin-top: -25px;
 }
 .Ourhappyclients h1 {
