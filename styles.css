@@ -1158,9 +1158,9 @@ ul, ol {
       margin-top: 0;
       margin-right: auto;
       margin-left: auto;
-      width: 70%;
+      width: 100%;
       height: auto;
-      max-width: 70%;
+      max-width: 100%;
       margin-bottom: 0;
     }
   }
