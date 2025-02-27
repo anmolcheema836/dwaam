@@ -921,7 +921,8 @@ ul, ol {
       width: 80%;
       padding-top: 5vh;
       height: auto;
-      margin-bottom: 60px;
+      margin-top: 5.5vh;
+      margin-bottom: 0;
   }
   
   /* Remove negative margin on h3 for better mobile spacing */
@@ -1007,7 +1008,7 @@ ul, ol {
     margin-bottom:0;
     font-size: 1.1rem;
   }
-  
+
   .work-text ul {
     margin-top: 0;
     margin-left: 0; /* Aligns to the leftmost side */
