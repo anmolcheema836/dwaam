@@ -904,6 +904,9 @@ ul, ol {
   .work-content{
     gap: 0;
   }
+  .Ourwork .work-container .logo img {
+    margin-bottom: -10px;
+  }
 .work-container {
   padding-top: 1px;
   margin-top: 0;
