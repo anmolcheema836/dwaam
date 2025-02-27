@@ -379,7 +379,7 @@ ul, ol {
   }
 
   .logoslide {
-    width: 150px; /* Even smaller for very small screens */
+    width: 250px; /* Even smaller for very small screens */
   }
 }
 .aboutus {
