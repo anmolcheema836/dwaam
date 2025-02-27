@@ -1310,6 +1310,8 @@ ul, ol {
   }
   .Ourteam h3 {
     font-size: medium;
+    margin-top: 0;
+    padding-top: 0;
   }
   .Ourteam .cards {
     flex-direction: column;
