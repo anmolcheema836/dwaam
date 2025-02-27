@@ -901,6 +901,7 @@ ul, ol {
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
+  
   .work-content{
     gap: 0;
   }
@@ -942,19 +943,13 @@ ul, ol {
   }
   
   /* Adjust the image container to be responsive */
-  .Ourhappyclients .clientcont .img-container {
-      width: 80%;
-      height: auto;
-      margin-bottom: 0;
-      position: relative;
-  }
-  
-  .Ourhappyclients .clientcont .img-container img {
-      position: static;
-      width: 60%;
-      height: auto;
-      top: 0;
-      left: 0;
+  .Ourhappyclients .allclients .clientcont .img-container img {
+    height: auto;
+    width: 150px;
+    object-fit: cover;
+    position: absolute;
+    top: -70%; /* Pushes the image halfway out of the container */
+    left: 5.5vw;
   }
   
   /* Change h4 positioning so it flows with the content */
