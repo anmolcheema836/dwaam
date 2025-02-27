@@ -1042,6 +1042,7 @@ ul, ol {
   .work-image img {
     max-width: 100%;
     height: auto;
+    padding-bottom: 8px;
   }
   
   .Ourwork .work-container .logo {
