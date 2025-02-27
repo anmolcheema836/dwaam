@@ -929,7 +929,7 @@ ul, ol {
   /* Make client containers full-width (with some margin) and let height adjust */
   .Ourhappyclients .clientcont {
       width: 80%;
-      padding-top: 5vh;
+      padding-top: 8vh;
       height: auto;
       margin-top: 5.5vh;
       margin-bottom: 0;
