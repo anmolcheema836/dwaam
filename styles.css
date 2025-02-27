@@ -907,6 +907,15 @@ ul, ol {
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
+  .Ourhappyclients h1{
+    padding-top: 5px;
+    margin-bottom: 1px;
+  }
+  .Ourhappyclients h3{
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 1px;
+  }
   /* Stack the client containers vertically */
   .Ourhappyclients .allclients {
       flex-direction: column;
@@ -1065,8 +1074,21 @@ ul, ol {
   
   /* Mobile Responsive Adjustments */
   @media (max-width: 768px) {
-    .work-container h2{
+    .Ourwork{
+      padding-bottom: 1vh;
+    }
+    .Ourwork h3{
       margin-top: 0;
+      margin-bottom: 1px;
+    }
+    .Ourwork h1{
+      margin-bottom: 3px;
+      margin-top: 3px;
+    }
+    .work-container .client-info h2{
+      margin-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
     .Ourwork .work-container span{
       font-size:medium;
@@ -1326,204 +1348,216 @@ ul, ol {
 }
 
 
- /* Contact Us Desktop Styles */
- .contactus {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 20px;
-  }
-  .contactus .contactleft {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Contact Us Desktop Styles */
+.contactus {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+.contactus .contactleft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.contactus .contactleft img {
+  width: 350px;
+  height: auto;
+  padding-bottom: 2vh;
+  max-height: 500px;
+}
+.contactright {
+  background: linear-gradient(to bottom, #0883DA, #044674);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 135vh;
+  width: 45vw;
+  border-radius: 25px;
+}
+.contactright h2 {
+  color: white;
+  text-align: center;
+}
+.form-container {
+  background: transparent;
+  color: white;
+  padding: 20px;
+  border: none;
+  width: 550px;
+}
+label {
+  font-weight: 300;
+  display: block;
+  margin-top: 10px;
+}
+
+/* Uniform Placeholder (ghost text) styling */
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+}
+
+/* Focus and Hover effects */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 3px solid cyan;
+  background-color: #ffffff;
+  color: #000;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.7),
+              0 0 10px rgba(0, 255, 255, 0.7),
+              0 0 15px rgba(0, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+input:hover,
+select:hover,
+textarea:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.9),
+              0 0 20px rgba(0, 255, 255, 0.9),
+              0 0 30px rgba(0, 255, 255, 0.9);
+}
+
+/* Standardize all input, textarea, and select widths and styling */
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Remove native dropdown styling for select elements */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Remove special width override for telephone inputs */
+input[type="tel"] {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Center submit button */
+.submit-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 20px;
+  width: 30%;
+  margin: 50px auto 0;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  display: block;
+}
+.submit-btn:hover {
+  background: #218838;
+}
+
+/* Custom Checkbox Styling */
+.contactright .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  user-select: none;
+  color: #fff;
+}
+.contactright .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.contactright .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+.contactright .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.contactright .container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+.contactright .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.contactright .container input:checked ~ .checkmark:after {
+  display: block;
+}
+.contactright .container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .contactus {
     flex-direction: column;
-  }
-  .contactus .contactleft img {
-    width: 350px;
-    height: auto;
-    padding-bottom: 2vh;
-    max-height: 500px;
-  }
-  .contactright {
-    background: linear-gradient(to bottom, #0883DA, #044674);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 135vh;
-    width: 45vw;
-    border-radius: 25px;
+    padding: 10px;
   }
   .contactright h2 {
-    color: white;
-    text-align: center;
+    font-size: 4vw;
   }
-  .form-container {
-    background: transparent;
-    color: white;
+  .contactleft, .contactright {
+    width: 80%;
+  }
+  .contactleft img {
+    width: 80%;
+    max-height: none;
+    margin-bottom: 20px;
+  }
+  .contactright {
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
     padding: 20px;
-    border: none;
-    width: 550px;
   }
-  label {
-    font-weight: 300;
-    display: block;
-    margin-top: 10px;
+  .contactright .form-container {
+    width: 80%;
+    padding: 10px;
   }
-  /* Placeholder styling */
-  input::placeholder,
-  textarea::placeholder {
-    color: #ccc;
-  }
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: none;
-    border: 3px solid cyan;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.7),
-                0 0 10px rgba(0, 255, 255, 0.7),
-                0 0 15px rgba(0, 255, 255, 0.7);
-    transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
-  }
-  /* Hover effect for extra glow */
-  input:hover,
-  select:hover,
-  textarea:hover {
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.9),
-                0 0 20px rgba(0, 255, 255, 0.9),
-                0 0 30px rgba(0, 255, 255, 0.9);
-  }
-  input, textarea {
+  .contactright select {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
-  select {
-    width: 104%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .contactright input[type="tel"] {
+    width: 100%;
+    padding: 1.5vh;
   }
-  /* Center submit button while preserving size */
   .submit-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 20px;
-    width: 30%;
-    margin: 50px auto 0;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    display: block;
+    width: 50%;
+    padding: 15px;
+    font-size: 16px;
   }
-  .submit-btn:hover {
-    background: #218838;
-  }
-  /* Custom Checkbox Styling */
-  .contactright .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 15px;
-    user-select: none;
-    color: #fff;
-  }
-  .contactright .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  .contactright .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-  }
-  .contactright .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  .contactright .container input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  .contactright .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  .contactright .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  .contactright .container .checkmark:after {
-    left: 7px;
-    top: 3px;
-    width: 4px;
-    height: 8px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-  }
-  input[type="tel"] {
-    width: 258% !important;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    display: block;
-  }
+}
 
-  /* Mobile Responsive Styles */
-  @media (max-width: 768px) {
-    .contactus {
-      flex-direction: column;
-      padding: 10px;
-    }
-    .contactright h2{
-        font-size: 4vw;
-    }
-    .contactleft, .contactright {
-      width: 80%;
-    }
-    .contactleft img {
-      width: 80%;
-      max-height: none;
-      margin-bottom: 20px;
-    }
-    .contactright {
-      width: 90%;
-      height: auto;
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .contactright .form-container {
-      width: 80%;
-      padding: 10px;
-    }
-    .contactright select {
-      width: 109%;
-    }
-    .contactright input[type="tel"] {
-      width: 130% !important;
-      padding: 1.5vh;
-    }
-    .submit-btn {
-      width: 50%;
-      padding: 15px;
-      font-size: 16px;
-    }
-  }
 
 
   /*QUOTE PART*/
@@ -1623,12 +1657,16 @@ footer img {
 
 /* Responsive Adjustments (optional) */
 @media (max-width: 768px) {
+    .footer{
+      padding-top: 0;
+    }
+    .footer-column .about-section{
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
     .footer-container {
       flex-direction: column;
       align-items: flex-start;
     }
     
-    .footer-column {
-      margin-bottom: 20px;
-    }
 }
