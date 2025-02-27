@@ -1208,7 +1208,7 @@ ul, ol {
   padding: 0;
   height: 800px;
   width: 350px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .Ourteam .cardtop {
   background: linear-gradient(to bottom, #F5F8FA 60%, #0882DB 50%);
@@ -1321,7 +1321,7 @@ ul, ol {
   .Ourteam .card {
     width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
   .Ourteam .cardtop img {
     width: 100%;
@@ -1545,6 +1545,10 @@ input[type="tel"] {
     padding: 10px;
   }
   .contactright h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     font-size: 16px; /* Using px for consistency */
   }
   /* Fixed widths for mobile containers and fields */
@@ -1560,7 +1564,10 @@ input[type="tel"] {
     width: 320px;
     height: auto;
     border-radius: 10px;
-    padding: 20px;
+    padding-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
   }
   .contactright .form-container {
     width: 320px;
@@ -1584,6 +1591,7 @@ input[type="tel"] {
   }
   .submit-btn {
     width: 150px;
+    margin-top: 0;
     padding: 15px;
     font-size: 16px;
   }
