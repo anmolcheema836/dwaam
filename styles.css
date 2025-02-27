@@ -1385,7 +1385,7 @@ ul, ol {
 .contactus .contactleft img {
   width: 350px;
   height: auto;
-  padding-bottom: 2vh;
+  padding-bottom: 0;
   max-height: 500px;
 }
 .contactright {
