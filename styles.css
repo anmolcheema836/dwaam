@@ -901,6 +901,13 @@ ul, ol {
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
+  .work-content{
+    gap: 0;
+  }
+.work-container {
+  padding-top: 1px;
+  margin-top: 0;
+}
   .Ourhappyclients h1{
     padding-top: 5px;
     margin-bottom: 1px;
@@ -913,7 +920,7 @@ ul, ol {
   /* Stack the client containers vertically */
   .Ourhappyclients .allclients {
       flex-direction: column;
-      padding-top: 8vh; /* Reduced padding for mobile */
+      padding-top: 0; /* Reduced padding for mobile */
   }
   
   /* Make client containers full-width (with some margin) and let height adjust */
@@ -965,7 +972,9 @@ ul, ol {
   .work-container {
     max-width: 1200px;
     margin: 40px auto;
-    padding: 20px;
+    padding-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: rgba(207, 207, 207, 0.529);
     border: 1px solid #0262A6;
     border-radius: 8px;
