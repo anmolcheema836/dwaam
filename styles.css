@@ -300,6 +300,10 @@ ul, ol {
 }
 .brandhead h1 span {
   color: #0262A6;
+  padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .logoslider {
   position: relative;
@@ -336,9 +340,20 @@ ul, ol {
   .brandhead h1{
     font-size: small;
     padding-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .brandhead h1 span{
     font-size: small;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .logoslider {
     padding: 2em 1em;
@@ -356,7 +371,7 @@ ul, ol {
 
 @media (max-width: 480px) {
   .logoslider {
-    padding: 1.5em 0.5em;
+    padding: 2px 2px;
   }
 
   .logoslide-track {
@@ -407,7 +422,8 @@ ul, ol {
 
 .aboutus h3 {
     font-weight: 400;
-    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .aboutus h2 {
@@ -443,7 +459,7 @@ ul, ol {
     .aboutus h1 {
         width: 100%;
         text-align: center;
-        margin-bottom: 5px;
+        margin-bottom: 0;
     }
 
     .aboutuspic {
@@ -464,7 +480,7 @@ ul, ol {
         text-align: center;
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
+        margin-top: 2px;
     }
 
     .cta-button {
@@ -540,6 +556,7 @@ ul, ol {
   .OurServices h1,
   .OurServices h4 {
       font-size: 1.2rem; /* Adjust the text size for smaller screens */
+      padding-bottom: 0;
   }
 
   .OurServices .container img {
