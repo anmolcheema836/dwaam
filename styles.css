@@ -1303,7 +1303,7 @@ ul, ol {
   .Ourteam {
     padding-top: 1vh;
     padding-bottom: 1vh;
-    margin-bottom: 5vh;
+    margin-bottom: 0;
   }
   .Ourteam h1 {
     font-size: x-large;
