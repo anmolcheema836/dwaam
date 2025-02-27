@@ -594,6 +594,14 @@ ul, ol {
       height: 50px; /* Resize images for very small screens */
   }
 
+  .OurServices h5{
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+  }
+
+  .OurServices h6 {
+    margin-top: 2px;
+  }
   .OurServices h5,
   .OurServices h6 {
       padding-left: 1vw;
