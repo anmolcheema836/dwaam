@@ -468,9 +468,9 @@ ul, ol {
     }
 
     .aboutus img {
-        width: 100%;
+        width: 125%;
         height: auto;
-        max-width: 400px; /* Adjust based on preference */
+        max-width: 600px; /* Adjust based on preference */
     }
 
     .aboutuspart2 {
