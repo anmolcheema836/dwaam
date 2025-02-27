@@ -315,7 +315,7 @@ ul, ol {
 .logoslide-track {
   display: flex;
   gap: 2em;
-  animation: scroll 30s linear infinite;
+  animation: scroll 35s linear infinite;
   width: calc(150px * 12); /* Adjusts based on logo count */
 }
 
@@ -361,7 +361,7 @@ ul, ol {
   
   .logoslide-track {
     gap: 1.5em;
-    animation: scroll 20s linear infinite; /* Faster on mobile */
+    animation: scroll 30s linear infinite; /* Faster on mobile */
   }
 
   .logoslide {
