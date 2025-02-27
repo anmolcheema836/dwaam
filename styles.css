@@ -1080,6 +1080,12 @@ ul, ol {
   
   /* Mobile Responsive Adjustments */
   @media (max-width: 768px) {
+    .work-header .client-info h2 {
+      padding-top: 5px;
+      font-size: 2px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
     .work-content{
       gap: 0;
     }
