@@ -389,7 +389,6 @@ ul, ol {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border-bottom: 1px solid #0262A6;
 }
 
 /* Image styling */
