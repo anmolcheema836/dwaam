@@ -1437,13 +1437,17 @@ select {
   appearance: none;
 }
 
-/* Remove special width override for telephone inputs */
+/* Telephone input: Remove any native styling and inherit full width */
 input[type="tel"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   display: block;
+  width: 100%;
 }
 
 /* Center submit button */
@@ -1520,44 +1524,49 @@ input[type="tel"] {
     padding: 10px;
   }
   .contactright h2 {
-    font-size: 4vw;
+    font-size: 16px; /* Using px for consistency */
   }
+  /* Fixed widths for mobile containers and fields */
   .contactleft, .contactright {
-    width: 80%;
+    width: 320px;
   }
   .contactleft img {
-    width: 80%;
+    width: 320px;
     max-height: none;
     margin-bottom: 20px;
   }
   .contactright {
-    width: 90%;
+    width: 320px;
     height: auto;
     border-radius: 10px;
     padding: 20px;
   }
   .contactright .form-container {
-    width: 80%;
+    width: 320px;
     padding: 10px;
   }
+  /* Override form fields to use fixed width on mobile */
+  .contactright input,
+  .contactright textarea,
+  .contactright select,
+  .contactright input[type="tel"] {
+    width: 320px;
+  }
   .contactright select {
-    width: 100%;
     padding: 12px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
   }
   .contactright input[type="tel"] {
-    width: 100%;
-    padding: 1.5vh;
+    padding: 10px;
   }
   .submit-btn {
-    width: 50%;
+    width: 150px;
     padding: 15px;
     font-size: 16px;
   }
 }
-
 
 
   /*QUOTE PART*/
