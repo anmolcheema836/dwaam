@@ -1602,6 +1602,7 @@ input[type="tel"] {
     width: 320px;
   }
   .contactright select {
+    color: grey;
     padding: 12px;
     -webkit-appearance: none;
     -moz-appearance: none;
