@@ -316,7 +316,7 @@ ul, ol {
   display: flex;
   gap: 2em;
   animation: scroll 45s linear infinite;
-  width: calc(150px * 12); /* Adjusts based on logo count */
+  width: calc(150px * 18); /* Adjusts based on logo count */
 }
 
 .logoslide {
@@ -379,7 +379,9 @@ ul, ol {
   }
 
   .logoslide {
-    width: 250px; /* Even smaller for very small screens */
+    width: 280px; /* Even smaller for very small screens */
+    margin-top: -45px;
+    margin-bottom: -45px;
   }
 }
 .aboutus {
@@ -578,6 +580,11 @@ ul, ol {
       margin-bottom: 0;
   }
 
+  .OurServices .container .contentimg {
+    position: absolute;
+    top: 0;
+  }
+  
   .OurServices h4 {
       font-size: 0.8rem;
       padding-left: 5vw;
@@ -586,8 +593,34 @@ ul, ol {
       margin-bottom: 3px;
   }
 
+  .OurServices .services .container {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Two rows: one for the image, one for the text */
+    position: relative; /* Establish a reference for positioning if needed */
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #0262a66b;
+      border-radius: 20px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      height: 150px;
+      width: 100%;
+  }
+  
+  .OurServices .services .container .contentimg {
+    grid-row: 1;      /* Always place the image at the top */
+    justify-self: center;
+  }
+  
+  .OurServices .services .container .content {
+    padding-top: 50px;
+    grid-row: 2;      /* Always place the content below the image */
+  }
+  
+
   .OurServices .container img {
-    padding-top: 2vh;
       width:50px;
       height: 50px; /* Resize images for very small screens */
   }
@@ -603,20 +636,12 @@ ul, ol {
   .OurServices h5,
   .OurServices h6 {
       padding-left: 1vw;
+      margin-top: 5px;
+      margin-bottom: 0;
       padding-right: 1vw;
   }
   .OurServices h6{
     font-size: 0.5rem;
-  }
-
-  .OurServices .container {
-      border: 2px solid #0262a66b;
-      border-radius: 20px;
-      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-      transform: translateY(-5px);
-      overflow: hidden;
-      height: 130px;
-      width: 100%;  /* Let the container fill its flex item */
   }
 }
 
