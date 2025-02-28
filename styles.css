@@ -38,7 +38,7 @@ nav img.logo {
 /* Navigation Links */
 #navpart2 {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     flex-grow: 1;
     justify-content: center;
 }
@@ -192,14 +192,14 @@ ul, ol {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 100px;
+        top: 80px;
         left: 0;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.622);
         backdrop-filter: blur(50px);
         -webkit-backdrop-filter: blur(50px);
         text-align: center;
-        padding: 20px 0;
+        padding: 10px 0;
         transform: translateY(-150%);
         transition: transform 0.4s ease-in-out;
     }
@@ -820,7 +820,7 @@ ul, ol {
     }
 
     .Whywelove img {
-        width: 60%;
+        width: 80%;
         height: auto;
     }
 
@@ -955,12 +955,12 @@ ul, ol {
   
   /* Make client containers full-width (with some margin) and let height adjust */
   .Ourhappyclients .clientcont {
-      width: 80%;
-      padding-top: 8vh;
-      height: auto;
-      margin-top: 5.5vh;
-      margin-bottom: 0;
-  }
+    width: 80%;
+    padding-top: 2vh;
+    height: auto;
+    margin-top: 5.5vh;
+    margin-bottom: 0;
+}
   
   /* Remove negative margin on h3 for better mobile spacing */
   .Ourhappyclients .clientcont h3 {
@@ -974,7 +974,7 @@ ul, ol {
     width: 150px;
     object-fit: cover;
     position: absolute;
-    top: -70%; /* Pushes the image halfway out of the container */
+    top: -40%; /* Pushes the image halfway out of the container */
     left: 6vw;
   }
   
@@ -1382,7 +1382,7 @@ ul, ol {
     font-size: small;
   }
   .Ourteam .card {
-    width: 80%;
+    width: 90%;
   }
   .Ourteam .review {
     padding: 8px;
