@@ -1608,6 +1608,9 @@ input[type="tel"] {
     -moz-appearance: none;
     appearance: none;
   }
+  .contactright select:valid {
+    color: black;
+  }
   .contactright input[type="tel"] {
     padding: 10px;
   }
