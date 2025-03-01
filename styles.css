@@ -1539,7 +1539,7 @@ input[type="tel"] {
   background-color: #ccc;
 }
 .contactright .container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: green;
 }
 .contactright .checkmark:after {
   content: "";
