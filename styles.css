@@ -98,7 +98,7 @@ ul, ol {
 /* CTA Button */
 .cta-button {
     padding: 15px 30px;
-    background: linear-gradient(to right, #7CC90F, #5F980E);
+    background: #23B33A;
     border-radius: 5px;
     color: white;
     border: none;
@@ -316,7 +316,7 @@ ul, ol {
   display: flex;
   gap: 2em;
   animation: scroll 45s linear infinite;
-  width: calc(150px * 18); /* Adjusts based on logo count */
+  width: calc(150px * 30); /* Adjusts based on logo count */
 }
 
 .logoslide {
@@ -360,8 +360,8 @@ ul, ol {
   }
   
   .logoslide-track {
-    gap: 1.5em;
-    animation: scroll 30s linear infinite; /* Faster on mobile */
+    gap: 1em;
+    animation: scroll 60s linear infinite; /* Faster on mobile */
   }
 
   .logoslide {
@@ -375,13 +375,16 @@ ul, ol {
   }
 
   .logoslide-track {
-    gap: 1em;
+    gap: 0;
+    width: calc(300px * 45); /* Adjusts based on logo count */
   }
 
   .logoslide {
     width: 280px; /* Even smaller for very small screens */
     margin-top: -45px;
     margin-bottom: -45px;
+    margin-right: -30px;
+    margin-left: -30px;
   }
 }
 .aboutus {
@@ -895,7 +898,7 @@ ul, ol {
   width: 200px;
   height: 120px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   overflow: visible;
   z-index:10; 
 }
@@ -1090,7 +1093,6 @@ ul, ol {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 1px solid #0262A6;
     padding-bottom: 50px;
   }
   
@@ -1130,10 +1132,12 @@ ul, ol {
       padding-bottom: 0;
       margin-bottom: 0;
     }
-    .Ourwork .work-container span{
-      font-size:medium;
+    .Ourwork .work-container span {
+      font-size: medium;
       margin-top: 0;
+      line-height: 1; /* Reduce spacing between lines */
     }
+    
     .Ourwork .work-container strong{
       font-size: small;
     }
@@ -1292,12 +1296,14 @@ ul, ol {
   margin: 0 auto;
 }
 .Ourteam .review .slide h5 {
-  margin: 10px 0;
+  margin: 1px 0;
+  margin-top: -5px;
 }
 .Ourteam .review .slide h6 {
-  margin: 10px 0;
+  margin:0;
   overflow-y: auto;
   flex-grow: 1;
+  padding-bottom: 5px;
 }
 .Ourteam .review .slide h7 {
   margin-top: auto;
@@ -1353,19 +1359,20 @@ ul, ol {
     height: auto;
   }
   .Ourteam .review {
-    margin: 0 20px;
+    margin: 0 35px;
     height: auto;
     padding: 15px;
   }
   .Ourteam .review .slide {
+    gap: 1px;
     height: auto;
   }
   .Ourteam .review .review-nav {
-    width: calc(100% + 60px);
-    left: -30px;
+    width: calc(100% + 80px);
+    left: -40px;
   }
   .Ourteam .review-nav img {
-    width: 25px;
+    width: 32px;
     height: auto;
     padding: 2px;
   }
@@ -1462,7 +1469,7 @@ textarea:hover {
               0 0 30px rgba(0, 255, 255, 0.9);
 }
 
-/* Standardize all input, textarea, and select widths and styling */
+/* Standardize all input, textarea, and select widths and styling with fixed white background */
 input, textarea, select {
   width: 100%;
   padding: 12px;
@@ -1470,6 +1477,7 @@ input, textarea, select {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  background-color: white;
 }
 
 /* Remove native dropdown styling for select elements */
@@ -1490,6 +1498,7 @@ input[type="tel"] {
   border-radius: 5px;
   display: block;
   width: 100%;
+  background-color: white;
 }
 
 /* Center submit button */
@@ -1561,6 +1570,7 @@ input[type="tel"] {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+  
   .contactus {
     flex-direction: column;
     padding: 10px;
@@ -1600,14 +1610,27 @@ input[type="tel"] {
   .contactright select,
   .contactright input[type="tel"] {
     width: 320px;
+    background-color: white;
   }
   .contactright select {
-    color: lightgrey;
+    color: #ccc;
+    background-color: white;
     padding: 12px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
   }
+  .intl-tel-input .iti__selected-flag {
+    height: 42px !important;
+  }
+  
+  .intl-tel-input .iti__flag, 
+  .intl-tel-input .iti__flag-container {
+    width: 60px !important;
+    height: 42px !important;
+    background-size: 60px 42px !important;
+  }
+  
   .contactright select:valid {
     color: black;
   }
@@ -1621,6 +1644,7 @@ input[type="tel"] {
     font-size: 16px;
   }
 }
+
 
 
   /*QUOTE PART*/

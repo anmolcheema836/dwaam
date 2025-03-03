@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DigitalWorks Advertising & More is a full-service agency delivering innovative advertising, marketing, and event management solutions. Discover creative campaigns, expert digital strategies, and a team dedicated to powering your brand to success." />
+  <meta name="description"
+    content="DigitalWorks Advertising & More is a full-service agency delivering innovative advertising, marketing, & event management solutions. Discover creative campaigns, expert digital strategies, & a team dedicated to powering your brand to success." />
   <title>Digital Works & More</title>
 
   <!-- Preconnect for faster resource loading -->
@@ -16,194 +18,208 @@
   <!-- Inline Critical CSS: Extract only above-the-fold styles here -->
   <style>
     /* Example Critical CSS */
-/* General Styles */
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    color: #000;
-    width: 100%;
-}
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* or auto, depending on your needs */
-    overflow-y: auto;
-  }
-  
-span{
-    color:#0262A6;
-}
-/*navbarstyles*/
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #000;
+      width: 100%;
+    }
 
-nav {
-    padding: 0vw 4vw;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      /* or auto, depending on your needs */
+      overflow-y: auto;
+    }
 
-/* Logo */
-nav img.logo {
-    height: 80px;
-    width: 80px;
-}
+    span {
+      color: #0262A6;
+    }
 
-/* Navigation Links */
-#navpart2 {
-    display: flex;
-    gap: 20px;
-    flex-grow: 1;
-    justify-content: center;
-}
-/* Remove list item decoration (bullets, numbers) */
-ul, ol {
-    list-style: none;
-}
+    /*navbarstyles*/
 
-/* Remove text decoration from "Whatsapp Us" button */
-.cta-button {
-    text-decoration: none;
-}
+    nav {
+      padding: 0vw 4vw;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Logo */
+    nav img.logo {
+      height: 80px;
+      width: 80px;
+    }
+
+    /* Navigation Links */
+    #navpart2 {
+      display: flex;
+      gap: 20px;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    /* Remove list item decoration (bullets, numbers) */
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    /* Remove text decoration from "Whatsapp Us" button */
+    .cta-button {
+      text-decoration: none;
+    }
 
 
-/* Navigation Links Style */
-#navpart2 a {
-    position: relative;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: black;
-    font-weight: 400; /* Default */
-    transition: color 0.3s ease-in-out;
-}
+    /* Navigation Links Style */
+    #navpart2 a {
+      position: relative;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: black;
+      font-weight: 400;
+      /* Default */
+      transition: color 0.3s ease-in-out;
+    }
 
-#navpart2 a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 5px;
-    width: 100%;
-    height: 5px;
-    background-color: #0262A6;
-    transform: scaleX(0);
-    border-radius: 50px;
-    transform-origin: center;
-    transition: transform 0.3s ease-in-out;
-}
+    #navpart2 a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      width: 100%;
+      height: 5px;
+      background-color: #0262A6;
+      transform: scaleX(0);
+      border-radius: 50px;
+      transform-origin: center;
+      transition: transform 0.3s ease-in-out;
+    }
 
-#navpart2 a:hover {
-    color: #0262A6;
-}
+    #navpart2 a:hover {
+      color: #0262A6;
+    }
 
-#navpart2 a:hover::after {
-    transform: scaleX(0.6);
-}
+    #navpart2 a:hover::after {
+      transform: scaleX(0.6);
+    }
 
-/* Active Link */
-#navpart2 a.active {
-    font-weight: 700;
-    color: #000000;
-}
+    /* Active Link */
+    #navpart2 a.active {
+      font-weight: 700;
+      color: #000000;
+    }
 
-#navpart2 a.active::after {
-    transform: scaleX(1);
-}
+    #navpart2 a.active::after {
+      transform: scaleX(1);
+    }
 
-/* CTA Button */
-.cta-button {
-    padding: 15px 30px;
-    background: linear-gradient(to right, #7CC90F, #5F980E);
-    border-radius: 5px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for all properties */
-}
+    /* CTA Button */
+    .cta-button {
+      padding: 15px 30px;
+      background: #23B33A;
+      border-radius: 5px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      /* Smooth transition for all properties */
+    }
 
-.cta-button:hover {
-    background: linear-gradient(to right, #5F980E, #7CC90F); /* Reversed gradient on hover */
-    transform: scale(1.05); /* Slightly increase the size */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
+    .cta-button:hover {
+      background: linear-gradient(to right, #5F980E, #7CC90F);
+      /* Reversed gradient on hover */
+      transform: scale(1.05);
+      /* Slightly increase the size */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow for depth */
+    }
 
-/* Hide mobile toggle by default */
-.menu-checkbox {
-    display: none;
-}
+    /* Hide mobile toggle by default */
+    .menu-checkbox {
+      display: none;
+    }
 
-.toggle {
-    position: absolute;
-    right: 0;
-    width: 40px;
-    cursor: pointer;
-    margin: auto;
-    display: block;
-    height: calc(4px * 3 + 11px * 2);
-}
-
-.bar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 4px;
-    border-radius: calc(4px / 2);
-    background: #0262A6;
-    color: inherit;
-    opacity: 1;
-    transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
-}
-
-/***** Collapse Animation *****/
-
-.bar--top {
-    bottom: calc(50% + 11px + 4px / 2);
-    transition-property: bottom, margin, transform;
-    transition-delay: calc(0s + 0.35s), 0s, 0s;
-}
-
-.bar--middle {
-    top: calc(50% - 4px / 2);
-    transition-property: top, opacity;
-    transition-duration: 0.35s, 0s;
-    transition-delay: calc(0s + 0.35s * 1.3), calc(0s + 0.35s * 1.3);
-}
-
-.bar--bottom {
-    top: calc(50% + 11px + 4px / 2);
-    transition-property: top, transform;
-    transition-delay: 0s;
-}
-
-#checkbox:checked + .toggle .bar--top {
-    bottom: calc(50% - 11px - 4px);
-    margin-bottom: calc(11px + 4px / 2);
-    transform: rotate(45deg);
-    transition-delay: calc(0s + 0.35s * .3), calc(0s + 0.35s * 1.3), calc(0s + 0.35s * 1.3);
-}
-
-#checkbox:checked + .toggle .bar--middle {
-    top: calc(50% + 11px);
-    opacity: 0;
-    transition-duration: 0.35s, 0s;
-    transition-delay: 0s, calc(0s + 0.35s);
-}
-
-#checkbox:checked + .toggle .bar--bottom {
-    top: calc(50% - 4px / 2);
-    transform: rotate(-45deg);
-    transition-delay: calc(0s + 0.35s * 1.3), calc(0s + 0.35s * 1.3);
-}
-.toggle{
-    display: none;
-}
-/* Show toggle only on mobile devices */
-@media screen and (max-width: 960px) {
     .toggle {
+      position: absolute;
+      right: 0;
+      width: 40px;
+      cursor: pointer;
+      margin: auto;
+      display: block;
+      height: calc(4px * 3 + 11px * 2);
+    }
+
+    .bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: calc(4px / 2);
+      background: #0262A6;
+      color: inherit;
+      opacity: 1;
+      transition: none 0.35s cubic-bezier(.5, -0.35, .35, 1.5) 0s;
+    }
+
+    /***** Collapse Animation *****/
+
+    .bar--top {
+      bottom: calc(50% + 11px + 4px / 2);
+      transition-property: bottom, margin, transform;
+      transition-delay: calc(0s + 0.35s), 0s, 0s;
+    }
+
+    .bar--middle {
+      top: calc(50% - 4px / 2);
+      transition-property: top, opacity;
+      transition-duration: 0.35s, 0s;
+      transition-delay: calc(0s + 0.35s * 1.3), calc(0s + 0.35s * 1.3);
+    }
+
+    .bar--bottom {
+      top: calc(50% + 11px + 4px / 2);
+      transition-property: top, transform;
+      transition-delay: 0s;
+    }
+
+    #checkbox:checked+.toggle .bar--top {
+      bottom: calc(50% - 11px - 4px);
+      margin-bottom: calc(11px + 4px / 2);
+      transform: rotate(45deg);
+      transition-delay: calc(0s + 0.35s * .3), calc(0s + 0.35s * 1.3), calc(0s + 0.35s * 1.3);
+    }
+
+    #checkbox:checked+.toggle .bar--middle {
+      top: calc(50% + 11px);
+      opacity: 0;
+      transition-duration: 0.35s, 0s;
+      transition-delay: 0s, calc(0s + 0.35s);
+    }
+
+    #checkbox:checked+.toggle .bar--bottom {
+      top: calc(50% - 4px / 2);
+      transform: rotate(-45deg);
+      transition-delay: calc(0s + 0.35s * 1.3), calc(0s + 0.35s * 1.3);
+    }
+
+    .toggle {
+      display: none;
+    }
+
+    /* Show toggle only on mobile devices */
+    @media screen and (max-width: 960px) {
+      .toggle {
         display: block;
         margin-right: 2vw;
-    }
-    #navpart2 {
+      }
+
+      #navpart2 {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -217,56 +233,64 @@ ul, ol {
         padding: 20px 0;
         transform: translateY(-150%);
         transition: transform 0.4s ease-in-out;
-    }
+      }
 
-    #checkbox:checked ~ #navpart2 {
+      #checkbox:checked~#navpart2 {
         transform: translateY(0);
-    }
+      }
 
-    nav .cta-button {
-        display: none; /* Hide button on mobile */
-    }
+      nav .cta-button {
+        display: none;
+        /* Hide button on mobile */
+      }
 
-    /* Hide navigation links on mobile by default */
-    #navpart2 a {
+      /* Hide navigation links on mobile by default */
+      #navpart2 a {
         display: block;
         padding: 15px;
+      }
     }
-}
 
-.hero {
-    padding-top: 50px;
-    height: 700px;
-    width: auto;
-    background-image: url(assets/herobg.webp);
-    background-size: cover; /* Makes the image cover the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
-}
-.hero h1{
-    color: white;
-    padding-left: 4vw;
-}
-.hero h4{
-    font-weight: 300;
-    color: white;
-    padding-left: 4vw;
-    padding-top: 1vw;
-    padding-bottom: 1vw;
-}
-.hero .cta-button{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 4vw;
-}
-
-@media screen and (max-width: 768px) {
     .hero {
+      padding-top: 50px;
+      height: 700px;
+      width: auto;
+      background-image: url(assets/herobg.webp);
+      background-size: cover;
+      /* Makes the image cover the entire background */
+      background-position: center;
+      /* Centers the image */
+      background-repeat: no-repeat;
+      /* Ensures the image doesn't repeat */
+    }
+
+    .hero h1 {
+      color: white;
+      padding-left: 4vw;
+    }
+
+    .hero h4 {
+      font-weight: 300;
+      color: white;
+      padding-left: 4vw;
+      padding-top: 1vw;
+      padding-bottom: 1vw;
+    }
+
+    .hero .cta-button {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 4vw;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero {
         margin-top: 0vh;
         height: 700px;
         width: 100%;
         background-image: url(assets/heromob.webp);
-        background-size: cover;  /* Use cover for full background coverage */
+        background-size: cover;
+        /* Use cover for full background coverage */
         background-position: center center;
         background-repeat: no-repeat;
         margin-bottom: 8vh;
@@ -277,8 +301,9 @@ ul, ol {
         align-items: center;
         justify-content: start;
         text-align: center;
-    }
-    /* Remove this block if not needed, since we're not using an <img> element inside .hero
+      }
+
+      /* Remove this block if not needed, since we're not using an <img> element inside .hero
     .hero img{
       height: 100%;
       width: 100%;
@@ -288,28 +313,31 @@ ul, ol {
     }
     */
 
-    .hero h1 {
+      .hero h1 {
         margin-top: 50px;
         font-size: 18px;
         padding-left: 2vw;
         padding-right: 2vw;
-    }
+      }
 
-    .hero h4 {
+      .hero h4 {
         font-size: 14px;
         padding-left: 0;
-    }
+      }
 
-    .hero .cta-button {
+      .hero .cta-button {
         font-size: 18px;
         padding: 15px 30px;
         margin-left: 0;
+      }
     }
-}
-.whatsapp-float {
+
+    .whatsapp-float {
       position: fixed;
-      bottom: 6vh; /* adjust vertical position */
-      right: 4vw;  /* adjust horizontal position */
+      bottom: 6vh;
+      /* adjust vertical position */
+      right: 4vw;
+      /* adjust horizontal position */
       width: 60px;
       height: 60px;
       background: transparent;
@@ -319,16 +347,19 @@ ul, ol {
       z-index: 1000;
       border: none;
     }
+
     .whatsapp-float img {
       width: 7vw;
       height: auto;
     }
+
     @media screen and (max-width: 768px) {
-      .whatsapp-float img{
+      .whatsapp-float img {
         width: 15vw;
         height: auto;
       }
-      .whatsapp-float{
+
+      .whatsapp-float {
         bottom: 2vh;
       }
     }
@@ -336,16 +367,26 @@ ul, ol {
 
   <!-- Defer non-critical CSS by using media="print" and switching onload -->
   <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="styles.css">
+  </noscript>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+  </noscript>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </noscript>
 
   <!-- Preload and load Google Fonts asynchronously -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
   </noscript>
@@ -365,15 +406,13 @@ ul, ol {
   <!-- Main Script (deferred) -->
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <a href="https://wa.me/+60108008989" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
     <img src="assets/whats.png" alt="WhatsApp">
   </a>
   <nav role="navigation">
-    <video width="100" height="80" autoplay muted playsinline>
-      <source src="assets/logo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>    
+    <img src="assets/logo.webp" alt="Logo" width="80" height="80">
 
     <!-- Mobile Menu Toggle -->
     <input type="checkbox" id="checkbox" class="menu-checkbox" />
@@ -399,107 +438,137 @@ ul, ol {
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>
-      FULL-SERVICE ADVERTISING, MARKETING &amp; <br />
-      EVENT MANAGEMENT AGENCY
-    </h1>
-    <h4>
-      You want it all?<br />
-      You want it all?<br />
-      You want it all?<br />
-      &amp; You want it now?<br /><br />
-     We’ve got it all.<br />
-      We’ve got it all.<br />
-      We’ve got it all.<br />
-      &amp; We’ll give you all!
-    </h4>
+    <h1>Every idea, every need - right here, ready to rock.</h1>
     <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
-    <h4>Every idea, every need - right here, ready to rock.</h4>
   </section>
 
   <!-- Trusted Brands Section -->
   <section class="brandhead">
     <h1>
-      BRANDS WHO TRUST US WITH THEIR <br /><span>ADVERTISING, MARKETING &amp; EVENT MANAGEMENT</span>
+      BRANDS WHO <span>TRUST US</span> WITH THEIR <br />ADVERTISING, MARKETING &amp; EVENT MANAGEMENT
     </h1>
   </section>
 
- <!-- Logo Slider Section -->
-<section class="logoslider">
-  <div class="logoslide-track">
-    <div class="logoslide">
-      <img src="assets/airbnblogo.webp" alt="Airbnb Logo">
+  <!-- Logo Slider Section -->
+  <section class="logoslider">
+    <div class="logoslide-track">
+      <div class="logoslide">
+        <img src="assets/pg.png" alt="P&G Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/talent.png" alt="Talent Corporation Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/kemen.png" alt="Kementerian Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/celcom.png" alt="Celcom Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/yonder.png" alt="Yonder Music Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/airasia.png" alt="AirAsia Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/warner.png" alt="Warner Bros Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/unilogo.png" alt="Unilever Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/kinibiz.png" alt="KiniBiz Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/mercylogo.webp" alt="MERCY Malaysia Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/yusari.png" alt="Yusari Filem Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/asoke.png" alt="Asoke Group Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/mido.png" alt="Mido Watches Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/poker.png" alt="PokerStars Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/turninghead.png" alt="Turning Heads Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/happyhop.png" alt="Happy Hop Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/pg.png" alt="P&G Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/talent.png" alt="Talent Corporation Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/kemen.png" alt="Kementerian Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/celcom.png" alt="Celcom Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/yonder.png" alt="Yonder Music Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/airasia.png" alt="AirAsia Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/warner.png" alt="Warner Bros Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/unilogo.png" alt="Unilever Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/kinibiz.png" alt="KiniBiz Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/mercylogo.webp" alt="MERCY Malaysia Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/yusari.png" alt="Yusari Filem Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/asoke.png" alt="Asoke Group Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/mido.png" alt="Mido Watches Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/poker.png" alt="PokerStars Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/turninghead.png" alt="Turning Heads Logo">
+      </div>
+      <div class="logoslide">
+        <img src="assets/happyhop.png" alt="Happy Hop Logo">
+      </div>
     </div>
-    <div class="logoslide">
-      <img src="assets/pg.png" alt="P&G Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/unilogo.png" alt="Unilever Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/warner.png" alt="Warner Bros Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/talent.png" alt="Talent Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/mercylogo.webp" alt="Mercy Logo">
-    </div>
-    <!-- Duplicate logos for smooth scrolling effect -->
-    <div class="logoslide">
-      <img src="assets/airbnblogo.webp" alt="Airbnb Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/pg.png" alt="P&G Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/unilogo.png" alt="Unilever Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/warner.png" alt="Warner Bros Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/talent.png" alt="Talent Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/mercylogo.webp" alt="Mercy Logo">
-    </div><div class="logoslide">
-      <img src="assets/airbnblogo.webp" alt="Airbnb Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/pg.png" alt="P&G Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/unilogo.png" alt="Unilever Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/warner.png" alt="Warner Bros Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/talent.png" alt="Talent Logo">
-    </div>
-    <div class="logoslide">
-      <img src="assets/mercylogo.webp" alt="Mercy Logo">
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- About Us Section -->
   <section class="aboutus">
     <div class="aboutuspic">
-      <img src="assets/team.png" alt="About Us Image" loading="lazy" width="600" height="400"/>
+      <img src="assets/team.png" alt="About Us Image" loading="lazy" width="600" height="400" />
     </div>
     <div class="aboutuspart2">
-      <h1><span>ABOUT</span> US</h1>
+      <h1>ABOUT <span>US</span></h1>
       <h3>
-        Our team is a mix of dreamers and doers, misfits and rebels for a cause when it comes to crafting advertising, marketing &amp; event management wonders for you.
+        Our team is a mix of dreamers & doers, misfits & rebels for a cause when it comes to crafting advertising,
+        marketing &amp; event management wonders for you.
         <br /><br />
         While simultaneously trying to make the world a nicer place for all of us.
         <br /><br />
-        Our formula is equal parts experience, historical data, strategy, creativity, hard work, heart work, and a sprinkle of magic fairy dust.
+        Our formula is equal parts experience, historical data, strategy, creativity, hard work, heart work, & a
+        sprinkle of magic fairy dust.
       </h3>
       <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
-      <h2>Let’s create something great, together.</h2>
+      <h2>Let’s create something great, <span>together.</span></h2>
     </div>
   </section>
 
@@ -515,118 +584,120 @@ ul, ol {
           <img src="assets/ppclogo.webp" alt="PPC LOGO" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>PAY PER CLICK ADVERTISING</h5>
-        <h6>Pay only for results.</h6>
-      </div>
+          <h5>PAY PER CLICK ADVERTISING</h5>
+          <h6>Pay only for results.</h6>
+        </div>
       </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/fblogo.webp" alt="Facebook Advertising" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>FACEBOOK ADVERTISING</h5>
-        <h6>Make social media work for you</h6>
-      </div>
+          <h5>FACEBOOK ADVERTISING</h5>
+          <h6>Make social media work for you</h6>
+        </div>
       </div>
       <div class="container">
         <div class="contentimg">
-          <img src="assets/googlelogo.webp" alt="Google Display Network Advertising" loading="lazy" width="60" height="60" />
+          <img src="assets/googlelogo.webp" alt="Google Display Network Advertising" loading="lazy" width="60"
+            height="60" />
         </div>
         <div class="content">
-        <h5>GOOGLE DISPLAY NETWORK ADVERTISING</h5>
-        <h6>Striking imagery &amp; effective messages.</h6>
-      </div>
+          <h5>GOOGLE DISPLAY NETWORK ADVERTISING</h5>
+          <h6>Striking imagery &amp; effective messages.</h6>
+        </div>
       </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/googlesearchlogo.webp" alt="Google Search Marketing" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>GOOGLE SEARCH MARKETING</h5>
-        <h6>It pays to be seen first</h6>
-      </div>
+          <h5>GOOGLE SEARCH MARKETING</h5>
+          <h6>It pays to be seen first</h6>
+        </div>
       </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/youtubelogo.webp" alt="YouTube Advertising" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>YOUTUBE ADVERTISING</h5>
-        <h6>Use sight, sound &amp; motion to deliver your message.</h6>
+          <h5>YOUTUBE ADVERTISING</h5>
+          <h6>Use sight, sound &amp; motion to deliver your message.</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/mobileadlogo.webp" alt="Mobile Advertising" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>MOBILE ADVERTISING</h5>
-        <h6>Advertising for the mobile first.</h6>
+          <h5>MOBILE ADVERTISING</h5>
+          <h6>Advertising for the mobile first.</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/instalogo.webp" alt="Instagram Advertising" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>INSTAGRAM ADVERTISING</h5>
-        <h6>Advertising for the mobile first.</h6>
+          <h5>INSTAGRAM ADVERTISING</h5>
+          <h6>Advertising for the mobile first.</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
-          <img src="assets/webdesignlogo.webp" alt="Website Design &amp; Development" loading="lazy" width="60" height="60" />
+          <img src="assets/webdesignlogo.webp" alt="Website Design &amp; Development" loading="lazy" width="60"
+            height="60" />
         </div>
         <div class="content">
-        <h5>WEBSITE DESIGN & DEVELOPMENT</h5>
-        <h6>Beautiful websites that generate results.</h6>
+          <h5>WEBSITE DESIGN & DEVELOPMENT</h5>
+          <h6>Beautiful websites that generate results.</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/linkedinlogo.webp" alt="LinkedIn Advertising" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>LINKEDIN ADVERTISING</h5>
-        <h6>Pay only for results</h6>
+          <h5>LINKEDIN ADVERTISING</h5>
+          <h6>Pay only for results</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/creativelogo.webp" alt="Creative Design" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>CREATIVE DESIGN CREATION</h5>
-        <h6>Pay only for results</h6>
+          <h5>CREATIVE DESIGN CREATION</h5>
+          <h6>Pay only for results</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/tiktoklogo.webp" alt="TikTok Advertising" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>TIKTOK ADVERTISING</h5>
-        <h6>Pay only for results</h6>
+          <h5>TIKTOK ADVERTISING</h5>
+          <h6>Pay only for results</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/sociallogo.webp" alt="Social Media Management" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>SOCIAL MEDIA MANAGEMENT</h5>
-        <h6>Pay only for results</h6>
+          <h5>SOCIAL MEDIA MANAGEMENT</h5>
+          <h6>Pay only for results</h6>
+        </div>
       </div>
-    </div>
       <div class="container">
         <div class="contentimg">
           <img src="assets/copywritinglogo.webp" alt="Copywriting" loading="lazy" width="60" height="60" />
         </div>
         <div class="content">
-        <h5>COPYWRITING</h5>
-        <h6>Pay only for results</h6>
+          <h5>COPYWRITING</h5>
+          <h6>Pay only for results</h6>
+        </div>
       </div>
-    </div>
     </div>
   </section>
 
@@ -637,16 +708,18 @@ ul, ol {
     </div>
     <div class="right">
       <h1>
-        Why We Love What We Do<br /><span>&amp; Why you Should Too</span>
+        Why <span>We Love</span> What We Do<br>&amp; Why <span>you</span> Should <span>Too</span>
       </h1>
       <h4>
-        At DigitalWorks Advertising &amp; More, we believe that loving what you do is the secret sauce that makes all the difference. When passion fuels work, creativity flows, ideas thrive, &amp; the results speak for themselves.
+        At DigitalWorks Advertising &amp; More, we believe that loving what you do is the secret sauce that makes all
+        the difference. When passion fuels work, creativity flows, ideas thrive, &amp; the results speak for themselves.
         <br /><br />
         WE GO BIG - because if you’re not aiming for greatness, what’s the point?
         <br /><br />
         We live for those electric moments when creativity, strategy, &amp; passion collide.
         <br /><br />
-        It produces results that make us, &amp; our clients, proud. We’re head over heels for what we do, &amp; that is why you should be too.
+        It produces results that make us, &amp; our clients, proud. We’re head over heels for what we do, &amp; that is
+        why you should be too.
       </h4>
       <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
     </div>
@@ -661,7 +734,8 @@ ul, ol {
     <div class="allclients">
       <div class="clientcont">
         <div class="img-container">
-          <img src="assets/linkedinclientlogo.webp" alt="LinkedIn Client Logo" loading="lazy" width="100" height="100" />
+          <img src="assets/linkedinclientlogo.webp" alt="LinkedIn Client Logo" loading="lazy" width="100"
+            height="100" />
         </div>
         <h3>
           “Congratulations for being the highest earners for LinkedIn.
@@ -677,7 +751,8 @@ ul, ol {
           <img src="assets/boschclientlogo.webp" alt="Bosch Client Logo" loading="lazy" width="100" height="100" />
         </div>
         <h3>
-          “Never failed to provide sound advice &amp; solutions to optimise Bosch’s opportunities on digital media, explained views, &amp; gave honest opinions on how to do it better.
+          “Never failed to provide sound advice &amp; solutions to optimise Bosch’s opportunities on digital media,
+          explained views, &amp; gave honest opinions on how to do it better.
           <br /><br />
           Maintains impeccable professional working ethics &amp; pleasant to work with.
           <br /><br />
@@ -690,11 +765,13 @@ ul, ol {
           <img src="assets/umg.png" alt="Umg Client Logo" loading="lazy" width="100" height="100" />
         </div>
         <h3>
-          “Managed our advertising campaigns on Facebook, Google, YouTube &amp; Mobile for artists awareness, launches, showcases, concerts, events &amp; contests.
+          “Managed our advertising campaigns on Facebook, Google, YouTube &amp; Mobile for artists awareness, launches,
+          showcases, concerts, events &amp; contests.
           <br /><br />
           Genuine interest in our business &amp; communicates with an open &amp; honest approach.
           <br /><br />
-          Went across borders to understand our artists &amp; their nature before proposing campaign options &amp; mechanics.”
+          Went across borders to understand our artists &amp; their nature before proposing campaign options &amp;
+          mechanics.”
         </h3>
         <h4><span>Label Manager</span><br />Universal Music Group</h4>
       </div>
@@ -719,7 +796,7 @@ ul, ol {
   <!-- Our Work Section -->
   <section class="Ourwork">
     <h1>Our <span>Work</span></h1>
-    
+
     <!-- Mercy Malaysia -->
     <div class="work-container">
       <div class="work-header">
@@ -736,9 +813,10 @@ ul, ol {
           <h4>OUR WORK:</h4>
           <ul>
             <li>•Brainstorming</li>
-            <li>•Strategy</li>
             <li>•Ideation</li>
-            <li>•Copywriting</li>
+            <li>•Strategy</li>
+            <li>•Copywriting (English & Bahasa Malaysia).</li>
+            <li>•Graphic Design</li>
             <li>•Illustration</li>
             <li>•Facebook Advertising</li>
           </ul>
@@ -747,12 +825,17 @@ ul, ol {
             <li>•Highest donation client achieved in 16 years</li>
             <li>•100% success</li>
             <li>•Over-achieved client's KPI</li>
-            <li>•Over-delivered our agency's own internal KPI</li>
+            <li>•Over-delivered DigitalWorks Advertising & More’s own internal KPI</li>
             <li>•Client rewarded us with more &amp; more projects</li>
           </ul>
         </div>
         <div class="work-image">
-          <img src="assets/Nepalimg.webp" alt="Nepal Earthquake Donation Drive Graphic" loading="lazy" width="600" height="400" />
+          <img src="assets/Nepalimg.webp" alt="Nepal Earthquake Donation Drive Graphic" loading="lazy" width="600"
+            height="400" />
+          <img src="assets/talent2.png" alt="Nepal Earthquake Donation Drive Graphic" loading="lazy" width="600"
+            height="400" />
+          <img src="assets/talentss.png" alt="Nepal Earthquake Donation Drive Graphic" loading="lazy" width="600"
+            height="400" />
         </div>
       </div>
     </div>
@@ -764,8 +847,9 @@ ul, ol {
           <h2><span>CLIENT: TalentCorp under <br>Ministry Of Human Resources Malaysia</span></h2>
           <h3><strong>CAMPAIGN: Returning Expert Programme</strong></h3>
         </div>
-        <div class="logo">
-          <img src="assets/talentcorp.webp" alt="TalentCorp Logo" loading="lazy" width="150" height="150" />
+        <div class="Whitneylogo">
+          <img src="assets/talentandkementerian.png" alt="Yonder Music &amp; Celcom Axiata Logo" loading="lazy"
+            width="150" height="150" />
         </div>
       </div>
       <div class="work-content">
@@ -775,19 +859,20 @@ ul, ol {
             <li>•Brainstorming</li>
             <li>•Ideation</li>
             <li>•Strategy</li>
-            <li>•Copywriting</li>
+            <li>•Copywriting (English & Bahasa Malaysia).</li>
             <li>•LinkedIn Advertising</li>
           </ul>
           <h4>RESULTS:</h4>
           <ul>
             <li>•100% success</li>
             <li>•Over-achieved client's KPI</li>
-            <li>•Over-delivered our own agency's internal KPI</li>
+            <li>•Over-delivered DigitalWorks Advertising & More’s own internal KPI</li>
             <li>•Client rewarded us with more &amp; more projects</li>
           </ul>
         </div>
         <div class="work-image">
-          <img src="assets/yondd.png" alt="Returning Expert Programme Campaign" loading="lazy" width="600" height="400" />
+          <img src="assets/yondd.png" alt="Returning Expert Programme Campaign" loading="lazy" width="600"
+            height="400" />
         </div>
       </div>
     </div>
@@ -796,11 +881,13 @@ ul, ol {
     <div class="work-container">
       <div class="work-header">
         <div class="client-info">
-          <h2><span>CLIENT: Yonder Music &amp; Celcom Axiata</span></h2>
-          <h3><strong>CAMPAIGN: Whitney Houston &amp; Dato' Siti Nurhaliza<br />Memories Official Music Video Launch</strong></h3>
+          <h2><span>CLIENT: Yonder Music <br>&amp; Celcom Axiata</span></h2>
+          <h3><strong>CAMPAIGN: Whitney Houston <br>&amp; Dato' Siti Nurhaliza<br />Memories Official Music Video
+              Launch</strong></h3>
         </div>
         <div class="Whitneylogo">
-          <img src="assets/yond.webp" alt="Yonder Music &amp; Celcom Axiata Logo" loading="lazy" width="150" height="150" />
+          <img src="assets/yond.webp" alt="Yonder Music &amp; Celcom Axiata Logo" loading="lazy" width="150"
+            height="150" />
         </div>
       </div>
       <div class="work-content">
@@ -821,7 +908,8 @@ ul, ol {
           </ul>
         </div>
         <div class="work-image">
-          <img src="assets/whit.png" alt="Whitney Houston &amp; Dato' Siti Nurhaliza Music Video Launch" loading="lazy" width="600" height="400" />
+          <img src="assets/whit.png" alt="Whitney Houston &amp; Dato' Siti Nurhaliza Music Video Launch" loading="lazy"
+            width="600" height="400" />
         </div>
       </div>
     </div>
@@ -843,13 +931,15 @@ ul, ol {
             <div class="review-slides">
               <div class="slide active">
                 <img src="assets/msixlogo.webp" alt="msixlogo image" loading="lazy" width="60" height="60" />
-                <h5><strong>mSix&amp;Partners</strong></h5>
+                <h5><strong>MSix & Partners</strong></h5>
                 <h6>
-                  “12 years of us working together, you are one of the very few media partners I know who puts client's advertising objectives ahead of selling products – making you one of the few partners we trust.
+                  “12 years of us working together, you are one of the very few media partners I know who puts client's
+                  advertising objectives ahead of selling products – making you one of the few partners we trust.
                   <br /><br />
                   Hardly anyone knew that Free Malaysia Today (FMT) sells advertising – until YOU came along.
                   <br /><br />
-                  Dear Tanya, I hope FMT will expand your role so that you can create more Tanya-The-Seconds because we Media Planners need more partners like YOU.”
+                  Dear Tanya, I hope FMT will expand your role so that you can create more Tanya-The-Seconds because we
+                  Media Planners need more partners like YOU.”
                 </h6>
                 <h5><strong><span>Associate Director</span><br>mSix&Parnters</strong></h5>
               </div>
@@ -857,7 +947,7 @@ ul, ol {
                 <img src="assets/AnotherLogo.webp" alt="Another Company logo" loading="lazy" width="60" height="60" />
                 <h5><strong>Creative Minds</strong></h5>
                 <h6>
-                  “Tanya’s innovative approach and dedication have transformed our advertising strategies.”
+                  “Tanya’s innovative approach & dedication have transformed our advertising strategies.”
                 </h6>
                 <h5><strong><span>Associate Director</span><br>mSix&Parnters</strong></h5>
               </div>
@@ -879,16 +969,15 @@ ul, ol {
           <div class="review">
             <div class="review-slides">
               <div class="slide active">
-                <img src="assets/singaporelogo.webp" alt="Singapore Tourism Board logo" loading="lazy" width="60" height="60" />
+                <img src="assets/singaporelogo.webp" alt="Singapore Tourism Board logo" loading="lazy" width="60"
+                  height="60" />
                 <h5><strong>Singapore Tourism Board</strong></h5>
                 <h6>
                   “Mazin was always one of the best stakeholders to work with.
                   <br /><br />
-                  He provided sound insights and went beyond his role to truly understand client needs.
+                  He provided sound insights & went beyond his role to truly understand client needs.
                   <br /><br />
-                  He pushed through innovative activations that expanded our reach and brand affinity.
-                  <br /><br />
-                  Mazin was fully dependable.”
+                  He pushed through innovative activations that expanded our reach & brand affinity."
                 </h6>
                 <h5><strong><span>Associate Director, Retail</span><br>Singapore Tourism Board</strong></h5>
               </div>
@@ -896,7 +985,7 @@ ul, ol {
                 <img src="assets/AnotherLogo.webp" alt="Another Company logo" loading="lazy" width="60" height="60" />
                 <h5><strong>Global Ventures</strong></h5>
                 <h6>
-                  “His strategic vision and execution made a significant impact on our campaigns.”
+                  “His strategic vision & execution made a significant impact on our campaigns.”
                 </h6>
                 <h5><strong><span>Marketing Strategist</span><br>Singapore Tourism Board</strong></h5>
               </div>
@@ -921,13 +1010,17 @@ ul, ol {
                 <img src="assets/strand.png" alt="Strandlogo" loading="lazy" width="60" height="60" />
                 <h5><strong>Strand Aerospace</strong></h5>
                 <h6>
-                  Ron served as Head of IT at Strand Aerospace Malaysia. I witnessed firsthand his remarkable leadership, technical expertise, & unwavering dedication. 
-<br><br>
-                  His deep understanding of both the technical & strategic sides of information technology enabled him to drive key initiatives. 
-                  <br><br>               
-                  His skills are exemplary, & he always conveyed complex IT concepts to non-technical stakeholders in a clear & accessible manner. 
-                  <br><br>   
-                  On numerous occasions, we faced critical system issues or urgent technical challenges, & he approached these situations with a level-headed, solution-oriented mindset.
+                  Ron served as Head of IT at Strand Aerospace Malaysia. I witnessed firsthand his remarkable
+                  leadership, technical expertise & unwavering dedication.
+                  <br><br>
+                  His deep understanding of both the technical & strategic sides of information technology enabled him
+                  to drive key initiatives.
+                  <br><br>
+                  His skills are exemplary & he always conveyed complex IT concepts to non-technical stakeholders in a
+                  clear & accessible manner.
+                  <br><br>
+                  On numerous occasions we faced critical system issues or urgent technical challenges & Ron
+                  approached these situations with a solution-oriented mindset.
                 </h6>
                 <h5><strong><span>CEO</span><br>Strand Aerospace Malaysia</strong></h5>
               </div>
@@ -947,99 +1040,114 @@ ul, ol {
           </div>
         </div>
       </div>
-      
+
     </div>
   </section>
 
-  <!-- Contact Us Section -->
-  <section class="contactus">
-    <div class="contactleft">
-      <img src="assets/officess.png" alt="Our Offices Image" loading="lazy" width="4600" height="400" />
-     <!--<img src="assets/clintt.png" alt="Our Clients Image" loading="lazy" width="400" height="400" />-->
-    </div>
-    <div class="contactright">
-      <div class="form-container">
-        <h2>BOOK A HAPPY MEETING WITH US<br />The Coffee (or tea) is on us!</h2>
-        <form action="send_mail.php" method="POST">
-          <label for="fullName">Your Full Name</label>
-          <input type="text" id="fullName" name="fullName" placeholder="Dominic Benizi Pereira" required />
+<!-- Contact Us Section -->
+<section class="contactus">
+  <div class="contactleft">
+    <!-- Your left content -->
+  </div>
+  <div class="contactright">
+    <div class="form-container">
+      <h2>BOOK A HAPPY MEETING WITH US<br />The Coffee (or tea) is on us!</h2>
+      <form action="send_mail.php" method="POST">
+        <label for="fullName">Your Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Dominic Benizi Pereira" required />
 
-          <label for="phone">Mobile Phone Number</label>
-          <!-- intl-tel-input will enhance this field with flag and country code -->
-          <input type="tel" id="phone" name="phone" placeholder="(+601)  08008989" required />
+        <label for="phone">Mobile Phone Number</label>
+        <!-- Custom flag container before the input -->
+        <div class="custom-flag-container">
+          <span id="custom-flag" class="fi"></span>
+        </div>
+        <!-- intl-tel-input will enhance this field -->
+        <input type="tel" id="phone" name="phone" placeholder="+60133416060" required />
 
-          <label for="linkedin">Your LinkedIn URL</label>
-          <input type="url" id="linkedin" name="linkedin" placeholder="http://linkedin.com/in/tanyahyacinthfernandez" required />
+        <label for="linkedin">Your LinkedIn URL</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="http://linkedin.com/in/tanyahyacinthfernandez" required />
 
-          <label for="services">Services You Require</label>
-          <select id="services" name="services" required>
-            <option value="" disabled selected>Select the service you require</option>
-            <option value="ppc">Pay Per Click Advertising</option>
-            <option value="facebook-ads">Facebook Advertising</option>
-            <option value="google-display">Google Display Network Advertising</option>
-            <option value="google-search">Google Search Marketing</option>
-            <option value="youtube-ads">YouTube Advertising</option>
-            <option value="mobile-ads">Mobile Advertising</option>
-            <option value="instagram-ads">Instagram Advertising</option>
-            <option value="web-dev">Website Design &amp; Development</option>
-            <option value="linkedin-ads">LinkedIn Advertising</option>
-            <option value="tiktok-ads">TikTok Advertising</option>
-            <option value="social-media">Social Media Management</option>
-            <option value="creative-design">Creative Design</option>
-            <option value="copywriting">Copywriting</option>
-          </select>
+        <label for="services">Services You Require</label>
+        <select id="services" name="services" required>
+          <option value="" disabled selected>Select the service you require</option>
+          <option value="ppc">Pay Per Click Advertising</option>
+          <option value="facebook-ads">Facebook Advertising</option>
+          <option value="google-display">Google Display Network Advertising</option>
+          <option value="google-search">Google Search Marketing</option>
+          <option value="youtube-ads">YouTube Advertising</option>
+          <option value="mobile-ads">Mobile Advertising</option>
+          <option value="instagram-ads">Instagram Advertising</option>
+          <option value="web-dev">Website Design &amp; Development</option>
+          <option value="linkedin-ads">LinkedIn Advertising</option>
+          <option value="tiktok-ads">TikTok Advertising</option>
+          <option value="social-media">Social Media Management</option>
+          <option value="creative-design">Creative Design</option>
+          <option value="copywriting">Copywriting</option>
+        </select>
 
-          <label for="Jobtitle">Your Job Title</label>
-          <input type="text" id="Jobtitle" name="Jobtitle" placeholder="Head Engineer AS400 " required />
+        <label for="Jobtitle">Your Job Title</label>
+        <input type="text" id="Jobtitle" name="Jobtitle" placeholder="Head Engineer AS400" required />
 
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="dominic@ibm.com" required />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="dominic@ibm.com" required />
 
-          <label for="budget">Estimate Budget</label>
-          <select id="budget" name="budget" required>
-            <option value="" disabled selected>Select Estimated Budget</option>
-            <option value="30k-50k">USD30,000 - USD50,000</option>
-            <option value="51k-100k">USD51,000 - USD100,000</option>
-            <option value="100k-200k">USD100,001 - USD200,000</option>
-            <option value="200k+">USD200,001 & above</option>
-          </select>
+        <label for="budget">Estimate Budget</label>
+        <select id="budget" name="budget" required>
+          <option value="" disabled selected>Select Estimated Budget</option>
+          <option value="30k-50k">USD30,000 - USD50,000</option>
+          <option value="51k-100k">USD51,000 - USD100,000</option>
+          <option value="100k-200k">USD100,001 - USD200,000</option>
+          <option value="200k+">USD200,001 & above</option>
+        </select>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Message us & say hello.               
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Message us & say hello.               
 We would love to hear from you." required></textarea>
 
-          <label class="container">
-            Email me DigitalWorks Advertising's Company Profile.
-            <input type="checkbox" name="company_profile" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">
-            Send me monthly advertising, marketing &amp; event management tips.
-            <input type="checkbox" name="tips" />
-            <span class="checkmark"></span>
-          </label>
+        <label class="container">
+          Email me DigitalWorks Advertising's Company Profile.
+          <input type="checkbox" name="company_profile" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">
+          Send me monthly advertising, marketing &amp; event management tips.
+          <input type="checkbox" name="tips" />
+          <span class="checkmark"></span>
+        </label>
 
-          <button type="submit" class="submit-btn">Submit</button>
-        </form>
-      </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
     </div>
+  </div>
 
-    <!-- Load intl-tel-input JS asynchronously -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" defer></script>
-    <script defer>
-      document.addEventListener("DOMContentLoaded", function () {
-        var input = document.querySelector("#phone");
-        window.intlTelInput(input, {
-          initialCountry: "my",
-          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-        });
+  <!-- Load intl-tel-input JS asynchronously -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      var input = document.querySelector("#phone");
+      var iti = window.intlTelInput(input, {
+        initialCountry: "my",
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
       });
-    </script>
-  </section>
 
- <!--<section class="quote">
+      // Function to update custom flag using flag-icon-css classes.
+      function updateCustomFlag() {
+        var countryData = iti.getSelectedCountryData();
+        var iso2 = countryData.iso2; // e.g., "us", "my", etc.
+        // Update the custom flag element
+        document.getElementById("custom-flag").className = "fi fi-" + iso2;
+      }
+
+      // Update flag on initialization and when country changes.
+      updateCustomFlag();
+      input.addEventListener("countrychange", updateCustomFlag);
+    });
+  </script>
+</section>
+
+  <!--<section class="quote">
     <img src="assets/quote.webp" alt="QUOTE Image" loading="lazy" width="600" height="400" />
-  </section>--> 
+  </section>-->
 
   <footer>
     <div class="footer-container">
@@ -1081,8 +1189,9 @@ We would love to hear from you." required></textarea>
       </div>
     </div>
     <div class="footerimage">
-      <img src="assets/foot.png" alt="Designed With Love image" loading="lazy" width="600" height="400" />
+      <img src="assets/foott.png" alt="Designed With Love image" loading="lazy" width="600" height="400" />
     </div>
   </footer>
 </body>
+
 </html>
