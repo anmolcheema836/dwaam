@@ -333,36 +333,30 @@
     }
 
     .whatsapp-float {
-      position: fixed;
-      bottom: 6vh;
-      /* adjust vertical position */
-      right: 4vw;
-      /* adjust horizontal position */
-      width: 60px;
-      height: 60px;
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      border: none;
-    }
+  display: none; /* Hide by default */
+}
 
-    .whatsapp-float img {
-      width: 7vw;
-      height: auto;
-    }
+@media screen and (max-width: 768px) {
+  .whatsapp-float {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 80vw;
+    padding-left: 10vw;
+    padding-bottom: 5px;
+    height: auto; /* Adjust height as needed */
+    background: none; /* WhatsApp green background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
 
-    @media screen and (max-width: 768px) {
-      .whatsapp-float img {
-        width: 15vw;
-        height: auto;
-      }
+  .whatsapp-float img {
+    width: 80vw; /* Adjust size as needed */
+    height: auto;
+  }
+}
 
-      .whatsapp-float {
-        bottom: 2vh;
-      }
-    }
   </style>
 
   <!-- Defer non-critical CSS by using media="print" and switching onload -->
@@ -408,9 +402,9 @@
 </head>
 
 <body>
-  <!--<a href="https://wa.me/+60108008989" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-    <img src="assets/whats.png" alt="WhatsApp">
-  </a>-->
+  <a href="#contact-form" class="whatsapp-float" title="Chat on WhatsApp">
+    <img src="assets/cta.png" alt="WhatsApp">
+</a>
   <nav role="navigation">
     <img src="assets/logo.webp" alt="Logo" width="80" height="80">
 
@@ -1051,7 +1045,7 @@
       <img src="assets/client.png" alt="Our Clients Image" loading="lazy" width="400" height="auto" />
      <img src="client" alt="">
   </div>
-  <div class="contactright">
+  <div class="contactright" id="contact-form">
     <div class="form-container">
       <h2>BOOK A HAPPY MEETING WITH US<br />The Coffee (or tea) is on us!</h2>
       <form action="send_mail.php" method="POST">

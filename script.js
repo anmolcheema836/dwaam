@@ -132,4 +132,23 @@ document.addEventListener("DOMContentLoaded", function () {
       rightArrow.addEventListener("touchstart", nextSlide);
     });
   });
-  
+  document.addEventListener("DOMContentLoaded", function () {
+    let coffeeButton = document.querySelector(".whatsapp-float");
+
+    coffeeButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        let contactForm = document.querySelector("#contact-form");
+
+        if (contactForm) {
+            contactForm.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Hide the button
+        coffeeButton.style.display = "none";
+
+        // Show the button again after 1 minute (60,000 ms)
+        setTimeout(function () {
+            coffeeButton.style.display = "flex"; // Change back to flex if it was originally a flexbox
+        }, 60000);
+    });
+});
