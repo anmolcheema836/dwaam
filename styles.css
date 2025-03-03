@@ -1414,7 +1414,8 @@ ul, ol {
   width: 350px;
   height: auto;
   padding-bottom: 0;
-  max-height: 500px;
+  margin-bottom: 0;
+  max-height: 780px;
 }
 .contactright {
   background: linear-gradient(to bottom, #0883DA, #044674);
