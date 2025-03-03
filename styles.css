@@ -361,7 +361,7 @@ ul, ol {
   
   .logoslide-track {
     gap: 1em;
-    animation: scroll 60s linear infinite; /* Faster on mobile */
+    animation: scroll 120s linear infinite; /* Faster on mobile */
   }
 
   .logoslide {
