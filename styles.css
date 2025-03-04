@@ -1,5 +1,7 @@
 /* Import Poppins Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 
 /* General Styles */
 body {
@@ -251,7 +253,13 @@ ul, ol {
   margin-bottom: 5px;
   margin-left: 4vw;
 }
-
+b {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+}
+d{
+  font-size: 26px;
+}
 @media screen and (max-width: 768px) {
   .hero {
       margin-top: 0vh;
