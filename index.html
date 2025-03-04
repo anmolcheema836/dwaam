@@ -119,25 +119,29 @@
       transform: scaleX(1);
     }
 
-    /* CTA Button */
     .cta-button {
-      padding: 15px 30px;
-      background: #23B33A;
-      border-radius: 5px;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      /* Smooth transition for all properties */
+        padding: 0;
+        background: url('assets/button.png') no-repeat center center;
+        background-size: contain;
+        border-radius: 5px;
+        color: white;
+        background-color: #EAAA00;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        width: 200px; /* Adjust width as needed */
+        height: 60px; /* Adjust height as needed */
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 60px; /* Center text vertically */
     }
 
     .cta-button:hover {
-      background: linear-gradient(to right, #5F980E, #7CC90F);
-      /* Reversed gradient on hover */
-      transform: scale(1.05);
-      /* Slightly increase the size */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      /* Subtle shadow for depth */
+        transform: scale(1.05);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #EAAA00;
     }
 
     /* Hide mobile toggle by default */
@@ -325,9 +329,9 @@
         padding-left: 0;
       }
 
-      .hero .cta-button {
+      .hero  {
         font-size: 18px;
-        padding: 15px 30px;
+        padding: 0;
         margin-left: 0;
       }
     }
@@ -341,9 +345,10 @@
     display: flex;
     position: fixed;
     bottom: 0;
-    width: 80vw;
-    padding-left: 10vw;
-    padding-bottom: 5px;
+    width: 100vw;
+    padding-left: 0;
+    margin-left: -1px;
+    margin-bottom: -2px;
     height: auto; /* Adjust height as needed */
     background: none; /* WhatsApp green background */
     justify-content: center;
@@ -352,7 +357,7 @@
   }
 
   .whatsapp-float img {
-    width: 80vw; /* Adjust size as needed */
+    width: 100vw; /* Adjust size as needed */
     height: auto;
   }
 }
@@ -403,7 +408,7 @@
 
 <body>
   <a href="#contact-form" class="whatsapp-float" title="Chat on WhatsApp">
-    <img src="assets/cta.png" alt="WhatsApp">
+    <img src="assets/button.png" alt="WhatsApp">
 </a>
   <nav role="navigation">
     <img src="assets/logo.webp" alt="Logo" width="80" height="80">
@@ -427,13 +432,13 @@
       <li><a href="contact.html">CONTACT US</a></li>
     </ul>
 
-    <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
+    <button class="cta-button" onclick="scrollToContact()"></button>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
     <h1>Every idea, every need - right here, ready to rock.</h1>
-    <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
+    <button class="cta-button" onclick="scrollToContact()"></button>
   </section>
 
   <!-- Trusted Brands Section -->
@@ -561,7 +566,7 @@
         Our formula is equal parts experience, historical data, strategy, creativity, hard work, heart work, & a
         sprinkle of magic fairy dust.
       </h3>
-      <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
+      <button class="cta-button" onclick="scrollToContact()"></button>
       <h2>Let’s create something great, <span>together.</span></h2>
     </div>
   </section>
@@ -698,7 +703,7 @@
   <!-- Why We Love What We Do Section -->
   <section class="Whywelove">
     <div class="left">
-      <img src="assets/cat.webp" alt="Cat GIF" loading="lazy" width="600" height="600" />
+      <img src="assets/catt.gif" alt="Cat GIF" loading="lazy" width="600" height="600" />
     </div>
     <div class="right">
       <h1>
@@ -715,7 +720,7 @@
         It produces results that make us, &amp; our clients, proud. We’re head over heels for what we do, &amp; that is
         why you should be too.
       </h4>
-      <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
+      <button class="cta-button" onclick="scrollToContact()"></button>
     </div>
   </section>
 
@@ -907,7 +912,7 @@
         </div>
       </div>
     </div>
-    <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="cta-button">WhatsApp Us</a>
+    <button class="cta-button" onclick="scrollToContact()"></button>
   </section>
 
   <!-- Our Team Section -->

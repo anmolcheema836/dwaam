@@ -152,3 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 60000);
     });
 });
+function scrollToContact() {
+  document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+}
