@@ -103,6 +103,7 @@ ul, ol {
   background: url('assets/button.png') no-repeat center center;
   background-size: contain;
   border-radius: 5px;
+  background-color: #EAAA00;
   color: white;
   border: none;
   cursor: pointer;
