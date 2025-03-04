@@ -260,6 +260,9 @@ b {
 d{
   font-size: 26px;
 }
+comma{
+  font-size: 30px;
+}
 @media screen and (max-width: 768px) {
   .hero {
       margin-top: 0vh;
@@ -1519,11 +1522,11 @@ input[type="tel"] {
 
 /* Center submit button */
 .submit-btn {
-  background: #28a745;
+  background: #EAAA00;
   color: white;
   border: none;
   padding: 20px;
-  width: 30%;
+  width: 35%;
   margin: 50px auto 0;
   border-radius: 5px;
   font-size: 18px;
@@ -1531,7 +1534,7 @@ input[type="tel"] {
   display: block;
 }
 .submit-btn:hover {
-  background: #218838;
+  background: #7c5b00;
 }
 
 /* Custom Checkbox Styling */
@@ -1657,7 +1660,7 @@ input[type="tel"] {
     width: 150px;
     margin-top: 0;
     padding: 15px;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
