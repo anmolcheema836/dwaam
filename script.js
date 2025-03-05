@@ -134,24 +134,43 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   document.addEventListener("DOMContentLoaded", function () {
     let coffeeButton = document.querySelector(".whatsapp-float");
+    let contactForm = document.querySelector("#contact-form");
+    let isHidden = false; // Flag to prevent overlapping hide actions
 
+    function hideButton() {
+        if (!isHidden) {
+            isHidden = true;
+            coffeeButton.style.display = "none";
+            // Show the button again after 120 seconds (120,000 ms)
+            setTimeout(function () {
+                coffeeButton.style.display = "flex"; // Assuming flex was the original display style
+                isHidden = false;
+            }, 120000);
+        }
+    }
+
+    // Hide the button on click and scroll to #contact-form
     coffeeButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent default anchor behavior
-        let contactForm = document.querySelector("#contact-form");
-
         if (contactForm) {
             contactForm.scrollIntoView({ behavior: "smooth" });
         }
-
-        // Hide the button
-        coffeeButton.style.display = "none";
-
-        // Show the button again after 1 minute (60,000 ms)
-        setTimeout(function () {
-            coffeeButton.style.display = "flex"; // Change back to flex if it was originally a flexbox
-        }, 60000);
+        hideButton();
     });
+
+    // Use IntersectionObserver to detect when #contact-form is in view
+    if (contactForm) {
+        let observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    hideButton();
+                }
+            });
+        });
+        observer.observe(contactForm);
+    }
 });
+
 function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
 }

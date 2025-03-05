@@ -269,7 +269,7 @@ comma{
       margin-top: 0vh;
       height: 700px;
       width: 100%;
-      background-image: url(assets/heromob.webp);
+      background-image: url(assets/heromob.png);
       background-size: cover;  /* Use cover for full background coverage */
       background-position: center center;
       background-repeat: no-repeat;
@@ -1422,12 +1422,16 @@ comma{
   align-items: center;
   justify-content: space-evenly;
   padding: 20px;
+  margin-bottom: 10px;
 }
 .contactus .contactleft {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+textarea#message {
+  font-family: 'Poppins', sans-serif;
 }
 .contactus .contactleft img {
   width: 350px;
@@ -1465,7 +1469,7 @@ label {
 /* Uniform Placeholder (ghost text) styling */
 input::placeholder,
 textarea::placeholder {
-  color: #ccc;
+  color: #909090;
 }
 
 /* Focus and Hover effects */
@@ -1633,7 +1637,7 @@ input[type="tel"] {
     background-color: white;
   }
   .contactright select {
-    color: #ccc;
+    color: #909090;
     background-color: white;
     padding: 12px;
     -webkit-appearance: none;
