@@ -1416,7 +1416,6 @@ comma{
 }
 
 
-/* Contact Us Desktop Styles */
 .contactus {
   display: flex;
   align-items: center;
@@ -1465,14 +1464,10 @@ label {
   display: block;
   margin-top: 10px;
 }
-
-/* Uniform Placeholder (ghost text) styling */
 input::placeholder,
 textarea::placeholder {
   color: #909090;
 }
-
-/* Focus and Hover effects */
 input:focus,
 select:focus,
 textarea:focus {
@@ -1492,8 +1487,6 @@ textarea:hover {
               0 0 20px rgba(0, 255, 255, 0.9),
               0 0 30px rgba(0, 255, 255, 0.9);
 }
-
-/* Standardize all input, textarea, and select widths and styling with fixed white background */
 input, textarea, select {
   width: 100%;
   padding: 12px;
@@ -1503,15 +1496,11 @@ input, textarea, select {
   box-sizing: border-box;
   background-color: white;
 }
-
-/* Remove native dropdown styling for select elements */
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
-
-/* Telephone input: Remove any native styling and inherit full width */
 input[type="tel"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1524,8 +1513,6 @@ input[type="tel"] {
   width: 100%;
   background-color: white;
 }
-
-/* Center submit button */
 .submit-btn {
   background: #EAAA00;
   color: white;
@@ -1541,8 +1528,6 @@ input[type="tel"] {
 .submit-btn:hover {
   background: #7c5b00;
 }
-
-/* Custom Checkbox Styling */
 .contactright .container {
   display: block;
   position: relative;
@@ -1591,10 +1576,7 @@ input[type="tel"] {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
-
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  
   .contactus {
     flex-direction: column;
     padding: 10px;
@@ -1604,9 +1586,8 @@ input[type="tel"] {
     margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
-    font-size: 16px; /* Using px for consistency */
+    font-size: 16px;
   }
-  /* Fixed widths for mobile containers and fields */
   .contactleft, .contactright {
     width: 320px;
   }
@@ -1619,16 +1600,12 @@ input[type="tel"] {
     width: 320px;
     height: auto;
     border-radius: 10px;
-    padding-top: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
+    padding: 0 20px 10px;
   }
   .contactright .form-container {
     width: 320px;
     padding: 10px;
   }
-  /* Override form fields to use fixed width on mobile */
   .contactright input,
   .contactright textarea,
   .contactright select,
@@ -1647,14 +1624,12 @@ input[type="tel"] {
   .intl-tel-input .iti__selected-flag {
     height: 42px !important;
   }
-  
   .intl-tel-input .iti__flag, 
   .intl-tel-input .iti__flag-container {
     width: 60px !important;
     height: 42px !important;
     background-size: 60px 42px !important;
   }
-  
   .contactright select:valid {
     color: black;
   }

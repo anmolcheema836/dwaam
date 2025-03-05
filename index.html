@@ -1043,25 +1043,28 @@
   </section>
 
 <!-- Contact Us Section -->
+<!-- Contact Us Section -->
 <section class="contactus">
   <div class="contactleft">
-    <!--img src="assets/officess.png" alt="Our Offices Image" loading="lazy" width="4600" height="400" />--> 
-      <img src="assets/client.png" alt="Our Clients Image" loading="lazy" width="400" height="auto" />
+    <!-- Client image -->
+    <img src="assets/client.png" alt="Our Clients Image" loading="lazy" width="400" height="auto" />
   </div>
   <div class="contactright" id="contact-form">
     <div class="form-container">
-      <h2>BOOK A HAPPY MEETING WITH US<br />The Coffee (or tea, beers, or wine, or whiskey, or gin & tonic) is on us!</h2>
+      <h2>
+        BOOK A HAPPY MEETING WITH US<br />
+        The Coffee (or tea, beers, or wine, or whiskey, or gin & tonic) is on us!
+      </h2>
       <form action="send_mail.php" method="POST">
         <label for="fullName">Your Full Name</label>
         <input type="text" id="fullName" name="fullName" placeholder="Dominic Benizi Pereira" required />
 
         <label for="phone">Mobile Phone Number</label>
-        <!-- Custom flag container before the input -->
-        <div class="custom-flag-container">
-          <span id="custom-flag" class="fi"></span>
+        <!-- Phone input container with flag inside -->
+        <div class="phone-input-container">
+          <img id="custom-flag" src="" alt="Country Flag" />
+          <input type="tel" id="phone" name="phone" placeholder="+60133416060" required />
         </div>
-        <!-- intl-tel-input will enhance this field -->
-        <input type="tel" id="phone" name="phone" placeholder="+60133416060" required />
 
         <label for="linkedin">Your LinkedIn URL</label>
         <input type="url" id="linkedin" name="linkedin" placeholder="http://linkedin.com/in/tanyahyacinthfernandez" required />
@@ -1100,19 +1103,19 @@
         </select>
 
         <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Message us & say hello.               
+        <textarea id="message" name="message" placeholder="Message us & say hello.
 We would love to hear from you." required></textarea>
 
-<label class="container">
-  Email me DigitalWorks Advertising's Company Profile.
-  <input type="checkbox" name="company_profile" checked />
-  <span class="checkmark"></span>
-</label>
-<label class="container">
-  Send me monthly advertising, marketing &amp; event management tips.
-  <input type="checkbox" name="tips" checked />
-  <span class="checkmark"></span>
-</label>
+        <label class="container">
+          Email me DigitalWorks Advertising's Company Profile.
+          <input type="checkbox" name="company_profile" checked />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">
+          Send me monthly advertising, marketing &amp; event management tips.
+          <input type="checkbox" name="tips" checked />
+          <span class="checkmark"></span>
+        </label>
 
         <button type="submit" class="submit-btn">Submit For Coffee</button>
       </form>
@@ -1129,12 +1132,13 @@ We would love to hear from you." required></textarea>
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
       });
 
-      // Function to update custom flag using flag-icon-css classes.
+      // Function to update the custom flag image using Flagcdn for high-res flags.
       function updateCustomFlag() {
         var countryData = iti.getSelectedCountryData();
         var iso2 = countryData.iso2; // e.g., "us", "my", etc.
-        // Update the custom flag element
-        document.getElementById("custom-flag").className = "fi fi-" + iso2;
+        var flagImage = document.getElementById("custom-flag");
+        // Use Flagcdn's high-res PNG images (w320 for 320px width)
+        flagImage.src = "https://flagcdn.com/w320/" + iso2 + ".png";
       }
 
       // Update flag on initialization and when country changes.
@@ -1142,6 +1146,31 @@ We would love to hear from you." required></textarea>
       input.addEventListener("countrychange", updateCustomFlag);
     });
   </script>
+
+  <style>
+    /* Container for phone input with flag inside */
+    .phone-input-container {
+      position: relative;
+      display: block;  /* Changed from inline-block to block */
+      width: 100%;
+    }
+    .phone-input-container input[type="tel"] {
+      width: 320px;
+      padding-left: 50px; /* Adjust to make space for the flag image */
+      box-sizing: border-box;
+    }
+    /* Style for the flag image placed inside the input */
+    #custom-flag {
+      position: absolute;
+      left: 4px;    /* Adjust as needed */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;   /* Adjust size as needed */
+      height: auto;
+      pointer-events: none;
+      z-index: 2;
+    }
+  </style>
 </section>
 
   <!--<section class="quote">
