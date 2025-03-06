@@ -402,8 +402,8 @@ comma{
     width: 280px; /* Even smaller for very small screens */
     margin-top: -45px;
     margin-bottom: -45px;
-    margin-right: -52px;
-    margin-left: -52px;
+    margin-right: -50px;
+    margin-left: -50px;
   }
 }
 .aboutus {
