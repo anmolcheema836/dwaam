@@ -846,6 +846,9 @@ height: auto;
         text-align: center;
         gap: 0;
     }
+    .Whywelove .right h4 {
+      padding-bottom: 0;
+    }
 
     .Whywelove img {
         width: 100%;
@@ -967,7 +970,7 @@ height: auto;
   margin-top: 0;
 }
   .Ourhappyclients h1{
-    padding-top: 5px;
+    padding-top: 0;
     margin-bottom: 1px;
   }
   .Ourhappyclients h3{
@@ -1544,7 +1547,11 @@ input[type="tel"] {
   display: block;
 }
 .submit-btn:hover {
-  background-color: #7c5b00;
+  background-color: #EAAA00;
+}
+.Ourwork .cta-button{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .contactright .container {
   display: block;
