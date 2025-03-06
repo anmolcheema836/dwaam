@@ -395,15 +395,15 @@ comma{
 
   .logoslide-track {
     gap: 0;
-    width: calc(300px * 35); /* Adjusts based on logo count */
+    width: calc(300px * 30); /* Adjusts based on logo count */
   }
 
   .logoslide {
     width: 280px; /* Even smaller for very small screens */
     margin-top: -45px;
     margin-bottom: -45px;
-    margin-right: -40px;
-    margin-left: -40px;
+    margin-right: -52px;
+    margin-left: -52px;
   }
 }
 .aboutus {
@@ -477,6 +477,7 @@ height: auto;
   font-weight: 400;
   font-size: small;
   margin-left: 0;
+  padding-bottom: 10px;
 }
 
 .aboutus h2 {
@@ -1525,20 +1526,25 @@ input[type="tel"] {
   background-color: white;
 }
 .submit-btn {
-  font-family: 'Poppins', sans-serif;
-  background: #EAAA00;
+  padding: 0;
+  background: url('assets/submit.png') no-repeat center center;
+  background-size: contain;
+  border-radius: 5px;
   color: white;
+  background-color: #EAAA00;
   border: none;
-  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   width: 45%;
   margin: 50px auto 0;
+  height: 60px;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
   display: block;
 }
 .submit-btn:hover {
-  background: #7c5b00;
+  background-color: #7c5b00;
 }
 .contactright .container {
   display: block;
