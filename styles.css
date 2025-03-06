@@ -395,7 +395,7 @@ comma{
 
   .logoslide-track {
     gap: 0;
-    width: calc(300px * 45); /* Adjusts based on logo count */
+    width: calc(300px * 35); /* Adjusts based on logo count */
   }
 
   .logoslide {
