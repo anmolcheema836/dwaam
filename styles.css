@@ -1444,7 +1444,7 @@ textarea#message {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 135vh;
+  height: 160vh;
   width: 45vw;
   border-radius: 25px;
 }
@@ -1525,7 +1525,7 @@ input[type="tel"] {
   color: white;
   border: none;
   padding: 20px;
-  width: 35%;
+  width: 45%;
   margin: 50px auto 0;
   border-radius: 5px;
   font-size: 18px;
@@ -1560,6 +1560,10 @@ input[type="tel"] {
   height: 20px;
   width: 20px;
   background-color: #eee;
+}
+.contactright .form-container img{
+  width: 100%;
+  height: auto;
 }
 .contactright .container:hover input ~ .checkmark {
   background-color: #ccc;
@@ -1645,10 +1649,14 @@ input[type="tel"] {
     padding: 10px;
   }
   .submit-btn {
-    width: 150px;
+    width: 180px;
     margin-top: 0;
     padding: 15px;
     font-size: 14px;
+  }
+  .contactright .form-container img{
+    width: 100%;
+    height: auto;
   }
 }
 
