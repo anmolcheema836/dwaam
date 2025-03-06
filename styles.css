@@ -426,6 +426,11 @@ comma{
     padding-left: 20px;
 }
 
+.qutote img{
+width: 100vw;
+height: auto;
+}
+
 /* Centering content */
 .aboutuspart2 {
     display: flex;
