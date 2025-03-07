@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("DOMContentLoaded", function () {
     let coffeeButton = document.querySelector(".whatsapp-float");
     let contactForm = document.querySelector("#contact-form");
+    let footSection = document.querySelector("#foot");
     let isHidden = false; // Flag to prevent overlapping hide actions
 
     function hideButton() {
@@ -158,8 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
         hideButton();
     });
 
-    // Use IntersectionObserver to detect when #contact-form is in view
-    if (contactForm) {
+    // Use IntersectionObserver to detect when #contact-form or #foot is in view
+    if (contactForm || footSection) {
         let observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
@@ -167,9 +168,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
-        observer.observe(contactForm);
+        if (contactForm) observer.observe(contactForm);
+        if (footSection) observer.observe(footSection);
     }
 });
+
 
 function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });

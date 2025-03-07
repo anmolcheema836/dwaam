@@ -440,114 +440,42 @@
     <button class="cta-button" onclick="scrollToContact()"></button>
   </section>
 
-  <!-- Trusted Brands Section -->
-  <section class="brandhead">
-    <h1>
-      BRANDS WHO <span>TRUST US</span> WITH THEIR <br />ADVERTISING, MARKETING &amp; EVENT MANAGEMENT
-    </h1>
-  </section>
+<!-- Trusted Brands Section -->
+<section class="brandhead">
+  <h1>
+    BRANDS WHO <span>TRUST US</span> WITH THEIR <br />ADVERTISING, MARKETING &amp; EVENT MANAGEMENT
+  </h1>
+</section>
 
-  <!-- Logo Slider Section -->
-  <section class="logoslider">
-    <div class="logoslide-track">
-      <div class="logoslide">
-        <img src="assets/pg.png" alt="P&G Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/talent.png" alt="Talent Corporation Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/kemen.png" alt="Kementerian Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/celcom.png" alt="Celcom Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/yonder.png" alt="Yonder Music Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/airasia.png" alt="AirAsia Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/warner.png" alt="Warner Bros Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/unilogo.png" alt="Unilever Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/kinibiz.png" alt="KiniBiz Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/mercylogo.png" alt="MERCY Malaysia Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/yusari.png" alt="Yusari Filem Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/asoke.png" alt="Asoke Group Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/mido.png" alt="Mido Watches Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/poker.png" alt="PokerStars Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/turninghead.png" alt="Turning Heads Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/happyhop.png" alt="Happy Hop Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/pg.png" alt="P&G Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/talent.png" alt="Talent Corporation Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/kemen.png" alt="Kementerian Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/celcom.png" alt="Celcom Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/yonder.png" alt="Yonder Music Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/airasia.png" alt="AirAsia Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/warner.png" alt="Warner Bros Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/unilogo.png" alt="Unilever Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/kinibiz.png" alt="KiniBiz Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/mercylogo.webp" alt="MERCY Malaysia Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/yusari.png" alt="Yusari Filem Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/asoke.png" alt="Asoke Group Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/mido.png" alt="Mido Watches Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/poker.png" alt="PokerStars Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/turninghead.png" alt="Turning Heads Logo">
-      </div>
-      <div class="logoslide">
-        <img src="assets/happyhop.png" alt="Happy Hop Logo">
-      </div>
-    </div>
-  </section>
+<!-- Updated Logo Slider Section -->
+<section class="logos">
+  <div class="logos-slide">
+    <img src="assets/pg.png" alt="P&G Logo">
+    <img src="assets/talent.png" alt="Talent Corporation Logo">
+    <img src="assets/kemen.png" alt="Kementerian Logo">
+    <img src="assets/celcom.png" alt="Celcom Logo">
+    <img src="assets/yonder.png" alt="Yonder Music Logo">
+    <img src="assets/airasia.png" alt="AirAsia Logo">
+    <img src="assets/warner.png" alt="Warner Bros Logo">
+    <img src="assets/unilogo.png" alt="Unilever Logo">
+    <img src="assets/kinibiz.png" alt="KiniBiz Logo">
+    <img src="assets/mercylogo.png" alt="MERCY Malaysia Logo">
+    <img src="assets/yusari.png" alt="Yusari Filem Logo">
+    <img src="assets/asoke.png" alt="Asoke Group Logo">
+    <img src="assets/mido.png" alt="Mido Watches Logo">
+    <img src="assets/poker.png" alt="PokerStars Logo">
+    <img src="assets/turninghead.png" alt="Turning Heads Logo">
+    <img src="assets/happyhop.png" alt="Happy Hop Logo">
+  </div>
+</section>
+
+<script>
+  // Clone the logos slide to create an infinite scrolling effect
+  var logosSlide = document.querySelector(".logos-slide");
+  var copy = logosSlide.cloneNode(true);
+  document.querySelector(".logos").appendChild(copy);
+</script>
+
 
   <!-- About Us Section -->
   <section class="aboutus">
@@ -1222,7 +1150,7 @@ We would love to hear from you." required></textarea>
         </ul>
       </div>
     </div>
-    <div class="footerimage">
+    <div class="footerimage" id="foot">
       <img src="assets/foott.png" alt="Designed With Love image" loading="lazy" width="600" height="400" />
     </div>
   </footer>

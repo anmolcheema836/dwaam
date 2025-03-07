@@ -324,86 +324,87 @@ comma{
     margin-top: 0;
     margin-bottom: 0;
 }
-.logoslider {
-  position: relative;
-  width: 100%;
-  background-color: white;
+/* Logo slider container */
+.logos {
   overflow: hidden;
+  padding: 60px 0;
+  background: white;
+  white-space: nowrap;
+  position: relative;
 }
 
-.logoslide-track {
-  display: flex;
-  gap: 2em;
-  animation: scroll 45s linear infinite;
-  width: calc(150px * 30); /* Adjusts based on logo count */
+/* Fading gradients at the edges */
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  content: "";
+  z-index: 2;
 }
 
-.logoslide {
-  flex: 0 0 auto;
-  width: 150px; /* Desktop size */
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
 }
 
-.logoslide img {
-  width: 100%;
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+/* Pause animation on hover */
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+/* Logos slide animation */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Slide container styling */
+.logos-slide {
+  display: inline-block;
+  animation: 65s slide infinite linear;
+}
+
+/* Image styling */
+.logos-slide img {
+  width: 300px;
   height: auto;
+  margin: 0;
 }
 
-/* Animation */
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* 🔹 Mobile Responsive Design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .brandhead h1{
+  .brandhead h1 {
     font-size: small;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
   }
-  .brandhead h1 span{
-    font-size: small;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+  .logos-slide img {
+    width: 300px;
+    height: auto;
+    margin: 0;
   }
-  .logoslider {
-    padding: 2em 1em;
-  }
-  
-  .logoslide-track {
-    gap: 1em;
-    animation: scroll 160s linear infinite; /* Faster on mobile */
-  }
-
-  .logoslide {
-    width: 200px; /* Smaller logos on mobile */
+  .logos {
+    padding:0;
   }
 }
 
 @media (max-width: 480px) {
-  .logoslider {
-    padding: 2px 2px;
+  .logos-slide img {
+    width: 300px;
+    height: auto;
+    margin: -50px;
   }
-
-  .logoslide-track {
-    gap: 0;
-    width: calc(300px * 30); /* Adjusts based on logo count */
-  }
-
-  .logoslide {
-    width: 280px; /* Even smaller for very small screens */
-    margin-top: -45px;
-    margin-bottom: -45px;
-    margin-right: -50px;
-    margin-left: -50px;
+  .logos {
+    padding:0;
   }
 }
 .aboutus {
@@ -429,6 +430,7 @@ comma{
 .qutote img{
 width: 100vw;
 height: auto;
+padding-top: 10px;
 }
 
 /* Centering content */
@@ -846,6 +848,7 @@ height: auto;
         flex-direction: column;
         text-align: center;
         gap: 0;
+        padding-top: 10px;
     }
     .Whywelove .right h4 {
       padding-bottom: 0;
@@ -1456,7 +1459,7 @@ textarea#message {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 160vh;
+  height: 180vh;
   width: 45vw;
   border-radius: 25px;
 }
