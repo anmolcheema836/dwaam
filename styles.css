@@ -606,6 +606,7 @@ padding-top: 10px;
   .OurServices h1 {
       font-size: 1.2rem; /* Adjust text size for very small screens */
       padding-left: 5vw;
+      margin-top: 0;
       padding-right: 5vw;
       padding-bottom: 0;
       margin-bottom: 0;
