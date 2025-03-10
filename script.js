@@ -179,55 +179,103 @@ function scrollToContact() {
 }
 
 
-
 // Array of words to scroll through
 const words = ["Innovative", "Creative", "Strategic", "Reliable", "Passionate"];
-
-// Grab the scroller container
 const scroller = document.getElementById('wordScroller');
-
-// We'll keep track of the current index in the words array
 let currentIndex = 0;
 
-// Function to render three words: left, center, right
-function renderWords(index) {
-  // Clear any existing spans
-  scroller.innerHTML = '';
+// Create four span elements for left, center, right, and next (upcoming) words
+const leftSpan = document.createElement('span');
+const centerSpan = document.createElement('span');
+const rightSpan = document.createElement('span');
+const nextSpan = document.createElement('span');
 
-  // Indices for left, center, right
-  const leftIndex = (index - 1 + words.length) % words.length;
-  const centerIndex = index;
-  const rightIndex = (index + 1) % words.length;
+scroller.appendChild(leftSpan);
+scroller.appendChild(centerSpan);
+scroller.appendChild(rightSpan);
+scroller.appendChild(nextSpan);
 
-  // Create the three span elements
-  const leftSpan = document.createElement('span');
+// Update the text for each span based on currentIndex
+function updateText() {
+  const leftIndex = (currentIndex - 1 + words.length) % words.length;
+  const centerIndex = currentIndex;
+  const rightIndex = (currentIndex + 1) % words.length;
+  const nextIndex = (currentIndex + 2) % words.length;
+  
   leftSpan.textContent = words[leftIndex];
-  leftSpan.style.opacity = 0.2; // side words partial
-
-  const centerSpan = document.createElement('span');
   centerSpan.textContent = words[centerIndex];
-  centerSpan.style.opacity = 1; // center word full
-
-  const rightSpan = document.createElement('span');
   rightSpan.textContent = words[rightIndex];
-  rightSpan.style.opacity = 0.2; // side words partial
-
-  // Position them roughly (you can tweak or animate further)
-  leftSpan.style.transform = 'translateX(-150px)';   // shift left
-  centerSpan.style.transform = 'translateX(0px)';    // center
-  rightSpan.style.transform = 'translateX(150px)';   // shift right
-
-  // Append to scroller
-  scroller.appendChild(leftSpan);
-  scroller.appendChild(centerSpan);
-  scroller.appendChild(rightSpan);
+  nextSpan.textContent = words[nextIndex];
 }
 
-// Initial render
-renderWords(currentIndex);
+// Set the initial positions and opacities instantly (no transition)
+function resetPositions() {
+  // Remove transitions for an instant reset
+  leftSpan.style.transition = 'none';
+  centerSpan.style.transition = 'none';
+  rightSpan.style.transition = 'none';
+  nextSpan.style.transition = 'none';
+  
+  // Set starting positions:
+  // Left word is at -150px, center at 0px, right at 150px, next at 300px.
+  leftSpan.style.transform = 'translateX(-150px)';
+  centerSpan.style.transform = 'translateX(0px)';
+  rightSpan.style.transform = 'translateX(150px)';
+  nextSpan.style.transform = 'translateX(300px)';
+  
+  // Set opacities: center is emphasized, others are less prominent
+  leftSpan.style.opacity = '0.2';
+  centerSpan.style.opacity = '1';
+  rightSpan.style.opacity = '0.2';
+  nextSpan.style.opacity = '0.2';
+}
 
-// Cycle every 3 seconds
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % words.length;
-  renderWords(currentIndex);
-}, 3000);
+// The recursive animation cycle that plays each time a new word comes to center.
+function animateCycle() {
+  // Set CSS transitions for smooth animation over 4 seconds
+  leftSpan.style.transition = 'transform 4s, opacity 4s';
+  centerSpan.style.transition = 'transform 4s, opacity 4s';
+  rightSpan.style.transition = 'transform 4s, opacity 4s';
+  nextSpan.style.transition = 'transform 4s, opacity 4s';
+  
+  // Force reflow so that the transition styles take effect immediately
+  void leftSpan.offsetWidth;
+  
+  // Animate positions:
+  // Left word slides further left: from -150px to -300px.
+  // Center word moves left: from 0px to -150px.
+  // Right word moves into center: from 150px to 0px.
+  // Next word moves into the right position: from 300px to 150px.
+  leftSpan.style.transform = 'translateX(-300px)';
+  centerSpan.style.transform = 'translateX(-150px)';
+  rightSpan.style.transform = 'translateX(0px)';
+  nextSpan.style.transform = 'translateX(150px)';
+  
+  // Animate opacities:
+  // Left word fades out from 0.2 to 0.
+  // Center word fades out from 1 to 0.2.
+  // Right word fades in from 0.2 to 1.
+  // Next word stays at 0.2.
+  leftSpan.style.opacity = '0';
+  centerSpan.style.opacity = '0.2';
+  rightSpan.style.opacity = '1';
+  nextSpan.style.opacity = '0.2';
+  
+  // After the 4-second animation...
+  setTimeout(() => {
+    // Update the current index to move to the next word
+    currentIndex = (currentIndex + 1) % words.length;
+    updateText();
+    
+    // Instantly reset positions and opacities for the next cycle
+    resetPositions();
+    
+    // Optionally, wait 1 second before starting the next animation cycle
+    setTimeout(animateCycle, 1000);
+  }, 4000);
+}
+
+// Initial setup: set text and positions, then start the animation cycle.
+updateText();
+resetPositions();
+animateCycle();
