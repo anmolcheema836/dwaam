@@ -29,9 +29,6 @@
     body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
-      /* or auto, depending on your needs */
-      overflow-y: auto;
     }
 
     span {
@@ -46,7 +43,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 100000;
     }
 
     /* Logo */
@@ -629,7 +628,6 @@
   
   <div class="qutote">
     <img src="assets/r.png" alt="QUOTE Image" loading="lazy" width="600" height="400" />
-    <img src="assets/i.png" alt="QUOTE Image" loading="lazy" width="600" height="400" />
   </div>
 
   <!-- Why We Love What We Do Section -->
@@ -1133,7 +1131,7 @@ We would love to hear from you." required></textarea>
       </div>
       
       <div class="latest-posts">
-        <h3>Latest Blog Posts</h3>
+        <h3>Latest Articles For You</h3>
         <ul>
           <li>
             <img src="assets/blog.png" alt="Blog post image" />
@@ -1143,7 +1141,7 @@ We would love to hear from you." required></textarea>
             </div>
           </li>
           <li>
-            <img src="assets/blog.png" alt="Blog post image" />
+            <img src="assets/blog1.png" alt="Blog post image" />
             <div class="post-content">
               <p>Why SEO is important for business?</p>
               <small>25 March 2025</small>
@@ -1156,7 +1154,13 @@ We would love to hear from you." required></textarea>
         <h3>Latest Quizzes</h3>
         <ul>
           <li>
-            <img src="assets/blog.png" alt="Quiz image" />
+            <img src="assets/quiz.png" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’S WEEKLY QUIZ IS LIVE!! PARTICIPATE NOW!</p>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quiz1.png" alt="Quiz image" />
             <div class="quiz-content">
               <p>DWAAM’S WEEKLY QUIZ IS LIVE!! PARTICIPATE NOW!</p>
             </div>
@@ -1167,11 +1171,11 @@ We would love to hear from you." required></textarea>
 
         <h3>Contact Us</h3>
         <p>
-          <img src="assets/emailicon.png" alt="Email Icon" class="icon" />
+          <img src="assets/email.png" alt="Email Icon" class="icon" />
           <a href="mailto:hello@dwadvertisingandmore.com">hello@dwadvertisingandmore.com</a>
         </p>
         <p>
-          <img src="assets/whatsappfooticon.png" alt="WhatsApp Icon" class="icon" />
+          <img src="assets/whatsappicon.png" alt="WhatsApp Icon" class="icon" />
           <a href="https://wa.me/60108008989?text=hello"><s>+60108008989</s></a>
         </p>
         <h3>Socials</h3>
