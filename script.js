@@ -177,3 +177,55 @@ document.addEventListener("DOMContentLoaded", function () {
 function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
 }
+
+// Array of words to scroll through
+const words = ["Innovative", "Creative", "Strategic", "Reliable", "Passionate"];
+
+// Grab the scroller container
+const scroller = document.getElementById('wordScroller');
+
+// We'll keep track of the current index in the words array
+let currentIndex = 0;
+
+// Function to render three words: left, center, right
+function renderWords(index) {
+  // Clear any existing spans
+  scroller.innerHTML = '';
+
+  // Indices for left, center, right
+  const leftIndex = (index - 1 + words.length) % words.length;
+  const centerIndex = index;
+  const rightIndex = (index + 1) % words.length;
+
+  // Create the three span elements
+  const leftSpan = document.createElement('span');
+  leftSpan.textContent = words[leftIndex];
+  leftSpan.style.opacity = 0.2; // side words partial
+
+  const centerSpan = document.createElement('span');
+  centerSpan.textContent = words[centerIndex];
+  centerSpan.style.opacity = 1; // center word full
+
+  const rightSpan = document.createElement('span');
+  rightSpan.textContent = words[rightIndex];
+  rightSpan.style.opacity = 0.2; // side words partial
+
+  // Position them roughly (you can tweak or animate further)
+  leftSpan.style.transform = 'translateX(-150px)';   // shift left
+  centerSpan.style.transform = 'translateX(0px)';    // center
+  rightSpan.style.transform = 'translateX(150px)';   // shift right
+
+  // Append to scroller
+  scroller.appendChild(leftSpan);
+  scroller.appendChild(centerSpan);
+  scroller.appendChild(rightSpan);
+}
+
+// Initial render
+renderWords(currentIndex);
+
+// Cycle every 3 seconds
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % words.length;
+  renderWords(currentIndex);
+}, 3000);
