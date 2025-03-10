@@ -1847,5 +1847,14 @@ color: white;
   flex-direction: column;
   text-align: center;
 }
-
+.footer-logo{
+  max-width: 250px;
+  height: auto;
+}
+.motto{
+  font-size: 25px;
+}
+.motto span{
+  font-size: 55px;
+}
 }

@@ -178,6 +178,8 @@ function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
 }
 
+
+
 // Array of words to scroll through
 const words = ["Innovative", "Creative", "Strategic", "Reliable", "Passionate"];
 
