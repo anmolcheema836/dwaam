@@ -536,7 +536,6 @@ padding-top: 10px;
 }
 
 .OurServices .services {
-  position:sticky;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -550,8 +549,6 @@ padding-top: 10px;
 }
 
 .OurServices .services .container {
-  position: sticky;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
