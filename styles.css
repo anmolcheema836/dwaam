@@ -30,12 +30,22 @@ nav {
     top: 0;
     background-color: white;
     z-index: 100000;
+    transition: height 0.3s ease; /* Smooth transition */
+}
+
+nav.scrolled {
+  height: 75px;
 }
 
 /* Logo */
 nav img.logo {
     height: 80px;
     width: 80px;
+    transition: height 0.3s ease, width 0.3s ease; /* Smooth transition for logo */
+}
+nav.scrolled img.logo {
+  height: 65px;
+  width: 65px;
 }
 
 /* Navigation Links */
@@ -373,7 +383,7 @@ comma{
 /* Slide container styling */
 .logos-slide {
   display: inline-block;
-  animation: 65s slide infinite linear;
+  animation: 55s slide infinite linear;
 }
 
 /* Image styling */
@@ -429,7 +439,8 @@ comma{
 }
 
 .qutote img{
-width: 100vw;
+width: 98vw;
+padding-left: 4px;
 height: auto;
 padding-top: 10px;
 }
@@ -1821,10 +1832,10 @@ color: white;
 }
 .contact-us s{
   text-decoration: none;
-  color: green;
+  color: white;
 }
 .contact-us h3{
-  color: green;
+  color: white;
 }
 
 .logo-and-motto span{

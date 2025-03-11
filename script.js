@@ -1,3 +1,12 @@
+window.addEventListener('scroll', function () {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 0) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll("#navpart2 a");
     const checkbox = document.getElementById("checkbox");

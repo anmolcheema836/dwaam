@@ -38,21 +38,32 @@
     /*navbarstyles*/
 
     nav {
-      padding: 0vw 4vw;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100000;
-    }
+    padding: 0vw 4vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100000;
+    transition: height 0.3s ease; /* Smooth transition */
+}
 
-    /* Logo */
-    nav img.logo {
-      height: 80px;
-      width: 80px;
-    }
+nav.scrolled {
+  height: 75px;
+}
+
+/* Logo */
+nav img.logo {
+    height: 80px;
+    width: 80px;
+    transition: height 0.3s ease, width 0.3s ease; /* Smooth transition for logo */
+}
+nav.scrolled img.logo {
+  height: 65px;
+  width: 65px;
+}
 
     /* Navigation Links */
     #navpart2 {
@@ -409,7 +420,7 @@
     <img src="assets/button.png" alt="WhatsApp">
 </a>
   <nav role="navigation">
-    <img src="assets/logo.webp" alt="Logo" width="80" height="80">
+    <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
 
     <!-- Mobile Menu Toggle -->
     <input type="checkbox" id="checkbox" class="menu-checkbox" />
@@ -848,7 +859,7 @@
 
   <!-- Our Team Section -->
   <section class="Ourteam">
-    <h1>Meet Your <span>Dream Team</span><br>Lots of talent (&amp; even more passion)</h1>
+    <h1>Meet Your <span>Dream Team</span><br>Lots Of Talent (Even More Passion)</h1>
     <div class="cards">
       <!-- Card 2 -->
       <div class="card">
@@ -994,7 +1005,7 @@
         <label for="fullName">Your Full Name</label>
         <input type="text" id="fullName" name="fullName" placeholder="Dominic Benizi Pereira" required />
 
-        <label for="phone">Mobile Phone Number</label>
+        <label for="phone">Your Mobile Phone Number</label>
         <!-- Phone input container with flag inside -->
         <div class="phone-input-container">
           <img id="custom-flag" src="" alt="Country Flag" />
@@ -1022,13 +1033,10 @@
           <option value="copywriting">Copywriting</option>
         </select>
 
-        <label for="Jobtitle">Your Job Title</label>
-        <input type="text" id="Jobtitle" name="Jobtitle" placeholder="Head Engineer AS400" required />
-
-        <label for="email">Email Address</label>
+        <label for="email">Your Email Address</label>
         <input type="email" id="email" name="email" placeholder="dominic@ibm.com" required />
 
-        <label for="budget">Estimate Budget</label>
+        <label for="budget">Your Estimated Budget Investment</label>
         <select id="budget" name="budget" required>
           <option value="" disabled selected>Select Estimated Budget</option>
           <option value="30k-50k">USD30,000 - USD50,000</option>
@@ -1037,18 +1045,18 @@
           <option value="200k+">USD200,001 & above</option>
         </select>
 
-        <label for="message">Message</label>
+        <label for="message">Your Message To Us</label>
         <textarea id="message" name="message" placeholder="Message us & say hello.
-We would love to hear from you." required></textarea>
+We would love Love LOVE to hear from you" required></textarea>
 
         <label class="container">
-          Email me DigitalWorks Advertising's Company Profile.
-          <input type="checkbox" name="company_profile" checked />
+          Email me DigitalWorks Advertising & More’s Company Profile.
+          <input type="checkbox" name="company_profile"/>
           <span class="checkmark"></span>
         </label>
         <label class="container">
           Send me monthly advertising, marketing &amp; event management tips.
-          <input type="checkbox" name="tips" checked />
+          <input type="checkbox" name="tips"/>
           <span class="checkmark"></span>
         </label>
 
@@ -1097,7 +1105,7 @@ We would love to hear from you." required></textarea>
     /* Style for the flag image placed inside the input */
     #custom-flag {
       position: absolute;
-      left: 4px;    /* Adjust as needed */
+      left:0;    /* Adjust as needed */
       top: 51%;
       transform: translateY(-50%);
       width: 65px;   /* Adjust size as needed */
@@ -1151,18 +1159,18 @@ We would love to hear from you." required></textarea>
       </div>
       
       <div class="latest-quizzes">
-        <h3>Latest Quizzes</h3>
+        <h3>Latest Quizzes For You</h3>
         <ul>
           <li>
             <img src="assets/quiz.png" alt="Quiz image" />
             <div class="quiz-content">
-              <p>DWAAM’S WEEKLY QUIZ IS LIVE!! PARTICIPATE NOW!</p>
+              <p>Dwaam's Weekly Quiz is Live! Participate now!</p>
             </div>
           </li>
           <li>
             <img src="assets/quiz1.png" alt="Quiz image" />
             <div class="quiz-content">
-              <p>DWAAM’S WEEKLY QUIZ IS LIVE!! PARTICIPATE NOW!</p>
+              <p>Dwaam's Weekly Quiz is Live! Participate now!</p>
             </div>
           </li>
         </ul>
