@@ -1524,6 +1524,7 @@ input, textarea, select {
   border-radius: 5px;
   box-sizing: border-box;
   background-color: white;
+  font-size: 13px;
 }
 select {
   font-family: 'Poppins', sans-serif;
