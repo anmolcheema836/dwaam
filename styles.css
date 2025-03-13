@@ -8,7 +8,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #000;
-    width: 100vw;
+    max-width: 100vw;
     height: 100%;
 }
 html, body {
@@ -1458,18 +1458,18 @@ textarea#message {
   font-family: 'Poppins', sans-serif;
 }
 .contactus .contactleft img {
-  width: 350px;
+  width: 400px;
   height: auto;
   padding-bottom: 0;
   margin-bottom: 15px;
-  max-height: 780px;
+  max-height: 1000px;
 }
 .contactright {
   background: linear-gradient(to bottom, #0883DA, #044674);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 180vh;
+  height:auto;
   width: 45vw;
   border-radius: 25px;
 }
@@ -1746,6 +1746,7 @@ input[type="tel"] {
   background-color: #003B6E;
   color: white;
   padding: 20px;
+  max-width: 100vw;
 }
 
 .footer-content {
@@ -1848,7 +1849,7 @@ color: white;
   text-decoration: none;
 }
 .footerimg img{
-  width: 100vw;
+  width: 100%;
   height: auto;
   bottom: 0;
   
