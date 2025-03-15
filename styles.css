@@ -832,7 +832,7 @@ padding-top: 10px;
     gap: 20px;
 }
 
-.Whywelove img {
+.Whywelove .left img {
     width: 100%;
     max-width: 600px;
     height: auto;
@@ -1763,7 +1763,7 @@ input[type="tel"] {
 }
 
 .footer-logo {
-  max-width: 150px;
+  max-width: 200px;
   margin-bottom: 10px;
 }
 
@@ -1798,7 +1798,10 @@ input[type="tel"] {
   margin-left: 0;
   padding-left: 0;
 }
-
+v{
+  color: #EAAA00;
+  text-decoration: none;
+}
 .contact-us a{
 text-decoration: none;
 color: white;
@@ -1853,7 +1856,7 @@ color: white;
   font-size: 30px;
 }
 .logo-and-motto s{
-  color: green;
+  color: yellow;
   font-weight: 700;
   text-decoration: none;
 }
@@ -1861,11 +1864,11 @@ color: white;
   width: 100%;
   height: auto;
   bottom: 0;
-  
+ 
 }
 @media (max-width: 768px) {
   .footer-section{
-    padding-bottom: 80px;
+    padding-bottom: 90px;
   }
 .logo-and-motto{
   display: flex;
@@ -1875,7 +1878,8 @@ color: white;
   text-align: center;
 }
 .footer-logo{
-  max-width: 250px;
+  max-width: 330px;
+  border-radius: 30px;
   height: auto;
 }
 .motto{
