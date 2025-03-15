@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 document.addEventListener("DOMContentLoaded", function() {
     const factsSection = document.querySelector('.Factsaboutus');
     const facts = document.querySelectorAll('.fact h3');
@@ -140,48 +141,37 @@ document.addEventListener("DOMContentLoaded", function () {
       leftArrow.addEventListener("touchstart", prevSlide);
       rightArrow.addEventListener("touchstart", nextSlide);
     });
-  });
-  document.addEventListener("DOMContentLoaded", function () {
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     let coffeeButton = document.querySelector(".whatsapp-float");
-    let contactForm = document.querySelector("#contact-form");
-    let footSection = document.querySelector("#foot");
-    let isHidden = false; // Flag to prevent overlapping hide actions
 
-    function hideButton() {
-        if (!isHidden) {
-            isHidden = true;
-            coffeeButton.style.display = "none";
-            // Show the button again after 120 seconds (120,000 ms)
-            setTimeout(function () {
-                coffeeButton.style.display = "flex"; // Assuming flex was the original display style
-                isHidden = false;
-            }, 120000);
-        }
-    }
-
-    // Hide the button on click and scroll to #contact-form
+    // Scroll to contact form on button click
     coffeeButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent default anchor behavior
+        const contactForm = document.querySelector("#contact-form");
         if (contactForm) {
             contactForm.scrollIntoView({ behavior: "smooth" });
         }
-        hideButton();
     });
 
-    // Use IntersectionObserver to detect when #contact-form or #foot is in view
-    if (contactForm || footSection) {
-        let observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
+    // Observer to hide the button when #foot is in view
+    const footSection = document.querySelector("#foot");
+    if (footSection) {
+        const footObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    hideButton();
+                    coffeeButton.style.display = "none";
+                    // Show the button again after 5 seconds
+                    setTimeout(() => {
+                        coffeeButton.style.display = "flex"; // Assuming original display was "flex"
+                    }, 2000);
                 }
             });
         });
-        if (contactForm) observer.observe(contactForm);
-        if (footSection) observer.observe(footSection);
+        footObserver.observe(footSection);
     }
 });
-
 
 function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
@@ -288,4 +278,3 @@ function animateCycle() {
 updateText();
 resetPositions();
 animateCycle();
-

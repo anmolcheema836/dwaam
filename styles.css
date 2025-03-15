@@ -1461,7 +1461,7 @@ textarea#message {
   font-family: 'Poppins', sans-serif;
 }
 .contactus .contactleft img {
-  width: 400px;
+  width: 380px;
   height: auto;
   padding-bottom: 0;
   margin-bottom: 15px;
@@ -1642,7 +1642,7 @@ input[type="tel"] {
     width: 320px;
   }
   .contactleft img {
-    width: 320px;
+    width: 300px;
     max-height: none;
     margin-bottom: 20px;
     padding-bottom: 200px;
