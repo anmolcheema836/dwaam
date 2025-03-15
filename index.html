@@ -51,18 +51,18 @@
 }
 
 nav.scrolled {
-  height: 75px;
+  height: 55px;
 }
 
 /* Logo */
 nav img.logo {
-    height: 80px;
     width: 80px;
+    height: auto;
     transition: height 0.3s ease, width 0.3s ease; /* Smooth transition for logo */
 }
 nav.scrolled img.logo {
-  height: 65px;
-  width: 65px;
+  height: auto;
+  width: 52px;
 }
 
     /* Navigation Links */
@@ -84,7 +84,7 @@ nav.scrolled img.logo {
       text-decoration: none;
     }
     nav.scrolled #navpart2{
-      top: 58px;
+      top: 35px;
     }
 
 
@@ -164,7 +164,7 @@ nav.scrolled img.logo {
     .toggle {
       position: absolute;
       right: 0;
-      width: 40px;
+      width: 20px;
       cursor: pointer;
       margin: auto;
       display: block;
@@ -230,6 +230,9 @@ nav.scrolled img.logo {
 
     /* Show toggle only on mobile devices */
     @media screen and (max-width: 960px) {
+      nav{
+        height: 70px;
+      }
       .toggle {
         display: block;
         margin-right: 2vw;

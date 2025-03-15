@@ -34,18 +34,18 @@ nav {
 }
 
 nav.scrolled {
-  height: 75px;
+  height: 55px;
 }
 
 /* Logo */
 nav img.logo {
-    height: 80px;
     width: 80px;
+    height: auto;
     transition: height 0.3s ease, width 0.3s ease; /* Smooth transition for logo */
 }
 nav.scrolled img.logo {
-  height: 65px;
-  width: 65px;
+  height:auto;
+  width: 52px;
 }
 
 /* Navigation Links */
@@ -205,6 +205,9 @@ ul, ol {
 }
 /* Show toggle only on mobile devices */
 @media screen and (max-width: 960px) {
+  nav{
+    height: 80px;
+  }
     .toggle {
         display: block;
         margin-right: 2vw;
