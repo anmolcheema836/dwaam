@@ -368,6 +368,11 @@ comma{
   background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
 }
 
+/* Pause animation on hover */
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
 /* Logos slide animation */
 @keyframes slide {
   from {
