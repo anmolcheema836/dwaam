@@ -207,6 +207,7 @@ ul, ol {
 @media screen and (max-width: 960px) {
   nav{
     height: 80px;
+    padding-left: 40vw;
   }
     .toggle {
         display: block;
