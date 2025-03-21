@@ -307,7 +307,7 @@ comma{
   */
 
   .hero h1 {
-      margin-top: 150px;
+      margin-top: 50px;
       font-size: 18px;
       padding-left: 2vw;
       padding-right: 2vw;
@@ -1170,6 +1170,7 @@ padding-top: 10px;
     .Ourwork h3{
       margin-top: 0;
       margin-bottom: 1px;
+      line-height:1 ;
     }
     .Ourwork h1{
       margin-bottom: 3px;
@@ -1689,7 +1690,7 @@ input[type="tel"] {
     padding: 10px;
   }
   .submit-btn {
-    width: 180px;
+    width: 200px;
     margin-top: 0;
     padding: 15px;
     font-size: 14px;
