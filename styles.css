@@ -1897,15 +1897,10 @@ color: white;
   border-radius: 30px;
   height: auto;
 }
-.footlogoo{
-  max-width: 330px;
-  border-radius: 30px;
-  height: auto;
-  background-color: white;
-}
-.footlogoo img{
+.footer-logo video{
 width: 100%;
 height: auto;
+border-radius: 30px;
 }
 .motto{
   font-size: 20px;
