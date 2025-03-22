@@ -169,9 +169,8 @@ function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Array of words to scroll through
-const words = ["Innovative", "Creative", "Strategic", "Reliable", "Passionate"];
 const scroller = document.getElementById('wordScroller');
+const words = ["Innovative", "Creative","Passionate" ,"Strategic", "Reliable"];
 let currentIndex = 0;
 
 // Create four span elements for left, center, right, and next (upcoming) words
@@ -180,6 +179,7 @@ const centerSpan = document.createElement('span');
 const rightSpan = document.createElement('span');
 const nextSpan = document.createElement('span');
 
+// Append spans to container
 scroller.appendChild(leftSpan);
 scroller.appendChild(centerSpan);
 scroller.appendChild(rightSpan);
@@ -198,15 +198,17 @@ function updateText() {
 }
 
 function resetPositions() {
+  // Remove transitions
   leftSpan.style.transition = 'none';
   centerSpan.style.transition = 'none';
   rightSpan.style.transition = 'none';
   nextSpan.style.transition = 'none';
   
-  leftSpan.style.transform = 'translateX(-150px)';
-  centerSpan.style.transform = 'translateX(0px)';
-  rightSpan.style.transform = 'translateX(150px)';
-  nextSpan.style.transform = 'translateX(300px)';
+  // Set starting positions (adjust as needed)
+  leftSpan.style.transform = 'translateX(-150px) scale(1)';
+  centerSpan.style.transform = 'translateX(0px) scale(1.2)'; // pop effect
+  rightSpan.style.transform = 'translateX(150px) scale(1)';
+  nextSpan.style.transform = 'translateX(300px) scale(1)';
   
   leftSpan.style.opacity = '0.2';
   centerSpan.style.opacity = '1';
@@ -215,31 +217,36 @@ function resetPositions() {
 }
 
 function animateCycle() {
-  leftSpan.style.transition = 'transform 4s, opacity 4s';
-  centerSpan.style.transition = 'transform 4s, opacity 4s';
-  rightSpan.style.transition = 'transform 4s, opacity 4s';
-  nextSpan.style.transition = 'transform 4s, opacity 4s';
+  // Apply transitions for a faster scroll (1s animation)
+  leftSpan.style.transition = 'transform 1s, opacity 1s';
+  centerSpan.style.transition = 'transform 1s, opacity 1s';
+  rightSpan.style.transition = 'transform 1s, opacity 1s';
+  nextSpan.style.transition = 'transform 1s, opacity 1s';
   
+  // Force reflow
   void leftSpan.offsetWidth;
   
-  leftSpan.style.transform = 'translateX(-300px)';
-  centerSpan.style.transform = 'translateX(-150px)';
-  rightSpan.style.transform = 'translateX(0px)';
-  nextSpan.style.transform = 'translateX(150px)';
+  // Animate: move each span leftwards
+  leftSpan.style.transform = 'translateX(-300px) scale(1)';
+  centerSpan.style.transform = 'translateX(-150px) scale(1)'; // loses pop as it moves out
+  rightSpan.style.transform = 'translateX(0px) scale(1.2)';  // becomes the new center with pop effect
+  nextSpan.style.transform = 'translateX(150px) scale(1)';
   
   leftSpan.style.opacity = '0';
   centerSpan.style.opacity = '0.2';
   rightSpan.style.opacity = '1';
   nextSpan.style.opacity = '0.2';
   
+  // Cycle to next word after animation
   setTimeout(() => {
     currentIndex = (currentIndex + 1) % words.length;
     updateText();
     resetPositions();
-    setTimeout(animateCycle, 1000);
-  }, 4000);
+    setTimeout(animateCycle, 500); // short pause before next cycle
+  }, 1000);
 }
 
+// Initialize
 updateText();
 resetPositions();
 animateCycle();
