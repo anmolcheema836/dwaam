@@ -1717,12 +1717,11 @@ input[type="tel"] {
     margin-bottom: 0;
  }
 
- /* Why Choose Us Section */
-.why-choose-us {
-  background-color: #003B6E; /* or your preferred dark/blue color */
+ .why-choose-us {
+  background-color: #003B6E;
   color: white;
   text-align: center;
-  padding: 5px 5px;
+  padding: 5px;
   position: relative;
   border: none;
   border-bottom: 2px solid #003B6E;
@@ -1730,30 +1729,36 @@ input[type="tel"] {
 
 .why-choose-us h2 {
   font-size: 2rem;
-  margin-bottom: 0;
-  margin-top: 0;
+  margin: 0;
 }
 
-/* Word Scroller Container */
+/* 3D Perspective */
 .word-scroller {
+  perspective: 1200px; /* Increase perspective depth for a more dramatic 3D effect */
   position: relative;
-  height: 50px; /* Adjust as needed */
+  height: 60px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  padding-bottom: 0;
   border: none;
 }
 
+/* Common styles for each word */
 .word-scroller span {
   position: absolute;
-  transition: all 0.5s ease; /* Smooth transition */
+  transition: transform 1s, opacity 1s;
   font-size: 1.5rem;
-  opacity: 0.2; /* By default, side words will be partially opaque */
+  opacity: 0.2;
   color: white;
+  will-change: transform, opacity;
 }
+
+/* Optional: Adding a subtle text shadow to enhance the pop effect on the center word */
+.word-scroller span.center {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
 
 /* Example footer styling */
 .footer-section {
@@ -1875,8 +1880,23 @@ color: white;
   width: 100%;
   height: auto;
   bottom: 0;
- 
 }
+/* Make sure the span is treated as an inline-block element for animation */
+.motto span {
+  display: inline-block;
+  animation: jump 1s infinite ease-in-out;
+}
+
+/* Define the jumping animation */
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .why-choose-us h2 span{
   color: #7DF9FF;
 }
@@ -1885,6 +1905,7 @@ color: white;
     padding-bottom: 90px;
     padding-top: 0;
   }
+  
 .logo-and-motto{
   display: flex;
   align-items: center;
@@ -1914,7 +1935,8 @@ border-radius: 30px;
   padding-top: 0;
 }
 .footer-section h3{
-  margin-top: 0;
+  margin-top: -13px;
+  margin-bottom: -10px;
   padding-top: 0;
 }
 }

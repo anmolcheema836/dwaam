@@ -170,14 +170,17 @@ function scrollToContact() {
 }
 
 const scroller = document.getElementById('wordScroller');
-const words = ["Innovative", "Creative","Passionate" ,"Strategic", "Reliable"];
+const words = ["Innovative", "Creative", "Passionate", "Strategic", "Reliable"];
 let currentIndex = 0;
 
-// Create four span elements for left, center, right, and next (upcoming) words
+// Create four span elements for left, center, right, and next words
 const leftSpan = document.createElement('span');
 const centerSpan = document.createElement('span');
 const rightSpan = document.createElement('span');
 const nextSpan = document.createElement('span');
+
+// Add a class for center styling (if desired)
+centerSpan.classList.add('center');
 
 // Append spans to container
 scroller.appendChild(leftSpan);
@@ -198,17 +201,18 @@ function updateText() {
 }
 
 function resetPositions() {
-  // Remove transitions
+  // Disable transitions for immediate positioning
   leftSpan.style.transition = 'none';
   centerSpan.style.transition = 'none';
   rightSpan.style.transition = 'none';
   nextSpan.style.transition = 'none';
   
-  // Set starting positions (adjust as needed)
-  leftSpan.style.transform = 'translateX(-150px) scale(1)';
-  centerSpan.style.transform = 'translateX(0px) scale(1.2)'; // pop effect
-  rightSpan.style.transform = 'translateX(150px) scale(1)';
-  nextSpan.style.transform = 'translateX(300px) scale(1)';
+  // Set starting positions:
+  // - Side words are now scaled down to 0.5 and pushed back in Z axis.
+  leftSpan.style.transform = 'translate3d(-150px, 0, -150px) scale(0.5) rotateY(30deg)';
+  centerSpan.style.transform = 'translate3d(0, 0, 200px) scale(1.5) rotateY(0deg)';
+  rightSpan.style.transform = 'translate3d(150px, 0, -150px) scale(0.5) rotateY(-30deg)';
+  nextSpan.style.transform = 'translate3d(300px, 0, -300px) scale(0.5) rotateY(-45deg)';
   
   leftSpan.style.opacity = '0.2';
   centerSpan.style.opacity = '1';
@@ -217,36 +221,40 @@ function resetPositions() {
 }
 
 function animateCycle() {
-  // Apply transitions for a faster scroll (1s animation)
+  // Enable transitions for smooth animation
   leftSpan.style.transition = 'transform 1s, opacity 1s';
   centerSpan.style.transition = 'transform 1s, opacity 1s';
   rightSpan.style.transition = 'transform 1s, opacity 1s';
   nextSpan.style.transition = 'transform 1s, opacity 1s';
   
-  // Force reflow
+  // Force reflow to ensure transition starts
   void leftSpan.offsetWidth;
   
-  // Animate: move each span leftwards
-  leftSpan.style.transform = 'translateX(-300px) scale(1)';
-  centerSpan.style.transform = 'translateX(-150px) scale(1)'; // loses pop as it moves out
-  rightSpan.style.transform = 'translateX(0px) scale(1.2)';  // becomes the new center with pop effect
-  nextSpan.style.transform = 'translateX(150px) scale(1)';
+  // Animate positions:
+  // - leftSpan moves further left off-screen.
+  // - centerSpan shifts to become a side word (shrinking to 0.5).
+  // - rightSpan becomes the new center (grows to 1.5 and pops out).
+  // - nextSpan shifts into the right side position.
+  leftSpan.style.transform = 'translate3d(-300px, 0, -300px) scale(0.5) rotateY(30deg)';
+  centerSpan.style.transform = 'translate3d(-150px, 0, -150px) scale(0.5) rotateY(30deg)'; // becomes side word
+  rightSpan.style.transform = 'translate3d(0, 0, 200px) scale(1.5) rotateY(0deg)';  // new center word
+  nextSpan.style.transform = 'translate3d(150px, 0, -150px) scale(0.5) rotateY(-30deg)';
   
   leftSpan.style.opacity = '0';
   centerSpan.style.opacity = '0.2';
   rightSpan.style.opacity = '1';
   nextSpan.style.opacity = '0.2';
   
-  // Cycle to next word after animation
+  // Cycle to the next word after animation
   setTimeout(() => {
     currentIndex = (currentIndex + 1) % words.length;
     updateText();
     resetPositions();
-    setTimeout(animateCycle, 500); // short pause before next cycle
+    setTimeout(animateCycle, 500); // brief pause before the next cycle
   }, 1000);
 }
 
-// Initialize
+// Initialize the scroller
 updateText();
 resetPositions();
 animateCycle();
