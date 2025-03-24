@@ -25,6 +25,7 @@
       color: #000;
       width: 100%;
     }
+
     html,
     body {
       margin: 0;
@@ -38,36 +39,40 @@
     /*navbarstyles*/
 
     nav {
-    padding: 0vw 4vw;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 100000;
-    transition: height 0.3s ease; /* Smooth transition */
-}
+      padding: 0vw 4vw;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100000;
+      transition: height 0.3s ease;
+      /* Smooth transition */
+    }
 
-nav.scrolled {
-  height: 55px;
-  padding-left: 38vw;
-}
-nav.scrolled .toggle {
-    transform: scale(0.60);
-  }
+    nav.scrolled {
+      height: 55px;
+      padding-left: 38vw;
+    }
 
-/* Logo */
-nav img.logo {
-    width: 80px;
-    height: auto;
-    transition: height 0.3s ease, width 0.3s ease; /* Smooth transition for logo */
-}
-nav.scrolled img.logo {
-  height: auto;
-  width: 52px;
-}
+    nav.scrolled .toggle {
+      transform: scale(0.60);
+    }
+
+    /* Logo */
+    nav img.logo {
+      width: 80px;
+      height: auto;
+      transition: height 0.3s ease, width 0.3s ease;
+      /* Smooth transition for logo */
+    }
+
+    nav.scrolled img.logo {
+      height: auto;
+      width: 52px;
+    }
 
     /* Navigation Links */
     #navpart2 {
@@ -87,7 +92,8 @@ nav.scrolled img.logo {
     .cta-button {
       text-decoration: none;
     }
-    nav.scrolled #navpart2{
+
+    nav.scrolled #navpart2 {
       top: 35px;
     }
 
@@ -136,28 +142,31 @@ nav.scrolled img.logo {
     }
 
     .cta-button {
-        padding: 0;
-        background: url('assets/button.png') no-repeat center center;
-        background-size: contain;
-        border-radius: 5px;
-        color: white;
-        background-color: #EAAA00;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-block;
-        width: 200px; /* Adjust width as needed */
-        height: 60px; /* Adjust height as needed */
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-        line-height: 60px; /* Center text vertically */
+      padding: 0;
+      background: url('assets/button.png') no-repeat center center;
+      background-size: contain;
+      border-radius: 5px;
+      color: white;
+      background-color: #EAAA00;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: 200px;
+      /* Adjust width as needed */
+      height: 60px;
+      /* Adjust height as needed */
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 60px;
+      /* Center text vertically */
     }
 
     .cta-button:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        background-color: #EAAA00;
+      transform: scale(1.05);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #EAAA00;
     }
 
     /* Hide mobile toggle by default */
@@ -234,10 +243,11 @@ nav.scrolled img.logo {
 
     /* Show toggle only on mobile devices */
     @media screen and (max-width: 960px) {
-      nav{
+      nav {
         height: 70px;
-        padding-left:32vw;
+        padding-left: 32vw;
       }
+
       .toggle {
         display: block;
         margin-right: 32vw;
@@ -349,7 +359,7 @@ nav.scrolled img.logo {
         padding-left: 0;
       }
 
-      .hero  {
+      .hero {
         font-size: 18px;
         padding: 0;
         margin-left: 0;
@@ -357,31 +367,34 @@ nav.scrolled img.logo {
     }
 
     .whatsapp-float {
-  display: none; /* Hide by default */
-}
+      display: none;
+      /* Hide by default */
+    }
 
-@media screen and (max-width: 768px) {
-  .whatsapp-float {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    padding-left: 0;
-    margin-left: -1px;
-    margin-bottom: -2px;
-    height: auto; /* Adjust height as needed */
-    background: none; /* WhatsApp green background */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
+    @media screen and (max-width: 768px) {
+      .whatsapp-float {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        padding-left: 0;
+        margin-left: -1px;
+        margin-bottom: -2px;
+        height: auto;
+        /* Adjust height as needed */
+        background: none;
+        /* WhatsApp green background */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
 
-  .whatsapp-float img {
-    width: 100vw; /* Adjust size as needed */
-    height: auto;
-  }
-}
-
+      .whatsapp-float img {
+        width: 100vw;
+        /* Adjust size as needed */
+        height: auto;
+      }
+    }
   </style>
 
   <!-- Defer non-critical CSS by using media="print" and switching onload -->
@@ -429,7 +442,7 @@ nav.scrolled img.logo {
 <body>
   <a href="#contact-form" class="whatsapp-float" title="Chat on WhatsApp">
     <img src="assets/ctabutton.png" alt="WhatsApp">
-</a>
+  </a>
   <nav role="navigation">
     <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
 
@@ -461,41 +474,41 @@ nav.scrolled img.logo {
     <button class="cta-button" onclick="scrollToContact()"></button>
   </section>
 
-<!-- Trusted Brands Section -->
-<section class="brandhead">
-  <h1>
-    BRANDS WHO <span>TRUST US</span> WITH THEIR <br />ADVERTISING, MARKETING &amp; EVENT MANAGEMENT
-  </h1>
-</section>
+  <!-- Trusted Brands Section -->
+  <section class="brandhead">
+    <h1>
+      BRANDS WHO <span>TRUST US</span> WITH THEIR <br />ADVERTISING, MARKETING &amp; EVENT MANAGEMENT
+    </h1>
+  </section>
 
-<!-- Updated Logo Slider Section -->
-<section class="logos">
-  <div class="logos-slide">
-    <img src="assets/pg.png" alt="P&G Logo">
-    <img src="assets/talent.png" alt="Talent Corporation Logo">
-    <img src="assets/kemen.png" alt="Kementerian Logo">
-    <img src="assets/celcom.png" alt="Celcom Logo">
-    <img src="assets/yonder.png" alt="Yonder Music Logo">
-    <img src="assets/airasia.png" alt="AirAsia Logo">
-    <img src="assets/warner.png" alt="Warner Bros Logo">
-    <img src="assets/unilogo.png" alt="Unilever Logo">
-    <img src="assets/kinibiz.png" alt="KiniBiz Logo">
-    <img src="assets/mercylogo.png" alt="MERCY Malaysia Logo">
-    <img src="assets/yusari.png" alt="Yusari Filem Logo">
-    <img src="assets/asoke.png" alt="Asoke Group Logo">
-    <img src="assets/mido.png" alt="Mido Watches Logo">
-    <img src="assets/poker.png" alt="PokerStars Logo">
-    <img src="assets/turninghead.png" alt="Turning Heads Logo">
-    <img src="assets/happyhop.png" alt="Happy Hop Logo">
-  </div>
-</section>
+  <!-- Updated Logo Slider Section -->
+  <section class="logos">
+    <div class="logos-slide">
+      <img src="assets/pg.png" alt="P&G Logo">
+      <img src="assets/talent.png" alt="Talent Corporation Logo">
+      <img src="assets/kemen.png" alt="Kementerian Logo">
+      <img src="assets/celcom.png" alt="Celcom Logo">
+      <img src="assets/yonder.png" alt="Yonder Music Logo">
+      <img src="assets/airasia.png" alt="AirAsia Logo">
+      <img src="assets/warner.png" alt="Warner Bros Logo">
+      <img src="assets/unilogo.png" alt="Unilever Logo">
+      <img src="assets/kinibiz.png" alt="KiniBiz Logo">
+      <img src="assets/mercylogo.png" alt="MERCY Malaysia Logo">
+      <img src="assets/yusari.png" alt="Yusari Filem Logo">
+      <img src="assets/asoke.png" alt="Asoke Group Logo">
+      <img src="assets/mido.png" alt="Mido Watches Logo">
+      <img src="assets/poker.png" alt="PokerStars Logo">
+      <img src="assets/turninghead.png" alt="Turning Heads Logo">
+      <img src="assets/happyhop.png" alt="Happy Hop Logo">
+    </div>
+  </section>
 
-<script>
-  // Clone the logos slide to create an infinite scrolling effect
-  var logosSlide = document.querySelector(".logos-slide");
-  var copy = logosSlide.cloneNode(true);
-  document.querySelector(".logos").appendChild(copy);
-</script>
+  <script>
+    // Clone the logos slide to create an infinite scrolling effect
+    var logosSlide = document.querySelector(".logos-slide");
+    var copy = logosSlide.cloneNode(true);
+    document.querySelector(".logos").appendChild(copy);
+  </script>
 
 
   <!-- About Us Section -->
@@ -506,12 +519,14 @@ nav.scrolled img.logo {
     <div class="aboutuspart2">
       <h1>ABOUT <span>US</span></h1>
       <h3>
-        Our team is a mix of <span>DREAMERS & DOERS</span>, we are <span>MISFITS</span> for a cause & we are <span>REBELS</span> for a cause when it comes to formulating custom-made advertising, marketing, website/mobile app design & development & event management wonders <span>FOR YOU.</span>
+        Our team is a mix of <span>DREAMERS & DOERS</span>, we are <span>MISFITS</span> for a cause & we are
+        <span>REBELS</span> for a cause when it comes to formulating custom-made advertising, marketing, website/mobile
+        app design & development & event management wonders <span>FOR YOU.</span>
         <br /><br />
-      <img src="assets/aboutus.png" style="height: auto;width:90vw"  alt="about us">
-      <br /><br />
+        <img src="assets/aboutus.png" style="height: auto;width:90vw" alt="about us">
+        <br /><br />
         We have been catering to an array of clients from <span>LOCAL STARTUPS TO GLOBAL FORTUNE 500 COMPANIES</span>
-& we have achieved measurable success for our clients <span>IN OVER 150 COUNTRIES.</span>
+        & we have achieved measurable success for our clients <span>IN OVER 150 COUNTRIES.</span>
         Our formula is equal parts experience, historical data, strategy, creativity, hard work, heart work, & a
         sprinkle of magic fairy dust.
       </h3>
@@ -648,7 +663,7 @@ nav.scrolled img.logo {
       </div>
     </div>
   </section>
-  
+
   <div class="qutote">
     <img src="assets/r.png" alt="QUOTE Image" width="600" height="400" />
   </div>
@@ -666,7 +681,7 @@ nav.scrolled img.logo {
         At DigitalWorks Advertising &amp; More, we believe that loving what we do is the secret sauce that makes all
         the difference. When passion fuels work, creativity flows, ideas thrive, &amp; the results speak for themselves.
         <br /><br />
-       <img src="assets/qutote.png" alt="">
+        <img src="assets/qutote.png" alt="">
         <br /><br />
         We live for those electric moments when creativity, strategy, &amp; passion collide.
         <br /><br />
@@ -687,8 +702,7 @@ nav.scrolled img.logo {
     <div class="allclients">
       <div class="clientcont">
         <div class="img-container">
-          <img src="assets/linkedinclientlogo.webp" alt="LinkedIn Client Logo" width="100"
-            height="100" />
+          <img src="assets/linkedinclientlogo.webp" alt="LinkedIn Client Logo" width="100" height="100" />
         </div>
         <h3>
           “Congratulations for being the highest earners for LinkedIn.
@@ -701,7 +715,7 @@ nav.scrolled img.logo {
       </div>
       <div class="clientcont">
         <div class="img-container">
-          <img src="assets/boschclientlogo.webp" alt="Bosch Client Logo"  width="100" height="100" />
+          <img src="assets/boschclientlogo.webp" alt="Bosch Client Logo" width="100" height="100" />
         </div>
         <h3>
           “Never failed to provide sound advice &amp; solutions to optimise Bosch’s opportunities on digital media,
@@ -783,12 +797,9 @@ nav.scrolled img.logo {
           </ul>
         </div>
         <div class="work-image">
-          <img src="assets/Nepalimg.webp" alt="Nepal Earthquake Donation Drive Graphic"  width="600"
-            height="400" />
-          <img src="assets/talent2.png" alt="Nepal Earthquake Donation Drive Graphic" width="600"
-            height="400" />
-          <img src="assets/talentss.png" alt="Nepal Earthquake Donation Drive Graphic"  width="600"
-            height="400" />
+          <img src="assets/Nepalimg.webp" alt="Nepal Earthquake Donation Drive Graphic" width="600" height="400" />
+          <img src="assets/talent2.png" alt="Nepal Earthquake Donation Drive Graphic" width="600" height="400" />
+          <img src="assets/talentss.png" alt="Nepal Earthquake Donation Drive Graphic" width="600" height="400" />
         </div>
       </div>
     </div>
@@ -824,8 +835,7 @@ nav.scrolled img.logo {
           </ul>
         </div>
         <div class="work-image">
-          <img src="assets/yondd.png" alt="Returning Expert Programme Campaign" width="600"
-            height="400" />
+          <img src="assets/yondd.png" alt="Returning Expert Programme Campaign" width="600" height="400" />
         </div>
       </div>
     </div>
@@ -839,8 +849,7 @@ nav.scrolled img.logo {
               Launch</strong></h3>
         </div>
         <div class="Whitneylogo">
-          <img src="assets/yond.png" alt="Yonder Music &amp; Celcom Axiata Logo"  width="150"
-            height="150" />
+          <img src="assets/yond.png" alt="Yonder Music &amp; Celcom Axiata Logo" width="150" height="150" />
         </div>
       </div>
       <div class="work-content">
@@ -871,12 +880,14 @@ nav.scrolled img.logo {
 
   <!-- Our Team Section -->
   <section class="Ourteam">
-    <h1>Meet Your <span>Dream Team</span><br><x>Lots Of Talent <br>(Even More Passion)</x></h1>
+    <h1>Meet Your <span>Dream Team</span><br>
+      <x>Lots Of Talent <br>(Even More Passion)</x>
+    </h1>
     <div class="cards">
       <!-- Card 2 -->
       <div class="card">
         <div class="cardtop">
-          <img src="assets/tania.png" alt="Tanya image"  width="300" height="300" />
+          <img src="assets/tania.png" alt="Tanya image" width="300" height="300" />
         </div>
         <div class="carddown">
           <h3><strong><span>Tanya Fernandez</span><br>Associate Vice President</strong></h3>
@@ -897,12 +908,192 @@ nav.scrolled img.logo {
                 <h5><strong><span>Associate Director</span><br>MSix & Partners</strong></h5>
               </div>
               <div class="slide">
-                <img src="assets/AnotherLogo.webp" alt="Another Company logo" loading="lazy" width="60" height="60" />
-                <h5><strong>Creative Minds</strong></h5>
+                <img src="assets/trappermedialogo.png" alt="Trapper media logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Trapper Media Group</strong></h5>
                 <h6>
-                  “Tanya’s innovative approach & dedication have transformed our advertising strategies.”
+                  I'm writing to extend my full professional & personal endorsement of Tanya Hyacinth Fernandez as an
+                  EXCEPTIONAL Advertising Consultant. I've had the privilege of knowing Tanya Hyacinth Fernandez for
+                  nearly a decade, which allows me to confirm both her professional prowess & outstanding personal
+                  traits.
+                  <br><br>
+                  Throughout the years, Tanya has collaborated with me & numerous colleagues, & none of us have
+                  encountered any negative aspects regarding her work.
+                  <br><br>
+                  She embodies a proactive work ethic, consistently devising logical advertising solutions to address
+                  our clients' business challenges & objectives.
+                  <br><br>
+                  Notably, she's reliable, adheres closely to
+                  deadlines, & maintains accessibility even during late hours, weekends, & public
+                  holidays, which is uncommon among most Advertising Consultants I've worked with.
+                  <br><br>
+                  Tanya & I have extensively discussed integrating Free Malaysia Today's advertising assets into the
+                  advertising campaigns of the clients mentioned below.
+                  <br><br>
+                  She has not only presented me with compelling reasons but also outlined how these assets can be
+                  customised to seamlessly align with my clients' advertising campaigns:
+                  <br><br>
+                  1. Al-Rajhi Bank<br>
+                  2. Pahang Pharmacy<br>
+                  3. Subaru<br>
+                  4. Bank Negara Malaysia<br>
+                  5. Measat Satellite<br>
+                  6. Ajinamoto<br>
+                  7. Berjaya Sompo<br>
+                  8. Texas Chicken<br>
+                  9. Spritzer<br>
+                  10. Tapestry ( Coach & Kate Spade)<br>
                 </h6>
-                <h5><strong><span>Associate Director</span><br>MSix & Partners</strong></h5>
+                <h5><strong><span>PART 1<br>Media Director</span><br>Trapper Media Group</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/trappermedialogo.png" alt="Trapper media logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Trapper Media Group</strong></h5>
+                <h6>
+                  After discussions & after both Tanya & I brainstorming together, I decided that I will
+                  (and already have) advise Al-Rajhi Bank, Bank Negara Malaysia & Measat Satellite to
+                  invest part of their advertising budgets with Free Malaysia Today.
+                  <br><br>
+                  I will be working closely with Tanya to try to make this happen hopefully by the end of year 2024.
+                  <br><br>
+                  What stands out most about Tanya are her exceptional personal traits. Her high emotional intelligence
+                  was evident when she refrained from bombarding me with work-related emails or texts while I was on
+                  holiday in Europe. Instead, she respected my time off & reached out only after my return to Malaysia,
+                  displaying thoughtfulness.
+                  <br><br>
+                  Moreover, her humility shines through in our interactions. Whenever she doesn't have an
+                  answer to my questions, she never fabricates responses. Instead, she admits not knowing & takes the
+                  initiative to research, providing accurate information afterward.
+                  <br><br>
+                  Tanya's honesty & integrity are remarkable. She doesn't push advertising offerings that
+                  aren't suitable for my clients, emphasizing a win-win scenario for both parties. This genuine approach
+                  has built trust, making me confident in proposing her advertising offerings to my clients.
+                  <br><br>
+                  Additionally, she values the gestures of appreciation. Despite our casual invitation for a night out
+                  playing darts, Tanya genuinely treasured the experience & expressed her gratitude, even posting about
+                  it on her Facebook Page.
+                  <br><br>
+                  Tanya's distinct qualities & dedication makes me certain that she will greatly contribute to the
+                  success of Free Malaysia Today's advertising department. I eagerly anticipate collaborating with Free
+                  Malaysia Today through Tanya in the upcoming year.
+                </h6>
+                <h5><strong><span>PART 2<br>Media Director</span><br>Trapper Media Group</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/airasia.png" alt="airasia logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Trapper Media Group</strong></h5>
+                <h6>
+                  Tanya Hyacinth Fernandez has been AirAsia's go-to-consultant since year 2011 & has been managing some
+                  of our Facebook campaigns as per below:
+                  <br><br>
+                  1.AirAsia Philippines Facebook brand page launch & fan acquisition campaign.
+                  <br><br>
+                  2.AirAsia Japan Facebook brand page launch & fan acquisition campaign
+                  <br><br>
+                  3.Numerous miscellaneous AirAsia tactical campaigns.
+                  <br><br>
+                  There’s no doubt that Tanya is is reliable, committed & dedicated in all campaigns she is assigned to.
+                  <br><br>
+                  She doesn't just "sell" but also gives the highest degree of recommendations to ensure we have the
+                  best results & the best ROI on the money we spent.
+                  <br><br>
+                  She has a bubbly & cheerful personality which also can be seen during our professional working
+                  relationship, which is something very rare when it comes to 24/7 client servicing, where there are
+                  unavoidable times we need to change our campaign at the very last minute.
+                  <br><br>
+                  Tanya ensures it is done smoothly for us.
+                  <br><br>
+                  Trust that Tanya would be a great fit to your company in terms of her work professionalism &
+                  personality, no matter what tasks are assigned to her.
+                </h6>
+                <h5><strong><span>Group Head Of Social Media</span><br>AirAsia</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/dcsuperheroes.png" alt="DC Super Heroes / JT Creative logo" loading="lazy" width="60" height="60" />
+                <h5><strong>JT Creative Private Limited / DC Superheroes</strong></h5>
+                <h6>
+                  I had the benefit of appointing Tanya Hyacinth as our Public Relations Consultant as we made a foray into the Malaysian market. 
+                  <br><br>
+                  Miss Tanya Hyacinth handled our account for this media-targeted event. The event was a challenge from the get-go: We were new to the Malaysian retail market through our first comic inspired fashion store, DC Super Heroes in 1Utama. In addition, our newly-appointed brand ambassador, an untested personality fresh from his win on the One in a Million "Idol" competition.
+                  <br><br>
+                  With these on hand, Tanya sat with us & worked through a range of strategies. Her collaborative style of working suits us well. She treats her clients with utmost respect, understanding that though we may not come with a working knowledge of the Malaysian media, she draws upon my strength as the head of Creative to help us optimise our media event.
+                  <br><br>
+                  No details were spared; the goodie bags, vouchers, media lists & media how-tos were thought through & executed well by Miss Tanya Hyacinth & her team.
+                  <br><br>
+                  As the PR go-to person, it's heartening to know that in the days before the event, she can be reached very late into the night. She can work as late as I do when it comes to crunch time. And that's an excellent attitude.
+                  <br><br>
+                  The event spoke for itself. Great media turn-out. The media mileage we got from hiring Miss Tanya & her team was BEYOND our expectations.
+                  <br><br>
+                  First media impressions were everything & we made a lasting one. Now we are 5 stores strong with a 6th flagship store just opened in Pavilion, & Faizal Tahir, that once untested personality, is an award-winning rockstar (and still our ambassador).
+                  <br><br>
+                  As our Public Relations Consultant, Tanya played a hand in that initial growth whilst we were still seedlings.
+                </h6>
+                <h5><strong><span>Head Of Creative</span><br>JT Creative Private Limited / DC Superheroes</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/mindshare.png" alt="Mindshare logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Mindshare</strong></h5>
+                <h6>
+                  I had the privilege of working closely with Tanya Hyacinth Fernandez on various campaigns since 2011 & the experiences have simply been a pleasure.
+                  <br><br>
+                  On a professional level, Tanya was creative yet client-oriented. She was able to comprehend the specific needs of her clients & come up with unique ideas/solutions that satisfied multiple requirements.
+                  <br><br>
+                  On a personal level, Tanya is just beyond comparison. She has an infectious enthusiasm for things she sets her mind on & executes it with passion, patience & perfection. Her helpful nature & positive energy is both inspiring & appreciated.
+                  <br><br>
+                  As a media planner, I would choose to work with Tanya whenever possible & strongly endorse her for all her future endeavours.
+                </h6>
+                <h5><strong><span>Hybrid Media Planner</span><br>Mindshare</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/curtin.png" alt="Curtin University logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Curtin University</strong></h5>
+                <h6>
+                  This is to confirm that Tanya Hyacinth is my student in the Curtin University Public Relations 200 programme.
+                  <br><br>
+                  As a student, Tanya exhibited all-round skills but more particularly in her writing ability & her presentation skills. She demonstrated skillful use of the English language to prepare news releases, brochures & speeches. Her work was often referred to in class as an example of skillful writing using the key tools of public relations & communications.
+                  <br><br>
+                  Additionally, she has the ability to put together a presentation & present it well in front of an audience, a requirement in our Public Relations syllabus.
+                  <br><br>
+                  I have no hesitation recommending Tanya for a job in any aspect of the communication business.
+                </h6>
+                <h5><strong><span>Senior Lecturer, Faculty of Mass Communication, Multimedia & Broadcasting</span></h5>
+              </div>
+            
+              <!-- Dentsu Media Testimonial -->
+              <div class="slide">
+                <img src="assets/dentsu.png" alt="Dentsu Media Malaysia logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Dentsu Media Malaysia</strong></h5>
+                <h6>
+                  Dear Rene E. Menezes (CEO Co-Founder + President Of Malaysian Digital Association) & Peter Yoong (Co-Founder & Executive Chairman, Better Digital Solutions).
+                  <br><br>
+                  I am Ronnie, Assistant Digital Director for Dentsu Media Malaysia. It gives me great pleasure to note that you have FINE STAFF like Tanya Fernandez, Stephanie Kennedy & Stan Chooi who have performed OUTSTANDINGLY on ALL of our campaigns. You should know that these individuals are an important asset to your business – truly giving your company an edge over the competition.
+                  <br><br>
+                  We have had excellent experiences with Tanya, Stephanie & Stan. On behalf of Dentsu Media, I extend our compliments on the outstanding performance of your team’s work and acknowledge their hard work.
+                  <br><br>
+                  I would like to make a special request for the same team & *NO ONE ELSE EXCEPT* Tanya Hyacinth, Stephanie Kennedy & Stan Chooi to handle all Dentsu Media’s media & advertising campaigns from today onwards.
+                  <br><br>
+                  Please consider & accommodate my humble special request.
+                  <br><br>
+                  Last but not least, I urge your team & yourself to continue with the excellent work attitude and together bring Dentsu Media Malaysia’s campaigns to greater heights.
+                  <br><br>
+                  Congratulations & keep up the good work!
+                </h6>
+                <h5><strong><span>Associate Digital Director</span><br>Dentsu Media Malaysia</strong></h5>
+              </div>
+            
+              <!-- Bosch Testimonial -->
+              <div class="slide">
+                <img src="assets/bosch.png" alt="Bosch ASEAN logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Bosch ASEAN</strong></h5>
+                <h6>
+                  I had the privilege of working with Tanya Hyacinth Fernandez on a couple of Bosch's social media campaigns, most notably the Bosch World Experience Campaign 2014.
+                  <br><br>
+                  Tanya lives & breathes brands as if they were her own. She has never failed to provide sound advice & solutions to optimise Bosch's opportunities on digital media. She took her time to explain her views & offered honest opinions on how to improve, rather than merely chasing sales to hit her KPIs.
+                  <br><br>
+                  She maintains impeccable professional ethics & is a pleasure to work with.
+                  <br><br>
+                  I highly recommend Tanya for any corporation seeking a capable & competent digital media consultant.
+                </h6>
+                <h5><strong><span>Corporate Communications Brand Management & Sustainability South East Asia</span><br>Bosch ASEAN</strong></h5>
               </div>
             </div>
             <div class="review-nav">
@@ -912,6 +1103,8 @@ nav.scrolled img.logo {
           </div>
         </div>
       </div>
+    </div>
+    <div class="cards">
       <!-- Card 3 -->
       <div class="card">
         <div class="cardtop">
@@ -935,12 +1128,66 @@ nav.scrolled img.logo {
                 <h5><strong><span>Associate Director, Retail</span><br>Singapore Tourism Board</strong></h5>
               </div>
               <div class="slide">
-                <img src="assets/AnotherLogo.webp" alt="Another Company logo" loading="lazy" width="60" height="60" />
-                <h5><strong>Global Ventures</strong></h5>
+                <img src="assets/hondalogo.png" alt="Honda logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Honda Malaysia Sdn. Bhd.</strong></h5>
                 <h6>
-                  “His strategic vision & execution made a significant impact on our campaigns.”
+                  Mazin & i have worked together on many media buys. He managed to convince us to go against our normal
+                  choice of media many times & believe it or not IT HAS WORKED FOR OUR BENEFIT.
+                  <br><br>
+                  In my previous company we, through Mazin, sponsored a football magazine, a motorcycle brand sponsoring
+                  a football magazine was unheard of then.
+                  <br><br>
+                  Most recently we even explored using a high-end magazine platform & the results were ABOVE
+                  expectations.
+                  <br><br>
+                  Mazin is the one you go to when you want to explore different methods when the usual way does not
+                  help.
                 </h6>
-                <h5><strong><span>Marketing Strategist</span><br>Singapore Tourism Board</strong></h5>
+                <h5><strong><span>Division Head of Marketing</span><br>Honda Malaysia Sdn. Bhd.</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/lexuslogo.png" alt="Lexus Malaysia logo" loading="lazy" width="60" height="60" />
+                <h5><strong>Lexus Malaysia</strong></h5>
+                <h6>
+                  “I have been dealing with Mazin Siraj for my media & marketing needs. Throughout that time, we had
+                  many wonderful campaigns for our models such as the Lexus NX, UX & LC.
+                  <br /><br />
+                  It was not always easy as we had a very strict budget to adhere to but as usual, Mazin never failed to
+                  deliver.
+                  <br /><br />
+                  He would find a solution to whatever limitations we may have, whether it be time, budget or even the
+                  dreaded lockdown.
+                  <br /><br />
+                  There were times when I needed him to deliver a series of articles within 2 days & even though he was
+                  travelling, it was done.
+                  <br /><br />
+                  If Mazin is handling YOUR media & marketing needs, then you have nothing to worry about.”
+                </h6>
+                <h5><strong><span>Assistant Marketing Manager</span><br>Lexus Malaysia</strong></h5>
+              </div>
+              <div class="slide">
+                <img src="assets/exxonmobil.png" alt="ExxonMobil Malaysia logo" loading="lazy" width="60" height="60" />
+                <h5><strong>ExxonMobil Malaysia</strong></h5>
+                <h6>
+                  “Mazin was responsible for two of ExxonMobil Malaysia’s key projects during our time working together
+                  when he was with Astro Digital Publishing.
+                  <br /><br />
+                  The first project was the sponsorship of the Oh! My English program in support of ExxonMobil
+                  Malaysia’s Energy Literacy campaign, as well as enhancing our CSR efforts in promoting English
+                  language proficiency among the younger generation. The sponsorship covered a wide scope, ranging from
+                  content & script development, brand placement during on-site shooting, to two outreach programs that
+                  created sponsorship awareness among our employees and students in Terengganu. IT WAS A HUGE SUCCESS!
+                  <br /><br />
+                  Following this, our team engaged Mazin & Astro Digital Publishing once again to support the production
+                  of our 50th anniversary video for upstream operations in Malaysia. Mazin handled the end-to-end
+                  development of the video from concept to final deliverable.
+                  <br /><br />
+                  I find Mazin to be a hard-working professional; always willing to listen to different client ideas and
+                  committed to delivering high quality work. He also has a good sense of humor and a pleasant
+                  personality that makes him easy to work with.”
+                </h6>
+                <h5><strong><span>Senior Advisor, Public & Government Affairs</span><br>ExxonMobil Exploration &
+                    Production Malaysia Inc.</strong></h5>
               </div>
             </div>
             <div class="review-nav">
@@ -950,10 +1197,12 @@ nav.scrolled img.logo {
           </div>
         </div>
       </div>
+    </div>
+    <div class="cards">
       <!-- Card 1 -->
       <div class="card">
         <div class="cardtop">
-          <img src="assets/ronn.png" alt="Ron image"  width="300" height="300" />
+          <img src="assets/ronn.png" alt="Ron image" width="300" height="300" />
         </div>
         <div class="carddown">
           <h3><strong><span>Ron Joseph</span><br>Associate Director, Data &amp; Technology</strong></h3>
@@ -993,140 +1242,148 @@ nav.scrolled img.logo {
           </div>
         </div>
       </div>
-
+</div>
     </div>
   </section>
 
-<!-- Contact Us Section -->
-<!-- Contact Us Section -->
-<section class="contactus">
-  <div class="contactleft">
-    <!-- Client image -->
-    <img src="assets/officess.png" alt="Our Clients Image"  width="400" height="auto" />
-    <img src="assets/client.png" alt="Our Clients Image"  width="400" height="auto" />
-    
-  </div>
-  <div class="contactright" id="contact-form">
-    <div class="form-container">
-      <h2>
-        BOOK A <v>HAPPY</v> MEETING WITH US!<br />
-        <!--The Coffee (or tea, beers, or wine, or whiskey, or gin & tonic) is on us!-->
-        <img src="assets/pina.png" alt="pina image">
-      </h2>
-      <form action="send_mail.php" method="POST">
-        <label for="fullName">Your Full Name</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Dominic Benizi Pereira" required />
+  <!-- Contact Us Section -->
+  <!-- Contact Us Section -->
+  <section class="contactus">
+    <div class="contactleft">
+      <!-- Client image -->
+      <img src="assets/officess.png" alt="Our Clients Image" width="400" height="auto" />
+      <img src="assets/client.png" alt="Our Clients Image" width="400" height="auto" />
 
-        <label for="phone">Your Mobile Phone Number</label>
-        <!-- Phone input container with flag inside -->
-        <div class="phone-input-container">
-          <img id="custom-flag" src="" alt="Country Flag" />
-          <input type="tel" id="phone" name="phone" placeholder="+60133416060" required />
-        </div>
+    </div>
+    <div class="contactright" id="contact-form">
+      <div class="form-container">
+        <h2>
+          BOOK A <v>HAPPY</v> MEETING WITH US!<br />
+          <!--The Coffee (or tea, beers, or wine, or whiskey, or gin & tonic) is on us!-->
+          <img src="assets/pina.png" alt="pina image">
+        </h2>
+        <form action="send_mail.php" method="POST">
+          <label for="fullName">Your Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Dominic Benizi Pereira" required />
 
-        <label for="linkedin">Your LinkedIn URL</label>
-        <input type="url" id="linkedin" name="linkedin" placeholder="http://linkedin.com/in/tanyahyacinthfernandez" required />
+          <label for="phone">Your Mobile Phone Number</label>
+          <!-- Phone input container with flag inside -->
+          <div class="phone-input-container">
+            <img id="custom-flag" src="" alt="Country Flag" />
+            <input type="tel" id="phone" name="phone" placeholder="+60133416060" required />
+          </div>
 
-        <label for="services">Services You Require</label>
-        <select id="services" name="services" required>
-          <option value="" disabled selected>Select the service you require</option>
-          <option value="ppc">Pay Per Click Advertising</option>
-          <option value="facebook-ads">Facebook Advertising</option>
-          <option value="google-display">Google Display Network Advertising</option>
-          <option value="google-search">Google Search Marketing</option>
-          <option value="youtube-ads">YouTube Advertising</option>
-          <option value="mobile-ads">Mobile Advertising</option>
-          <option value="instagram-ads">Instagram Advertising</option>
-          <option value="web-dev">Website Design &amp; Development</option>
-          <option value="linkedin-ads">LinkedIn Advertising</option>
-          <option value="tiktok-ads">TikTok Advertising</option>
-          <option value="social-media">Social Media Management</option>
-          <option value="creative-design">Creative Design</option>
-          <option value="copywriting">Copywriting</option>
-        </select>
+          <label for="linkedin">Your LinkedIn URL</label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="http://linkedin.com/in/tanyahyacinthfernandez"
+            required />
 
-        <label for="email">Your Email Address</label>
-        <input type="email" id="email" name="email" placeholder="dominic@ibm.com" required />
+          <label for="services">Services You Require</label>
+          <select id="services" name="services" required>
+            <option value="" disabled selected>Select the service you require</option>
+            <option value="ppc">Pay Per Click Advertising</option>
+            <option value="facebook-ads">Facebook Advertising</option>
+            <option value="google-display">Google Display Network Advertising</option>
+            <option value="google-search">Google Search Marketing</option>
+            <option value="youtube-ads">YouTube Advertising</option>
+            <option value="mobile-ads">Mobile Advertising</option>
+            <option value="instagram-ads">Instagram Advertising</option>
+            <option value="web-dev">Website Design &amp; Development</option>
+            <option value="linkedin-ads">LinkedIn Advertising</option>
+            <option value="tiktok-ads">TikTok Advertising</option>
+            <option value="social-media">Social Media Management</option>
+            <option value="creative-design">Creative Design</option>
+            <option value="copywriting">Copywriting</option>
+          </select>
 
-        <label for="budget">Your Estimated Budget Investment</label>
-        <select id="budget" name="budget" required>
-          <option value="" disabled selected>Select Estimated Budget</option>
-          <option value="30k-50k">USD30,000 - USD50,000</option>
-          <option value="51k-100k">USD51,000 - USD100,000</option>
-          <option value="100k-200k">USD100,001 - USD200,000</option>
-          <option value="200k+">USD200,001 & above</option>
-        </select>
+          <label for="email">Your Email Address</label>
+          <input type="email" id="email" name="email" placeholder="dominic@ibm.com" required />
 
-        <label for="message">Your Message To Us</label>
-        <textarea id="message" name="message" placeholder="Message us & say hello.
+          <label for="budget">Your Estimated Budget Investment</label>
+          <select id="budget" name="budget" required>
+            <option value="" disabled selected>Select Estimated Budget</option>
+            <option value="30k-50k">USD30,000 - USD50,000</option>
+            <option value="51k-100k">USD51,000 - USD100,000</option>
+            <option value="100k-200k">USD100,001 - USD200,000</option>
+            <option value="200k+">USD200,001 & above</option>
+          </select>
+
+          <label for="message">Your Message To Us</label>
+          <textarea id="message" name="message" placeholder="Message us & say hello.
 We would love Love LOVE to hear from you😍" required></textarea>
 
-        <label class="container">
-          Email me DigitalWorks Advertising & More’s Company Profile.
-          <input type="checkbox" name="company_profile" checked/>
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">
-          Send me monthly advertising, marketing, website/mobile app design & development tips.
-          <input type="checkbox" name="tips" checked/>
-          <span class="checkmark"></span>
-        </label>
+          <label class="container">
+            Email me DigitalWorks Advertising & More’s Company Profile.
+            <input type="checkbox" name="company_profile" checked />
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Send me monthly advertising, marketing, website/mobile app design & development tips.
+            <input type="checkbox" name="tips" checked />
+            <span class="checkmark"></span>
+          </label>
 
-        <button type="submit" class="submit-btn"></button>
-      </form>
+          <button type="submit" class="submit-btn"></button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <!-- Load intl-tel-input JS asynchronously -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" defer></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      var input = document.querySelector("#phone");
-      var iti = window.intlTelInput(input, {
-        initialCountry: "my",
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    <!-- Load intl-tel-input JS asynchronously -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        var input = document.querySelector("#phone");
+        var iti = window.intlTelInput(input, {
+          initialCountry: "my",
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+
+        // Function to update the custom flag image using Flagcdn for high-res flags.
+        function updateCustomFlag() {
+          var countryData = iti.getSelectedCountryData();
+          var iso2 = countryData.iso2; // e.g., "us", "my", etc.
+          var flagImage = document.getElementById("custom-flag");
+          // Use Flagcdn's high-res PNG images (w320 for 320px width)
+          flagImage.src = "https://flagcdn.com/w320/" + iso2 + ".png";
+        }
+
+        // Update flag on initialization and when country changes.
+        updateCustomFlag();
+        input.addEventListener("countrychange", updateCustomFlag);
       });
+    </script>
 
-      // Function to update the custom flag image using Flagcdn for high-res flags.
-      function updateCustomFlag() {
-        var countryData = iti.getSelectedCountryData();
-        var iso2 = countryData.iso2; // e.g., "us", "my", etc.
-        var flagImage = document.getElementById("custom-flag");
-        // Use Flagcdn's high-res PNG images (w320 for 320px width)
-        flagImage.src = "https://flagcdn.com/w320/" + iso2 + ".png";
+    <style>
+      /* Container for phone input with flag inside */
+      .phone-input-container {
+        position: relative;
+        display: block;
+        /* Changed from inline-block to block */
+        width: 100%;
       }
 
-      // Update flag on initialization and when country changes.
-      updateCustomFlag();
-      input.addEventListener("countrychange", updateCustomFlag);
-    });
-  </script>
+      .phone-input-container input[type="tel"] {
+        width: 320px;
+        padding-left: 75px;
+        /* Adjust to make space for the flag image */
+        box-sizing: border-box;
+      }
 
-  <style>
-    /* Container for phone input with flag inside */
-    .phone-input-container {
-      position: relative;
-      display: block;  /* Changed from inline-block to block */
-      width: 100%;
-    }
-    .phone-input-container input[type="tel"] {
-      width: 320px;
-      padding-left: 75px; /* Adjust to make space for the flag image */
-      box-sizing: border-box;
-    }
-    /* Style for the flag image placed inside the input */
-    #custom-flag {
-      position: absolute;
-      left: 2px;;    /* Adjust as needed */
-      top: 51%;
-      transform: translateY(-50%);
-      width: 65px;   /* Adjust size as needed */
-      height: auto;
-      pointer-events: none;
-      z-index: 2;
-    }
-  </style>
-</section>
+      /* Style for the flag image placed inside the input */
+      #custom-flag {
+        position: absolute;
+        left: 2px;
+        ;
+        /* Adjust as needed */
+        top: 51%;
+        transform: translateY(-50%);
+        width: 65px;
+        /* Adjust size as needed */
+        height: auto;
+        pointer-events: none;
+        z-index: 2;
+      }
+    </style>
+  </section>
 
   <!--<section class="quote">
     <img src="assets/quote.webp" alt="QUOTE Image" loading="lazy" width="600" height="400" />
@@ -1134,22 +1391,22 @@ We would love Love LOVE to hear from you😍" required></textarea>
 
   <section class="why-choose-us">
     <h2>Why Choose <v>Us</v>?</h2>
-    
+
     <!-- Word Scroller Container -->
     <div class="word-scroller" id="wordScroller">
       <!-- We’ll dynamically fill these with JavaScript below -->
     </div>
   </section>
-  
+
   <!-- Example Footer Content -->
   <footer class="footer-section">
     <div class="footer-content">
       <div class="logo-and-motto">
         <!-- Example: your company logo -->
-         <div class="footer-logo"><video src="assets/logoo.mp4" autoplay loop muted playsinline></video> </div>
+        <div class="footer-logo"><video src="assets/logoo.mp4" autoplay loop muted playsinline></video> </div>
         <p class="motto"><s>SUCCESS</s> is when we make <br>our clients <s>HAPPY</s><span>💛</span></p>
       </div>
-      
+
       <div class="latest-posts">
         <h3>Latest Articles For You</h3>
         <ul>
@@ -1176,16 +1433,16 @@ We would love Love LOVE to hear from you😍" required></textarea>
           </li>
         </ul>
       </div>
-      
+
       <div class="latest-quizzes">
         <h3>Latest Quizzes For You</h3>
         <ul>
           <li>
             <img src="assets/quiz3.png" alt="Quiz image" />
             <div class="quiz-content">
-              <p>DWAAM’s Facebook advertising quiz. 
+              <p>DWAAM’s Facebook advertising quiz.
                 Join join join, now now now!</p>
-                <small>Tuesday, 25th March 2025</small>
+              <small>Tuesday, 25th March 2025</small>
             </div>
           </li>
           <li>
@@ -1193,7 +1450,7 @@ We would love Love LOVE to hear from you😍" required></textarea>
             <div class="quiz-content">
               <p>DWAAM’s traditional advertising quiz.
                 Join join join, now now now! </p>
-                <small>Tuesday, 25th March 2025</small>
+              <small>Tuesday, 25th March 2025</small>
             </div>
           </li>
           <li>
@@ -1201,7 +1458,7 @@ We would love Love LOVE to hear from you😍" required></textarea>
             <div class="quiz-content">
               <p>DWAAM’s website design quiz.
                 Join join join, now now now! </p>
-                <small>Tuesday, 25th March 2025</small>
+              <small>Tuesday, 25th March 2025</small>
             </div>
           </li>
         </ul>
@@ -1218,18 +1475,18 @@ We would love Love LOVE to hear from you😍" required></textarea>
           <a href="https://wa.me/60108008989?text=hello"><s>Click to WhatsApp text message us.</s></a>
         </p>
         <h3>Socials</h3>
-            <p>
-              <img src="assets/fbfooticon.png" alt="Facebook Icon" class="icon" />
-              <a href="https://facebook.com" target="_blank">Facebook
-            </a>
-          </p>
+        <p>
+          <img src="assets/fbfooticon.png" alt="Facebook Icon" class="icon" />
+          <a href="https://facebook.com" target="_blank">Facebook
+          </a>
+        </p>
 
         <p>
           <img src="assets/footlinkedin.png" alt="LinkedIn Icon" class="icon" />
-            <a href="https://linkedin.com" target="_blank">LinkedIn
-            </a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn
+          </a>
           </li>
-        </ul>
+          </ul>
       </div>
     </div>
   </footer>

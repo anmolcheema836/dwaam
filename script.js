@@ -84,9 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
   reviews.forEach((review) => {
     const slides = review.querySelectorAll(".slide");
     let currentSlide = 0;
-    if (slides.length > 0 && !slides[0].classList.contains("active")) {
+    
+    // Remove any existing "active" classes from all slides
+    slides.forEach((slide) => slide.classList.remove("active"));
+    // Set the first slide as active
+    if (slides.length > 0) {
       slides[0].classList.add("active");
     }
+
     const leftArrow = review.querySelector(".arrow.left");
     const rightArrow = review.querySelector(".arrow.right");
 
@@ -127,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rightArrow.addEventListener("touchstart", nextSlide);
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   let coffeeButton = document.querySelector(".whatsapp-float");

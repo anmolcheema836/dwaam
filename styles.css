@@ -1399,6 +1399,7 @@ padding-top: 10px;
     flex-direction: column;
     align-items: center;
     margin-top: 0;
+    height: auto;
   }
   .Ourteam .card {
     width: 100%;
@@ -1882,20 +1883,6 @@ color: white;
   bottom: 0;
 }
 /* Make sure the span is treated as an inline-block element for animation */
-.motto span {
-  display: inline-block;
-  animation: jump 1s infinite ease-in-out;
-}
-
-/* Define the jumping animation */
-@keyframes jump {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
 
 .why-choose-us h2 span{
   color: #7DF9FF;
