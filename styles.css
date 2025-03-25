@@ -1416,8 +1416,11 @@ padding-top: 10px;
   }
   .Ourteam .review {
     margin: 0 35px;
+    min-height: 650px;
     height: auto;
     padding: 15px;
+    align-items: center;
+    justify-content: center;
   }
   .Ourteam .review .slide {
     gap: 1px;
