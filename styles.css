@@ -452,6 +452,10 @@ padding-top: 10px;
     align-items: center;
     justify-content: center;
 }
+.aboutuspart2 img{
+  height: auto;
+  width: 90%;
+}
 
 /* Text styling */
 .aboutus h1 {
@@ -485,6 +489,10 @@ padding-top: 10px;
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+    .aboutuspart2 img{
+      height: auto;
+      width: 90vw;
     }
     
 .aboutus h3 {
@@ -1354,6 +1362,11 @@ padding-top: 10px;
   margin: 1px 0;
   margin-top: -5px;
 }
+.Ourteam .allcards{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .Ourteam .review .slide h6 {
   margin:0;
   overflow-y: auto;
@@ -1386,6 +1399,9 @@ padding-top: 10px;
     padding-top: 1vh;
     padding-bottom: 1vh;
     margin-bottom: 0;
+  }
+  .Ourteam .allcards{
+    flex-direction: column;
   }
   .Ourteam h1 {
     font-size: x-large;
@@ -1884,6 +1900,11 @@ color: white;
   width: 100%;
   height: auto;
   bottom: 0;
+}
+.footer-logo video {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
 }
 /* Make sure the span is treated as an inline-block element for animation */
 
