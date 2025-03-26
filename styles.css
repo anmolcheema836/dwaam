@@ -1902,7 +1902,9 @@ color: white;
   font-weight: 600;
   font-size: medium;
 }
-
+.contact-us emoji{
+  font-size: 20px;
+}
 .logo-and-motto span{
   font-size: 30px;
 }
