@@ -1742,7 +1742,6 @@ input[type="tel"] {
   color: white;
   text-align: center;
   padding: 5px;
-  position: relative;
   border: none;
   border-bottom: 2px solid #003B6E;
 }
@@ -1752,31 +1751,27 @@ input[type="tel"] {
   margin: 0;
 }
 
-/* 3D Perspective */
 .word-scroller {
-  perspective: 1200px; /* Increase perspective depth for a more dramatic 3D effect */
   position: relative;
   height: 60px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
 }
 
-/* Common styles for each word */
+/* All words are absolutely positioned.
+   We’ll animate the left property and opacity. */
 .word-scroller span {
   position: absolute;
-  transition: transform 1s, opacity 1s;
-  font-size: 1.5rem;
-  opacity: 0.2;
+  font-size: 1.6rem;
   color: white;
-  will-change: transform, opacity;
+  font-weight: 600;
 }
 
-/* Optional: Adding a subtle text shadow to enhance the pop effect on the center word */
+/* Full opacity for center word; side words are semi-transparent */
 .word-scroller span.center {
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+.word-scroller span.side {
+  opacity: 0.3;
 }
 
 
