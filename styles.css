@@ -35,7 +35,6 @@ nav {
 
 nav.scrolled {
   height: 55px;
-  padding-left: 38vw;
 }
 
 /* Logo */
@@ -206,6 +205,9 @@ ul, ol {
 }
 /* Show toggle only on mobile devices */
 @media screen and (max-width: 960px) {
+  nav.scrolled {
+    padding-left: 38vw;
+  }
   nav{
     height: 80px;
     padding-left: 32vw;
@@ -1264,6 +1266,8 @@ padding-top: 10px;
   text-align: center;
   font-size: xx-large;
   font-weight: 800;
+  padding: 0;
+  margin: 0;
 }
 .Ourteam h3 {
   text-align: center;
@@ -1362,6 +1366,9 @@ padding-top: 10px;
   margin: 1px 0;
   margin-top: -5px;
 }
+.Ourteam x{
+  font-weight: 600;
+}
 .Ourteam .allcards{
   display: flex;
   align-items: center;
@@ -1392,9 +1399,24 @@ padding-top: 10px;
   width: 40px;
   height: 40px;
 }
+.Ourteam h2{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: medium;
+}
 
 /* MOBILE RESPONSIVE STYLES */
 @media (max-width: 768px) {
+  .Ourteam h1{
+    line-height: 1.2;
+  }
+  .Ourteam h1 x{
+    line-height: .6;
+  }
   .Ourteam {
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -1402,9 +1424,6 @@ padding-top: 10px;
   }
   .Ourteam .allcards{
     flex-direction: column;
-  }
-  .Ourteam h1 {
-    font-size: x-large;
   }
   .Ourteam h3 {
     font-size: medium;
@@ -1454,9 +1473,6 @@ padding-top: 10px;
 }
 
 @media (max-width: 480px) {
-  .Ourteam h1 {
-    font-size: large;
-  }
   .Ourteam h3 span{
     font-size: 4vw;
   }
@@ -1879,7 +1895,7 @@ color: white;
   color: white;
 }
 .Ourteam h1 x{
-  font-weight: 500;
+  font-weight: 600;
   font-size: medium;
 }
 
