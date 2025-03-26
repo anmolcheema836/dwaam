@@ -1890,6 +1890,10 @@ color: white;
 .contact-us s{
   text-decoration: none;
   color: white;
+  font-size: small;
+}
+.contact-us p{
+  line-height: 1;
 }
 .contact-us h3{
   color: white;
@@ -1957,7 +1961,7 @@ border-radius: 30px;
   padding-top: 0;
 }
 .footer-section h3{
-  margin-top: -13px;
+  margin-top: -4px;
   margin-bottom: -10px;
   padding-top: 0;
 }
