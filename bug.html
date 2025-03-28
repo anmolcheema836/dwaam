@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Competition Contest</title>
+  <!-- Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #1976d2; /* Deep blue */
+      --secondary-bg: #2196f3; /* Lighter blue */
+      --card-bg: rgba(255, 255, 255, 0.95); /* Almost white for clear contrast */
+      --input-bg: rgba(0, 0, 0, 0.05); /* Very light gray for input fields */
+      --button-gradient-start: #0d47a1; /* Dark blue */
+      --button-gradient-end: #1976d2;
+      --text-color: #000; /* Black text inside container */
+      --accent-color: #0d47a1;
+      --button-bg: #f1f1f1;
+      --button-hover-bg: #e0e0e0;
+    }
+    /* Reset and Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    /* Animated Gradient Overlay */
+    @keyframes gradientAnimation {
+      0% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(3deg); }
+      100% { filter: hue-rotate(0deg); }
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      z-index: -1;
+      animation: gradientAnimation 15s infinite linear;
+    }
+    /* Container Card */
+    .container {
+      background: var(--card-bg);
+      color: var(--text-color);
+      backdrop-filter: blur(5px);
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      padding: 50px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+      margin: 20px auto;
+      animation: fadeIn 1s ease-in-out;
+      border: 1px solid #ddd;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--accent-color);
+    }
+    /* Rules Section */
+    .rules {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    .rules img {
+      display: block;
+      max-width: 300px;
+      margin: 0 auto 20px;
+    }
+    .rules ul {
+      list-style: disc inside;
+      margin-left: 20px;
+      color: #333;
+    }
+    .rules li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: #333;
+    }
+    input, textarea {
+      padding: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: var(--input-bg);
+      color: var(--text-color);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #666;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+    /* Buttons */
+    .submit-btn, .home-btn {
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    }
+    .submit-btn {
+      background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+      color: #fff;
+    }
+    .submit-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .home-btn {
+      background: var(--button-bg);
+      margin-top: 30px;
+    }
+    .home-btn:hover {
+      background: var(--button-hover-bg);
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    /* Mobile-specific adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 35px;
+        margin: 10px auto;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      .rules {
+        padding: 25px;
+      }
+      .rules img {
+        max-width: 250px;
+        margin-bottom: 15px;
+      }
+      label, input, textarea {
+        font-size: 0.95rem;
+      }
+      .submit-btn, .home-btn {
+        font-size: 1rem;
+        padding: 14px;
+      }
+    }
+    @media (max-width: 400px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 25px;
+        margin: 5px auto;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      .rules ul {
+        margin-left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bug Finding Contest</h1>
+    <div class="rules">
+      <img src="assets/buggg.png" alt="bug">
+      <h2>Contest Rules</h2>
+      <ul>
+        <li>Identify grammatical mistakes or layout inconsistencies on our website.</li>
+        <li>Provide clear, concise feedback on the issue found.</li>
+        <li>Each bug must be reported only once, even if multiple entries are allowed.</li>
+        <li>The panel's decision is final and binding.</li>
+        <li>Participants must provide valid contact details.</li>
+        <li>Layout or content mistakes that affect website performance are eligible.</li>
+      </ul>
+    </div>
+    <form id="contestForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required />
+      </div>
+      <div class="form-group">
+        <label for="linkedin">LinkedIn Profile URL</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/yourprofile" required />
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="10 digit number" pattern="[0-9]{10}" required />
+      </div>
+      <div class="form-group">
+        <label for="bug">Bug Found</label>
+        <textarea id="bug" name="bug" rows="4" placeholder="Describe the bug in detail" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit Bug</button>
+    </form>
+    <button class="home-btn" onclick="location.href='index.html'">Return to Homepage</button>
+  </div>
+  <script>
+    document.getElementById('contestForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const linkedin = document.getElementById('linkedin').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const bug = document.getElementById('bug').value.trim();
+      if (!name || !linkedin || !mobile || !bug) {
+        alert('Please fill in all the fields.');
+        return;
+      }
+      alert(`Thank you for your submission, ${name}!`);
+      this.reset();
+    });
+  </script>
+</body>
+</html>

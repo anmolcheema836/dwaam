@@ -440,6 +440,76 @@
 </head>
 
 <body>
+  <!-- Popup Modal HTML (place this just before the closing </body> tag) -->
+<div id="popupModal" class="popup-modal">
+  <span class="popup-close" id="popupClose">&times;</span>
+  <img src="assets/bugg.png" alt="Popup Image" id="popupImage">
+</div>
+
+<style>
+  /* Popup Modal Styles */
+  .popup-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+  }
+  .popup-modal.active {
+    display: flex;
+  }
+  .popup-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+  .popup-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+  }
+</style>
+
+<script>
+  // Wait until the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    const popupModal = document.getElementById("popupModal");
+    const popupClose = document.getElementById("popupClose");
+    const popupImage = document.getElementById("popupImage");
+
+    // Show the modal on page load
+    popupModal.classList.add("active");
+
+    // If the close button is clicked, hide the modal
+    popupClose.addEventListener("click", function() {
+      popupModal.classList.remove("active");
+    });
+
+    // When the image is clicked, redirect to bug.html
+    popupImage.addEventListener("click", function() {
+      window.location.href = "bug.html";
+    });
+
+    // Optional: If the user clicks outside the image, close the modal
+    popupModal.addEventListener("click", function(e) {
+      if (e.target === popupModal) {
+        popupModal.classList.remove("active");
+      }
+    });
+  });
+</script>
+
   <a href="#contact-form" class="whatsapp-float" title="Chat on WhatsApp">
     <img src="assets/ctabutton.png" alt="WhatsApp">
   </a>
