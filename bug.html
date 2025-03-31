@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bug Competition Contest</title>
+  <title>Mistake Competition Contest</title>
   <!-- Import Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -134,6 +134,7 @@
       background: var(--input-bg);
       color: var(--text-color);
       transition: background 0.3s, box-shadow 0.3s;
+      width: 100%;
     }
     input::placeholder, textarea::placeholder {
       color: #666;
@@ -143,8 +144,24 @@
       background: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     }
+    /* Mistake Upload Section */
+    .mistake-section {
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      background: #f9f9f9;
+    }
+    .mistake-section h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+    .mistake-section input[type="file"] {
+      margin-top: 10px;
+      width: 100%;
+    }
     /* Buttons */
-    .submit-btn, .home-btn {
+    .submit-btn, .home-btn, .add-btn {
       padding: 16px;
       border: none;
       border-radius: 8px;
@@ -161,6 +178,14 @@
     .submit-btn:hover {
       transform: scale(1.03);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .add-btn {
+      background: var(--button-bg);
+    }
+    .add-btn:hover {
+      background: var(--button-hover-bg);
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     }
     .home-btn {
       background: var(--button-bg);
@@ -194,7 +219,7 @@
       label, input, textarea {
         font-size: 0.95rem;
       }
-      .submit-btn, .home-btn {
+      .submit-btn, .home-btn, .add-btn {
         font-size: 1rem;
         padding: 14px;
       }
@@ -221,20 +246,21 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bug Finding Contest</h1>
+    <h1>Mistake Finding Contest</h1>
     <div class="rules">
-      <img src="assets/bugs.png" alt="bug">
+      <img src="assets/Mistakes.png" alt="Mistake">
       <h2>Contest Rules</h2>
       <ul>
         <li>Identify grammatical mistakes or layout inconsistencies on our website.</li>
         <li>Provide clear, concise feedback on the issue found.</li>
-        <li>Each bug must be reported only once, even if multiple entries are allowed.</li>
+        <li>Each mistake must be reported only once, even if multiple entries are allowed.</li>
         <li>The panel's decision is final and binding.</li>
         <li>Participants must provide valid contact details.</li>
         <li>Layout or content mistakes that affect website performance are eligible.</li>
       </ul>
     </div>
     <form id="contestForm">
+      <!-- Participant Details -->
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your full name" required />
@@ -247,27 +273,61 @@
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobile" placeholder="10 digit number" pattern="[0-9]{10}" required />
       </div>
-      <div class="form-group">
-        <label for="bug">Bug Found</label>
-        <textarea id="bug" name="bug" rows="4" placeholder="Describe the bug in detail" required></textarea>
+      
+      <!-- Mistakes Container -->
+      <div id="mistakesContainer">
+        <div class="mistake-section">
+          <h3>Mistake 1</h3>
+          <label for="mistake1-desc">Description</label>
+          <textarea id="mistake1-desc" name="mistake1-desc" rows="3" placeholder="Describe mistake 1" required></textarea>
+          <label for="mistake1-screenshots">Upload screenshot(s)</label>
+          <input type="file" id="mistake1-screenshots" name="mistake1-screenshots[]" accept="image/*" multiple required>
+        </div>
       </div>
-      <button type="submit" class="submit-btn">Submit Bug</button>
+      
+      <!-- Button to add more mistake boxes -->
+      <button type="button" id="addMistakeBtn" class="add-btn">Add Another Mistake</button>
+      
+      <button type="submit" class="submit-btn">Submit Mistakes</button>
     </form>
     <button class="home-btn" onclick="location.href='index.html'">Return to Homepage</button>
   </div>
   <script>
+    let mistakeCount = 1;
+    const mistakesContainer = document.getElementById('mistakesContainer');
+    const addMistakeBtn = document.getElementById('addMistakeBtn');
+
+    addMistakeBtn.addEventListener('click', () => {
+      mistakeCount++;
+      // Create a new mistake section
+      const mistakeSection = document.createElement('div');
+      mistakeSection.className = 'mistake-section';
+      mistakeSection.innerHTML = `
+        <h3>Mistake ${mistakeCount}</h3>
+        <label for="mistake${mistakeCount}-desc">Description</label>
+        <textarea id="mistake${mistakeCount}-desc" name="mistake${mistakeCount}-desc" rows="3" placeholder="Describe mistake ${mistakeCount}" required></textarea>
+        <label for="mistake${mistakeCount}-screenshots">Upload screenshot(s)</label>
+        <input type="file" id="mistake${mistakeCount}-screenshots" name="mistake${mistakeCount}-screenshots[]" accept="image/*" multiple required>
+      `;
+      mistakesContainer.appendChild(mistakeSection);
+    });
+
     document.getElementById('contestForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const linkedin = document.getElementById('linkedin').value.trim();
-      const mobile = document.getElementById('mobile').value.trim();
-      const bug = document.getElementById('bug').value.trim();
-      if (!name || !linkedin || !mobile || !bug) {
-        alert('Please fill in all the fields.');
-        return;
-      }
-      alert(`Thank you for your submission, ${name}!`);
+      // Here, you can process the form data and file uploads as needed.
+      alert('Thank you for your submission!');
       this.reset();
+      // Optionally, you can clear the mistakes container and reset mistakeCount if desired.
+      mistakesContainer.innerHTML = `
+        <div class="mistake-section">
+          <h3>Mistake 1</h3>
+          <label for="mistake1-desc">Description</label>
+          <textarea id="mistake1-desc" name="mistake1-desc" rows="3" placeholder="Describe mistake 1" required></textarea>
+          <label for="mistake1-screenshots">Upload screenshot(s)</label>
+          <input type="file" id="mistake1-screenshots" name="mistake1-screenshots[]" accept="image/*" multiple required>
+        </div>
+      `;
+      mistakeCount = 1;
     });
   </script>
 </body>
