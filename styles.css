@@ -36,6 +36,13 @@ nav {
 nav.scrolled {
   height: 55px;
 }
+nav.scrolled #navpart2 {
+  top: 35px;
+}
+
+nav.scrolled .toggle {
+  transform: scale(0.60);
+}
 
 /* Logo */
 nav img.logo {
@@ -1965,7 +1972,7 @@ border-radius: 30px;
 }
 .footer-section h3{
   margin-top: -4px;
-  margin-bottom: -10px;
+  margin-bottom: -1px;
   padding-top: 0;
 }
 }

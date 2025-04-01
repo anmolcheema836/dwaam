@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Works Adverstising & More - Careers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Import Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7ff, #ffffff);
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      color: #1e90ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+    p {
+      margin: 0 0 15px;
+      font-weight: 300;
+    }
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #1e90ff, #00bfff);
+      color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2em;
+    }
+    /* Job Posting Styles */
+    .job-posting {
+      background: #fff;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .job-posting:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .job-meta {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .job-meta span {
+      margin-right: 15px;
+    }
+    .job-section {
+      margin-bottom: 15px;
+    }
+    .job-section strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #1e90ff;
+      font-weight: 600;
+    }
+    /* Buttons */
+    .apply-btn {
+      background: linear-gradient(135deg, #1e90ff, #00bfff);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    .apply-btn:hover {
+      background: linear-gradient(135deg, #00bfff, #1e90ff);
+    }
+    /* Application Form */
+    .application-form {
+      display: none;
+      margin-top: 20px;
+      border-top: 2px solid #e0e0e0;
+      padding-top: 20px;
+    }
+    .application-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #333;
+    }
+    .application-form input[type="text"],
+    .application-form input[type="email"],
+    .application-form input[type="file"],
+    .application-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      margin-bottom: 15px;
+      font-size: 1em;
+      box-sizing: border-box;
+      font-weight: 300;
+    }
+    .application-form button {
+      background: linear-gradient(135deg, #28a745, #2ecc71);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+      font-weight: 500;
+    }
+    .application-form button:hover {
+      background: linear-gradient(135deg, #2ecc71, #28a745);
+    }
+   .job-section ul {
+    list-style-type: disc !important; /* Default bullets */
+    padding-left: 20px !important; /* Default padding */
+    margin: 0 !important; /* Default margin */
+  }
+  .footer-section{
+    padding-bottom: 0 ! important;
+  }
+
+ .job-section li {
+    font-size: medium !important; /* Default font size */
+    color: black !important; /* Default text color */
+  }
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .apply-btn, .application-form button {
+        width: 100%;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav role="navigation">
+        <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
+    
+        <!-- Mobile Menu Toggle -->
+        <input type="checkbox" id="checkbox" class="menu-checkbox" />
+        <label for="checkbox" class="toggle" aria-label="Toggle Navigation Menu">
+          <div class="bar bar--top"></div>
+          <div class="bar bar--middle"></div>
+          <div class="bar bar--bottom"></div>
+        </label>
+    
+        <!-- Navigation Links -->
+        <ul id="navpart2">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="services.html">SERVICES</a></li>
+          <li><a href="portfolio.html">PORTFOLIO</a></li>
+          <li><a href="quizzes.html">QUIZZES</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="careers.html">CAREERS</a></li>
+        </ul>
+    
+        <button class="cta-button" onclick="scrollToContact()"></button>
+      </nav>
+  <div class="container">
+    <header>
+      <h1>Careers</h1>
+      <p>Join our team and help create extraordinary experiences.</p>
+    </header>
+    
+    <section id="jobs">
+      <!-- Job 1: Events Management Assistant Manager -->
+      <article class="job-posting" id="job1">
+        <h2>Events Management Assistant Manager</h2>
+        <div class="job-meta">
+          <span><strong>Location:</strong> KL Sentral, Kuala Lumpur</span>
+          <span><strong>Company:</strong> Digital Works Adverstising & More</span>
+        </div>
+        <div class="job-section">
+          <strong>Job Description:</strong>
+          <p>Join Digital Works Adverstising & More as an Events Management Assistant Manager and lead the charge in creating unforgettable experiences for top-tier clients. We seek people with a flair for innovation who can bring bold ideas to life.</p>
+        </div>
+        <div class="job-section">
+          <strong>Why You'll Love It Here:</strong>
+          <ul>
+            <li>Flexible Hours: Choose between 7am - 4pm or 10am - 7pm.</li>
+            <li>Competitive Compensation: Basic salary plus high sales commissions.</li>
+            <li>Unmatched Commissions: Earn the highest commission rates in the Malaysian digital advertising industry.</li>
+            <li>Perks: Quarterly 3-day, 2-night trips for top performers.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Key Responsibilities:</strong>
+          <ul>
+            <li>Lead and motivate your team to execute high-quality events.</li>
+            <li>Align team efforts with company and client goals.</li>
+            <li>Manage event opportunities with significant revenue potential.</li>
+            <li>Coordinate with vendors and clients for innovative events.</li>
+            <li>Ensure projects are completed on time and within budget.</li>
+            <li>Prepare reports on event outcomes and financial performance.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Job Requirements:</strong>
+          <ul>
+            <li>Diploma or Bachelor’s Degree in Event Management, Business Administration, or related fields.</li>
+            <li>Minimum 3 years’ experience in event management.</li>
+            <li>Strong leadership, communication, and negotiation skills.</li>
+          </ul>
+        </div>
+        <button class="apply-btn" onclick="toggleForm('form-job1')">Apply Now</button>
+        <!-- Application Form -->
+        <div class="application-form" id="form-job1">
+          <!-- Using mailto: to send email to your Gmail address -->
+          <form action="mailto:yourgmail@gmail.com" method="post" enctype="text/plain">
+            <label for="name-job1">Full Name:</label>
+            <input type="text" id="name-job1" name="name" required>
+            
+            <label for="email-job1">Email:</label>
+            <input type="email" id="email-job1" name="email" required>
+            
+            <label for="resume-job1">Upload Resume:</label>
+            <input type="file" id="resume-job1" name="resume" required>
+            
+            <input type="hidden" name="job" value="Events Management Assistant Manager">
+            <button type="submit">Submit Application</button>
+          </form>
+        </div>
+      </article>
+      
+      <!-- Job 2: Personal Assistant to CEO -->
+      <article class="job-posting" id="job2">
+        <h2>Personal Assistant to CEO</h2>
+        <div class="job-meta">
+          <span><strong>Location:</strong> KL Sentral, Kuala Lumpur</span>
+          <span><strong>Company:</strong> Digital Works Adverstising & More</span>
+        </div>
+        <div class="job-section">
+          <strong>Job Description:</strong>
+          <p>We are seeking a highly organized and discreet Personal Assistant to the CEO. Play a pivotal role ensuring smooth day-to-day operations and supporting our visionary leader.</p>
+        </div>
+        <div class="job-section">
+          <strong>Why You'll Love It Here:</strong>
+          <ul>
+            <li>Varied Work Hours: Adaptable to the CEO’s schedule.</li>
+            <li>Competitive Compensation: Basic salary plus high sales commissions.</li>
+            <li>Unmatched Commissions: Earn top commission rates in the industry.</li>
+            <li>Perks: Quarterly 3-day, 2-night trips for top performers.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Key Responsibilities:</strong>
+          <ul>
+            <li>Manage daily office and personal tasks for the CEO.</li>
+            <li>Participate in confidential meetings and transcribe minutes.</li>
+            <li>Organize corporate events and coordinate communications.</li>
+            <li>Prepare reports, presentation slides, and meeting documents.</li>
+            <li>Follow up on action items and liaise with stakeholders.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Required Skills & Experience:</strong>
+          <ul>
+            <li>Diploma or Bachelor’s degree in Business Administration or related field.</li>
+            <li>2-3 years’ experience as a Personal/Executive Assistant.</li>
+            <li>Proficiency in MS Office and excellent communication skills.</li>
+            <li>Fluency in English, both written and spoken.</li>
+          </ul>
+        </div>
+        <button class="apply-btn" onclick="toggleForm('form-job2')">Apply Now</button>
+        <!-- Application Form -->
+        <div class="application-form" id="form-job2">
+          <form action="mailto:yourgmail@gmail.com" method="post" enctype="text/plain">
+            <label for="name-job2">Full Name:</label>
+            <input type="text" id="name-job2" name="name" required>
+            
+            <label for="email-job2">Email:</label>
+            <input type="email" id="email-job2" name="email" required>
+            
+            <label for="resume-job2">Upload Resume:</label>
+            <input type="file" id="resume-job2" name="resume" required>
+            
+            <input type="hidden" name="job" value="Personal Assistant to CEO">
+            <button type="submit">Submit Application</button>
+          </form>
+        </div>
+      </article>
+      
+      <!-- Job 3: Performance Marketing Advertising Operations Manager -->
+      <article class="job-posting" id="job3">
+        <h2>Performance Marketing Advertising Operations Manager</h2>
+        <div class="job-meta">
+          <span><strong>Location:</strong> KL Sentral, Kuala Lumpur</span>
+          <span><strong>Company:</strong> Digital Works Adverstising & More</span>
+        </div>
+        <div class="job-section">
+          <strong>Job Description:</strong>
+          <p>Are you a performance marketing guru with a passion for out-of-the-box strategies? Join our boutique agency and push boundaries to deliver extraordinary results.</p>
+        </div>
+        <div class="job-section">
+          <strong>Why You'll Love It Here:</strong>
+          <ul>
+            <li>Flexible Hours: Choose between 7am - 4pm or 10am - 7pm.</li>
+            <li>Unmatched Commissions: Earn the highest commission rates in the industry.</li>
+            <li>Perks: Quarterly 3-day, 2-night company-paid trips for top closers.</li>
+            <li>Benefits: EPF, Socso, allowances, medical claims, and more.</li>
+            <li>Potential to work from home after confirmation.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Key Responsibilities:</strong>
+          <ul>
+            <li>Develop and execute cutting-edge performance marketing campaigns.</li>
+            <li>Manage ad tagging, pixel tracking, and retargeting strategies.</li>
+            <li>Collaborate with creative teams to maximize ROI.</li>
+            <li>Oversee ad serving platforms and tracking tools.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Skills & Qualifications:</strong>
+          <ul>
+            <li>Minimum 4 years’ experience in a similar role.</li>
+            <li>Fluent in written and spoken English.</li>
+            <li>Proven expertise in performance marketing.</li>
+            <li>Mastery of the latest digital marketing tools and platforms.</li>
+          </ul>
+        </div>
+        <button class="apply-btn" onclick="toggleForm('form-job3')">Apply Now</button>
+        <!-- Application Form -->
+        <div class="application-form" id="form-job3">
+          <form action="mailto:yourgmail@gmail.com" method="post" enctype="text/plain">
+            <label for="name-job3">Full Name:</label>
+            <input type="text" id="name-job3" name="name" required>
+            
+            <label for="email-job3">Email:</label>
+            <input type="email" id="email-job3" name="email" required>
+            
+            <label for="resume-job3">Upload Resume:</label>
+            <input type="file" id="resume-job3" name="resume" required>
+            
+            <input type="hidden" name="job" value="Performance Marketing Advertising Operations Manager">
+            <button type="submit">Submit Application</button>
+          </form>
+        </div>
+      </article>
+      
+      <!-- Job 4: Online/Digital Advertising Sales Executive -->
+      <article class="job-posting" id="job4">
+        <h2>Online/Digital Advertising Sales Executive</h2>
+        <div class="job-meta">
+          <span><strong>Location:</strong> KL Sentral, Kuala Lumpur</span>
+          <span><strong>Company:</strong> Digital Works Adverstising & More</span>
+        </div>
+        <div class="job-section">
+          <strong>Job Description:</strong>
+          <p>We are looking for a driven Online/Digital Advertising Sales Executive to join our high-performing team. If you’re passionate about digital media and closing deals, we want you!</p>
+        </div>
+        <div class="job-section">
+          <strong>Why You'll Love It Here:</strong>
+          <ul>
+            <li>Flexible Hours: Choose between 7am - 4pm or 10am - 7pm.</li>
+            <li>Top Commissions: Benefit from Malaysia’s highest sales commission structure.</li>
+            <li>Perks: Quarterly 3-day, 2-night trips for top performers.</li>
+            <li>Benefits: EPF, Socso, allowances, and work-from-home options.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Key Responsibilities:</strong>
+          <ul>
+            <li>Identify and engage with clients using consultative sales skills.</li>
+            <li>Develop and execute effective sales strategies.</li>
+            <li>Maintain a strong sales pipeline and exceed monthly targets.</li>
+          </ul>
+        </div>
+        <div class="job-section">
+          <strong>Desired Experience:</strong>
+          <ul>
+            <li>2-3 years’ experience in digital media sales.</li>
+            <li>Experience in selling SEO services is a plus.</li>
+            <li>Strong communication and team collaboration skills.</li>
+          </ul>
+        </div>
+        <button class="apply-btn" onclick="toggleForm('form-job4')">Apply Now</button>
+        <!-- Application Form -->
+        <div class="application-form" id="form-job4">
+          <form action="mailto:yourgmail@gmail.com" method="post" enctype="text/plain">
+            <label for="name-job4">Full Name:</label>
+            <input type="text" id="name-job4" name="name" required>
+            
+            <label for="email-job4">Email:</label>
+            <input type="email" id="email-job4" name="email" required>
+            
+            <label for="resume-job4">Upload Resume:</label>
+            <input type="file" id="resume-job4" name="resume" required>
+            
+            <input type="hidden" name="job" value="Online/Digital Advertising Sales Executive">
+            <button type="submit">Submit Application</button>
+          </form>
+        </div>
+      </article>
+    </section>
+  </div>
+    
+    <section class="why-choose-us">
+        <h2>WHY CHOOSE <v>US</v>?</h2>
+    
+        <!-- Word Scroller Container -->
+        <div class="word-scroller" id="wordScroller">
+          <!-- We’ll dynamically fill these with JavaScript below -->
+        </div>
+      </section>
+    
+      <!-- Example Footer Content -->
+      <footer class="footer-section">
+        <div class="footer-content">
+          <div class="logo-and-motto">
+            <!-- Example: your company logo -->
+            <div class="footer-logo"><video src="assets/logoo.mp4" autoplay loop muted playsinline></video> </div>
+            <p class="motto"><s>SUCCESS</s> is when we make <br>our clients <s>HAPPY</s><span>💛</span></p>
+          </div>
+    
+          <div class="latest-posts">
+            <h3>LATEST ARTICLES FOR YOU</h3>
+            <ul>
+              <li>
+                <img src="assets/blogg.png" alt="Blog post image" />
+                <div class="post-content">
+                  <p>Why all government bodies should have a PERFECT website.</p>
+                  <small>Tuesday, 25th March 2025</small>
+                </div>
+              </li>
+              <li>
+                <img src="assets/blog.png" alt="Blog post image" />
+                <div class="post-content">
+                  <p>Why having a website is important for business?</p>
+                  <small>Tuesday, 25th March 2025</small>
+                </div>
+              </li>
+              <li>
+                <img src="assets/blog1.png" alt="Blog post image" />
+                <div class="post-content">
+                  <p>Why SEO is important for business?</p>
+                  <small>Tuesday, 25th March 2025</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+    
+          <div class="latest-quizzes">
+            <h3>LATEST QUIZZES FOR YOU</h3>
+            <ul>
+              <li>
+                <img src="assets/quiz3.png" alt="Quiz image" />
+                <div class="quiz-content">
+                  <p>DWAAM’s Facebook advertising quiz.
+                    Join join join, now now now!</p>
+                  <small>Tuesday, 25th March 2025</small>
+                </div>
+              </li>
+              <li>
+                <img src="assets/quizz.png" alt="Quiz image" />
+                <div class="quiz-content">
+                  <p>DWAAM’s traditional advertising quiz.
+                    Join join join, now now now! </p>
+                  <small>Tuesday, 25th March 2025</small>
+                </div>
+              </li>
+              <li>
+                <img src="assets/quiz1.png" alt="Quiz image" />
+                <div class="quiz-content">
+                  <p>DWAAM’s website design quiz.
+                    Join join join, now now now! </p>
+                  <small>Tuesday, 25th March 2025</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="contact-us">
+    
+            <h3>CONTACT US</h3>
+            <p>
+              <img src="assets/email.png" alt="Email Icon" class="icon" />
+              <a href="mailto:hello@dwadvertisingandmore.com">hello@digitalworksandmore.com</a>
+            </p>
+            <p>
+              <img src="assets/whatsappicon.png" alt="WhatsApp Icon" class="icon" />
+              <a href="https://wa.me/60108008989?text=hello"><s>Click to only WhatsApp ONLY text message us. Thank youuuuuuuuuu!<emoji>🙏</emoji></s></a>
+            </p>
+            <h3>SOCIALS</h3>
+            <p>
+              <img src="assets/fbfooticon.png" alt="Facebook Icon" class="icon" />
+              <a href="https://facebook.com" target="_blank">Facebook
+              </a>
+            </p>
+    
+            <p>
+              <img src="assets/footlinkedin.png" alt="LinkedIn Icon" class="icon" />
+              <a href="https://linkedin.com" target="_blank">LinkedIn
+              </a>
+              </li>
+              </ul>
+          </div>
+        </div>
+      </footer>
+      <div class="footerimg">
+        <img src="assets/foot.png" alt="footer image" id="foot">
+      </div>
+  
+  <script>
+    function toggleForm(formId) {
+      var form = document.getElementById(formId);
+      form.style.display = (form.style.display === "block") ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
