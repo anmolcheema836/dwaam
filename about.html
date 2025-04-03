@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Team Profiles</title>
+  <!-- Google Fonts: Using Poppins for primary text -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" !important>
+  <script src="script.js" defer></script>
+  <style>
+    :root {
+      /* Light blue theme colors */
+      --primary-color: #0464d2;
+      --secondary-color: #6fb1fc;
+      --accent-color: #9ac6ff;
+      --bg-color: #f0f8ff;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --border-radius: 10px;
+      --transition-speed: 0.3s;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #navpart2 {
+      top:70px !important;
+    }
+    nav.scrolled #navpart2 {
+      top:50px !important;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      padding: 70px 0px;
+      text-align: center;
+      border-radius: var(--border-radius);
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+    .team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    /* Card Header */
+    .card-header {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 40px 20px 60px;
+      text-align: center;
+      color: #fff;
+    }
+    .card-header .profile-img {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+    }
+    .card-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+    .card-header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    .card-body {
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+    .card-body .intro {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    .tabs button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: var(--primary-color);
+      transition: background var(--transition-speed), color var(--transition-speed);
+    }
+    .tabs button:hover,
+    .tabs button.active {
+      background: #3979c3;
+      color: #fff;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+    .tab-content {
+      display: none;
+      text-align: left;
+      animation: fadeInUp 0.3s ease-in-out;
+      padding: 0 10px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-content p,
+    .tab-content ul {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    /* About Section Enhancements */
+    .about-section {
+      background: rgba(74, 144, 226, 0.05);
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      transition: background var(--transition-speed);
+    }
+    .about-section:hover {
+      background: rgba(74, 144, 226, 0.1);
+    }
+    .about-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--primary-color);
+    }
+    .about-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+    /* Gallery and Video Gallery */
+    .gallery, .video-gallery {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .gallery {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .gallery figure,
+    .video-gallery figure {
+      margin: 0;
+      text-align: center;
+    }
+    .gallery img, 
+    .video-gallery video {
+      width: 100%;
+      height: 100px;
+      border-radius: var(--border-radius);
+      transition: transform var(--transition-speed), opacity var(--transition-speed);
+      cursor: pointer;
+    }
+    .gallery img:hover,
+    .video-gallery video:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    .gallery figcaption,
+    .video-gallery figcaption {
+      font-size: 0.75rem;
+      margin-top: 5px;
+      color: var(--primary-color);
+    }
+    .video-gallery video {
+      height: 180px;
+      border: none;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      .card-header { padding: 30px 10px 50px; }
+      .card-header .profile-img { width: 70px; height: 70px; bottom: -35px; }
+      .card-body { padding-top: 50px; }
+    }
+    /* Lightbox Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--border-radius);
+      animation: fadeInUp 0.3s ease-in-out;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav role="navigation">
+    <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
+
+    <!-- Mobile Menu Toggle -->
+    <input type="checkbox" id="checkbox" class="menu-checkbox" />
+    <label for="checkbox" class="toggle" aria-label="Toggle Navigation Menu">
+      <div class="bar bar--top"></div>
+      <div class="bar bar--middle"></div>
+      <div class="bar bar--bottom"></div>
+    </label>
+
+    <!-- Navigation Links -->
+    <ul id="navpart2">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="portfolio.html">PORTFOLIO</a></li>
+      <li><a href="quizzes.html">QUIZZES</a></li>
+      <li><a href="blog.html">BLOG</a></li>
+      <li><a href="careers.html">CAREERS</a></li>
+    </ul>
+
+    <button class="cta-button" onclick="scrollToContact()"></button>
+  </nav>
+  <header>
+    <h1>Meet Your Dream Team</h1>
+    <p>Get to know us as friends before we work together</p>
+  </header>
+  
+  <div class="team-container">
+    <div class="team-grid">
+      <!-- Tanya's Profile Card -->
+      <div class="card" id="tanya">
+        <div class="card-header">
+          <img src="assets/tania.png" alt="Tanya Fernandez" class="profile-img">
+          <h2>Tanya Fernandez</h2>
+          <p>Associate Vice President</p>
+        </div>
+        <div class="card-body">
+          <div class="tabs">
+            <button class="tab-link active" data-tab="about-tanya">About</button>
+            <button class="tab-link" data-tab="photos-tanya">Photos</button>
+            <button class="tab-link" data-tab="videos-tanya">Videos</button>
+          </div>
+          <!-- Engaging About Tab for Tanya -->
+          <div id="about-tanya" class="tab-content active">
+            <div class="about-section">
+              <h3>Personality</h3>
+              <p>A spirited soul—part Fairy, part Human, a hopeless romantic, and a quirky adventurer ready to embrace life’s surprises.</p>
+            </div>
+            <div class="about-section">
+              <h3>Interests</h3>
+              <p>Concerts, live band music, pool games, deep sea fishing, scuba diving, bungy jumping, yacht sailing, and exploring new places.</p>
+            </div>
+            <div class="about-section">
+              <h3>Key to My Heart</h3>
+              <p>Throwing kindness around like confetti—genuine care is everything.</p>
+            </div>
+            <div class="about-section">
+              <h3>Bucket List</h3>
+              <p>Dreaming big: Building an NGO that makes a difference.</p>
+            </div>
+            <div class="about-section">
+              <h3>Favorite Quotes</h3>
+              <ul>
+                <li>“Just keep swimming. Swimming, swimming, swimming.” — Dory</li>
+                <li>“When faced with a decision between doing what is right &amp; doing what is easy, always do what is right.” — Dominic Benizi Pereira</li>
+                <li>“Shoot for the moon. If you miss, you’ll still land among the stars.” — Norman Vincent Peale</li>
+              </ul>
+            </div>
+            <div class="about-section">
+              <h3>Music Vibes</h3>
+              <p><strong>Pump-up:</strong> Gemuruh by Faizal Tahir; <strong>Chillout:</strong> Starlight by Slash &amp; Miles Kennedy, 10,000 Reasons by Matt Redman.</p>
+            </div>
+            <div class="about-section">
+              <h3>Zodiac Insights (LEO)</h3>
+              <p><strong>Likes:</strong> Loyalty, honesty, generosity. <strong>Dislikes:</strong> Overly emotional, stubborn, hot-tempered behavior.</p>
+            </div>
+            <div class="about-section">
+              <h3>Unforgettable Moment</h3>
+              <p>Meeting Guns N’ Roses, my ultimate idol—an experience that will always inspire me.</p>
+            </div>
+          </div>
+          <!-- Photos Tab for Tanya -->
+          <div id="photos-tanya" class="tab-content">
+            <div class="gallery">
+              <figure>
+                <img src="assets/tanya1.png" alt="Tanya with Ariel Peterpan">
+                <figcaption>I asked Ariel Peterpan to marry me. He still hasn’t proposed.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/tanya2.png" alt="Tanya swimming underwater">
+                <figcaption>Finding for Dory.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/tanya3.png" alt="Tanya jumping">
+                <figcaption>5, 4, 3, 2, 1…JUMP!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/tanya4.png" alt="Tanya skipping rope">
+                <figcaption>Fire Skipping Rope Champion!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/tanya5.png" alt="Tanya fishing">
+                <figcaption>F For Fishing!</figcaption>
+              </figure>
+            </div>
+          </div>
+          <!-- Videos Tab for Tanya -->
+          <div id="videos-tanya" class="tab-content">
+            <div class="video-gallery">
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video1.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>I hired Kak Ija Aaini, Malaysia’s number one female bodybuilding champion to train me on how to use gym equipment—though I don’t gym, exercise, or enjoy strenuous hobbies. But because I fell in love with LuluLemon’s gym wear & needed a logical reason to buy them. So, errr, thank you, Kak Ija.</figcaption>
+              </figure>
+              
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video2.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>There may be nothing more beautiful than a happy child, at least in my eyes & in my heart. Especially a child who I love, who belongs to someone I love. "Again…again…one…two…three…!" Okay, babygirl. Your wish is my command.</figcaption>
+              </figure>
+              
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video3.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>This is what I do best—merrily floating down a crystal-clear river inside a forest like a 2-in-1 Fairy Mermaid, with little fishies swimming alongside me, listening to wildlife humming, crickets and birds chirping. This is how I attain peace within myself.</figcaption>
+              </figure>
+          
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video4.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>I have not yet found a word or even a sentence to explain, how good it feels when clients turn into TRUE friends. 
+
+                  Thank you for putting up with my nonsense, in & out of work, Brahma!</figcaption>
+              </figure>
+          
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video5.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>I am Christian. 
+                  I am Catholic. 
+                  
+                  I have not found a scripture or a chapter in my Holy Bible, that explains so well to me, what could possibly be the reason why Jesus gives me more trials & tribulations than i feel is fair. 
+                  
+                  But. 
+                  
+                  A surah in the Holy Islam Al Quran, made me regain my faith in God & gave me some peace.
+                  
+                  Emotional me, shed tears watching & listening to this. Emotional me is shedding tears while typing this out to be injected into our company website. 
+                  
+                  Thank you God, whichever God, all God’s, for Surah Al-‘Ankabuut, ayat kedua. 
+                  
+                  For calming my heavy heart with this, whenever my heart needs to be lightened.</figcaption>
+              </figure>
+          
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video6.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>What better way to spend the 1st day of the new year than to transform from a Fairy, into a Mermaid?
+
+                  No better way. 
+                  
+                  3…2…1 splash! Splash splashy splash!
+                  
+                  “Always be a mermaid. Unless you can be a mermaid. Then be a mermaid.” Tanya Hyacinth Fernandez</figcaption>
+              </figure>
+          
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video7.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>Someone used to be big in hierarchy, in the largest media agency in the whole wide world. 
+
+                  Counted me worthy enough to spend 3 whole days, bugging my life, to incorporate my own advertising agency. 
+                  
+                  Day 1: Gin & Tonic - maybe the alcohol will make Tanya take my advice & agree. FAIL. 
+                  
+                  Day 2: Maybe dinner & wine will make Tanya take my advice & agree, because Tanya enjoys prettily plated food, stunning interior designed restaurants, & Sauvignon Blanc wine. FAIL. 
+                  
+                  Day 3: Self-invites & ambushes my annual cousin’s from all around this country & all around the world get together party, & gets all of my cousins to pressure Tanya to agree & take his advice to incorporate my own advertising agency, which he was hell bent on, will fly as high as the sky. IT WORKED. 
+                  
+                  Thank you, JP. For counting me, who was then, in comparison to you, a tiny little ikan bilis, to spend time, effort, goodwill & kindness on me. 
+                  
+                  DWAAM would not exist, & i would not be typing this post for our website now, if it was not for you, JP.</figcaption>
+              </figure>
+          
+              <figure>
+                <video controls>
+                  <source src="assets/tanya-video8.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>          
+      
+      <!-- Mazin's Profile Card -->
+      <div class="card" id="mazin">
+        <div class="card-header">
+          <img src="assets/mazin.png" alt="Mazin Siraj" class="profile-img">
+          <h2>Mazin Siraj</h2>
+          <p>Associate Advertising Director</p>
+        </div>
+        <div class="card-body">
+          <div class="tabs">
+            <button class="tab-link active" data-tab="about-mazin">About</button>
+            <button class="tab-link" data-tab="photos-mazin">Photos</button>
+            <button class="tab-link" data-tab="videos-mazin">Videos</button>
+          </div>
+          <!-- Engaging About Tab for Mazin -->
+          <div id="about-mazin" class="tab-content active">
+            <div class="about-section">
+              <h3>About Me</h3>
+              <p>Part Orc, part Human, dogs &amp; cats, caffeine addict, loves camouflage patterns, 70’s and 80’s music, live bands and concerts, road-trips, being out in Mother Nature, and long rides at night.</p>
+            </div>
+            <div class="about-section">
+              <h3>Interests</h3>
+              <p>Concerts, live band music, paintballing, playing music in a band, being around nature &amp; animals, techy gear, and big bikes.</p>
+            </div>
+            <div class="about-section">
+              <h3>Key to My Heart</h3>
+              <p>Being kind to animals.</p>
+            </div>
+            <div class="about-section">
+              <h3>Weird But True</h3>
+              <p>I once slept in bus stops for a few days just to know what it feels like to be homeless.</p>
+            </div>
+            <div class="about-section">
+              <h3>Bucket List</h3>
+              <p>Build an NGO for stray animals.</p>
+            </div>
+            <div class="about-section">
+              <h3>Favorite Quotes</h3>
+              <ul>
+                <li>"Broken bones mend, chics dig scars."</li>
+                <li>"Music is a higher revelation than all wisdom &amp; philosophy" — Ludwig Van Beethoven</li>
+                <li>"Not all who wander are lost" — J.R.R. Tolkien</li>
+              </ul>
+            </div>
+            <div class="about-section">
+              <h3>Music Vibes</h3>
+              <p>
+                <strong>Pump-up:</strong> Rising Force by Yngwie Malmsteen; <br>
+                <strong>Chillout:</strong> Africa by TOTO, and Badge and Gun by Sunglasses Kid.
+              </p>
+            </div>
+            <div class="about-section">
+              <h3>Zodiac Insights (CANCER)</h3>
+              <p>
+                <strong>Likes:</strong> Protective, creative &amp; imaginative, generous. <br>
+                <strong>Dislikes:</strong> Emotional, moody, temperamental.
+              </p>
+            </div>
+            <div class="about-section">
+              <h3>Best Experience</h3>
+              <p>Learning how to do the flying trapeze and becoming a G.O for Club Med Resorts.</p>
+            </div>
+          </div>          
+          <!-- Photos Tab for Mazin -->
+          <div id="photos-mazin" class="tab-content">
+            <div class="gallery">
+              <figure>
+                <img src="assets/mazin-img1.png" alt="Mazin Photo 1">
+                <figcaption>Ok I’m taking this now.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img2.png" alt="Mazin Photo 2">
+                <figcaption>My impersonation of our former Sports Minister Khairy Jamaluddin.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img3.png" alt="Mazin Photo 3">
+                <figcaption>Who said petai smells bad?</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img4.png" alt="Mazin Photo 4">
+                <figcaption>Lets race.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img5.png" alt="Mazin Photo 5">
+                <figcaption>Wake me up when September ends</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img6.png" alt="Mazin Photo 6">
+                <figcaption>This is all for me?</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img7.png" alt="Mazin Photo 7">
+                <figcaption>Ok guys, this how not to Ski</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img8.png" alt="Mazin Photo 8">
+                <figcaption>Remember the time I went undercover as a Vietnamese? Well I failed</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img9.png" alt="Mazin Photo 9">
+                <figcaption>Remind me not to park in the river next time</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/mazin-img10.png" alt="Mazin Photo 10">
+                <figcaption>I can show you the world. Shining, shimmering, splendid</figcaption>
+              </figure>
+            </div>
+          </div>
+          <!-- Videos Tab for Mazin -->
+          <div id="videos-mazin" class="tab-content">
+            <div class="video-gallery">
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video1.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>I left my family behind when I went to Dubai. So when I came back for holiday the first time, I planned this surprise with my ex-colleague and my wife as we wanted to prank my son. Seems bittersweet as I was expecting him to be jumping for joy but he still was surprised to see me (in a good way)</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video2.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>Having a fear of heights I thought of pushing through my fear and literally jumped off a cliff. This was somewhere off Mersing, Tiger Caves</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video3.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>Bringing out my inner newscaster as I attempt (with my make-shift microphone) to narrate the action at my son’s Sports Day in our National Stadium</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video4.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>When you think you have it all figured out. You take public transport to downtown KL for an iftar session with your client but the ‘powers that be’ have other ideas for you. I was greeted by a sudden heavy storm. I arrived at the restaurant drenched. Thank goodness I was able to dry myself up at the washroom so it was not a total washout</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video5.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>Being somewhat healthy, I always thought of myself to be strong but in a tug of war, its not enough to be physically strong but to also get the support of your team-mates to win the match. This was at my son’s sports day</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video6.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>Fearing for my ankles, I still wanted to try this Sarawak traditional dance and when given the opportunity, why not. Safe to say, my ankles were safe</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/mazin-video7.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Ron's Profile Card -->
+      <div class="card" id="ron">
+        <div class="card-header">
+          <img src="assets/ron.png" alt="Ron Joseph" class="profile-img">
+          <h2>Ron Joseph</h2>
+          <p>Associate Director, Data &amp; Technology</p>
+        </div>
+        <div class="card-body">
+          <div class="tabs">
+            <button class="tab-link active" data-tab="about-ron">About</button>
+            <button class="tab-link" data-tab="photos-ron">Photos</button>
+            <button class="tab-link" data-tab="videos-ron">Videos</button>
+          </div>
+          <!-- Engaging About Tab for Ron -->
+          <div id="about-ron" class="tab-content active">
+            <div class="about-section">
+              <h3>About Me</h3>
+              <p>Part human, part bottomless pit. I will travel for great food and coffee. Family time is hugely important to me – being there to watch my son grow up and traveling together with the family to enjoy all that. Cats or dogs are all my friends. Love movie soundtracks.</p>
+            </div>
+            <div class="about-section">
+              <h3>Interests</h3>
+              <p>Nothing beats a medium rare dry-aged steak, some Gayo coffee, and a lovely dessert to wash it down – preferably an artisanal vanilla ice cream.</p>
+            </div>
+            <div class="about-section">
+              <h3>Key to My Heart</h3>
+              <p>A good coffee and a homecooked meal.</p>
+            </div>
+            <div class="about-section">
+              <h3>Weird But True</h3>
+              <p>When I was 2 or 3 years old, I fell in a puddle of mud. I came home top to bottom covered in mud. Little did my family know that I fell into the puddle because a bus was going to run me over, so I escaped certain death by falling in that puddle.</p>
+            </div>
+            <div class="about-section">
+              <h3>Bucket List</h3>
+              <p>Build the house of my dreams (not buy, build).</p>
+            </div>
+            <div class="about-section">
+              <h3>Favorite Quotes</h3>
+              <ul>
+                <li>“Choose Life. Choose a job. Choose a career. Choose a family. Choose a bloody big television.” — Trainspotting</li>
+                <li>“Great minds discuss ideas. Average minds discuss events. Small minds discuss people.” — Eleanor Roosevelt</li>
+                <li>“To infinity and beyond!” — Buzz Lightyear</li>
+              </ul>
+            </div>
+            <div class="about-section">
+              <h3>Music Vibes</h3>
+              <p>
+                <strong>Pump-up:</strong> Lady by Mojo; <br>
+                <strong>Chillout:</strong> Don't Stop Me Now by Queen, Only Heaven Knows by Rick Price, and I’m Kissing You by Des’ree.
+              </p>
+            </div>
+            <div class="about-section">
+              <h3>Zodiac Insights (Aquarius)</h3>
+              <p>
+                <strong>Likes:</strong> Friendly &amp; approachable, strong sense of social justice, intellectual. <br>
+                <strong>Dislikes:</strong> Aloof &amp; detached, poor temper, dogmatic.
+              </p>
+            </div>
+            <div class="about-section">
+              <h3>Best Experience</h3>
+              <p>Holding my son in my arms for the first time, knowing this is something my wife and I created. This is a strategically thought-out question, so we can ask our clients the same and know what we can do to brighten up their unhappy day.</p>
+            </div>
+            <div class="about-section">
+              <h3>Additional Q&amp;A: Weird/Strange/Abnormal Traits</h3>
+              <ul>
+                <li>One of my hobbies is attending interviews for jobs I am not going to accept. I enjoy the interview process and learning about a company’s vision, mission, and industry.</li>
+                <li>I, unlike most girls, HATE shopping malls &amp; shopping. I dream of a day when I can afford to employ a girl who is the exact same size as me to try on clothes and shoes, send me photos, and let me decide what to buy.</li>
+                <li>I love the roar of luxury sports cars. I find them sexy, but I’m afraid of being in cars driven above 80km per hour. My friends, who are blessed enough to own sports cars, are often exasperated when I ask them to drive a particular car to pick me up—only to remind them they can’t drive above 80km per hour.</li>
+              </ul>
+            </div>
+          </div>     
+          <!-- Photos Tab for Ron -->
+          <div id="photos-ron" class="tab-content">
+            <div class="gallery">
+              <figure>
+                <img src="assets/ron-img1.png" alt="Ron Photo 1">
+                <figcaption></figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img2.png" alt="Ron Photo 2">
+                <figcaption>A wizard is never late or early, he arrives exactly on time!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img3.png" alt="Ron Photo 3">
+                <figcaption>Behold! I am the king snake in this town!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img4.png" alt="Ron Photo 4">
+                <figcaption>Am I Aussie enough now???.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img5.png" alt="Ron Photo 5">
+                <figcaption>Gimme a "Hawk Tuah" !!!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img6.png" alt="Ron Photo 6">
+                <figcaption>They said action figures dude, you aren't supposed to move!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img7.png" alt="Ron Photo 7">
+                <figcaption>Not knowing if I should laugh or cry getting my first MT09 full service bill...</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img8.png" alt="Ron Photo 8">
+                <figcaption>My future's so bright, I gotta wear shades!</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/ron-img9.png" alt="Ron Photo 9">
+                <figcaption>I was counting beats when the camera caught the exact moment of a Simon Phillips pose. Gah!</figcaption>
+              </figure>              
+            </div>
+          </div>
+          <!-- Videos Tab for Ron -->
+          <div id="videos-ron" class="tab-content">
+            <div class="video-gallery">
+              <figure>
+                <video controls>
+                  <source src="assets/ron-video1.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>Although I'm not super fantastic with children, kids are somehow drawn to me. Even kids outside the family...here I am giving a first hand lesson to my nephew on his new electric drum pads. To him I'm the fun and cool uncle who spoils them, tells them jokes, teases them, and am now the godparent to this kid, Elijah. Luv you kiddo!!!</figcaption>
+              </figure>
+              <figure>
+                <video controls>
+                  <source src="assets/ron-video2.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <figcaption>It was the day my cousin passed his "L" examination for his motorcycle license and decided he wanted to buy a bike. So there we were, bike shopping for anything 250cc & below. Long day from PJ to Subang & then to the Ampang area looking for a specific "type" he was looking for. When asked "What is this type la dei" ? His reply was "Dunno la it needs to feel right". So here I am trying to help steer him to make a decision to get a bike that he likes with a "type" that he himself is not sure of. What a day! Here I am test riding the new Kawasaki Ninja 250ABS in the hope that I could sway him to buy this as it was a really good bike. He rode it and actually said it was good but we left the showroom as it wasn't the "type" he was looking for. Man oh man...I found out several weeks later that he found a deal online & got a Husqvarna Svartpillen 401...here I am thinking "Dude this isn't even 250cc" Why were looking for something else totally? So I guess this macha finally found his "type". Well good for him</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="why-choose-us">
+    <h2>WHY CHOOSE <v>US</v>?</h2>
+
+    <!-- Word Scroller Container -->
+    <div class="word-scroller" id="wordScroller">
+      <!-- We’ll dynamically fill these with JavaScript below -->
+    </div>
+  </section>
+
+  <!-- Example Footer Content -->
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="logo-and-motto">
+        <!-- Example: your company logo -->
+        <div class="footer-logo"><video src="assets/logoo.mp4" autoplay loop muted playsinline></video> </div>
+        <p class="motto"><s>SUCCESS</s> is when we make <br>our clients <s>HAPPY</s><span>💛</span></p>
+      </div>
+
+      <div class="latest-posts">
+        <h3>LATEST ARTICLES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/blogg.png" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why all government bodies should have a PERFECT website.</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog.png" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why having a website is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog1.png" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why SEO is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="latest-quizzes">
+        <h3>LATEST QUIZZES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/quiz3.png" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s Facebook advertising quiz.
+                Join join join, now now now!</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quizz.png" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s traditional advertising quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quiz1.png" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s website design quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-us">
+
+        <h3>CONTACT US</h3>
+        <p>
+          <img src="assets/email.png" alt="Email Icon" class="icon" />
+          <a href="mailto:hello@dwadvertisingandmore.com">hello@digitalworksandmore.com</a>
+        </p>
+        <p>
+          <img src="assets/whatsappicon.png" alt="WhatsApp Icon" class="icon" />
+          <a href="https://wa.me/60108008989?text=hello"><s>Click to only WhatsApp ONLY text message us. Thank youuuuuuuuuu!<emoji>🙏</emoji></s></a>
+        </p>
+        <h3>SOCIALS</h3>
+        <p>
+          <img src="assets/fbfooticon.png" alt="Facebook Icon" class="icon" />
+          <a href="https://facebook.com" target="_blank">Facebook
+          </a>
+        </p>
+
+        <p>
+          <img src="assets/footlinkedin.png" alt="LinkedIn Icon" class="icon" />
+          <a href="https://linkedin.com" target="_blank">LinkedIn
+          </a>
+          </li>
+          </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="footerimg">
+    <img src="assets/foot.png" alt="footer image" id="foot">
+  </div>
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="modal">
+    <span class="modal-close" id="modal-close">&times;</span>
+    <img class="modal-content" id="modal-image" src="" alt="Zoomed Image">
+  </div>
+  
+  <script>
+    // Tab switching script
+    const tabLinks = document.querySelectorAll('.tab-link');
+    tabLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        const card = this.closest('.card-body');
+        const tabId = this.getAttribute('data-tab');
+        card.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
+        card.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        this.classList.add('active');
+        card.querySelector('#' + tabId).classList.add('active');
+      });
+    });
+    
+    // Lightbox script for zooming images
+    const modal = document.getElementById("lightbox-modal");
+    const modalImg = document.getElementById("modal-image");
+    const closeModal = document.getElementById("modal-close");
+    const galleryImages = document.querySelectorAll(".gallery img");
+    
+    galleryImages.forEach(img => {
+      img.addEventListener("click", function() {
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+      });
+    });
+    
+    closeModal.addEventListener("click", function() {
+      modal.style.display = "none";
+    });
+    
+    modal.addEventListener("click", function(e) {
+      if(e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
