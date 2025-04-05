@@ -292,3 +292,53 @@ setTimeout(() => {
   resetPositions();
   animateCycle();
 }, 100);
+
+  // Wait until the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    const popupModal = document.getElementById("popupModal");
+    const popupClose = document.getElementById("popupClose");
+    const popupImage = document.getElementById("popupImage");
+
+    // Show the modal on page load
+    popupModal.classList.add("active");
+
+    // If the close button is clicked, hide the modal
+    popupClose.addEventListener("click", function () {
+      popupModal.classList.remove("active");
+    });
+
+    // When the image is clicked, redirect to bug.html
+    popupImage.addEventListener("click", function () {
+      window.location.href = "bug.html";
+    });
+
+    // Optional: If the user clicks outside the image, close the modal
+    popupModal.addEventListener("click", function (e) {
+      if (e.target === popupModal) {
+        popupModal.classList.remove("active");
+      }
+    });
+  });
+  const backToTopBtn = document.getElementById("backToTopBtn");
+  const foot = document.getElementById("foot");
+  
+  window.addEventListener('scroll', () => {
+    const scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+    
+    // show/hide
+    backToTopBtn.style.display = (scrolled > 20) ? 'block' : 'none';
+  
+    // bump up when #foot enters viewport
+    const footRect = foot.getBoundingClientRect();
+    if (footRect.top <= window.innerHeight) {
+      // foot is at or above the bottom of the viewport
+      backToTopBtn.style.bottom = '152px';  // 20px + 30px
+    } else {
+      backToTopBtn.style.bottom = '48px';
+    }
+  });
+  
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
