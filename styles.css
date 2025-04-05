@@ -999,6 +999,7 @@ padding-top: 10px;
   font-weight: 800;
 }
 
+
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
   
@@ -1067,7 +1068,10 @@ padding-top: 10px;
     font-size: xx-large;
     font-weight: 800;
   }
-  
+  .Ourwork video{
+    width: 15vw;
+    height: auto;
+  }
   .work-container {
     max-width: 1200px;
     margin: 40px auto;
@@ -1180,6 +1184,10 @@ padding-top: 10px;
       font-size: 2px;
       font-weight: bold;
       margin-bottom: 8px;
+    }
+    .Ourwork video{
+      width: 45vw;
+      height: auto;
     }
     .work-content{
       gap: 0;
