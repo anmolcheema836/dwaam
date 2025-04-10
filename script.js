@@ -244,3 +244,20 @@ document.addEventListener("DOMContentLoaded", animateWord);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   
+  window.onload = () => {
+    const modal = document.getElementById("popupModal");
+    modal.style.display = "flex";
+  };
+
+  // Close modal on click of close button
+  document.getElementById("popupClose").onclick = () => {
+    document.getElementById("popupModal").style.display = "none";
+  };
+
+  // Close modal if user clicks outside the image
+  window.onclick = (event) => {
+    const modal = document.getElementById("popupModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
