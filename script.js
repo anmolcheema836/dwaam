@@ -261,3 +261,7 @@ document.addEventListener("DOMContentLoaded", animateWord);
       modal.style.display = "none";
     }
   };
+
+  document.getElementById("popupImage").addEventListener("click", function() {
+    window.location.href = "bug.html";
+  });
