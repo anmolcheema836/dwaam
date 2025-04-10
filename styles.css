@@ -1187,7 +1187,7 @@ padding-top: 10px;
       margin-bottom: 8px;
     }
     .Ourwork video{
-      width: 45vw;
+      width: 70vw;
       height: auto;
     }
     .work-content{
@@ -1784,28 +1784,55 @@ input[type="tel"] {
   margin: 0;
 }
 
+.why-choose-us h2 span {
+  color: #7DF9FF;
+}
+
+/* Container for the word animations */
 .word-scroller {
   position: relative;
   height: 60px;
   overflow: hidden;
 }
 
-/* All words are absolutely positioned.
-   We’ll animate the left property and opacity. */
-.word-scroller span {
+/* Base styling for each word */
+.word {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1.6rem;
-  color: white;
   font-weight: 600;
+  opacity: 0;
+  color: white;
+  white-space: nowrap;
 }
 
-/* Full opacity for center word; side words are semi-transparent */
-.word-scroller span.center {
-  opacity: 1;
+/* Adjusted keyframes for a smoother pop & zoom */
+@keyframes popZoom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
 }
-.word-scroller span.side {
-  opacity: 0.3;
+
+/* Animation class with a smooth cubic-bezier easing */
+.animate {
+  animation: popZoom 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
 }
+
 
 
 /* Example footer styling */
@@ -1942,9 +1969,7 @@ color: white;
 }
 /* Make sure the span is treated as an inline-block element for animation */
 
-.why-choose-us h2 span{
-  color: #7DF9FF;
-}
+
 @media (max-width: 768px) {
   .footer-section{
     padding-bottom: 90px;

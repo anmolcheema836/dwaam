@@ -174,151 +174,53 @@ document.addEventListener("DOMContentLoaded", function () {
 function scrollToContact() {
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
 }
-const scroller = document.getElementById('wordScroller');
+
+
+
+// Array of words to display.
 const words = ["Innovative.", "Creative.", "Passionate.", "Strategic.", "Reliable."];
 let currentIndex = 0;
-const GAP = 10; // Constant gap of 10px between words
 
-// Create four span elements for left, center, right, and next words.
-const leftSpan = document.createElement('span');
-const centerSpan = document.createElement('span');
-const rightSpan = document.createElement('span');
-const nextSpan = document.createElement('span');
+// Get the container element.
+const container = document.getElementById('wordScroller');
 
-// Assign opacity classes.
-centerSpan.classList.add('center');
-leftSpan.classList.add('side');
-rightSpan.classList.add('side');
-nextSpan.classList.add('side');
-
-// Append spans to container.
-scroller.appendChild(leftSpan);
-scroller.appendChild(centerSpan);
-scroller.appendChild(rightSpan);
-scroller.appendChild(nextSpan);
-
-// Update text content for each span.
-function updateText() {
-  const leftIndex = (currentIndex - 1 + words.length) % words.length;
-  const centerIndex = currentIndex;
-  const rightIndex = (currentIndex + 1) % words.length;
-  const nextIndex = (currentIndex + 2) % words.length;
+// Function to animate one word.
+function animateWord() {
+  // Create a new span element for the word.
+  const wordElement = document.createElement('span');
+  wordElement.classList.add('word');
+  wordElement.textContent = words[currentIndex];
   
-  leftSpan.textContent = words[leftIndex];
-  centerSpan.textContent = words[centerIndex];
-  rightSpan.textContent = words[rightIndex];
-  nextSpan.textContent = words[nextIndex];
-}
-
-// Reset positions so that the center word is exactly centered.
-function resetPositions() {
-  // Remove transitions so positions update instantly.
-  [leftSpan, centerSpan, rightSpan, nextSpan].forEach(span => {
-    span.style.transition = 'none';
-  });
+  // Append it to the container.
+  container.appendChild(wordElement);
   
-  // Get container width and compute its horizontal center.
-  const containerWidth = scroller.offsetWidth;
-  const containerCenter = containerWidth / 2;
+  // Force reflow to ensure the animation restarts correctly.
+  void wordElement.offsetWidth;
   
-  // Measure widths.
-  const leftWidth = leftSpan.offsetWidth;
-  const centerWidth = centerSpan.offsetWidth;
-  const rightWidth = rightSpan.offsetWidth;
+  // Add the animation class.
+  wordElement.classList.add('animate');
   
-  // Compute left position for the center word so it's centered.
-  const centerLeft = containerCenter - centerWidth / 2;
-  centerSpan.style.left = centerLeft + 'px';
-  
-  // Position left word: its right edge is GAP px to the left of center's left edge.
-  leftSpan.style.left = (centerLeft - GAP - leftWidth) + 'px';
-  
-  // Position right word: its left edge is GAP px to the right of center's right edge.
-  rightSpan.style.left = (centerLeft + centerWidth + GAP) + 'px';
-  
-  // Position next word: immediately to the right of right word with GAP px.
-  nextSpan.style.left = (parseFloat(rightSpan.style.left) + rightWidth + GAP) + 'px';
-  
-  // Set opacities.
-  leftSpan.style.opacity = '0.5';
-  centerSpan.style.opacity = '1';
-  rightSpan.style.opacity = '0.5';
-  nextSpan.style.opacity = '0.5';
-}
-
-// Animate the cycle by shifting all words left by (center word width + GAP) pixels.
-function animateCycle() {
-  // Calculate shift based on current center word.
-  const centerWidth = centerSpan.offsetWidth;
-  const shift = centerWidth + GAP;
-  
-  // Get current left positions.
-  const leftPos = parseFloat(leftSpan.style.left);
-  const centerPos = parseFloat(centerSpan.style.left);
-  const rightPos = parseFloat(rightSpan.style.left);
-  const nextPos = parseFloat(nextSpan.style.left);
-  
-  // Use a transition duration of 1.2s for smooth movement.
-  const duration = '1.2s';
-  [leftSpan, centerSpan, rightSpan, nextSpan].forEach(span => {
-    span.style.transition = `left ${duration}, opacity ${duration}`;
-  });
-  
-  // Shift each word left by the computed shift.
-  leftSpan.style.left = (leftPos - shift) + 'px';
-  centerSpan.style.left = (centerPos - shift) + 'px';
-  rightSpan.style.left = (rightPos - shift) + 'px';
-  nextSpan.style.left = (nextPos - shift) + 'px';
-  
-  // Adjust opacity: as the center word moves out, fade it to side opacity.
-  leftSpan.style.opacity = '0';
-  centerSpan.style.opacity = '0.5';
-  rightSpan.style.opacity = '1'; // the right word becomes the new center
-  nextSpan.style.opacity = '0.5';
-  
-  // When the transition ends, update the text and re-center.
-  setTimeout(() => {
+  // When the animation ends, remove the word and schedule the next.
+  wordElement.addEventListener('animationend', () => {
+    container.removeChild(wordElement);
+    
+    // Update index, and start the next word immediately.
     currentIndex = (currentIndex + 1) % words.length;
-    updateText();
-    resetPositions();
-    // Start the next cycle immediately.
-    animateCycle();
-  }, 1200);
+    animateWord();
+  });
 }
 
-// Initialize the scroller.
-updateText();
-setTimeout(() => {
-  resetPositions();
-  animateCycle();
-}, 100);
+// Start the animation once the DOM is loaded.
+document.addEventListener("DOMContentLoaded", animateWord);
 
-  // Wait until the DOM is fully loaded
-  document.addEventListener("DOMContentLoaded", function () {
-    const popupModal = document.getElementById("popupModal");
-    const popupClose = document.getElementById("popupClose");
-    const popupImage = document.getElementById("popupImage");
 
-    // Show the modal on page load
-    popupModal.classList.add("active");
 
-    // If the close button is clicked, hide the modal
-    popupClose.addEventListener("click", function () {
-      popupModal.classList.remove("active");
-    });
 
-    // When the image is clicked, redirect to bug.html
-    popupImage.addEventListener("click", function () {
-      window.location.href = "bug.html";
-    });
 
-    // Optional: If the user clicks outside the image, close the modal
-    popupModal.addEventListener("click", function (e) {
-      if (e.target === popupModal) {
-        popupModal.classList.remove("active");
-      }
-    });
-  });
+
+
+
+
   const backToTopBtn = document.getElementById("backToTopBtn");
   const foot = document.getElementById("foot");
   
