@@ -16,11 +16,37 @@
         padding-bottom: 0 !important;
       }
     }
+    #backToTopBtn {
+      display: none;
+      /* hidden until you scroll */
+      position: fixed;
+      /* fixed position */
+      bottom: 5px !important;
+      /* distance from bottom */
+      right: 5px;
+      /* distance from right */
+      z-index: 999;
+      /* on top of other elements */
+      background: transparent;
+      /* no default button bg */
+      border: none;
+      /* remove border */
+      padding: 0;
+      /* reset padding */
+      cursor: pointer;
+      /* pointer on hover */
+    }
+    #backToTopBtn img{
+width: 50px !important;
+    }
   </style>
   <!-- Main Script (deferred) -->
   <script src="script.js" defer></script>
 </head>
 <body>
+  <button id="backToTopBtn" title="Go to top">
+    <img src="assets/scrolltotop.png" alt="Back to top">
+  </button>
   <nav role="navigation">
     <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
 

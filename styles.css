@@ -15,6 +15,37 @@ html, body {
   width: 100%;
 }
   
+#backToTopBtn {
+  display: none;
+  /* hidden until you scroll */
+  position: fixed;
+  /* fixed position */
+  bottom: 48px;
+  /* distance from bottom */
+  right: 5px;
+  /* distance from right */
+  z-index: 999;
+  /* on top of other elements */
+  background: transparent;
+  /* no default button bg */
+  border: none;
+  /* remove border */
+  padding: 0;
+  /* reset padding */
+  cursor: pointer;
+  /* pointer on hover */
+}
+
+#backToTopBtn img {
+  width: 60px;
+  /* adjust size as needed */
+  height: auto;
+}
+
+#backToTopBtn:hover img {
+  opacity: 0.8;
+  /* slight hover effect */
+}
 span{
     color:#0262A6;
 }
