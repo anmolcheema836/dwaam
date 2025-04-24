@@ -93,7 +93,7 @@
         <div class="videosheading">VIDEOS</div>
         <div class="videomaincontainer">
           <div class="video-wrapper">
-            <video playsinline webkit-playsinline controlslist="nofullscreen" preload="none" poster="assets/tanya-thumb1.png" width="100%">
+            <video playsinline webkit-playsinline preload="none" poster="assets/tanya-thumb1.png" width="100%">
               <source src="assets/tanya-video1.mp4" type="video/mp4">
             </video>
             <div class="play-button"></div>
@@ -103,7 +103,7 @@
         
         <div class="videomaincontainer">
           <div class="video-wrapper">
-            <video playsinline webkit-playsinline controlslist="nofullscreen" preload="none" poster="assets/tanya-thumb2.png" width="100%">
+            <video playsinline webkit-playsinline preload="none" poster="assets/tanya-thumb2.png" width="100%">
               <source src="assets/tanya-video2.mp4" type="video/mp4">
             </video>
             <div class="play-button"></div>
@@ -113,13 +113,13 @@
         
         <div class="videomaincontainer">
           <div class="video-wrapper">
-            <video playsinline webkit-playsinline controlslist="nofullscreen" preload="none" poster="assets/tanya-thumb3.png" width="100%">
+            <video playsinline webkit-playsinline preload="none" poster="assets/tanya-thumb3.png" width="100%">
               <source src="assets/tanya-video3.mp4" type="video/mp4">
             </video>
             <div class="play-button"></div>
           </div>
           <p>This is what I do best—merrily floating down a crystal-clear river inside a forest like a 2-in-1 Fairy Mermaid, with little fishies swimming alongside me, listening to wildlife humming, crickets and birds chirping. This is how I attain peace within myself.</p>
-        </div>        
+        </div>
         
       </div>
       <div class="imagesmaincontainer">
@@ -612,20 +612,39 @@
   
       setTimeout(() => albumImage.classList.remove('fade-in'), 300);
     }
+
     document.querySelectorAll('.video-wrapper').forEach(wrapper => {
     const video = wrapper.querySelector('video');
     const button = wrapper.querySelector('.play-button');
 
+    // Hide controls initially
+    video.removeAttribute('controls');
+
+    // Play or Pause the video when the button is clicked
     button.addEventListener('click', () => {
-      video.setAttribute('controls', 'controls');
-      video.play();
-      button.style.display = 'none';
+      if (video.paused) {
+        video.play().then(() => {
+          button.style.display = 'none'; // Hide play button when video starts
+        }).catch(err => {
+          console.error("Playback error:", err);
+        });
+      } else {
+        video.pause();
+        button.style.display = 'block'; // Show play button when video is paused
+      }
     });
 
+    // When the video is played, hide the play button
     video.addEventListener('play', () => {
-      button.style.display = 'none';
+      button.style.display = 'none'; // Hide play button
+    });
+
+    // When the video is paused, show the play button
+    video.addEventListener('pause', () => {
+      button.style.display = 'block'; // Show play button again
     });
   });
+
   </script>  
 </body>
 </html>

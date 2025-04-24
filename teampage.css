@@ -776,6 +776,8 @@ font-size: 4.5vh;
     display: block;
     width: 100%;
     height: auto;
+    object-fit: cover;
+    background-color: black;
   }
   
   .play-button {
