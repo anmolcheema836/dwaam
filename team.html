@@ -614,35 +614,33 @@
     }
 
     document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-    const video = wrapper.querySelector('video');
+    const video  = wrapper.querySelector('video');
     const button = wrapper.querySelector('.play-button');
 
-    // Hide controls initially
+    // no native controls
     video.removeAttribute('controls');
 
-    // Play or Pause the video when the button is clicked
-    button.addEventListener('click', () => {
+    // unified play/pause toggle
+    const togglePlayback = () => {
       if (video.paused) {
-        video.play().then(() => {
-          button.style.display = 'none'; // Hide play button when video starts
-        }).catch(err => {
-          console.error("Playback error:", err);
-        });
+        video.play().catch(err => console.error('Playback error:', err));
       } else {
         video.pause();
-        button.style.display = 'block'; // Show play button when video is paused
       }
+    };
+
+    // clicking the video toggles play/pause
+    video.addEventListener('click', togglePlayback);
+
+    // keep the “big play button” clickable too
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();   // so that the wrapper/video handler doesn’t fire twice
+      togglePlayback();
     });
 
-    // When the video is played, hide the play button
-    video.addEventListener('play', () => {
-      button.style.display = 'none'; // Hide play button
-    });
-
-    // When the video is paused, show the play button
-    video.addEventListener('pause', () => {
-      button.style.display = 'block'; // Show play button again
-    });
+    // update button visibility on state changes
+    video.addEventListener('play',  () => button.style.display = 'none');
+    video.addEventListener('pause', () => button.style.display = 'block');
   });
 
   </script>  

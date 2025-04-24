@@ -766,7 +766,6 @@ font-size: 4.5vh;
     right: 35px;
   }
   }
-
   .video-wrapper {
     position: relative;
     width: 100%;
@@ -791,6 +790,7 @@ font-size: 4.5vh;
     transform: translate(-50%, -50%);
     cursor: pointer;
     z-index: 2;
+    display: block;  /* Ensure it’s shown initially */
   }
   
   .play-button::after {
