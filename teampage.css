@@ -741,7 +741,7 @@ font-size: 4.5vh;
   
   @media (max-width: 768px) {
     .teamcontainerthree .nameanddesignationcontainer{
-      padding-top: -10px;;
+      margin-top: -10px;;
     }
     .image-modal{
       padding: 0;
