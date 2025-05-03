@@ -149,7 +149,7 @@ ul, ol {
 /* CTA Button */
 .cta-button {
   padding: 0;
-  background: url('assets/button.png') no-repeat center center;
+  background: url('assets/button.webp') no-repeat center center;
   background-size: contain;
   border-radius: 5px;
   background-color: #EAAA00;
@@ -325,7 +325,7 @@ comma{
       margin-top: 0vh;
       height: 300px;
       width: 100%;
-      background-image: url(assets/heromob.png);
+      background-image: url(assets/heromob.webp);
       background-size: cover;  /* Use cover for full background coverage */
       background-position: center center;
       background-repeat: no-repeat;
@@ -1642,7 +1642,7 @@ input[type="tel"] {
 }
 .submit-btn {
   padding: 0;
-  background: url('assets/submit.png') no-repeat center center;
+  background: url('assets/submit.webp') no-repeat center center;
   background-size: contain;
   border-radius: 5px;
   color: white;

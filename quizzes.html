@@ -6,6 +6,10 @@
   <title>DWAAM Weekly Quiz</title>
   <!-- Add Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <!-- Main Script (deferred) -->
+  <script src="script.js" defer></script>
   <style>
     body {
       font-family: 'Poppins', Arial, sans-serif;
@@ -13,6 +17,12 @@
       padding: 0;
       background-color: #f9f9f9;
       color: #333;
+    }
+    b{
+      font-family: "poppins",serif !important;
+    }
+    .footer-section{
+      padding-bottom: 0 !important;
     }
 
     .container {
@@ -26,11 +36,11 @@
       text-align: center;
     }
 
-    .logo{
-        margin-bottom: -40px;
+    .logoquiz{
+        margin-bottom: -20px;
     }
 
-    .logo img {
+    .logoquiz img {
       max-width: 150px;
     }
 
@@ -196,19 +206,43 @@
   </style>
 </head>
 <body>
+  <nav role="navigation">
+    <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
+
+    <!-- Mobile Menu Toggle -->
+    <input type="checkbox" id="checkbox" class="menu-checkbox" />
+    <label for="checkbox" class="toggle" aria-label="Toggle Navigation Menu">
+      <div class="bar bar--top"></div>
+      <div class="bar bar--middle"></div>
+      <div class="bar bar--bottom"></div>
+    </label>
+
+    <!-- Navigation Links -->
+    <ul id="navpart2">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="team.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="portfolio.html">PORTFOLIO</a></li>
+      <li><a href="quizzes.html">QUIZZES</a></li>
+      <li><a href="blog.html">BLOG</a></li>
+      <li><a href="careers.html">CAREERS</a></li>
+    </ul>
+
+    <button class="cta-button" onclick="scrollToContact()"></button>
+  </nav>
   <div class="container">
-    <div class="logo">
-      <img src="logo.png" alt="DWAAM Logo">
+    <div class="logoquiz">
+      <img src="assets/logo.webp" alt="DWAAM Logo">
     </div>
-    <h1 class="headline">Hey! Welcome to DWAAM weekly quiz! <img src="assets/smile-fairy.png" alt="Smile Emoji" class="emoji"></h1>
+    <h1 class="headline">Hey! Welcome to DWAAM weekly quiz! <img src="assets/smile-fairy.webp" alt="Smile Emoji" class="emoji"></h1>
     <div class="box">
       <div class="card-container">
         <div class="card" data-id="1">
-          <img src="image1.png" alt="Buffet Dinner 1">
+          <img src="assets/winner1.webp" alt="Buffet Dinner 1">
           <p>Buffet dinner for 2 people at award-winning Japanese fine dining restaurant - Kampachi.</p>
         </div>
         <div class="card" data-id="2">
-          <img src="image2.png" alt="Buffet Dinner 2">
+          <img src="assets/winner2.webp" alt="Buffet Dinner 2">
           <p>Buffet dinner for 2 people at luxury 5-star hotel Shangri-La, at Lemon Garden Restaurant.</p>
         </div>
       </div>
@@ -226,6 +260,111 @@
       <p>You must choose a prize to proceed.</p>
       <button id="close-popup">OK</button>
     </div>
+  </div>
+  <section class="why-choose-us">
+    <h2>WHY CHOOSE <v>US</v>?</h2>
+
+    <!-- Word Scroller Container -->
+    <div class="word-scroller" id="wordScroller">
+      <!-- We’ll dynamically fill these with JavaScript below -->
+    </div>
+  </section>
+
+  <!--  Footer Content -->
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="logo-and-motto">
+        <!-- Example: your company logo -->
+        <div class="footer-logo"><video src="assets/videos/logoo.mp4" autoplay loop muted playsinline></video> </div>
+        <p class="motto"><s>SUCCESS</s> is when we make <br>our clients <s>HAPPY </s><span>💛</span></p>
+      </div>
+
+      <div class="latest-posts">
+        <h3>LATEST ARTICLES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/blogg.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why all government bodies should have a PERFECT website.</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why having a website is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog1.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why SEO is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="latest-quizzes">
+        <h3>LATEST QUIZZES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/quiz3.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s Facebook advertising quiz.
+                Join join join, now now now!</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quizz.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s traditional advertising quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quiz1.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s website design quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-us">
+
+        <h3>CONTACT US</h3>
+        <p>
+          <img src="assets/email.webp" alt="Email Icon" class="icon" />
+          <a href="mailto:hello@dwadvertisingandmore.com">hello@digitalworksandmore.com</a>
+        </p>
+        <p>
+          <img src="assets/whatsappicon.webp" alt="WhatsApp Icon" class="icon" />
+          <a href="https://wa.me/60108008989?text=hello"><s>Click to only WhatsApp ONLY text message us. Thank
+              youuuuuuuuuu!<emoji>🙏</emoji></s></a>
+        </p>
+        <h3>SOCIALS</h3>
+        <p>
+          <img src="assets/fbfooticon.webp" alt="Facebook Icon" class="icon" />
+          <a href="https://facebook.com" target="_blank">Facebook
+          </a>
+        </p>
+
+        <p>
+          <img src="assets/footlinkedin.webp" alt="LinkedIn Icon" class="icon" />
+          <a href="https://linkedin.com" target="_blank">LinkedIn
+          </a>
+          </li>
+          </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="footerimg">
+    <img src="assets/foot.webp" alt="footer image" id="foot">
   </div>
 
   <script>

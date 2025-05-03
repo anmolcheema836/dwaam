@@ -31,40 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const factsSection = document.querySelector('.Factsaboutus');
-  const facts = document.querySelectorAll('.fact h3');
-
-  // Function to trigger the counter animation
-  function startCounter(fact) {
-    const target = parseInt(fact.getAttribute('data-target'));
-    let count = 0;
-    const increment = Math.ceil(target / 100);
-    function updateCounter() {
-      if (count < target) {
-        count += increment;
-        if (count > target) count = target;
-        fact.textContent = count;
-        setTimeout(updateCounter, 50);
-      } else {
-        fact.textContent = target;
-      }
-    }
-    updateCounter();
-  }
-
-  // Intersection Observer to detect when the Factsaboutus section is in view
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        facts.forEach(fact => startCounter(fact));
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-  observer.observe(factsSection);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
   // Inject CSS for arrow click animation
   const style = document.createElement("style");
   style.textContent = `
@@ -159,11 +125,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (entry.isIntersecting) {
           // Increase bottom by 100px and change image source
           coffeeButton.style.bottom = `calc(${originalBottom} + 65px)`;
-          if (buttonImg) buttonImg.src = "assets/button.png";
+          if (buttonImg) buttonImg.src = "assets/button.webp";
         } else {
           // Revert back to the original bottom and image source
           coffeeButton.style.bottom = originalBottom;
-          if (buttonImg) buttonImg.src = "assets/ctabutton.png";
+          if (buttonImg) buttonImg.src = "assets/ctabutton.webp";
         }
       });
     });
@@ -243,25 +209,34 @@ document.addEventListener("DOMContentLoaded", animateWord);
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+  // 
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("popupModal");
+    const popupClose = document.getElementById("popupClose");
+    const popupImage = document.getElementById("popupImage");
   
-  window.onload = () => {
-    const modal = document.getElementById("popupModal");
-    modal.style.display = "flex";
-  };
-
-  // Close modal on click of close button
-  document.getElementById("popupClose").onclick = () => {
-    document.getElementById("popupModal").style.display = "none";
-  };
-
-  // Close modal if user clicks outside the image
-  window.onclick = (event) => {
-    const modal = document.getElementById("popupModal");
-    if (event.target === modal) {
-      modal.style.display = "none";
+    if (modal) {
+      window.onload = () => {
+        modal.style.display = "flex";
+      };
+  
+      window.onclick = (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
     }
-  };
-
-  document.getElementById("popupImage").addEventListener("click", function() {
-    window.location.href = "bug.html";
+  
+    if (popupClose) {
+      popupClose.onclick = () => {
+        modal.style.display = "none";
+      };
+    }
+  
+    if (popupImage) {
+      popupImage.addEventListener("click", function () {
+        window.location.href = "bug.html";
+      });
+    }
   });
+  
