@@ -32,26 +32,30 @@
     /* GRID LISTS */
     .list {
       display: grid;
-      gap: 1rem;
-      padding: 1rem 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: .5rem;
+      padding: 1rem .4rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
     .item {
-  background: #f2f2f2;
-  padding: 2rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  text-align: center;
-  border-radius: 1px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
-  transition: transform 0.2s, background 0.2s;    }
-
-    /* ICON INSIDE CARD */
+      font-size: 25px;
+      background: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+      border-radius: 1px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
     .item .material-icons {
       font-size: 2rem;
       display: block;
       margin-bottom: 0.5rem;
+    }
+
+    /* FOCUSED STATE */
+    .focused {
+      border: 2px solid #333;
+      background: #ddd;
     }
 
     /* SUBCATEGORY PANEL */
@@ -111,16 +115,16 @@
   </section>
 
   <script>
-    const homeSec   = document.getElementById('home');
-    const svcSec    = document.getElementById('services');
-    const homeList  = document.getElementById('homeList');
-    const catsList  = document.getElementById('catsList');
-    const panel     = document.getElementById('subcats-panel');
-    const panelTitle= document.getElementById('panel-title');
-    const subcatList= document.getElementById('subcatList');
-    const detailsAcc= document.getElementById('details');
+    const homeSec    = document.getElementById('home');
+    const svcSec     = document.getElementById('services');
+    const homeList   = document.getElementById('homeList');
+    const catsList   = document.getElementById('catsList');
+    const panel      = document.getElementById('subcats-panel');
+    const panelTitle = document.getElementById('panel-title');
+    const subcatList = document.getElementById('subcatList');
+    const detailsAcc = document.getElementById('details');
 
-    // Service data with icons (Material Icons) and 6 subs each
+    // Updated service data with your 19 main services, each with 3 subs
     const data = {
       event: {
         title: 'Event Management',
@@ -128,39 +132,21 @@
         subs: {
           conf: {
             title: 'Corporate Conferences',
-            what: 'Full planning & execution of conferences for your organization.',
-            how: 'Venue selection, speaker coordination, AV setup.',
-            why: 'Seamless events that elevate your brand.'
-          },
-          launch: {
-            title: 'Product Launch Events',
-            what: 'High-impact launches to introduce your product.',
-            how: 'Creative theme, media coverage, guest management.',
-            why: 'Generate buzz and drive sales from day one.'
-          },
-          virtual: {
-            title: 'Virtual Events',
-            what: 'Online webinars & virtual trade shows.',
-            how: 'Platform setup, attendee engagement, streaming.',
-            why: 'Reach global audiences with no location barriers.'
-          },
-          wedding: {
-            title: 'Wedding Planning',
-            what: 'End-to-end wedding coordination services.',
-            how: 'Venue decor, catering, entertainment bookings.',
-            why: 'Deliver your dream day without the stress.'
+            what: 'End-to-end conference planning & execution.',
+            how: 'Venue scouting, speaker coordination, AV setup.',
+            why: 'Elevate your corporate image and networking.'
           },
           trade: {
             title: 'Trade Shows & Exhibitions',
-            what: 'Booth design and event logistics.',
-            how: 'Exhibit layout, staff training, on-site support.',
-            why: 'Stand out and capture leads at industry fairs.'
+            what: 'Custom booth design & logistics support.',
+            how: 'Exhibit layout, staffing, on-site management.',
+            why: 'Maximize lead capture at industry fairs.'
           },
-          team: {
-            title: 'Team Building Activities',
-            what: 'Interactive programs to boost team morale.',
-            how: 'Outdoor challenges, workshops, facilitated sessions.',
-            why: 'Strengthen collaboration and company culture.'
+          retreat: {
+            title: 'Team Building Retreats',
+            what: 'Immersive off-site team bonding programs.',
+            how: 'Activity planning, facilitation, group coaching.',
+            why: 'Boost morale and collaboration across teams.'
           }
         }
       },
@@ -170,39 +156,21 @@
         subs: {
           social: {
             title: 'Social Media Ads',
-            what: 'Targeted ads on Facebook, Instagram & more.',
-            how: 'Audience research, A/B testing, performance tuning.',
-            why: 'Maximize ROI with laser-focused targeting.'
-          },
-          display: {
-            title: 'Display Advertising',
-            what: 'Banner & sidebar ads across the web.',
-            how: 'Programmatic buys, real-time bidding.',
-            why: 'High visibility on premium sites.'
-          },
-          video: {
-            title: 'Video Advertising',
-            what: 'Pre-roll & social video campaigns.',
-            how: 'Creative storyboarding, distribution strategy.',
-            why: 'Engage viewers with compelling motion.'
-          },
-          programmatic: {
-            title: 'Programmatic Buying',
-            what: 'Automated ad purchases in real time.',
-            how: 'DSP setup, audience segmentation, optimization.',
-            why: 'Efficiency at scale with data-driven buys.'
+            what: 'Targeted campaigns on Facebook, Instagram, LinkedIn.',
+            how: 'Audience research, creative design, A/B testing.',
+            why: 'Reach and engage your ideal customer profiles.'
           },
           sem: {
             title: 'Search Engine Marketing',
             what: 'Paid search ads on Google & Bing.',
-            how: 'Keyword research, bid management, ad copy testing.',
-            why: 'Capture high-intent customers immediately.'
+            how: 'Keyword bidding, ad copy optimization, tracking.',
+            why: 'Capture high-intent traffic instantly.'
           },
-          influencer: {
-            title: 'Influencer Partnerships',
-            what: 'Collaborations with social media influencers.',
-            how: 'Talent scouting, contract negotiation, campaign tracking.',
-            why: 'Harness authentic voices for your brand.'
+          display: {
+            title: 'Display Advertising',
+            what: 'Banner & video ads across premium websites.',
+            how: 'Programmatic buys, real-time bidding strategies.',
+            why: 'Increase brand visibility at scale.'
           }
         }
       },
@@ -210,41 +178,23 @@
         title: 'Traditional Advertising',
         icon: 'public',
         subs: {
-          print: {
-            title: 'Print Advertising',
-            what: 'Magazine & newspaper ads.',
-            how: 'Design, copywriting, placement negotiation.',
-            why: 'Reach audiences in premium print outlets.'
-          },
           tv: {
             title: 'TV Commercials',
             what: 'Broadcast-quality ad production.',
-            how: 'Scriptwriting, filming, post-production.',
-            why: 'Mass reach with high-impact storytelling.'
+            how: 'Scriptwriting, filming, post-production editing.',
+            why: 'Achieve mass reach with high-impact storytelling.'
           },
-          radio: {
-            title: 'Radio Spots',
-            what: 'Audio ads for radio & podcasts.',
-            how: 'Voice casting, jingle creation, media buy.',
-            why: 'Drive frequency in commuters’ ears.'
+          print: {
+            title: 'Print Advertising',
+            what: 'Magazine & newspaper ad campaigns.',
+            how: 'Design layouts, copywriting, placement negotiation.',
+            why: 'Target niche audiences in premium print outlets.'
           },
           outdoor: {
             title: 'Outdoor Billboards',
-            what: 'High-visibility outdoor displays.',
-            how: 'Site analysis, creative layouts, permit handling.',
-            why: 'Grab attention in high-traffic areas.'
-          },
-          mail: {
-            title: 'Direct Mail Campaigns',
-            what: 'Printed mailers & catalogs sent to prospects.',
-            how: 'List rental, printing, drop-shipment coordination.',
-            why: 'Tangible touchpoints that drive response.'
-          },
-          magazine: {
-            title: 'Magazine Sponsorships',
-            what: 'Branded content & advertorials.',
-            how: 'Editorial planning, premium placements.',
-            why: 'Position your brand among curated audiences.'
+            what: 'High-visibility outdoor display solutions.',
+            how: 'Site analysis, creative design, permit handling.',
+            why: 'Grab attention in high-traffic locations.'
           }
         }
       },
@@ -254,39 +204,21 @@
         subs: {
           positioning: {
             title: 'Brand Positioning',
-            what: 'Defining your unique market place.',
-            how: 'Competitive audits, value-prop workshops.',
-            why: 'Stand out where it matters most.'
+            what: 'Define your unique value proposition.',
+            how: 'Competitive audits, stakeholder workshops.',
+            why: 'Stand out in crowded markets effectively.'
           },
           research: {
             title: 'Market Research',
-            what: 'Qualitative & quantitative studies.',
+            what: 'Qualitative & quantitative customer studies.',
             how: 'Surveys, focus groups, data analysis.',
-            why: 'Make decisions backed by real insights.'
+            why: 'Make data-driven strategy decisions.'
           },
-          content: {
-            title: 'Content Strategy',
-            what: 'Roadmap for blogs, videos & more.',
-            how: 'Editorial calendars, SEO planning.',
-            why: 'Engage audiences consistently.'
-          },
-          identity: {
-            title: 'Logo & Identity Design',
-            what: 'Visual system for your brand.',
-            how: 'Sketching, vector art, brand guidelines.',
-            why: 'Cohesive look across all touchpoints.'
-          },
-          campaign: {
+          planning: {
             title: 'Campaign Planning',
-            what: 'Integrated multi‑channel campaigns.',
-            how: 'Media mix modeling, timeline mapping.',
+            what: 'Integrated multi-channel campaign roadmaps.',
+            how: 'Timeline mapping, media mix modeling.',
             why: 'Maximize reach with coordinated launches.'
-          },
-          audit: {
-            title: 'Brand Audits',
-            what: 'Evaluate current brand performance.',
-            how: 'Stakeholder interviews, asset reviews.',
-            why: 'Identify gaps and growth opportunities.'
           }
         }
       },
@@ -294,41 +226,23 @@
         title: 'Performance Marketing',
         icon: 'trending_up',
         subs: {
+          ppc: {
+            title: 'Pay‑Per‑Click (PPC)',
+            what: 'Google & Bing Ads management.',
+            how: 'Bid strategy, negative keywords, ad extensions.',
+            why: 'Drive immediate, measurable traffic.'
+          },
           affiliate: {
             title: 'Affiliate Marketing',
-            what: 'Partner networks & commission programs.',
-            how: 'Recruit affiliates, track sales, optimize rates.',
-            why: 'Pay only for real results.'
-          },
-          email: {
-            title: 'Email Marketing',
-            what: 'Targeted nurture & promotional blasts.',
-            how: 'List segmentation, template design, automation.',
-            why: 'High ROI through direct inbox reach.'
-          },
-          cro: {
-            title: 'Conversion Rate Optimization',
-            what: 'A/B testing & UX improvements.',
-            how: 'Heatmaps, funnel analysis, multivariate tests.',
-            why: 'Turn more visitors into customers.'
+            what: 'Partner networks & commission models.',
+            how: 'Recruit affiliates, track sales, optimize payouts.',
+            why: 'Scale performance with pay-for-results.'
           },
           retarget: {
             title: 'Retargeting Campaigns',
-            what: 'Re‑engage past site visitors.',
-            how: 'Pixel implementation, audience segmentation.',
-            why: 'Recover lost sales and increase LTV.'
-          },
-          ppc: {
-            title: 'Pay-Per-Click (PPC)',
-            what: 'Google Ads & Bing Ads management.',
-            how: 'Bid strategy, negative keywords, ad expansions.',
-            why: 'Immediate visibility where users search.'
-          },
-          analytics: {
-            title: 'Analytics & Reporting',
-            what: 'Dashboards & performance insights.',
-            how: 'Tool setup, custom reports, data visualization.',
-            why: 'Make data-driven optimizations daily.'
+            what: 'Re-engage past website visitors.',
+            how: 'Pixel setup, dynamic ads, audience segmentation.',
+            why: 'Recover lost sales and boost ROAS.'
           }
         }
       },
@@ -338,39 +252,21 @@
         subs: {
           setup: {
             title: 'Online Store Setup',
-            what: 'Platform selection & configuration.',
-            how: 'Theme customization, product import.',
-            why: 'Launch your store on time and on budget.'
+            what: 'Platform selection & storefront launch.',
+            how: 'Theme customization, product import, payment setup.',
+            why: 'Go live quickly with a robust shop.'
           },
           payment: {
-            title: 'Payment Gateway Integration',
-            what: 'Secure checkout solutions.',
-            how: 'API integration, PCI compliance.',
-            why: 'Smooth payment experiences for buyers.'
-          },
-          inventory: {
-            title: 'Inventory Management',
-            what: 'Real-time stock tracking.',
-            how: 'ERP integration, reorder alerts.',
-            why: 'Prevent stockouts and overselling.'
-          },
-          uxui: {
-            title: 'UX/UI Optimization',
-            what: 'User‑friendly storefronts.',
-            how: 'Wireframes, usability testing.',
-            why: 'Boost conversions with intuitive design.'
+            title: 'Payment Integration',
+            what: 'Secure checkout & gateway configuration.',
+            how: 'API integration, fraud protection, PCI compliance.',
+            why: 'Ensure smooth transactions for buyers.'
           },
           cart: {
             title: 'Cart Abandonment Solutions',
-            what: 'Recovery funnels & reminders.',
-            how: 'Email triggers, exit pop-ups.',
-            why: 'Recapture lost revenue automatically.'
-          },
-          mobile: {
-            title: 'Mobile Commerce',
-            what: 'App or PWA strategies.',
-            how: 'Responsive builds, native features.',
-            why: 'Meet customers where they shop most.'
+            what: 'Automated recovery funnels & reminders.',
+            how: 'Email triggers, exit-intent pop-ups, retargeting.',
+            why: 'Recapture lost revenue seamlessly.'
           }
         }
       },
@@ -380,45 +276,315 @@
         subs: {
           graphic: {
             title: 'Graphic Design',
-            what: 'Print & digital visuals.',
-            how: 'Adobe workflows, branding alignment.',
-            why: 'Engaging creatives that convert.'
-          },
-          video: {
-            title: 'Video Production',
-            what: 'Concept to final edit.',
-            how: 'Scripting, filming, motion graphics.',
-            why: 'Tell your story through compelling video.'
+            what: 'Print & digital visual assets.',
+            how: 'Adobe workflows, brand-aligned creatives.',
+            why: 'Enhance brand recognition and appeal.'
           },
           copy: {
             title: 'Copywriting',
-            what: 'Persuasive web & ad copy.',
-            how: 'Tone audits, A/B tested headlines.',
-            why: 'Words that drive action.'
-          },
-          photo: {
-            title: 'Photography',
-            what: 'Product & lifestyle shoots.',
-            how: 'Studio coordination, retouching.',
-            why: 'Stunning visuals for every channel.'
+            what: 'Persuasive web, ad & brand copy.',
+            how: 'Tone audits, story-driven messaging.',
+            why: 'Drive action with compelling words.'
           },
           animation: {
             title: 'Animation & Motion',
             what: '2D/3D animations & explainer clips.',
-            how: 'Storyboards, rigging, compositing.',
+            how: 'Storyboarding, rigging, compositing.',
             why: 'Bring ideas to life dynamically.'
+          }
+        }
+      },
+      analytics: {
+        title: 'Analytics and Reporting',
+        icon: 'analytics',
+        subs: {
+          dashboard: {
+            title: 'Dashboard Development',
+            what: 'Custom performance dashboards.',
+            how: 'Tool setup, widget configuration, data feeds.',
+            why: 'Monitor KPIs at a glance.'
           },
-          illustration: {
-            title: 'Illustrations',
-            what: 'Custom art & icons.',
-            how: 'Sketch-to-vector workflows.',
-            why: 'Unique visuals that stand out.'
+          viz: {
+            title: 'Data Visualization',
+            what: 'Interactive charts & infographics.',
+            how: 'Design best practices, story-driven layouts.',
+            why: 'Make complex data instantly clear.'
+          },
+          audit: {
+            title: 'Performance Audits',
+            what: 'In-depth campaign & channel analysis.',
+            how: 'Metrics review, benchmark comparison.',
+            why: 'Identify optimization opportunities.'
+          }
+        }
+      },
+      csr: {
+        title: 'Corporate Social Responsibility Campaigns',
+        icon: 'thumb_up_alt',
+        subs: {
+          sustainability: {
+            title: 'Sustainability Initiatives',
+            what: 'Eco-friendly program design.',
+            how: 'Partner selection, impact reporting.',
+            why: 'Build brand trust through responsibility.'
+          },
+          engagement: {
+            title: 'Community Engagement',
+            what: 'Local outreach & volunteer programs.',
+            how: 'Event planning, stakeholder coordination.',
+            why: 'Strengthen community relations.'
+          },
+          cause: {
+            title: 'Cause Marketing',
+            what: 'Branded campaigns for social causes.',
+            how: 'Charity partnerships, narrative development.',
+            why: 'Align brand with purpose-driven values.'
+          }
+        }
+      },
+      social: {
+        title: 'Social Media Management',
+        icon: 'share',
+        subs: {
+          content: {
+            title: 'Content Creation',
+            what: 'Post, story & video production.',
+            how: 'Editorial calendars, asset creation.',
+            why: 'Keep your channels fresh & engaging.'
+          },
+          community: {
+            title: 'Community Engagement',
+            what: 'Audience interaction & moderation.',
+            how: 'Comment responses, group management.',
+            why: 'Build loyal and active followings.'
+          },
+          listening: {
+            title: 'Social Listening',
+            what: 'Brand & sentiment monitoring.',
+            how: 'Keyword tracking, alert setup.',
+            why: 'Stay ahead of trends and feedback.'
+          }
+        }
+      },
+      pr: {
+        title: 'Public Relations Campaigns',
+        icon: 'public',
+        subs: {
+          press: {
+            title: 'Press Release Writing',
+            what: 'Newsworthy story crafting.',
+            how: 'Media angle development, distribution.',
+            why: 'Secure coverage in top outlets.'
+          },
+          outreach: {
+            title: 'Media Outreach',
+            what: 'Journalist & influencer relations.',
+            how: 'Pitch targeting, follow-ups, briefings.',
+            why: 'Maximize earned media exposure.'
+          },
+          crisis: {
+            title: 'Crisis Management',
+            what: 'Reputation protection strategies.',
+            how: 'Rapid response planning, statement drafting.',
+            why: 'Safeguard brand in sensitive times.'
+          }
+        }
+      },
+      web: {
+        title: 'Website Design and Management',
+        icon: 'web',
+        subs: {
+          uiux: {
+            title: 'UI/UX Design',
+            what: 'Wireframes, prototypes & user testing.',
+            how: 'User flows, interactive mockups.',
+            why: 'Ensure intuitive site experiences.'
+          },
+          cms: {
+            title: 'CMS Development',
+            what: 'WordPress, Shopify, custom builds.',
+            how: 'Theme setup, plugin integration.',
+            why: 'Empower you to manage content easily.'
+          },
+          maintenance: {
+            title: 'Site Maintenance',
+            what: 'Updates, backups & security patches.',
+            how: 'Regular audits, performance tuning.',
+            why: 'Keep your site fast, safe & up to date.'
+          }
+        }
+      },
+      influencer: {
+        title: 'Influencer Marketing',
+        icon: 'people',
+        subs: {
+          sourcing: {
+            title: 'Talent Sourcing',
+            what: 'Find influencers aligned with your brand.',
+            how: 'Audience analysis, outreach.',
+            why: 'Partner with authentic voices.'
+          },
+          coordination: {
+            title: 'Campaign Coordination',
+            what: 'Content briefs & contract management.',
+            how: 'Timeline tracking, deliverable review.',
+            why: 'Seamless execution from start to finish.'
+          },
+          tracking: {
+            title: 'Performance Tracking',
+            what: 'Engagement & ROI measurement.',
+            how: 'Custom reports, affiliate links.',
+            why: 'Optimize spend on top performers.'
+          }
+        }
+      },
+      media: {
+        title: 'Media Planning and Execution',
+        icon: 'dashboard',
+        subs: {
+          buying: {
+            title: 'Media Buying',
+            what: 'Negotiate & purchase ad inventory.',
+            how: 'Vendor vetting, rate negotiation.',
+            why: 'Get the best placements at best rates.'
+          },
+          strategy: {
+            title: 'Channel Strategy',
+            what: 'Select optimal media mix.',
+            how: 'Audience mapping, forecast modeling.',
+            why: 'Maximize reach & frequency efficiently.'
+          },
+          budget: {
+            title: 'Budget Optimization',
+            what: 'Allocate spend for highest ROI.',
+            how: 'Pacing algorithms, bid adjustments.',
+            why: 'Ensure campaign goals are met on budget.'
+          }
+        }
+      },
+      edm: {
+        title: 'Electronic Direct Mail',
+        icon: 'email',
+        subs: {
+          newsletters: {
+            title: 'Email Newsletters',
+            what: 'Monthly & weekly updates.',
+            how: 'Template design, copywriting, scheduling.',
+            why: 'Keep subscribers informed & engaged.'
+          },
+          drip: {
+            title: 'Drip Campaigns',
+            what: 'Automated nurture sequences.',
+            how: 'Trigger setup, content mapping.',
+            why: 'Guide leads down the funnel.'
+          },
+          transactional: {
+            title: 'Transactional Emails',
+            what: 'Order confirmations & notifications.',
+            how: 'API integration, template design.',
+            why: 'Enhance user experience and trust.'
+          }
+        }
+      },
+      photo: {
+        title: 'Professional Photography',
+        icon: 'photo_camera',
+        subs: {
+          product: {
+            title: 'Product Photography',
+            what: 'Studio & lifestyle product shoots.',
+            how: 'Styling, lighting, retouching.',
+            why: 'Showcase your products in the best light.'
+          },
+          event: {
+            title: 'Event Photography',
+            what: 'On-site coverage for corporate events.',
+            how: 'Candid & staged shots, quick turnaround.',
+            why: 'Capture memories and marketing assets.'
+          },
+          lifestyle: {
+            title: 'Lifestyle Shoots',
+            what: 'Brand storytelling through imagery.',
+            how: 'Location scouting, model direction.',
+            why: 'Build authentic brand narratives.'
+          }
+        }
+      },
+      video: {
+        title: 'Professional Videography',
+        icon: 'videocam',
+        subs: {
+          corporate: {
+            title: 'Corporate Videos',
+            what: 'Brand films & executive interviews.',
+            how: 'Storyboarding, filming, post-production.',
+            why: 'Tell your company’s story effectively.'
+          },
+          events: {
+            title: 'Event Coverage',
+            what: 'Keynote & breakout session filming.',
+            how: 'Multi-camera setups, live editing.',
+            why: 'Document and share your events.'
+          },
+          explainers: {
+            title: 'Explainer Videos',
+            what: 'Animated & live-action explainers.',
+            how: 'Script, voiceover, motion graphics.',
+            why: 'Simplify complex ideas for your audience.'
+          }
+        }
+      },
+      seo: {
+        title: 'Search Engine Optimization',
+        icon: 'search',
+        subs: {
+          onpage: {
+            title: 'On‑Page SEO',
+            what: 'Content optimization & meta tags.',
+            how: 'Keyword mapping, schema markup.',
+            why: 'Improve search visibility and CTR.'
+          },
+          offpage: {
+            title: 'Off‑Page SEO',
+            what: 'Link building & outreach.',
+            how: 'Guest posts, influencer collaborations.',
+            why: 'Boost domain authority and rankings.'
+          },
+          technical: {
+            title: 'Technical SEO',
+            what: 'Site speed, crawlability & indexation.',
+            how: 'Audit, error fixes, sitemap updates.',
+            why: 'Ensure search engines can access your content.'
+          }
+        }
+      },
+      music: {
+        title: 'Music and Jingles',
+        icon: 'music_note',
+        subs: {
+          jingle: {
+            title: 'Custom Jingle Creation',
+            what: 'Original jingles for brands & campaigns.',
+            how: 'Composer brief, recording, mixing.',
+            why: 'Make your brand instantly recognizable.'
+          },
+          licensing: {
+            title: 'Music Licensing',
+            what: 'Rights-cleared tracks for ads.',
+            how: 'Catalog search, contract negotiation.',
+            why: 'Use high-quality music legally and affordably.'
+          },
+          branding: {
+            title: 'Audio Branding',
+            what: 'Sonic logos & sound identities.',
+            how: 'Audio concepting, production, implementation.',
+            why: 'Sound that represents your brand personality.'
           }
         }
       }
     };
 
-    // Build lists
+    // Build home + category lists
     Object.entries(data).forEach(([key, svc]) => {
       [homeList, catsList].forEach(container => {
         const div = document.createElement('div');
@@ -445,7 +611,7 @@
       );
     }
 
-    // Open main service
+    // Open main service panel
     function openService(key) {
       const svc = data[key];
       panelTitle.textContent = svc.title;
@@ -462,12 +628,13 @@
       panel.classList.add('active');
     }
 
-    // Close subcat panel
+    // Close subcategory panel
     function closePanel() {
       panel.classList.remove('active');
+      detailsAcc.innerHTML = '';
     }
 
-    // Accordion for subcats
+    // Accordion behavior for each subcategory
     function openSubcat(catKey, subKey) {
       const item = data[catKey].subs[subKey];
       detailsAcc.querySelectorAll('.acc-content').forEach(c => c.classList.remove('open'));
@@ -510,5 +677,6 @@
       };
     });
   </script>
+
 </body>
 </html>
