@@ -17,7 +17,6 @@
       margin-bottom: 1rem;
     }
     header h1 { font-size: 2.4em; margin-bottom: .5rem; }
-    header p { font-size: 1.1em; }
 
     /* GRID OF SERVICES */
     .list {
@@ -27,11 +26,11 @@
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
     .item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        font-size: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 26px;
       background: #fff; padding: 1rem; text-align: center;
       border-radius: 0; cursor: pointer;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -80,6 +79,23 @@
     }
     .acc-content h3 { margin-top: 1rem; font-size: 1rem; }
     .acc-content p { margin: .5rem 0 1rem; font-size: .95rem; }
+
+    /* CLOSE BUTTON */
+    .subcats-container button.close-btn {
+      display: block;
+      margin: 1rem auto 0;
+      padding: .5rem 1rem;
+      background: #1e90ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .subcats-container button.close-btn:hover {
+      background: #007acc;
+    }
   </style>
 </head>
 <body>
@@ -263,21 +279,22 @@
           <h3>Why choose us?</h3><p>${sub.why}</p>
         `;
         hdr.onclick = () => {
-  const isOpen = cnt.classList.contains('open');
-  // CLOSE any other open panels
-  container.querySelectorAll('.acc-content.open')
-           .forEach(c => c.classList.remove('open'));
-  // IF it wasn’t open, open it; otherwise leave all closed
-  if (!isOpen) {
-    cnt.classList.add('open');
-  }
-};
-
-
+          const isOpen = cnt.classList.contains('open');
+          container.querySelectorAll('.acc-content.open')
+                   .forEach(c => c.classList.remove('open'));
+          if (!isOpen) cnt.classList.add('open');
+        };
 
         container.appendChild(hdr);
         container.appendChild(cnt);
       });
+
+      // Create and append the Close button
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = 'Close';
+      closeBtn.className = 'close-btn';
+      closeBtn.onclick = collapseAll;
+      container.appendChild(closeBtn);
 
       card.insertAdjacentElement('afterend', container);
     }
