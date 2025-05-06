@@ -262,15 +262,15 @@
           <h3>How it works?</h3><p>${sub.how}</p>
           <h3>Why choose us?</h3><p>${sub.why}</p>
         `;
-
         hdr.onclick = () => {
-          // CLOSE any other open in this container
-          container.querySelectorAll('.acc-content.open')
-                   .forEach(c => c.classList.remove('open'));
-          // THEN open this one
-          cnt.classList.add('open');
-          cnt.scrollIntoView({ behavior: 'smooth' });
-        };
+  // CLOSE any other open in this container
+  container.querySelectorAll('.acc-content.open')
+           .forEach(c => c.classList.remove('open'));
+  // THEN open this one
+  cnt.classList.add('open');
+  // removed scrollIntoView to keep page from jumping
+};
+
 
         container.appendChild(hdr);
         container.appendChild(cnt);
