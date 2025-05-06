@@ -263,13 +263,16 @@
           <h3>Why choose us?</h3><p>${sub.why}</p>
         `;
         hdr.onclick = () => {
-  // CLOSE any other open in this container
+  const isOpen = cnt.classList.contains('open');
+  // CLOSE any other open panels
   container.querySelectorAll('.acc-content.open')
            .forEach(c => c.classList.remove('open'));
-  // THEN open this one
-  cnt.classList.add('open');
-  // removed scrollIntoView to keep page from jumping
+  // IF it wasn’t open, open it; otherwise leave all closed
+  if (!isOpen) {
+    cnt.classList.add('open');
+  }
 };
+
 
 
         container.appendChild(hdr);
