@@ -2,680 +2,337 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Agency Services</title>
-  <!-- Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rockstar Landing</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
-    /* RESET & BASE */
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-    body { line-height: 1.5; }
-
-    /* SECTIONS */
-    section { display: none; }
-    section.active { display: block; }
-
-    /* HEADERS */
-    h1, h2 { text-align: center; padding: 1rem 0; }
-
-    /* BACK BUTTON */
-    .back-btn {
-      display: inline-block;
-      margin: 1rem;
-      padding: 0.5rem 1rem;
-      background: #333;
-      color: #fff;
-      border-radius: 4px;
-      cursor: pointer;
+    @font-face {
+      font-family: "pricedown";
+      src: url("./pricedown.otf");
     }
 
-    /* GRID LISTS */
-    .list {
-      display: grid;
-      gap: .5rem;
-      padding: 1rem .4rem;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-    .item {
-      font-size: 25px;
-      background: #f2f2f2;
-      padding: 10px;
-      text-align: center;
-      border-radius: 1px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s, background 0.2s;
-    }
-    .item .material-icons {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 0.5rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: "pricedown", sans-serif;
+      background-color: black;
+      overflow-x: hidden;
     }
 
-    /* FOCUSED STATE */
-    .focused {
-      border: 2px solid #333;
-      background: #ddd;
-    }
-
-    /* SUBCATEGORY PANEL */
-    #subcats-panel {
-      display: none;
+    .svg {
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: #fff;
-      overflow-y: auto;
-      padding: 1rem;
+      z-index: 999;
+    }
+
+    .main {
+      display: none;
+    }
+
+    .landing {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 2vw;
       z-index: 10;
     }
-    #subcats-panel.active { display: block; }
 
-    /* ACCORDION */
-    .accordion { margin-top: 1rem; border-top: 1px solid #ccc; }
-    .acc-header {
-      padding: 0.75rem 1rem;
-      background: #e8e8e8;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+    }
+
+    .lines {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .line {
+      height: 8px;
+      background-color: white;
+      width: 60px;
+    }
+
+    .line.small { width: 32px; }
+    .line.tiny { width: 20px; }
+
+    .logo h3 {
+      font-size: 2.25rem;
+      color: white;
+    }
+
+    .imagesdiv {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .imagesdiv img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sky {
+      transform: scale(1.5) rotate(-20deg);
+    }
+
+    .bg-img {
+      transform: scale(1.8) rotate(-3deg);
+    }
+
+    .text {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%) scale(1.4) rotate(-10deg);
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+      z-index: 5;
+    }
+
+    .text h1 {
+      font-size: 10vw;
+      color: white;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .text h1:nth-child(1),
+    .text h1:nth-child(3) { margin-left: -5vw; }
+    .text h1:nth-child(2) { margin-left: 5vw; }
+
+    .character {
+      position: absolute;
+      bottom: -150%;
+      left: 50%;
+      transform: translateX(-50%) scale(3) rotate(-20deg);
+      z-index: 4;
+    }
+
+    .btmbar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 3vw 2vw;
+      background: linear-gradient(to top, black, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      z-index: 5;
+    }
+
+    .btmbar .left {
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+    }
+
+    .btmbar h3 {
+      font-size: 1.25rem;
+      font-family: Arial, sans-serif;
+    }
+
+    .ps5 {
+      height: 55px;
+    }
+
+    .section {
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cntnr {
+      display: flex;
+      width: 90%;
+      height: 80%;
+    }
+
+    .limg {
+      flex: 1;
+      position: relative;
+    }
+
+    .limg img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+
+    .rg {
+      width: 30%;
+      padding: 5vw 2vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .rg h1 {
+      font-size: 4.5rem;
+      line-height: 1;
+    }
+
+    .rg p {
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      margin-top: 1rem;
+    }
+
+    .rg button {
+      margin-top: 2.5rem;
+      padding: 1rem 2.5rem;
+      font-size: 2rem;
+      background-color: #facc15;
+      color: black;
+      border: none;
       cursor: pointer;
-      border-bottom: 1px solid #ccc;
-    }
-    .acc-content {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 1rem;
-      transition: max-height .3s, padding .3s;
-    }
-    .acc-content.open {
-      max-height: 800px;
-      padding: 1rem;
+      font-family: inherit;
     }
   </style>
 </head>
 <body>
 
-  <!-- HOME -->
-  <section id="home" class="active">
-    <h1>Welcome – Choose a Service</h1>
-    <div id="homeList" class="list"></div>
-  </section>
+  <!-- SVG MASK -->
+  <div class="svg">
+    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <mask id="viMask">
+          <rect width="100%" height="100%" fill="black"/>
+          <g class="vi-mask-group">
+            <text x="50%" y="50%" font-size="250" text-anchor="middle"
+                  fill="white" dominant-baseline="middle" font-family="Arial Black">
+              VI
+            </text>
+          </g>
+        </mask>
+      </defs>
+      <image href="./bg.png" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
+             mask="url(#viMask)" />
+    </svg>
+  </div>
 
-  <!-- OUR SERVICES -->
-  <section id="services">
-    <div class="back-btn" onclick="goHome()">← Back</div>
-    <h1>Our Services</h1>
-    <div id="catsList" class="list"></div>
-
-    <!-- Subcategory takeover -->
-    <div id="subcats-panel">
-      <div class="back-btn" onclick="closePanel()">← Back</div>
-      <h2 id="panel-title"></h2>
-      <div id="subcatList" class="list"></div>
-      <div id="details" class="accordion"></div>
+  <!-- MAIN CONTENT -->
+  <div class="main">
+    <div class="landing">
+      <div class="navbar">
+        <div class="logo">
+          <div class="lines">
+            <div class="line"></div>
+            <div class="line small"></div>
+            <div class="line tiny"></div>
+          </div>
+          <h3>Rockstar</h3>
+        </div>
+      </div>
+      <div class="imagesdiv">
+        <img class="sky" src="./sky.png" alt="sky"/>
+        <img class="bg-img" src="./bg.png" alt="background"/>
+        <div class="text">
+          <h1>grand</h1>
+          <h1>theft</h1>
+          <h1>auto</h1>
+        </div>
+        <img class="character" src="./girlbg.png" alt="character"/>
+      </div>
+      <div class="btmbar">
+        <div class="left">
+          <i class="ri-arrow-down-line"></i>
+          <h3>Scroll Down</h3>
+        </div>
+        <img class="ps5" src="./ps5.png" alt="ps5"/>
+      </div>
     </div>
-  </section>
 
+    <div class="section">
+      <div class="cntnr">
+        <div class="limg">
+          <img src="./imag.png" alt="image"/>
+        </div>
+        <div class="rg">
+          <h1>Still Running,</h1>
+          <h1>Not Hunting</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio possimus, asperiores nam, omnis inventore nesciunt a architecto eveniet saepe, ducimus necessitatibus at voluptate.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At eius illum fugit eligendi nesciunt quia similique velit excepturi soluta tenetur illo repellat consectetur laborum eveniet eaque, dicta, hic quisquam?</p>
+          <button>Download Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
   <script>
-    const homeSec    = document.getElementById('home');
-    const svcSec     = document.getElementById('services');
-    const homeList   = document.getElementById('homeList');
-    const catsList   = document.getElementById('catsList');
-    const panel      = document.getElementById('subcats-panel');
-    const panelTitle = document.getElementById('panel-title');
-    const subcatList = document.getElementById('subcatList');
-    const detailsAcc = document.getElementById('details');
+    const svgEl = document.querySelector('.svg');
+    const mainEl = document.querySelector('.main');
 
-    // Updated service data with your 19 main services, each with 3 subs
-    const data = {
-      event: {
-        title: 'Event Management',
-        icon: 'event',
-        subs: {
-          conf: {
-            title: 'Corporate Conferences',
-            what: 'End-to-end conference planning & execution.',
-            how: 'Venue scouting, speaker coordination, AV setup.',
-            why: 'Elevate your corporate image and networking.'
-          },
-          trade: {
-            title: 'Trade Shows & Exhibitions',
-            what: 'Custom booth design & logistics support.',
-            how: 'Exhibit layout, staffing, on-site management.',
-            why: 'Maximize lead capture at industry fairs.'
-          },
-          retreat: {
-            title: 'Team Building Retreats',
-            what: 'Immersive off-site team bonding programs.',
-            how: 'Activity planning, facilitation, group coaching.',
-            why: 'Boost morale and collaboration across teams.'
-          }
-        }
-      },
-      digital: {
-        title: 'Digital Advertising',
-        icon: 'campaign',
-        subs: {
-          social: {
-            title: 'Social Media Ads',
-            what: 'Targeted campaigns on Facebook, Instagram, LinkedIn.',
-            how: 'Audience research, creative design, A/B testing.',
-            why: 'Reach and engage your ideal customer profiles.'
-          },
-          sem: {
-            title: 'Search Engine Marketing',
-            what: 'Paid search ads on Google & Bing.',
-            how: 'Keyword bidding, ad copy optimization, tracking.',
-            why: 'Capture high-intent traffic instantly.'
-          },
-          display: {
-            title: 'Display Advertising',
-            what: 'Banner & video ads across premium websites.',
-            how: 'Programmatic buys, real-time bidding strategies.',
-            why: 'Increase brand visibility at scale.'
-          }
-        }
-      },
-      traditional: {
-        title: 'Traditional Advertising',
-        icon: 'public',
-        subs: {
-          tv: {
-            title: 'TV Commercials',
-            what: 'Broadcast-quality ad production.',
-            how: 'Scriptwriting, filming, post-production editing.',
-            why: 'Achieve mass reach with high-impact storytelling.'
-          },
-          print: {
-            title: 'Print Advertising',
-            what: 'Magazine & newspaper ad campaigns.',
-            how: 'Design layouts, copywriting, placement negotiation.',
-            why: 'Target niche audiences in premium print outlets.'
-          },
-          outdoor: {
-            title: 'Outdoor Billboards',
-            what: 'High-visibility outdoor display solutions.',
-            how: 'Site analysis, creative design, permit handling.',
-            why: 'Grab attention in high-traffic locations.'
-          }
-        }
-      },
-      branding: {
-        title: 'Marketing Strategy & Branding',
-        icon: 'branding_watermark',
-        subs: {
-          positioning: {
-            title: 'Brand Positioning',
-            what: 'Define your unique value proposition.',
-            how: 'Competitive audits, stakeholder workshops.',
-            why: 'Stand out in crowded markets effectively.'
-          },
-          research: {
-            title: 'Market Research',
-            what: 'Qualitative & quantitative customer studies.',
-            how: 'Surveys, focus groups, data analysis.',
-            why: 'Make data-driven strategy decisions.'
-          },
-          planning: {
-            title: 'Campaign Planning',
-            what: 'Integrated multi-channel campaign roadmaps.',
-            how: 'Timeline mapping, media mix modeling.',
-            why: 'Maximize reach with coordinated launches.'
-          }
-        }
-      },
-      performance: {
-        title: 'Performance Marketing',
-        icon: 'trending_up',
-        subs: {
-          ppc: {
-            title: 'Pay‑Per‑Click (PPC)',
-            what: 'Google & Bing Ads management.',
-            how: 'Bid strategy, negative keywords, ad extensions.',
-            why: 'Drive immediate, measurable traffic.'
-          },
-          affiliate: {
-            title: 'Affiliate Marketing',
-            what: 'Partner networks & commission models.',
-            how: 'Recruit affiliates, track sales, optimize payouts.',
-            why: 'Scale performance with pay-for-results.'
-          },
-          retarget: {
-            title: 'Retargeting Campaigns',
-            what: 'Re-engage past website visitors.',
-            how: 'Pixel setup, dynamic ads, audience segmentation.',
-            why: 'Recover lost sales and boost ROAS.'
-          }
-        }
-      },
-      ecommerce: {
-        title: 'E‑Commerce',
-        icon: 'shopping_cart',
-        subs: {
-          setup: {
-            title: 'Online Store Setup',
-            what: 'Platform selection & storefront launch.',
-            how: 'Theme customization, product import, payment setup.',
-            why: 'Go live quickly with a robust shop.'
-          },
-          payment: {
-            title: 'Payment Integration',
-            what: 'Secure checkout & gateway configuration.',
-            how: 'API integration, fraud protection, PCI compliance.',
-            why: 'Ensure smooth transactions for buyers.'
-          },
-          cart: {
-            title: 'Cart Abandonment Solutions',
-            what: 'Automated recovery funnels & reminders.',
-            how: 'Email triggers, exit-intent pop-ups, retargeting.',
-            why: 'Recapture lost revenue seamlessly.'
-          }
-        }
-      },
-      creative: {
-        title: 'Creative Services',
-        icon: 'palette',
-        subs: {
-          graphic: {
-            title: 'Graphic Design',
-            what: 'Print & digital visual assets.',
-            how: 'Adobe workflows, brand-aligned creatives.',
-            why: 'Enhance brand recognition and appeal.'
-          },
-          copy: {
-            title: 'Copywriting',
-            what: 'Persuasive web, ad & brand copy.',
-            how: 'Tone audits, story-driven messaging.',
-            why: 'Drive action with compelling words.'
-          },
-          animation: {
-            title: 'Animation & Motion',
-            what: '2D/3D animations & explainer clips.',
-            how: 'Storyboarding, rigging, compositing.',
-            why: 'Bring ideas to life dynamically.'
-          }
-        }
-      },
-      analytics: {
-        title: 'Analytics and Reporting',
-        icon: 'analytics',
-        subs: {
-          dashboard: {
-            title: 'Dashboard Development',
-            what: 'Custom performance dashboards.',
-            how: 'Tool setup, widget configuration, data feeds.',
-            why: 'Monitor KPIs at a glance.'
-          },
-          viz: {
-            title: 'Data Visualization',
-            what: 'Interactive charts & infographics.',
-            how: 'Design best practices, story-driven layouts.',
-            why: 'Make complex data instantly clear.'
-          },
-          audit: {
-            title: 'Performance Audits',
-            what: 'In-depth campaign & channel analysis.',
-            how: 'Metrics review, benchmark comparison.',
-            why: 'Identify optimization opportunities.'
-          }
-        }
-      },
-      csr: {
-        title: 'Corporate Social Responsibility Campaigns',
-        icon: 'thumb_up_alt',
-        subs: {
-          sustainability: {
-            title: 'Sustainability Initiatives',
-            what: 'Eco-friendly program design.',
-            how: 'Partner selection, impact reporting.',
-            why: 'Build brand trust through responsibility.'
-          },
-          engagement: {
-            title: 'Community Engagement',
-            what: 'Local outreach & volunteer programs.',
-            how: 'Event planning, stakeholder coordination.',
-            why: 'Strengthen community relations.'
-          },
-          cause: {
-            title: 'Cause Marketing',
-            what: 'Branded campaigns for social causes.',
-            how: 'Charity partnerships, narrative development.',
-            why: 'Align brand with purpose-driven values.'
-          }
-        }
-      },
-      social: {
-        title: 'Social Media Management',
-        icon: 'share',
-        subs: {
-          content: {
-            title: 'Content Creation',
-            what: 'Post, story & video production.',
-            how: 'Editorial calendars, asset creation.',
-            why: 'Keep your channels fresh & engaging.'
-          },
-          community: {
-            title: 'Community Engagement',
-            what: 'Audience interaction & moderation.',
-            how: 'Comment responses, group management.',
-            why: 'Build loyal and active followings.'
-          },
-          listening: {
-            title: 'Social Listening',
-            what: 'Brand & sentiment monitoring.',
-            how: 'Keyword tracking, alert setup.',
-            why: 'Stay ahead of trends and feedback.'
-          }
-        }
-      },
-      pr: {
-        title: 'Public Relations Campaigns',
-        icon: 'public',
-        subs: {
-          press: {
-            title: 'Press Release Writing',
-            what: 'Newsworthy story crafting.',
-            how: 'Media angle development, distribution.',
-            why: 'Secure coverage in top outlets.'
-          },
-          outreach: {
-            title: 'Media Outreach',
-            what: 'Journalist & influencer relations.',
-            how: 'Pitch targeting, follow-ups, briefings.',
-            why: 'Maximize earned media exposure.'
-          },
-          crisis: {
-            title: 'Crisis Management',
-            what: 'Reputation protection strategies.',
-            how: 'Rapid response planning, statement drafting.',
-            why: 'Safeguard brand in sensitive times.'
-          }
-        }
-      },
-      web: {
-        title: 'Website Design and Management',
-        icon: 'web',
-        subs: {
-          uiux: {
-            title: 'UI/UX Design',
-            what: 'Wireframes, prototypes & user testing.',
-            how: 'User flows, interactive mockups.',
-            why: 'Ensure intuitive site experiences.'
-          },
-          cms: {
-            title: 'CMS Development',
-            what: 'WordPress, Shopify, custom builds.',
-            how: 'Theme setup, plugin integration.',
-            why: 'Empower you to manage content easily.'
-          },
-          maintenance: {
-            title: 'Site Maintenance',
-            what: 'Updates, backups & security patches.',
-            how: 'Regular audits, performance tuning.',
-            why: 'Keep your site fast, safe & up to date.'
-          }
-        }
-      },
-      influencer: {
-        title: 'Influencer Marketing',
-        icon: 'people',
-        subs: {
-          sourcing: {
-            title: 'Talent Sourcing',
-            what: 'Find influencers aligned with your brand.',
-            how: 'Audience analysis, outreach.',
-            why: 'Partner with authentic voices.'
-          },
-          coordination: {
-            title: 'Campaign Coordination',
-            what: 'Content briefs & contract management.',
-            how: 'Timeline tracking, deliverable review.',
-            why: 'Seamless execution from start to finish.'
-          },
-          tracking: {
-            title: 'Performance Tracking',
-            what: 'Engagement & ROI measurement.',
-            how: 'Custom reports, affiliate links.',
-            why: 'Optimize spend on top performers.'
-          }
-        }
-      },
-      media: {
-        title: 'Media Planning and Execution',
-        icon: 'dashboard',
-        subs: {
-          buying: {
-            title: 'Media Buying',
-            what: 'Negotiate & purchase ad inventory.',
-            how: 'Vendor vetting, rate negotiation.',
-            why: 'Get the best placements at best rates.'
-          },
-          strategy: {
-            title: 'Channel Strategy',
-            what: 'Select optimal media mix.',
-            how: 'Audience mapping, forecast modeling.',
-            why: 'Maximize reach & frequency efficiently.'
-          },
-          budget: {
-            title: 'Budget Optimization',
-            what: 'Allocate spend for highest ROI.',
-            how: 'Pacing algorithms, bid adjustments.',
-            why: 'Ensure campaign goals are met on budget.'
-          }
-        }
-      },
-      edm: {
-        title: 'Electronic Direct Mail',
-        icon: 'email',
-        subs: {
-          newsletters: {
-            title: 'Email Newsletters',
-            what: 'Monthly & weekly updates.',
-            how: 'Template design, copywriting, scheduling.',
-            why: 'Keep subscribers informed & engaged.'
-          },
-          drip: {
-            title: 'Drip Campaigns',
-            what: 'Automated nurture sequences.',
-            how: 'Trigger setup, content mapping.',
-            why: 'Guide leads down the funnel.'
-          },
-          transactional: {
-            title: 'Transactional Emails',
-            what: 'Order confirmations & notifications.',
-            how: 'API integration, template design.',
-            why: 'Enhance user experience and trust.'
-          }
-        }
-      },
-      photo: {
-        title: 'Professional Photography',
-        icon: 'photo_camera',
-        subs: {
-          product: {
-            title: 'Product Photography',
-            what: 'Studio & lifestyle product shoots.',
-            how: 'Styling, lighting, retouching.',
-            why: 'Showcase your products in the best light.'
-          },
-          event: {
-            title: 'Event Photography',
-            what: 'On-site coverage for corporate events.',
-            how: 'Candid & staged shots, quick turnaround.',
-            why: 'Capture memories and marketing assets.'
-          },
-          lifestyle: {
-            title: 'Lifestyle Shoots',
-            what: 'Brand storytelling through imagery.',
-            how: 'Location scouting, model direction.',
-            why: 'Build authentic brand narratives.'
-          }
-        }
-      },
-      video: {
-        title: 'Professional Videography',
-        icon: 'videocam',
-        subs: {
-          corporate: {
-            title: 'Corporate Videos',
-            what: 'Brand films & executive interviews.',
-            how: 'Storyboarding, filming, post-production.',
-            why: 'Tell your company’s story effectively.'
-          },
-          events: {
-            title: 'Event Coverage',
-            what: 'Keynote & breakout session filming.',
-            how: 'Multi-camera setups, live editing.',
-            why: 'Document and share your events.'
-          },
-          explainers: {
-            title: 'Explainer Videos',
-            what: 'Animated & live-action explainers.',
-            how: 'Script, voiceover, motion graphics.',
-            why: 'Simplify complex ideas for your audience.'
-          }
-        }
-      },
-      seo: {
-        title: 'Search Engine Optimization',
-        icon: 'search',
-        subs: {
-          onpage: {
-            title: 'On‑Page SEO',
-            what: 'Content optimization & meta tags.',
-            how: 'Keyword mapping, schema markup.',
-            why: 'Improve search visibility and CTR.'
-          },
-          offpage: {
-            title: 'Off‑Page SEO',
-            what: 'Link building & outreach.',
-            how: 'Guest posts, influencer collaborations.',
-            why: 'Boost domain authority and rankings.'
-          },
-          technical: {
-            title: 'Technical SEO',
-            what: 'Site speed, crawlability & indexation.',
-            how: 'Audit, error fixes, sitemap updates.',
-            why: 'Ensure search engines can access your content.'
-          }
-        }
-      },
-      music: {
-        title: 'Music and Jingles',
-        icon: 'music_note',
-        subs: {
-          jingle: {
-            title: 'Custom Jingle Creation',
-            what: 'Original jingles for brands & campaigns.',
-            how: 'Composer brief, recording, mixing.',
-            why: 'Make your brand instantly recognizable.'
-          },
-          licensing: {
-            title: 'Music Licensing',
-            what: 'Rights-cleared tracks for ads.',
-            how: 'Catalog search, contract negotiation.',
-            why: 'Use high-quality music legally and affordably.'
-          },
-          branding: {
-            title: 'Audio Branding',
-            what: 'Sonic logos & sound identities.',
-            how: 'Audio concepting, production, implementation.',
-            why: 'Sound that represents your brand personality.'
-          }
+    const tl = gsap.timeline();
+    tl.to('.vi-mask-group', {
+      rotate: 10,
+      duration: 2,
+      ease: "power4.inOut",
+      transformOrigin: "50% 50%"
+    })
+    .to('.vi-mask-group', {
+      scale: 10,
+      duration: 2,
+      delay: -1.8,
+      ease: "expo.inOut",
+      transformOrigin: "50% 50%",
+      opacity: 0,
+      onUpdate() {
+        if (this.progress() >= 0.9) {
+          svgEl.remove();
+          mainEl.style.display = 'block';
+          this.kill();
+          runMainAnimations();
         }
       }
-    };
+    });
 
-    // Build home + category lists
-    Object.entries(data).forEach(([key, svc]) => {
-      [homeList, catsList].forEach(container => {
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.dataset.cat = key;
-        div.innerHTML = `<span class="material-icons">${svc.icon}</span>${svc.title}`;
-        container.appendChild(div);
+    function runMainAnimations() {
+      gsap.to('.sky',   { scale: 1.1, rotate: 0, duration: 2, ease: "expo.inOut" });
+      gsap.to('.bg-img',{ scale: 1.1, rotate: 0, duration: 2, ease: "expo.inOut" });
+      gsap.to('.character', {
+        scale: 1.4,
+        x: "-50%",
+        bottom: "-25%",
+        rotate: 0,
+        duration: 2,
+        ease: "expo.inOut"
       });
-    });
+      gsap.to('.text', { scale: 1, rotate: 0, duration: 2, ease: "expo.inOut" });
 
-    // View helpers
-    function show(sec) {
-      homeSec.classList.remove('active');
-      svcSec.classList.remove('active');
-      sec.classList.add('active');
-    }
-    function goHome() {
-      show(homeSec);
-      closePanel();
-    }
-    function focusCategory(key) {
-      catsList.querySelectorAll('.item').forEach(it =>
-        it.classList.toggle('focused', it.dataset.cat === key)
-      );
-    }
-
-    // Open main service panel
-    function openService(key) {
-      const svc = data[key];
-      panelTitle.textContent = svc.title;
-      subcatList.innerHTML = '';
-      detailsAcc.innerHTML = '';
-      Object.entries(svc.subs).forEach(([subKey, sub]) => {
-        const d = document.createElement('div');
-        d.className = 'item';
-        d.textContent = sub.title;
-        d.dataset.sub = subKey;
-        d.onclick = () => openSubcat(key, subKey);
-        subcatList.appendChild(d);
+      document.querySelector('.main .landing').addEventListener('mousemove', e => {
+        const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+        gsap.to('.text', { x: `${xMove * 0.4}%` });
+        gsap.to('.sky', { x: xMove });
+        gsap.to('.bg-img',{ x: xMove * 1.7 });
       });
-      panel.classList.add('active');
     }
-
-    // Close subcategory panel
-    function closePanel() {
-      panel.classList.remove('active');
-      detailsAcc.innerHTML = '';
-    }
-
-    // Accordion behavior for each subcategory
-    function openSubcat(catKey, subKey) {
-      const item = data[catKey].subs[subKey];
-      detailsAcc.querySelectorAll('.acc-content').forEach(c => c.classList.remove('open'));
-      let content = detailsAcc.querySelector(`[data-sub="${subKey}"]`);
-      if (!content) {
-        const hdr = document.createElement('div');
-        hdr.className = 'acc-header';
-        hdr.textContent = item.title;
-        const cnt = document.createElement('div');
-        cnt.className = 'acc-content open';
-        cnt.dataset.sub = subKey;
-        cnt.innerHTML = `
-          <h3>What is it?</h3><p>${item.what}</p>
-          <h3>How it works?</h3><p>${item.how}</p>
-          <h3>Why choose us?</h3><p>${item.why}</p>
-        `;
-        hdr.onclick = () => cnt.classList.toggle('open');
-        detailsAcc.append(hdr, cnt);
-        content = cnt;
-      } else {
-        content.classList.add('open');
-      }
-      content.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Wire up click handlers
-    homeList.querySelectorAll('.item').forEach(el => {
-      el.onclick = () => {
-        const key = el.dataset.cat;
-        show(svcSec);
-        focusCategory(key);
-        openService(key);
-      };
-    });
-    catsList.querySelectorAll('.item').forEach(el => {
-      el.onclick = () => {
-        const key = el.dataset.cat;
-        focusCategory(key);
-        openService(key);
-      };
-    });
   </script>
 
 </body>

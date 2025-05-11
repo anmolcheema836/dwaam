@@ -4,65 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mistake Competition Contest</title>
-  <!-- Import Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-bg: #1976d2; /* Deep blue */
-      --secondary-bg: #2196f3; /* Lighter blue */
-      --card-bg: rgba(255, 255, 255, 0.95); /* Almost white for clear contrast */
-      --input-bg: rgba(0, 0, 0, 0.05); /* Very light gray for input fields */
-      --button-gradient-start: #0d47a1; /* Dark blue */
+      --primary-bg: #1976d2;
+      --secondary-bg: #2196f3;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --input-bg: rgba(0, 0, 0, 0.05);
+      --button-gradient-start: #0d47a1;
       --button-gradient-end: #1976d2;
-      --text-color: #000; /* Black text inside container */
+      --text-color: #000;
       --accent-color: #0d47a1;
       --button-bg: #f1f1f1;
       --button-hover-bg: #e0e0e0;
     }
-    /* Reset and Global Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow-x: hidden;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; overflow-x: hidden;
     }
-    /* Animated Gradient Overlay */
+    body::before {
+      content: "";
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: inherit; z-index: -1;
+      animation: gradientAnimation 15s infinite linear;
+    }
     @keyframes gradientAnimation {
       0% { filter: hue-rotate(0deg); }
       50% { filter: hue-rotate(3deg); }
       100% { filter: hue-rotate(0deg); }
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: inherit;
-      z-index: -1;
-      animation: gradientAnimation 15s infinite linear;
-    }
-    /* Container Card */
     .container {
+      position: relative;
       background: var(--card-bg);
       color: var(--text-color);
       backdrop-filter: blur(5px);
       border-radius: 16px;
-      max-width: 800px;
-      width: 100%;
+      max-width: 800px; width: 100%;
       padding: 50px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-      margin: 20px auto;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
       animation: fadeIn 1s ease-in-out;
       border: 1px solid #ddd;
     }
@@ -70,6 +54,29 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Floating Home Button with Glow */
+    .fab-home {
+      position: fixed;
+      top: 20px; right: 20px;
+      width: 56px; height: 56px;
+      background: #1976d2;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+      text-decoration: none;
+    }
+    .fab-home img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1000;
+border-radius: 50%;
+  /* Glow effect */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 40px rgba(0, 255, 255, 0.5);
+}
+
     h1, h2 {
       text-align: center;
       margin-bottom: 20px;
@@ -77,98 +84,57 @@
       letter-spacing: 1px;
     }
     h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
+      font-size: 2.6rem; font-weight: 700;
       background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
-      background-clip: text;
-      -webkit-background-clip: text;
+      background-clip: text; -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     h2 {
-      font-size: 1.8rem;
-      font-weight: 500;
-      color: var(--accent-color);
+      font-size: 1.8rem; font-weight: 500; color: var(--accent-color);
     }
-    /* Rules Section */
     .rules {
-      background: #f9f9f9;
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 40px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      background: #f9f9f9; padding: 30px;
+      border-radius: 12px; margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
-    .rules img {
-      display: block;
-      width: 100%;
-      margin: 0 auto 20px;
-    }
-    .rules ul {
-      list-style: disc inside;
-      margin-left: 20px;
-      color: #333;
-    }
-    .rules li {
-      margin-bottom: 12px;
-      line-height: 1.6;
-    }
-    /* Form Styles */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
+    .rules img { display: block; width: 100%; margin-bottom: 20px; }
+    .rules ul { list-style: disc inside; margin-left: 20px; color: #333; }
+    .rules li { margin-bottom: 12px; line-height: 1.6; }
+    form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; }
     label {
-      margin-bottom: 10px;
-      font-weight: 500;
-      color: #333;
+      margin-bottom: 10px; font-weight: 500; color: #333;
     }
     input, textarea {
-      padding: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      background: var(--input-bg);
-      color: var(--text-color);
+      padding: 16px; border: 1px solid #ccc; border-radius: 8px;
+      font-size: 1rem; background: var(--input-bg);
+      color: var(--text-color); width: 100%;
       transition: background 0.3s, box-shadow 0.3s;
-      width: 100%;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #666;
     }
     input:focus, textarea:focus {
-      outline: none;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      outline: none; background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
-    /* Mistake Upload Section */
     .mistake-section {
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      background: #f9f9f9;
+      padding: 20px; border: 1px solid #ddd;
+      border-radius: 12px; background: #f9f9f9;
+      position: relative; margin-bottom: 20px;
     }
     .mistake-section h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-      color: var(--accent-color);
+      margin-bottom: 10px; font-size: 1.2rem; color: var(--accent-color);
     }
-    .mistake-section input[type="file"] {
-      margin-top: 10px;
-      width: 100%;
+    .remove-btn {
+      position: absolute; top: 10px; right: 10px;
+      background: #ff4d4d; color: #fff;
+      border: none; border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.2rem; font-weight: bold;
+      cursor: pointer; line-height: 1;
     }
-    /* Buttons */
     .submit-btn, .home-btn, .add-btn {
-      padding: 16px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: var(--text-color);
-      cursor: pointer;
+      padding: 16px; border: none; border-radius: 8px;
+      font-size: 1.1rem; font-weight: bold;
+      color: var(--text-color); cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
     }
     .submit-btn {
@@ -176,8 +142,7 @@
       color: #fff;
     }
     .submit-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      transform: scale(1.03); box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
     .add-btn {
       background: var(--button-bg);
@@ -185,80 +150,50 @@
     .add-btn:hover {
       background: var(--button-hover-bg);
       transform: scale(1.03);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     .home-btn {
-      background: var(--button-bg);
-      margin-top: 30px;
+      background: var(--button-bg); margin-top: 30px;
     }
     .home-btn:hover {
       background: var(--button-hover-bg);
       transform: scale(1.03);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
-    /* Mobile-specific adjustments */
     @media (max-width: 600px) {
-      .container {
-        padding: 35px;
-        margin: 10px auto;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
-      .rules {
-        padding: 25px;
-      }
-      .rules img {
-        width: 100%;
-        margin-bottom: 15px;
-        border-radius: 30px;
-      }
-      label, input, textarea {
-        font-size: 0.95rem;
-      }
-      .submit-btn, .home-btn, .add-btn {
-        font-size: 1rem;
-        padding: 14px;
-      }
+      .container { padding: 35px; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      .rules { padding: 25px; }
+      label, input, textarea { font-size: 0.95rem; }
+      .submit-btn, .home-btn, .add-btn { font-size: 1rem; padding: 14px; }
     }
     @media (max-width: 400px) {
-      body {
-        padding: 10px;
-      }
-      .container {
-        padding: 25px;
-        margin: 5px auto;
-      }
-      h1 {
-        font-size: 1.9rem;
-      }
-      h2 {
-        font-size: 1.4rem;
-      }
-      .rules ul {
-        margin-left: 15px;
-      }
+      body { padding: 10px; }
+      .container { padding: 25px; }
+      h1 { font-size: 1.9rem; }
+      h2 { font-size: 1.4rem; }
+      .rules ul { margin-left: 15px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Mistake Finding Contest</h1>
+    <h1>Mistake<br> Finding <br>Contest</h1>
+
     <div class="rules">
       <img src="assets/mistakes.webp" alt="Mistake">
       <h2>Contest Rules</h2>
       <ul>
         <li>Identify grammatical mistakes or layout inconsistencies on our website.</li>
         <li>Provide clear, concise feedback on the issue found.</li>
-        <li>Each mistake must be reported only once, even if multiple entries are allowed.</li>
+        <li>Each mistake must be reported only once.</li>
         <li>The panel's decision is final and binding.</li>
         <li>Participants must provide valid contact details.</li>
-        <li>Layout or content mistakes that affect website performance are eligible.</li>
+        <li>Layout or content mistakes affecting performance are eligible.</li>
       </ul>
     </div>
+
     <form id="contestForm">
       <!-- Participant Details -->
       <div class="form-group">
@@ -273,10 +208,10 @@
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobile" placeholder="10 digit number" pattern="[0-9]{10}" required />
       </div>
-      
+
       <!-- Mistakes Container -->
       <div id="mistakesContainer">
-        <div class="mistake-section">
+        <div class="mistake-section" data-id="1">
           <h3>Mistake 1</h3>
           <label for="mistake1-desc">Description</label>
           <textarea id="mistake1-desc" name="mistake1-desc" rows="3" placeholder="Describe mistake 1" required></textarea>
@@ -284,42 +219,85 @@
           <input type="file" id="mistake1-screenshots" name="mistake1-screenshots[]" accept="image/*" multiple required>
         </div>
       </div>
-      
-      <!-- Button to add more mistake boxes -->
+
       <button type="button" id="addMistakeBtn" class="add-btn">Add Another Mistake</button>
-      
-      <button type="submit" class="submit-btn" aria-label="Submit Mistakes">Submit Mistakes</button>
+      <button type="submit" class="submit-btn">Submit Mistakes</button>
     </form>
+
     <button class="home-btn" onclick="location.href='index.html'">Return to Homepage</button>
   </div>
+
+  <!-- Floating Home Button -->
+  <a href="index.html" class="fab-home" title="Back to Home">
+    <img src="assets/crossiconforbugpage.webp" alt="Home">
+  </a>
+
   <script>
     let mistakeCount = 1;
-    const mistakesContainer = document.getElementById('mistakesContainer');
-    const addMistakeBtn = document.getElementById('addMistakeBtn');
+    const container = document.getElementById('mistakesContainer');
+    const addBtn = document.getElementById('addMistakeBtn');
 
-    addMistakeBtn.addEventListener('click', () => {
-      mistakeCount++;
-      // Create a new mistake section
-      const mistakeSection = document.createElement('div');
-      mistakeSection.className = 'mistake-section';
-      mistakeSection.innerHTML = `
-        <h3>Mistake ${mistakeCount}</h3>
-        <label for="mistake${mistakeCount}-desc">Description</label>
-        <textarea id="mistake${mistakeCount}-desc" name="mistake${mistakeCount}-desc" rows="3" placeholder="Describe mistake ${mistakeCount}" required></textarea>
-        <label for="mistake${mistakeCount}-screenshots">Upload screenshot(s)</label>
-        <input type="file" id="mistake${mistakeCount}-screenshots" name="mistake${mistakeCount}-screenshots[]" accept="image/*" multiple required>
+    function renumber() {
+      const sections = container.querySelectorAll('.mistake-section');
+      sections.forEach((sec, idx) => {
+        const n = idx + 1;
+        sec.dataset.id = n;
+        sec.querySelector('h3').textContent = `Mistake ${n}`;
+        const ta = sec.querySelector('textarea');
+        ta.id = `mistake${n}-desc`;
+        ta.name = `mistake${n}-desc`;
+        ta.placeholder = `Describe mistake ${n}`;
+        sec.querySelectorAll('label')[0].htmlFor = ta.id;
+        const inp = sec.querySelector('input[type="file"]');
+        inp.id = `mistake${n}-screenshots`;
+        inp.name = `mistake${n}-screenshots[]`;
+        sec.querySelectorAll('label')[1].htmlFor = inp.id;
+        const rm = sec.querySelector('.remove-btn');
+        if (n === 1 && rm) rm.remove();
+        if (n > 1 && !rm) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'remove-btn';
+          btn.title = 'Remove';
+          btn.innerHTML = '×';
+          btn.onclick = () => removeSection(btn);
+          sec.insertBefore(btn, sec.firstChild);
+        }
+      });
+      mistakeCount = sections.length;
+    }
+
+    function removeSection(btn) {
+      if (container.children.length > 1) {
+        btn.closest('.mistake-section').remove();
+        renumber();
+      } else {
+        alert('At least one mistake must remain.');
+      }
+    }
+
+    addBtn.addEventListener('click', () => {
+      const sec = document.createElement('div');
+      sec.className = 'mistake-section';
+      sec.innerHTML = `
+        <button type="button" class="remove-btn" title="Remove">×</button>
+        <h3></h3>
+        <label></label>
+        <textarea rows="3" required></textarea>
+        <label></label>
+        <input type="file" accept="image/*" multiple required>
       `;
-      mistakesContainer.appendChild(mistakeSection);
+      sec.querySelector('.remove-btn').onclick = () => removeSection(sec.querySelector('.remove-btn'));
+      container.appendChild(sec);
+      renumber();
     });
 
-    document.getElementById('contestForm').addEventListener('submit', function(e) {
+    document.getElementById('contestForm').addEventListener('submit', e => {
       e.preventDefault();
-      // Here, you can process the form data and file uploads as needed.
       alert('Thank you for your submission!');
-      this.reset();
-      // Optionally, you can clear the mistakes container and reset mistakeCount if desired.
-      mistakesContainer.innerHTML = `
-        <div class="mistake-section">
+      e.target.reset();
+      container.innerHTML = `
+        <div class="mistake-section" data-id="1">
           <h3>Mistake 1</h3>
           <label for="mistake1-desc">Description</label>
           <textarea id="mistake1-desc" name="mistake1-desc" rows="3" placeholder="Describe mistake 1" required></textarea>
