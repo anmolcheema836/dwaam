@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Agency Services</title>
-  <!-- Material Icons -->
+  <title>Agency Services - Modal Redesign</title>
+  <!-- Material Icons (still needed for accordion) -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Poppins Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- script.js is not present in the original problem, but the JS is inline -->
+  <script src="script.js" defer></script>
   <style>
     :root {
       --primary-color: #007bff;
@@ -16,10 +19,10 @@
       --light-bg: #f8f9fa;
       --white: #fff;
       --dark-text: #343a40;
-      --medium-text: #555e68; /* Slightly softer than pure gray */
+      --medium-text: #555e68;
       --border-color: #dee2e6;
       --shadow-color: rgba(0, 0, 0, 0.08);
-      --border-radius: 8px;
+      --border-radius: 1px;
       --font-family: 'Poppins', sans-serif;
     }
 
@@ -32,44 +35,47 @@
       color: var(--medium-text);
       font-size: 16px;
     }
+    body.modal-open {
+        overflow: hidden; /* Prevent background scroll when modal is open */
+    }
     header {
       text-align: center;
-      padding: 2.5rem 1rem;
+      padding: .5rem 1rem;
       background: var(--white);
       color: var(--dark-text);
       box-shadow: 0 2px 4px var(--shadow-color);
-      margin-bottom: 0.5rem; /* Increased margin */
+      margin-bottom: .8rem;
     }
     header h1 {
-      font-size: 2.6em; /* Adjusted size */
+      font-size: 2.6em;
       margin-bottom: 0.25rem;
-      font-weight: 700; /* Poppins Bold */
+      font-weight: 700;
       color: var(--primary-color);
     }
 
     /* GRID OF SERVICES */
     .list {
       display: grid;
-      gap: 1.25rem; /* Increased gap */
-      padding: 0 0.8rem; /* Increased padding */
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Slightly larger minmax */
-      max-width: 1280px; /* Max width for the grid */
-      margin: 0 auto 2rem auto; /* Center the grid and add bottom margin */
+      gap: .5rem;
+      padding: 0 0.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); /* Slightly wider min for better text fit */
+      max-width: 1280px;
+      margin: 0 auto 2rem auto;
     }
     .item {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      font-size: 1.5rem; /* Adjusted font size */
+      font-size: 1.1rem; /* Slightly reduced for better balance with icon */
       font-weight: 500;
       background: var(--white);
-      padding: 1.75rem 1rem; /* Increased padding */
+      padding: 1.75rem 1rem;
       text-align: center;
       border-radius: var(--border-radius);
       cursor: pointer;
       box-shadow: 0 3px 6px var(--shadow-color);
-      transition: transform .2s ease-in-out, box-shadow .2s ease-in-out, border-color .2s ease-in-out, background-color .2s ease-in-out, color .2s ease-in-out;
+      transition: transform .2s ease-in-out, box-shadow .2s ease-in-out, border-color .2s ease-in-out;
       border: 1px solid transparent;
       color: var(--dark-text);
     }
@@ -78,17 +84,25 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.12);
       border-color: var(--primary-color);
     }
-    .item.expanded {
-      background: var(--primary-color);
-      color: var(--white);
-      box-shadow: 0 6px 12px rgba(0, 82, 204, 0.3);
-      border-color: var(--primary-hover-color);
+    .item.active { /* Style for the card whose details are open in modal */
+      border-color: var(--primary-color);
+      box-shadow: 0 5px 10px rgba(0, 82, 204, 0.2);
+      transform: translateY(-3px);
     }
-    .item.expanded .material-icons {
-      color: var(--white);
+
+    /* NEW: Styles for service card image icons */
+    .item .service-card-icon {
+      width: 2.8rem; /* Similar to original font-size */
+      height: 2.8rem; /* Similar to original font-size */
+      margin-bottom: .85rem;
+      object-fit: contain; /* Ensures image aspect ratio is maintained */
+      /* Note: The 'color' and hover 'color' from Material Icons cannot be directly applied to <img>.
+         The appearance of the icon will depend on the image file itself.
+         If you need hover effects on the image (e.g., opacity change), you can add them here. */
     }
+    /* OLD styles for .item .material-icons - REMOVED/REPLACED
     .item .material-icons {
-      font-size: 2.8rem; /* Larger icon */
+      font-size: 2.8rem;
       margin-bottom: .85rem;
       color: var(--primary-color);
       transition: color .2s ease-in-out;
@@ -96,35 +110,78 @@
     .item:hover .material-icons {
       color: var(--primary-hover-color);
     }
+    */
+    .item:focus-visible {
+      outline: 2px solid var(--primary-hover-color);
+      outline-offset: 2px;
+    }
 
-    /* SUBCATEGORIES CONTAINER */
-    .subcats-container {
-      grid-column: 1/-1; /* Span full width of the grid */
+    /* MODAL STYLES */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Darker overlay */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+      padding: 1rem; /* Padding for smaller screens so modal doesn't touch edges */
+    }
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+    .modal-content {
+      margin-top: 100px;
       background: var(--white);
-      margin: 1rem auto; /* Centered if grid is wider */
-      padding: 2rem; /* Increased padding */
+      padding: 2.5rem; /* Generous padding */
       border-radius: var(--border-radius);
-      box-shadow: 0 5px 15px var(--shadow-color);
-      animation: fadeInScale .35s ease-out;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 700px; /* Max width of modal */
+      max-height: 90vh; /* Max height */
+      overflow-y: auto;
+      position: relative;
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: translateY(15px) scale(0.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    .modal.open .modal-content {
+      transform: scale(1) translateY(0);
     }
-
-    .subcats-container h2 {
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: var(--secondary-color);
+      cursor: pointer;
+      padding: 0.25rem;
+      line-height: 1;
+    }
+    .modal-close-btn:hover {
+      color: var(--dark-text);
+    }
+    .modal-header h2 {
       text-align: center;
-      margin-bottom: 2rem; /* Increased margin */
-      font-size: 1.9rem; /* Adjusted size */
+      margin-bottom: 2rem;
+      font-size: 1.9rem;
       font-weight: 600;
       color: var(--primary-color);
     }
 
-    /* ACCORDION */
+    /* ACCORDION (Styles will be similar but applied within the modal) */
     .acc-header {
       padding: 1rem 1.5rem;
-      background: #f0f2f5; /* Softer grey */
+      background: #f0f2f5;
       cursor: pointer;
       border-radius: 6px;
       font-weight: 600;
@@ -133,33 +190,40 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid #e0e0e0; /* Softer border */
+      border: 1px solid #e0e0e0;
       transition: background-color 0.2s ease;
     }
-    .acc-header:first-of-type { /* First accordion header might not need top margin */
+    .acc-header:first-of-type {
         margin-top: 0;
     }
     .acc-header:hover {
       background-color: #e7e9ec;
     }
     .acc-header.open {
-      background-color: #e0e2e5;
+      background-color: var(--primary-color); /* Make open header more distinct */
+      color: var(--white);
+      border-color: var(--primary-hover-color);
     }
-    .acc-header::after { /* Chevron icon */
+    .acc-header::after {
       content: 'expand_more';
-      font-family: 'Material Icons';
+      font-family: 'Material Icons'; /* Still uses Material Icons */
       font-size: 1.5rem;
       color: var(--medium-text);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .acc-header.open::after {
       transform: rotate(180deg);
+      color: var(--white); /* Chevron color when open */
+    }
+    .acc-header:focus-visible {
+      outline: 2px solid var(--primary-hover-color);
+      outline-offset: -1px;
     }
 
     .acc-content {
       max-height: 0;
       overflow: hidden;
-      padding: 0 1.5rem; /* Horizontal padding for smooth animation */
+      padding: 0 1.5rem;
       transition: max-height .35s cubic-bezier(0.4, 0, 0.2, 1),
                   padding-top .35s cubic-bezier(0.4, 0, 0.2, 1),
                   padding-bottom .35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -167,62 +231,60 @@
                   margin-bottom .35s cubic-bezier(0.4, 0, 0.2, 1);
       background: var(--white);
       border-left: 4px solid var(--primary-color);
-      margin-left: .75rem; /* Indent content */
-      margin-right: .75rem; /* Match indent */
+      margin-left: .75rem;
+      margin-right: .75rem;
       border-radius: 0 0 6px 6px;
     }
     .acc-content.open {
-      max-height: 600px; /* Adjust if content can be very long */
-      padding: 1.5rem; /* Full padding when open */
-      margin-top: .25rem; /* Small space between header and content panel */
-      margin-bottom: .75rem; /* Space after content before next header or close button */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.06); /* Subtle shadow for content panel */
+      max-height: 600px;
+      padding: 1.5rem;
+      margin-top: .25rem;
+      margin-bottom: .75rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
     }
     .acc-content h3 {
-      margin-top: 0; /* First h3 in content */
+      margin-top: 0;
       margin-bottom: .4rem;
-      font-size: 1.05rem;
+      font-size: 1.0rem; /* Slightly smaller to fit modal context */
       font-weight: 600;
-      color: var(--primary-color);
+      color: var(--dark-text); /* Keep distinct from primary color of header */
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .acc-content p {
-      margin: .25rem 0 1.25rem; /* More space after paragraph */
-      font-size: 0.95rem;
+      margin: .25rem 0 1.25rem;
+      font-size: 0.9rem; /* Slightly smaller */
       color: var(--medium-text);
     }
     .acc-content p:last-child {
         margin-bottom: 0;
     }
-
-
-    /* CLOSE BUTTON */
-    .subcats-container button.close-btn {
-      display: inline-flex; /* Allows icon and text to align well */
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin: 1.5rem auto 0; /* Auto margins for block display */
-      padding: .75rem 1.75rem; /* Generous padding */
-      background: var(--secondary-color);
-      color: var(--white);
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: background-color .2s ease, transform .2s ease;
-      display: flex; /* Make it flex to center if using auto margins */
-    }
-    .subcats-container button.close-btn:hover {
-      background: #545b62; /* Darker secondary */
-      transform: translateY(-2px);
-    }
-    .subcats-container button.close-btn .material-icons {
-      font-size: 1.2em; /* Relative to button font size */
-    }
   </style>
 </head>
 <body>
+   <nav role="navigation">
+    <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
+
+    <!-- Mobile Menu Toggle -->
+    <input type="checkbox" id="checkbox" class="menu-checkbox" />
+    <label for="checkbox" class="toggle" aria-label="Toggle Navigation Menu">
+      <div class="bar bar--top"></div>
+      <div class="bar bar--middle"></div>
+      <div class="bar bar--bottom"></div>
+    </label>
+
+    <!-- Navigation Links -->
+    <ul id="navpart2">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="portfolio.html">PORTFOLIO</a></li>
+      <li><a href="quizzes.html">QUIZZES</a></li>
+      <li><a href="blog.html">BLOG</a></li>
+      <li><a href="careers.html">CAREERS</a></li>
+    </ul>
+
+  </nav>
   <header>
     <h1>OUR SERVICES</h1>
   </header>
@@ -231,136 +293,262 @@
     <div id="catsList" class="list"></div>
   </section>
 
+  <!-- Modal Structure -->
+  <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalServiceTitle" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close-btn" aria-label="Close dialog">×</button>
+      <div class="modal-header">
+        <h2 id="modalServiceTitle">Service Details</h2>
+      </div>
+      <div id="modalSubcatsContainer">
+        <!-- Accordion items will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
+   <section class="why-choose-us">
+    <h2>WHY CHOOSE <v>US</v>?</h2>
+
+    <!-- Word Scroller Container -->
+    <div class="word-scroller" id="wordScroller">
+      <!-- We’ll dynamically fill these with JavaScript below -->
+    </div>
+  </section>
+
+  <!-- Example Footer Content -->
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="logo-and-motto">
+        <!-- Example: your company logo -->
+        <div class="footer-logo"><video src="assets/videos/logoo.mp4" autoplay loop muted playsinline></video> </div>
+        <p class="motto"><s>SUCCESS</s> is when we make <br>our clients <s>HAPPY</s><span>💛</span></p>
+      </div>
+
+      <div class="latest-posts">
+        <h3>LATEST ARTICLES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/blogg.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why all government bodies should have a PERFECT website.</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why having a website is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog1.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why SEO is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="latest-quizzes">
+        <h3>LATEST QUIZZES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/quiz3.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s Facebook advertising quiz.
+                Join join join, now now now!</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quizz.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s traditional advertising quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quiz1.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s website design quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-us">
+
+        <h3>CONTACT US</h3>
+        <p>
+          <img src="assets/email.webp" alt="Email Icon" class="icon" />
+          <a href="mailto:hello@dwadvertisingandmore.com">hello@digitalworksandmore.com</a>
+        </p>
+        <p>
+          <img src="assets/whatsappicon.webp" alt="WhatsApp Icon" class="icon" />
+          <a href="https://wa.me/60108008989?text=hello"><s>Click to only WhatsApp ONLY text message us. Thank youuuuuuuuuu!<emoji>🙏</emoji></s></a>
+        </p>
+        <h3>SOCIALS</h3>
+        <p>
+          <img src="assets/fbfooticon.webp" alt="Facebook Icon" class="icon" />
+          <a href="https://facebook.com" target="_blank">Facebook
+          </a>
+        </p>
+
+        <p>
+          <img src="assets/footlinkedin.webp" alt="LinkedIn Icon" class="icon" />
+          <a href="https://linkedin.com" target="_blank">LinkedIn
+          </a>
+          </li>
+          </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="footerimg">
+    <img src="assets/foot.webp" alt="footer image" id="foot">
+  </div>
+
   <script>
     const catsList = document.getElementById('catsList');
+    const serviceModal = document.getElementById('serviceModal');
+    const modalServiceTitle = document.getElementById('modalServiceTitle');
+    const modalSubcatsContainer = document.getElementById('modalSubcatsContainer');
+    const modalCloseBtn = serviceModal.querySelector('.modal-close-btn');
+    let currentActiveCard = null;
+
+    // Assume your images are in 'assets/service-icons/' and named as '[key].png' or similar
+    // Update these paths if your images are located elsewhere or have different names/extensions.
     const data = {
-      event: { title: 'Event Management', icon: 'event',
+      event: { title: 'Event Management', icon: 'assets/service-icons/event.png',
         subs: {
           conf:    { title: 'Corporate Conferences', what: 'End-to-end conference planning & execution.', how: 'Venue scouting, speaker coordination, AV setup.', why: 'Elevate your corporate image.' },
           trade:   { title: 'Trade Shows & Exhibitions', what: 'Custom booth design & logistics.', how: 'Exhibit layout, staffing, on-site management.', why: 'Maximize lead capture.' },
           retreat: { title: 'Team Retreats', what: 'Off-site bonding programs.', how: 'Activities, facilitation, coaching.', why: 'Boost team collaboration.' }
         }
       },
-      digital: { title: 'Digital Advertising', icon: 'campaign',
+      digital: { title: 'Digital Advertising', icon: 'assets/service-icons/digital.png',
         subs: {
           social:  { title: 'Social Media Ads', what: 'Targeted Facebook/Instagram campaigns.', how: 'Audience research, A/B testing.', why: 'Engage your ideal customers.' },
           sem:     { title: 'Search Engine Marketing', what: 'Paid search on Google & Bing.', how: 'Keyword bidding, ad copy tests.', why: 'Capture high-intent traffic.' },
           display: { title: 'Display Advertising', what: 'Banner & video ads on premium sites.', how: 'Programmatic buys & RTB.', why: 'Scale brand visibility.' }
         }
       },
-      traditional: { title: 'Traditional Advertising', icon: 'public',
+      traditional: { title: 'Traditional Advertising', icon: 'assets/service-icons/traditional.png',
         subs: {
           tv:      { title: 'TV Commercials', what: 'Broadcast-quality ad production.', how: 'Scriptwriting, filming, post-production.', why: 'Achieve mass reach.' },
           print:   { title: 'Print Ads', what: 'Magazine & newspaper placements.', how: 'Design, copywriting, placement.', why: 'Target niche readers.' },
           outdoor: { title: 'Outdoor Billboards', what: 'High-visibility displays.', how: 'Site analysis, permits.', why: 'Grab attention on the go.' }
         }
       },
-      branding: { title: 'Marketing Strategy & Branding', icon: 'branding_watermark',
+      branding: { title: 'Marketing Strategy & Branding', icon: 'assets/service-icons/branding.png', /* Was branding_watermark */
         subs: {
           pos:      { title: 'Brand Positioning', what: 'Define your unique value.', how: 'Audits, workshops.', why: 'Stand out effectively.' },
           research: { title: 'Market Research', what: 'Qualitative & quantitative studies.', how: 'Surveys, focus groups.', why: 'Back decisions with data.' },
           campaign: { title: 'Campaign Planning', what: 'Multi-channel roadmaps.', how: 'Timeline mapping, media mix.', why: 'Coordinated launches.' }
         }
       },
-      performance: { title: 'Performance Marketing', icon: 'trending_up',
+      performance: { title: 'Performance Marketing', icon: 'assets/service-icons/performance.png', /* Was trending_up */
         subs: {
           ppc:       { title: 'Pay‑Per‑Click', what: 'Google & Bing Ads management.', how: 'Bid strategy, negative keywords.', why: 'Drive immediate traffic.' },
           affiliate: { title: 'Affiliate Marketing', what: 'Partner networks & commission models.', how: 'Recruit, track, optimize.', why: 'Pay only for results.' },
           retarget:  { title: 'Retargeting', what: 'Re-engage past visitors.', how: 'Pixel setup, dynamic ads.', why: 'Recover lost sales.' }
         }
       },
-      ecommerce: { title: 'E‑Commerce', icon: 'shopping_cart',
+      ecommerce: { title: 'E‑Commerce', icon: 'assets/service-icons/ecommerce.png', /* Was shopping_cart */
         subs: {
           setup:   { title: 'Store Setup', what: 'Platform selection & launch.', how: 'Theme customization, product import.', why: 'Go live quickly.' },
           payment: { title: 'Payment Integration', what: 'Secure gateway setup.', how: 'API integration, PCI compliance.', why: 'Smooth checkouts.' },
           cart:    { title: 'Abandonment Funnels', what: 'Recovery emails & pop‑ups.', how: 'Triggers, reminders.', why: 'Recapture revenue.' }
         }
       },
-      creative: { title: 'Creative Services', icon: 'palette',
+      creative: { title: 'Creative Services', icon: 'assets/service-icons/creative.png', /* Was palette */
         subs: {
           graphic:   { title: 'Graphic Design', what: 'Print & digital visuals.', how: 'Adobe workflows.', why: 'Boost brand appeal.' },
           copy:      { title: 'Copywriting', what: 'Persuasive web & ad copy.', how: 'Tone audits & testing.', why: 'Drive action.' },
           animation: { title: 'Animation & Motion', what: '2D/3D explainers.', how: 'Storyboards & compositing.', why: 'Bring ideas to life.' }
         }
       },
-      analytics: { title: 'Analytics & Reporting', icon: 'analytics',
+      analytics: { title: 'Analytics & Reporting', icon: 'assets/service-icons/analytics.png',
         subs: {
           dash:  { title: 'Dashboards', what: 'Custom KPI dashboards.', how: 'Tool setup & widgets.', why: 'See metrics at a glance.' },
           viz:   { title: 'Data Visualization', what: 'Charts & infographics.', how: 'Design & storytelling.', why: 'Clarify complex data.' },
           audit: { title: 'Performance Audits', what: 'Campaign analysis.', how: 'Metrics review & benchmarks.', why: 'Spot optimisation wins.' }
         }
       },
-      csr: { title: 'Corporate Social Responsibility', icon: 'thumb_up_alt',
+       csr: { title: 'Corporate Social Responsibility', icon: 'assets/service-icons/csr.png', /* Was thumb_up_alt */
         subs: {
           sustain:   { title: 'Sustainability', what: 'Eco-friendly programs.', how: 'Partnerships & reporting.', why: 'Build brand trust.' },
           community: { title: 'Community Engagement', what: 'Local outreach.', how: 'Event planning & coordination.', why: 'Strengthen ties.' },
           cause:     { title: 'Cause Marketing', what: 'Branded social campaigns.', how: 'Charity partnerships.', why: 'Align with values.' }
         }
       },
-      social: { title: 'Social Media Management', icon: 'share',
+      social: { title: 'Social Media Management', icon: 'assets/service-icons/social.png', /* Was share */
         subs: {
           content:   { title: 'Content Creation', what: 'Posts, stories & reels.', how: 'Editorial calendars.', why: 'Keep channels fresh.' },
           community: { title: 'Engagement', what: 'Comment & DM moderation.', how: 'Replies & interactions.', why: 'Build loyalty.' },
           listening: { title: 'Social Listening', what: 'Brand sentiment tracking.', how: 'Alerts & reports.', why: 'Stay ahead.' }
         }
       },
-      pr: { title: 'Public Relations', icon: 'public',
+      pr: { title: 'Public Relations', icon: 'assets/service-icons/pr.png', /* Was public */
         subs: {
           press:    { title: 'Press Releases', what: 'Newsworthy messaging.', how: 'Writing & distribution.', why: 'Earn media coverage.' },
           outreach: { title: 'Media Outreach', what: 'Journalist relations.', how: 'Pitching & follow‑up.', why: 'Maximise earned reach.' },
           crisis:   { title: 'Crisis Management', what: 'Reputation protection.', how: 'Rapid response plans.', why: 'Safeguard brand.' }
         }
       },
-      web: { title: 'Website Design & Management', icon: 'web',
+      web: { title: 'Website Design & Management', icon: 'assets/service-icons/web.png',
         subs: {
           uiux:        { title: 'UI/UX Design', what: 'Wireframes & testing.', how: 'Prototypes & feedback.', why: 'Ensure usability.' },
           cms:         { title: 'CMS Development', what: 'WordPress/Shopify builds.', how: 'Themes & plugins.', why: 'Easy updates.' },
           maintenance: { title: 'Site Maintenance', what: 'Updates & backups.', how: 'Audits & security.', why: 'Keep it healthy.' }
         }
       },
-      influencer: { title: 'Influencer Marketing', icon: 'people',
+      influencer: { title: 'Influencer Marketing', icon: 'assets/service-icons/influencer.png', /* Was people */
         subs: {
           sourcing:    { title: 'Talent Sourcing', what: 'Find right creators.', how: 'Audience analysis.', why: 'Authentic partnerships.' },
           coordination:{ title: 'Campaign Coordination', what: 'Briefs & contracts.', how: 'Timelines & deliverables.', why: 'Seamless execution.' },
           tracking:    { title: 'Performance Tracking', what: 'Engagement & ROI.', how: 'Custom reports.', why: 'Optimize spend.' }
         }
       },
-      media: { title: 'Media Planning & Execution', icon: 'dashboard',
+      media: { title: 'Media Planning & Execution', icon: 'assets/service-icons/media.png', /* Was dashboard */
         subs: {
           buying:   { title: 'Media Buying', what: 'Negotiate inventory.', how: 'Vendor vetting.', why: 'Best placements.' },
           strategy: { title: 'Channel Strategy', what: 'Mix optimization.', how: 'Modeling & mapping.', why: 'Efficient reach.' },
           budget:   { title: 'Budget Optimization', what: 'Allocate spend.', how: 'Pacing & bids.', why: 'Maximise ROI.' }
         }
       },
-      edm: { title: 'Electronic Direct Mail', icon: 'email',
+      edm: { title: 'Electronic Direct Mail', icon: 'assets/service-icons/edm.png', /* Was email */
         subs: {
           news:  { title: 'Newsletters', what: 'Regular updates.', how: 'Templates & copy.', why: 'Keep subscribers informed.' },
           drip:  { title: 'Drip Campaigns', what: 'Automated sequences.', how: 'Triggers & content.', why: 'Nurture leads.' },
           trans: { title: 'Transactional Emails', what: 'Order & update emails.', how: 'API integration.', why: 'Enhance trust.' }
         }
       },
-      photo: { title: 'Professional Photography', icon: 'photo_camera',
+      photo: { title: 'Professional Photography', icon: 'assets/service-icons/photo.png', /* Was photo_camera */
         subs: {
           product:   { title: 'Product Shoots', what: 'Studio & lifestyle.', how: 'Styling & retouch.', why: 'Showcase products.' },
           event:     { title: 'Event Coverage', what: 'On‑site event photography.', how: 'Candid & staged.', why: 'Capture memories.' },
           lifestyle: { title: 'Lifestyle Shoots', what: 'Brand storytelling.', how: 'Scouting & direction.', why: 'Authentic imagery.' }
         }
       },
-      video: { title: 'Professional Videography', icon: 'videocam',
+      video: { title: 'Professional Videography', icon: 'assets/service-icons/video.png', /* Was videocam */
         subs: {
           corporate: { title: 'Corporate Films', what: 'Brand stories & interviews.', how: 'Storyboards & editing.', why: 'Engage stakeholders.' },
           events:    { title: 'Event Videos', what: 'Keynote & session filming.', how: 'Multi-cam & live edit.', why: 'Document & share.' },
           explainers:{ title: 'Explainer Videos', what: 'Animated & live-action.', how: 'Scripts & motion gfx.', why: 'Clarify ideas.' }
         }
       },
-      seo: { title: 'Search Engine Optimization', icon: 'search',
+      seo: { title: 'Search Engine Optimization', icon: 'assets/service-icons/seo.png', /* Was search */
         subs: {
           onpage:    { title: 'On‑Page SEO', what: 'Content & meta tags.', how: 'Keyword mapping.', why: 'Boost visibility.' },
           offpage:   { title: 'Off‑Page SEO', what: 'Link building & outreach.', how: 'Guest posts & PR.', why: 'Increase authority.' },
           technical: { title: 'Technical SEO', what: 'Site speed & crawl.', how: 'Audit & fixes.', why: 'Ensure indexation.' }
         }
       },
-      music: { title: 'Music & Jingles', icon: 'music_note',
+      music: { title: 'Music & Jingles', icon: 'assets/service-icons/music.png', /* Was music_note */
         subs: {
           jingle:    { title: 'Jingle Creation', what: 'Original jingles.', how: 'Composition & recording.', why: 'Instant recognition.' },
           licensing: { title: 'Music Licensing', what: 'Rights‑cleared tracks.', how: 'Search & negotiate.', why: 'Legal & affordable.' },
@@ -369,86 +557,133 @@
       }
     };
 
-    // render all service cards
+    // Render all service cards
     Object.entries(data).forEach(([key, svc]) => {
       const card = document.createElement('div');
       card.className = 'item';
-      card.innerHTML = `<span class="material-icons">${svc.icon}</span>${svc.title}`;
-      card.onclick = () => toggleSubcats(card, key);
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      // MODIFIED: Use <img> for icon
+      card.innerHTML = `<img src="${svc.icon}" alt="${svc.title}" class="service-card-icon">${svc.title}`;
+      
+      const openModalHandler = () => openServiceModal(card, key, svc.title);
+      card.onclick = openModalHandler;
+      card.onkeydown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault(); // Prevent page scroll on space
+          openModalHandler();
+        }
+      };
       catsList.appendChild(card);
     });
 
-    function toggleSubcats(card, key) {
-      const isAlreadyExpanded = card.classList.contains('expanded');
-
-      collapseAll(); // Close any open item first
-
-      if (isAlreadyExpanded) {
-        // If it was already expanded, clicking it again should just close it.
-        // collapseAll() already handled this.
-        return;
+    function openServiceModal(cardElement, serviceKey, serviceTitle) {
+      if (currentActiveCard) {
+        currentActiveCard.classList.remove('active');
       }
+      cardElement.classList.add('active');
+      currentActiveCard = cardElement;
 
-      card.classList.add('expanded');
+      modalServiceTitle.textContent = serviceTitle;
+      modalSubcatsContainer.innerHTML = ''; // Clear previous content
 
-      // build subcats container
-      const container = document.createElement('div');
-      container.className = 'subcats-container';
-      container.innerHTML = `<h2>${data[key].title}</h2>`;
+      let subIdCounter = 0;
+      Object.values(data[serviceKey].subs).forEach(sub => {
+        const accHeaderId = `acc-header-${serviceKey}-${subIdCounter}`;
+        const accContentId = `acc-content-${serviceKey}-${subIdCounter}`;
 
-      Object.values(data[key].subs).forEach(sub => {
         const hdr = document.createElement('div');
         hdr.className = 'acc-header';
         hdr.textContent = sub.title;
+        hdr.setAttribute('role', 'button');
+        hdr.setAttribute('aria-expanded', 'false');
+        hdr.setAttribute('aria-controls', accContentId);
+        hdr.id = accHeaderId;
+        hdr.tabIndex = 0; // Make accordion header focusable
 
         const cnt = document.createElement('div');
         cnt.className = 'acc-content';
+        cnt.id = accContentId;
+        cnt.setAttribute('role', 'region');
+        cnt.setAttribute('aria-labelledby', accHeaderId);
         cnt.innerHTML = `
           <h3>What is it?</h3><p>${sub.what}</p>
           <h3>How it works?</h3><p>${sub.how}</p>
           <h3>Why choose us?</h3><p>${sub.why}</p>
         `;
 
-        hdr.onclick = function() { // Use function() to get `this` as hdr
-            const currentContent = this.nextElementSibling;
-            const isThisOpen = currentContent.classList.contains('open');
+        const toggleAccordion = () => {
+            const isThisOpen = hdr.classList.contains('open');
 
-            // Close all other open accordions in this container
-            container.querySelectorAll('.acc-header.open').forEach(otherHeader => {
-                if (otherHeader !== this) { // `this` refers to the clicked hdr
+            // Close all other open accordions in this modal
+            modalSubcatsContainer.querySelectorAll('.acc-header.open').forEach(otherHeader => {
+                if (otherHeader !== hdr) {
                     otherHeader.classList.remove('open');
+                    otherHeader.setAttribute('aria-expanded', 'false');
                     otherHeader.nextElementSibling.classList.remove('open');
                 }
             });
 
             // Toggle this accordion
-            this.classList.toggle('open', !isThisOpen);
-            currentContent.classList.toggle('open', !isThisOpen);
+            hdr.classList.toggle('open', !isThisOpen);
+            hdr.setAttribute('aria-expanded', String(!isThisOpen));
+            cnt.classList.toggle('open', !isThisOpen);
         };
 
-        container.appendChild(hdr);
-        container.appendChild(cnt);
+        hdr.onclick = toggleAccordion;
+        hdr.onkeydown = (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleAccordion();
+          }
+        };
+
+        modalSubcatsContainer.appendChild(hdr);
+        modalSubcatsContainer.appendChild(cnt);
+        subIdCounter++;
       });
 
-      // Create and append the Close button
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'close-btn';
-      closeBtn.innerHTML = '<span class="material-icons">close</span> Close';
-      closeBtn.onclick = collapseAll;
-      container.appendChild(closeBtn);
-
-      // Insert after the card, but ensure it's within the grid flow correctly
-      // If card is the last in its row, this works. If not, it might break grid.
-      // For simplicity, this is common. Better might be a dedicated slot.
-      card.insertAdjacentElement('afterend', container);
+      serviceModal.style.display = 'flex'; // Use flex for centering
+      setTimeout(() => { // Timeout to allow display change before transition
+        serviceModal.classList.add('open');
+        document.body.classList.add('modal-open');
+        modalCloseBtn.focus(); // Focus the close button for accessibility
+      }, 10); 
     }
 
-    function collapseAll() {
-      document.querySelectorAll('.item.expanded')
-              .forEach(c => c.classList.remove('expanded'));
-      document.querySelectorAll('.subcats-container')
-              .forEach(c => c.remove());
+    function closeServiceModal() {
+      serviceModal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      
+      if (currentActiveCard) {
+        currentActiveCard.classList.remove('active');
+        currentActiveCard.focus(); // Return focus to the card that opened the modal
+        currentActiveCard = null;
+      }
+
+      // Wait for animation to finish before hiding
+      setTimeout(() => {
+        serviceModal.style.display = 'none';
+        modalSubcatsContainer.innerHTML = ''; // Clear content after closing
+      }, 300); // Match CSS transition duration
     }
+
+    modalCloseBtn.onclick = closeServiceModal;
+
+    // Close modal on overlay click
+    serviceModal.addEventListener('click', (event) => {
+      if (event.target === serviceModal) {
+        closeServiceModal();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && serviceModal.classList.contains('open')) {
+        closeServiceModal();
+      }
+    });
+
   </script>
 </body>
 </html>
