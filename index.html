@@ -742,6 +742,18 @@
       </div>
     </div>
   </section>
+  <!-- place this just before the closing </body> tag -->
+<script>
+  // Select all service boxes
+  document.querySelectorAll('.OurServices .services .container').forEach(box => {
+    // change cursor on hover
+    box.style.cursor = 'pointer';
+    // when clicked, go to services.html
+    box.addEventListener('click', () => {
+      window.location.href = 'services.html';
+    });
+  });
+</script>
 
   <div class="qutote">
     <img src="assets/r.webp" alt="QUOTE Image" width="600" height="400" />
