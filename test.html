@@ -2,338 +2,702 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rockstar Landing</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agency Services - Modal Redesign</title>
+  <!-- Material Icons (still needed for accordion) -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- script.js is not present in the original problem, but the JS is inline -->
+  <script src="script.js" defer></script>
   <style>
-    @font-face {
-      font-family: "pricedown";
-      src: url("./pricedown.otf");
+    :root {
+      --primary-color: #007bff;
+      --primary-hover-color: #0056b3;
+      --secondary-color: #6c757d;
+      --light-bg: #f8f9fa;
+      --white: #fff;
+      --dark-text: #343a40;
+      --medium-text: #555e68;
+      --border-color: #dee2e6;
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --border-radius: 1px;
+      --font-family: 'Poppins', sans-serif;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      font-family: "pricedown", sans-serif;
-      background-color: black;
-      overflow-x: hidden;
+    /* RESET & BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-family);
+      line-height: 1.6;
+      background: var(--light-bg);
+      color: var(--medium-text);
+      font-size: 16px;
+    }
+    body.modal-open {
+        overflow: hidden; /* Prevent background scroll when modal is open */
+    }
+    header {
+      text-align: center;
+      padding: .5rem 1rem;
+      background: var(--white);
+      color: var(--dark-text);
+      box-shadow: 0 2px 4px var(--shadow-color);
+      margin-bottom: .8rem;
+    }
+    header h1 {
+      font-size: 2.6em;
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+      color: var(--primary-color);
     }
 
-    .png {
-      width: 100vw;
-      height: 100vh;
-      background-color: black;
+    /* GRID OF SERVICES */
+    .list {
+      display: grid;
+      gap: .5rem;
+      padding: 0 0.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); /* Slightly wider min for better text fit */
+      max-width: 1280px;
+      margin: 0 auto 2rem auto;
+    }
+    .item {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      font-size: 1.1rem; /* Slightly reduced for better balance with icon */
+      font-weight: 500;
+      background: var(--white);
+      padding: 1.75rem 1rem;
+      text-align: center;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      box-shadow: 0 3px 6px var(--shadow-color);
+      transition: transform .2s ease-in-out, box-shadow .2s ease-in-out, border-color .2s ease-in-out;
+      border: 1px solid transparent;
+      color: var(--dark-text);
+    }
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+      border-color: var(--primary-color);
+    }
+    .item.active { /* Style for the card whose details are open in modal */
+      border-color: var(--primary-color);
+      box-shadow: 0 5px 10px rgba(0, 82, 204, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* NEW: Styles for service card image icons */
+    .item .service-card-icon {
+      width: 2.8rem; /* Similar to original font-size */
+      height: 2.8rem; /* Similar to original font-size */
+      margin-bottom: .85rem;
+      object-fit: contain; /* Ensures image aspect ratio is maintained */
+    }
+    .item:focus-visible {
+      outline: 2px solid var(--primary-hover-color);
+      outline-offset: 2px;
+    }
+
+    /* MODAL STYLES */
+    .modal {
       position: fixed;
-      z-index: 999;
-    }
-
-    .main {
-      display: none;
-    }
-
-    .landing {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-    }
-
-    .navbar {
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 2vw;
-      z-index: 10;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1vw;
-    }
-
-    .lines {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .line {
-      height: 8px;
-      background-color: white;
-      width: 60px;
-    }
-
-    .line.small { width: 32px; }
-    .line.tiny { width: 20px; }
-
-    .logo h3 {
-      font-size: 2.25rem;
-      color: white;
-    }
-
-    .imagesdiv {
-      width: 100%;
       height: 100%;
-      position: relative;
-    }
-
-    .imagesdiv img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .sky {
-      transform: scale(1.5) rotate(-20deg);
-    }
-
-    .bg-img {
-      transform: scale(1.8) rotate(-3deg);
-    }
-
-    .text {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%) scale(1.4) rotate(-10deg);
-      display: flex;
-      flex-direction: column;
-      gap: 1vw;
-      z-index: 5;
-    }
-
-    .text h1 {
-      font-size: 10vw;
-      color: white;
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    .text h1:nth-child(1),
-    .text h1:nth-child(3) { margin-left: -5vw; }
-    .text h1:nth-child(2) { margin-left: 5vw; }
-
-    .character {
-      position: absolute;
-      bottom: -150%;
-      left: 50%;
-      transform: translateX(-50%) scale(3) rotate(-20deg);
-      z-index: 4;
-    }
-
-    .btmbar {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 3vw 2vw;
-      background: linear-gradient(to top, black, transparent);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-      z-index: 5;
-    }
-
-    .btmbar .left {
-      display: flex;
-      align-items: center;
-      gap: 1vw;
-    }
-
-    .btmbar h3 {
-      font-size: 1.25rem;
-      font-family: Arial, sans-serif;
-    }
-
-    .ps5 {
-      height: 55px;
-    }
-
-    .section {
-      width: 100%;
-      height: 100vh;
-      background-color: black;
-      color: white;
+      background: rgba(0, 0, 0, 0.6); /* Darker overlay */
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+      padding: 1rem; /* Padding for smaller screens so modal doesn't touch edges */
     }
-
-    .cntnr {
-      display: flex;
-      width: 90%;
-      height: 80%;
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0s linear 0s;
     }
-
-    .limg {
-      flex: 1;
+    .modal-content {
+      margin-top: 100px;
+      background: var(--white);
+      padding: 2.5rem; /* Generous padding */
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 700px; /* Max width of modal */
+      max-height: 90vh; /* Max height */
+      overflow-y: auto;
       position: relative;
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-
-    .limg img {
+    .modal.open .modal-content {
+      transform: scale(1) translateY(0);
+    }
+    .modal-close-btn {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1.3);
-    }
-
-    .rg {
-      width: 30%;
-      padding: 5vw 2vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .rg h1 {
-      font-size: 4.5rem;
-      line-height: 1;
-    }
-
-    .rg p {
-      font-size: 1rem;
-      font-family: Arial, sans-serif;
-      margin-top: 1rem;
-    }
-
-    .rg button {
-      margin-top: 2.5rem;
-      padding: 1rem 2.5rem;
-      font-size: 2rem;
-      background-color: #facc15;
-      color: black;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
       border: none;
+      font-size: 2rem;
+      color: var(--secondary-color);
       cursor: pointer;
-      font-family: inherit;
+      padding: 0.25rem;
+      line-height: 1;
+    }
+    .modal-close-btn:hover {
+      color: var(--dark-text);
+    }
+    .modal-header h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    /* ACCORDION (Styles will be similar but applied within the modal) */
+    .acc-header {
+      padding: 1rem 1.5rem;
+      background: #f0f2f5;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 1rem;
+      color: var(--dark-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #e0e0e0;
+      transition: background-color 0.2s ease;
+    }
+    .acc-header:first-of-type {
+        margin-top: 0;
+    }
+    .acc-header:hover {
+      background-color: #e7e9ec;
+    }
+    .acc-header.open {
+      background-color: var(--primary-color); /* Make open header more distinct */
+      color: var(--white);
+      border-color: var(--primary-hover-color);
+    }
+    .acc-header::after {
+      content: 'expand_more';
+      font-family: 'Material Icons'; /* Still uses Material Icons */
+      font-size: 1.5rem;
+      color: var(--medium-text);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .acc-header.open::after {
+      transform: rotate(180deg);
+      color: var(--white); /* Chevron color when open */
+    }
+    .acc-header:focus-visible {
+      outline: 2px solid var(--primary-hover-color);
+      outline-offset: -1px;
+    }
+
+    .acc-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      transition: max-height .35s cubic-bezier(0.4, 0, 0.2, 1),
+                  padding-top .35s cubic-bezier(0.4, 0, 0.2, 1),
+                  padding-bottom .35s cubic-bezier(0.4, 0, 0.2, 1),
+                  margin-top .35s cubic-bezier(0.4, 0, 0.2, 1),
+                  margin-bottom .35s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--white);
+      border-left: 4px solid var(--primary-color);
+      margin-left: .75rem;
+      margin-right: .75rem;
+      border-radius: 0 0 6px 6px;
+    }
+    .acc-content.open {
+      max-height: 1000px; /* Increased max-height to accommodate longer lists */
+      padding: 1.5rem;
+      margin-top: .25rem;
+      margin-bottom: .75rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    }
+    .acc-content h3 {
+      margin-top: 0;
+      margin-bottom: .4rem;
+      font-size: 1.0rem; /* Slightly smaller to fit modal context */
+      font-weight: 600;
+      color: var(--dark-text); /* Keep distinct from primary color of header */
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .acc-content p, .acc-content div.service-features { /* Allow div for <ul> wrapper */
+      margin: .25rem 0 1.25rem;
+      font-size: 0.9rem; /* Slightly smaller */
+      color: var(--medium-text);
+    }
+    .acc-content p:last-child, .acc-content div.service-features:last-child {
+        margin-bottom: 0;
+    }
+    .acc-content ul {
+      list-style-position: outside;
+      padding-left: 1.2rem; /* Indent list items */
+    }
+    .acc-content ul li {
+      margin-bottom: 0.3rem;
     }
   </style>
 </head>
 <body>
+   <nav role="navigation">
+    <img class="logo" src="assets/logo.webp" alt="Logo" width="80" height="80">
 
-  <!-- SVG MASK -->
-  <div class="svg">
-    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <mask id="viMask">
-          <rect width="100%" height="100%" fill="black"/>
-          <g class="vi-mask-group">
-            <text x="50%" y="50%" font-size="250" text-anchor="middle"
-                  fill="white" dominant-baseline="middle" font-family="Arial Black">
-              VI
-            </text>
-          </g>
-        </mask>
-      </defs>
-      <image href="./bg.png" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
-             mask="url(#viMask)" />
-    </svg>
-  </div>
+    <!-- Mobile Menu Toggle -->
+    <input type="checkbox" id="checkbox" class="menu-checkbox" />
+    <label for="checkbox" class="toggle" aria-label="Toggle Navigation Menu">
+      <div class="bar bar--top"></div>
+      <div class="bar bar--middle"></div>
+      <div class="bar bar--bottom"></div>
+    </label>
 
-  <!-- MAIN CONTENT -->
-  <div class="main">
-    <div class="landing">
-      <div class="navbar">
-        <div class="logo">
-          <div class="lines">
-            <div class="line"></div>
-            <div class="line small"></div>
-            <div class="line tiny"></div>
-          </div>
-          <h3>Rockstar</h3>
-        </div>
-      </div>
-      <div class="imagesdiv">
-        <img class="sky" src="./sky.png" alt="sky"/>
-        <img class="bg-img" src="./bg.png" alt="background"/>
-        <div class="text">
-          <h1>grand</h1>
-          <h1>theft</h1>
-          <h1>auto</h1>
-        </div>
-        <img class="character" src="./girlbg.png" alt="character"/>
-      </div>
-      <div class="btmbar">
-        <div class="left">
-          <i class="ri-arrow-down-line"></i>
-          <h3>Scroll Down</h3>
-        </div>
-        <img class="ps5" src="./ps5.png" alt="ps5"/>
-      </div>
-    </div>
+    <!-- Navigation Links -->
+    <ul id="navpart2">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="portfolio.html">PORTFOLIO</a></li>
+      <li><a href="quizzes.html">QUIZZES</a></li>
+      <li><a href="blog.html">BLOG</a></li>
+      <li><a href="careers.html">CAREERS</a></li>
+    </ul>
 
-    <div class="section">
-      <div class="cntnr">
-        <div class="limg">
-          <img src="./imag.png" alt="image"/>
-        </div>
-        <div class="rg">
-          <h1>Still Running,</h1>
-          <h1>Not Hunting</h1>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio possimus, asperiores nam, omnis inventore nesciunt a architecto eveniet saepe, ducimus necessitatibus at voluptate.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At eius illum fugit eligendi nesciunt quia similique velit excepturi soluta tenetur illo repellat consectetur laborum eveniet eaque, dicta, hic quisquam?</p>
-          <button>Download Now</button>
-        </div>
+  </nav>
+  <header>
+    <h1>OUR SERVICES</h1>
+  </header>
+
+  <section id="services">
+    <div id="catsList" class="list"></div>
+  </section>
+
+  <!-- Modal Structure -->
+  <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalServiceTitle" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close-btn" aria-label="Close dialog">×</button>
+      <div class="modal-header">
+        <h2 id="modalServiceTitle">Service Details</h2>
+      </div>
+      <div id="modalSubcatsContainer">
+        <!-- Accordion items will be dynamically inserted here -->
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+   <section class="why-choose-us">
+    <h2>WHY CHOOSE <v>US</v>?</h2>
+
+    <!-- Word Scroller Container -->
+    <div class="word-scroller" id="wordScroller">
+      <!-- We’ll dynamically fill these with JavaScript below -->
+    </div>
+  </section>
+
+  <!-- Example Footer Content -->
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="logo-and-motto">
+        <!-- Example: your company logo -->
+        <div class="footer-logo"><video src="assets/videos/logoo.mp4" autoplay loop muted playsinline></video> </div>
+        <p class="motto"><s>SUCCESS</s> is when we make <br>our clients <s>HAPPY</s><span>💛</span></p>
+      </div>
+
+      <div class="latest-posts">
+        <h3>LATEST ARTICLES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/blogg.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why all government bodies should have a PERFECT website.</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why having a website is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/blog1.webp" alt="Blog post image" />
+            <div class="post-content">
+              <p>Why SEO is important for business?</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="latest-quizzes">
+        <h3>LATEST QUIZZES FOR YOU</h3>
+        <ul>
+          <li>
+            <img src="assets/quiz3.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s Facebook advertising quiz.
+                Join join join, now now now!</p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quizz.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s traditional advertising quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+          <li>
+            <img src="assets/quiz1.webp" alt="Quiz image" />
+            <div class="quiz-content">
+              <p>DWAAM’s website design quiz.
+                Join join join, now now now! </p>
+              <small>Tuesday, 25th March 2025</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-us">
+
+        <h3>CONTACT US</h3>
+        <p>
+          <img src="assets/email.webp" alt="Email Icon" class="icon" />
+          <a href="mailto:hello@dwadvertisingandmore.com">hello@digitalworksandmore.com</a>
+        </p>
+        <p>
+          <img src="assets/whatsappicon.webp" alt="WhatsApp Icon" class="icon" />
+          <a href="https://wa.me/60108008989?text=hello"><s>Click to only WhatsApp ONLY text message us. Thank youuuuuuuuuu!<emoji>🙏</emoji></s></a>
+        </p>
+        <h3>SOCIALS</h3>
+        <p>
+          <img src="assets/fbfooticon.webp" alt="Facebook Icon" class="icon" />
+          <a href="https://facebook.com" target="_blank">Facebook
+          </a>
+        </p>
+
+        <p>
+          <img src="assets/footlinkedin.webp" alt="LinkedIn Icon" class="icon" />
+          <a href="https://linkedin.com" target="_blank">LinkedIn
+          </a>
+          </li>
+          </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="footerimg">
+    <img src="assets/foot.webp" alt="footer image" id="foot">
+  </div>
+
   <script>
-    const svgEl = document.querySelector('.png');
-    const mainEl = document.querySelector('.main');
+    const catsList = document.getElementById('catsList');
+    const serviceModal = document.getElementById('serviceModal');
+    const modalServiceTitle = document.getElementById('modalServiceTitle');
+    const modalSubcatsContainer = document.getElementById('modalSubcatsContainer');
+    const modalCloseBtn = serviceModal.querySelector('.modal-close-btn');
+    let currentActiveCard = null;
 
-    const tl = gsap.timeline();
-    tl.to('.vi-mask-group', {
-      rotate: 10,
-      duration: 2,
-      ease: "power4.inOut",
-      transformOrigin: "50% 50%"
-    })
-    .to('.vi-mask-group', {
-      scale: 10,
-      duration: 2,
-      delay: -1.8,
-      ease: "expo.inOut",
-      transformOrigin: "50% 50%",
-      opacity: 0,
-      onUpdate() {
-        if (this.progress() >= 0.9) {
-          svgEl.remove();
-          mainEl.style.display = 'block';
-          this.kill();
-          runMainAnimations();
+    const genericHow = "Our process involves understanding your unique needs, strategic planning, meticulous execution, and continuous optimization to deliver effective solutions.";
+    const genericWhy = "Choose us for our proven expertise, commitment to quality, innovative approach, and dedication to achieving your business objectives and maximizing your ROI.";
+
+    function parseDescriptionToList(descString) {
+        const items = descString.trim().split('•').map(item => item.trim()).filter(item => item.length > 0);
+        const uniqueItems = [...new Set(items)];
+        if (uniqueItems.length === 0) return "<p>Details available upon request.</p>";
+        return "<ul>" + uniqueItems.map(item => `<li>${item}</li>`).join("") + "</ul>";
+    }
+    
+    const data = {
+      advAgencies: { 
+        title: 'Full-service advertising agencies.', 
+        icon: 'assets/service-icons/advAgencies.png',
+        subs: {
+          strategyPlanning: { title: "Strategy & Planning", what: parseDescriptionToList("•Advertising Campaign Development.• Market Research & Consumer Insights.•Target Audience Identification.• Media Strategy & Channel Planning.•Creative Brief Development"), how: genericHow, why: genericWhy },
+          creativeServices: { title: "Creative Services", what: parseDescriptionToList("•Concept Development & Ideation•Copywriting (TV, Radio, Print, Digital)•Graphic Design & Art Direction•Storyboarding•Commercial Production (TV, Radio, Digital)"), how: genericHow, why: genericWhy },
+          mediaServices: { title: "Media Services", what: parseDescriptionToList("•Media Buying (TV, Radio, Print, Digital)•Media Planning & Scheduling•Performance Optimisation•Ad Placement & Monitoring•Programmatic Advertising"), how: genericHow, why: genericWhy },
+          digitalAdvertising: { title: "Digital Advertising", what: parseDescriptionToList("•Display & Banner Ads•Social Media Ads (Facebook, Instagram, TikTok, LinkedIn)•Google Ads (Search & Display)•YouTube Video Ads Mobile & In-App Advertising•Retargeting & Remarketing Campaigns"), how: genericHow, why: genericWhy },
+          branding: { title: "Branding", what: parseDescriptionToList("•Brand Development & Positioning•Logo Design & Brand Identity•Brand Voice & Messaging•Rebranding Campaigns"), how: genericHow, why: genericWhy },
+          publicRelations: { title: "Public Relations (PR)", what: parseDescriptionToList("•Press Release Creation•Media Outreach & Relations•Brand Reputation Management•Crisis Communications"), how: genericHow, why: genericWhy },
+          socialMedia: { title: "Social Media", what: parseDescriptionToList("•Social Campaign Strategy•Content Creation & Scheduling•Community Management•Influencer Partnerships"), how: genericHow, why: genericWhy },
+          experientialMarketing: { title: "Experiential & Event Marketing", what: parseDescriptionToList("•Event Concept & Promotion•Brand Activations•Experiential Campaigns•Pop-Up Shops & Stunts"), how: genericHow, why: genericWhy },
+          analyticsReporting: { title: "Analytics & Reporting", what: parseDescriptionToList("•Campaign Analytics & Performance Reports•ROI Tracking & Attribution•Audience Insights & Behavior Analysis"), how: genericHow, why: genericWhy },
+          accountManagement: { title: "Account Management", what: parseDescriptionToList("•Client Onboarding & Briefing•Campaign Coordination & Updates•Budget Tracking & Approvals"), how: genericHow, why: genericWhy }
         }
+      },
+      mktAgencies: { 
+        title: 'Full service marketing agencies.', 
+        icon: 'assets/service-icons/mktAgencies.png',
+        subs: {
+          mktStrategyPlanning: { title: "Marketing Strategy & Planning", what: parseDescriptionToList("•Market Research & Consumer Insights•Competitor Analysis•Marketing Campaign Strategy & Roadmapping•Go-To-Market Strategy (GTM)•Customer Journey Mapping•Positioning & Messaging Development•Brand Voice & Tone Strategy"), how: genericHow, why: genericWhy },
+          mktBrandingIdentity: { title: "Branding & Identity Services", what: parseDescriptionToList("•Brand Naming•Logo & Identity Design•Brand Guidelines Creation•Brand Architecture•Rebranding & Brand Refresh Projects"), how: genericHow, why: genericWhy },
+          contentMarketing: { title: "Content Marketing", what: parseDescriptionToList("•Content Strategy•Blog Writing & Copywriting•Video Content Creation•Infographics & Visual Content•Whitepapers & eBooks•Case Studies & Testimonials•Podcast Production"), how: genericHow, why: genericWhy },
+          mktDigitalMarketing: { title: "Digital Marketing", what: parseDescriptionToList("•Search Engine Optimisation (SEO)•Pay-Per-Click (PPC) Advertising (Google Ads, Bing Ads)•Display & Retargeting Ads•Email Marketing Campaigns•Influencer Marketing•Affiliate Marketing•Marketing Automation"), how: genericHow, why: genericWhy },
+          mktSocialMediaMarketing: { title: "Social Media Marketing", what: parseDescriptionToList("•Social Media Strategy•Profile Setup & Optimisation•Content Creation & Scheduling•Community Management•Social Listening & Monitoring•Paid Social Campaigns (Facebook, Instagram, LinkedIn, TikTok, etc.)•Influencer Outreach & Collaboration"), how: genericHow, why: genericWhy },
+          websiteConversionOpt: { title: "Website & Conversion Optimization", what: parseDescriptionToList("•Website UX/UI Design•Landing Page Design•A/B Testing•Conversion Rate Optimization (CRO)•Website Copywriting•Sales Funnel Development"), how: genericHow, why: genericWhy },
+          mktMediaPlanningBuying: { title: "Media Planning & Buying", what: parseDescriptionToList("•Omnichannel Media Strategy•Traditional Media Buying (TV, Radio, Print)•Digital Media Buying (Display, Social, Video)•Ad Placement Optimization•Campaign Tracking & Analytics"), how: genericHow, why: genericWhy },
+          mktPublicRelations: { title: "Public Relations (PR)", what: parseDescriptionToList("•PR Strategy & Campaigns•Press Release Creation & Distribution•Media Relations•Event PR•Crisis Communication Management"), how: genericHow, why: genericWhy },
+          mktEventMarketing: { title: "Event Marketing & Activations", what: parseDescriptionToList("•Event Planning & Promotion•Brand Activations•Trade Shows & Booth Design•Corporate Events & Conferences•Pop-up Campaigns"), how: genericHow, why: genericWhy },
+          customerExperienceLoyalty: { title: "Customer Experience (CX) & Loyalty", what: parseDescriptionToList("•Customer Journey Optimization•CRM Setup & Management•Loyalty Program Development•Review & Reputation Management•NPS (Net Promoter Score) Surveys"), how: genericHow, why: genericWhy },
+          mktAnalyticsReporting: { title: "Analytics & Reporting", what: parseDescriptionToList("•Marketing Performance Dashboards•Campaign Tracking & ROI Measurement•Google Analytics Setup & Reporting•Customer Behaviour Analytics•Sales Funnel Reporting"), how: genericHow, why: genericWhy },
+          trainingConsulting: { title: "Training & Consulting", what: parseDescriptionToList("•In-house Marketing Team Training•Marketing Technology Consulting (e.g. HubSpot, Salesforce, Mailchimp)•Fractional CMO Services•Brand & Marketing Audits"), how: genericHow, why: genericWhy }
+        }
+      },
+      webDesignAgencies: { 
+        title: 'Full service website design agencies.', 
+        icon: 'assets/service-icons/webDesignAgencies.png',
+        subs: {
+          webStrategyPlanning: { title: "Website Strategy & Planning", what: parseDescriptionToList("•Website Discovery & Needs Assessment•User Research & Personas•Website Architecture & Sitemap Creation•Wireframing & Low-Fidelity Prototyping•UX Research & Competitive Benchmarking"), how: genericHow, why: genericWhy },
+          uxUiDesign: { title: "UX/UI Design", what: parseDescriptionToList("•User Experience (UX) Design•User Interface (UI) Design•Responsive Web Design (Mobile, Tablet, Desktop)•Accessibility Design (ADA Compliance)•Microinteractions & Motion Design•Dark Mode & Theme Design"), how: genericHow, why: genericWhy },
+          creativeVisualDesign: { title: "Creative & Visual Design", what: parseDescriptionToList("•Custom Visual Web Design•Iconography & Illustrations•Image Curation & Optimisation•Typography & Font Pairing•Brand Integration & Visual Consistency•Interactive Design Elements"), how: genericHow, why: genericWhy },
+          designSystemsStyleGuides: { title: "Design Systems & Style Guides", what: parseDescriptionToList("•Design System Creation (Reusable Components)•Visual Style Guides•UI Kits & Prototyping Libraries•Modular Grid Layouts•Atomic Design Principles"), how: genericHow, why: genericWhy },
+          cmsPlatformDesignIntegration: { title: "CMS & Platform Design Integration", what: parseDescriptionToList("•WordPress Website Design•Shopify Design Customization•Webflow UX/UI Design•Wix / Squarespace Template Customization•HubSpot CMS Design"), how: genericHow, why: genericWhy },
+          ecommerceWebDesign: { title: "E-commerce Web Design", what: parseDescriptionToList("•Product Page Design•Category Page UX•Cart & Checkout UX Optimization•Trust Badges & Security Cues•Mobile-Friendly Product Browsing•Wishlist, Compare, and Reviews UX"), how: genericHow, why: genericWhy },
+          conversionFocusedDesign: { title: "Conversion-Focused Design", what: parseDescriptionToList("•Website UX Audit & Recommendations•UI Refresh Projects•Legacy Website Modernization•Performance-Oriented Redesigns"), how: genericHow, why: genericWhy },
+          multilingualLocalizationDesign: { title: "Multilingual & Localization Design", what: parseDescriptionToList("•Multi-language Layouts•RTL (Right-to-Left) Language Support•Geo-targeted UX Adjustments•Regional UX Best Practices"), how: genericHow, why: genericWhy },
+          ongoingDesignSupport: { title: "Ongoing Design Support", what: parseDescriptionToList("•Monthly Design Retainers•Graphic Support for Web Updates•Seasonal Campaign Page Design•Website Expansion Planning"), how: genericHow, why: genericWhy }
+        }
+      },
+      webDevAgencies: { 
+        title: 'Full service website development (programming) agencies', 
+        icon: 'assets/service-icons/webDevAgencies.png',
+        subs: {
+          frontEndDev: { title: "Front-End Development", what: parseDescriptionToList("•HTML, CSS, and JavaScript Coding•Responsive & Mobile-First Development•Cross-Browser Compatibility•SPA Development (Single Page Applications)•UI Component Development (React, Vue, Angular)•Performance Optimization (Lazy Loading, Code Splitting)"), how: genericHow, why: genericWhy },
+          backEndDev: { title: "Back-End Development", what: parseDescriptionToList("•Server-Side Programming (Node.js, Python, PHP, Ruby, Java, etc.)•Database Architecture (MySQL, PostgreSQL, MongoDB, etc.)•API Development & Integration (REST, GraphQL)•Authentication & Authorization Systems•Custom CMS Development•Web Application Frameworks (Django, Laravel, Express, etc.)"), how: genericHow, why: genericWhy },
+          fullStackDev: { title: "Full Stack Development", what: parseDescriptionToList("•Integration of Front-End and Back-End•MEAN/MERN/LEMP Stack Solutions•End-to-End Web Application Builds•Custom Web Portals & Dashboards•E2E Testing & Debugging"), how: genericHow, why: genericWhy },
+          cmsPlatformDev: { title: "CMS & Platform Development", what: parseDescriptionToList("•WordPress Theme & Plugin Development•Shopify Custom Development•Webflow Custom Code Enhancements•Squarespace Developer Customization•HubSpot CMS Custom Modules"), how: genericHow, why: genericWhy },
+          ecommerceDev: { title: "E-commerce Development", what: parseDescriptionToList("•Custom eCommerce Platform Builds•WooCommerce, Magento, BigCommerce Development•Shopping Cart & Checkout System Programming•Payment Gateway Integrations (Stripe, PayPal, Razorpay, etc.)•Inventory & Order Management Systems•Security Compliance (PCI DSS)"), how: genericHow, why: genericWhy },
+          webSecurityCompliance: { title: "Web Security & Compliance", what: parseDescriptionToList("•SSL Setup & HTTPS Migration•Secure Login & Session Management•Data Encryption & Sanitization•OWASP Top 10 Mitigation•GDPR / CCPA Compliance Implementation•CAPTCHA & Bot Protection"), how: genericHow, why: genericWhy },
+          websitePerfOpt: { title: "Website Performance Optimization", what: parseDescriptionToList("•Code Minification (HTML/CSS/JS)•CDN Integration•Lazy Loading of Assets•Server Caching & Browser Caching•Image Compression & Optimization•Lighthouse Score Improvements"), how: genericHow, why: genericWhy },
+          apiThirdPartyInt: { title: "API & Third-Party Integrations", what: parseDescriptionToList("•Payment Processors (Stripe, PayPal, Square)•CRMs (Salesforce, HubSpot, Zoho)•ERPS (NetSuite, SAP)• Email Marketing Tools (Mailchimp, Klaviyo)•Analytics Tools (GA4, Hotjar, Mixpanel)•Social Media Widgets & Feeds"), how: genericHow, why: genericWhy },
+          devOpsHosting: { title: "DevOps & Hosting Setup", what: parseDescriptionToList("•Domain Registration & DNS Configuration•Web Hosting & Server Setup (AWS, DigitalOcean, Bluehost, etc.)•CI/CD Pipeline Setup (GitHub Actions, Jenkins)•Cloud Deployment (Docker, Kubernetes)•Database Backups & Recovery Plans•Uptime Monitoring & Logs Management"), how: genericHow, why: genericWhy },
+          pwaDev: { title: "Progressive Web App (PWA) Development", what: parseDescriptionToList("•PWA Enablement•Offline Browsing Functionality•Add-to-Home-Screen Support•Service Worker Implementation•Push Notifications"), how: genericHow, why: genericWhy },
+          maintenanceSupport: { title: "Maintenance & Support", what: parseDescriptionToList("•Bug Fixes & Patches•Code Refactoring & Cleanup•Security Audits & Updates•CMS & Plugin Updates•Site Migration & Backup Services•Technical Support Retainers"), how: genericHow, why: genericWhy },
+          customWebAppDev: { title: "Custom Web Application Development", what: parseDescriptionToList("•SaaS Products•Booking & Scheduling Platforms•Membership Portals•Internal Company Dashboards•Client Portals•Data-Driven Applications"), how: genericHow, why: genericWhy }
+        }
+      },
+      appDesignAgencies: { 
+        title: 'Full service mobile app design agencies', 
+        icon: 'assets/service-icons/appDesignAgencies.png',
+        subs: {
+          productDiscoveryStrategy: { title: "Product Discovery & Strategy", what: parseDescriptionToList("•Stakeholder Interviews•Market & Competitor Research•User Persona Development•Product Vision & Roadmapping• Feature Prioritization (MVP Planning)•Value Proposition Design"), how: genericHow, why: genericWhy },
+          appUxDesign: { title: "UX (User Experience) Design", what: parseDescriptionToList("•User Flow Diagrams•Information Architecture•Wireframing (Low-Fidelity & High-Fidelity)•UX Audits of Existing Apps•Interaction Design• Accessibility Design (WCAG Compliance)"), how: genericHow, why: genericWhy },
+          appUiDesign: { title: "UI (User Interface) Design", what: parseDescriptionToList("•Custom Interface Design for iOS & Android•Visual Style & Color Theory Application•Mobile-Optimized Typography•Iconography & Microinteractions•Theme Systems & Component Libraries•Branding Alignment"), how: genericHow, why: genericWhy },
+          prototypingUserTesting: { title: "Prototyping & User Testing", what: parseDescriptionToList("•Interactive Prototypes (Figma, Adobe XD, InVision)•User Testing (Remote & In-Person)•Usability Testing Reports•A/B Testing Interface Variants•Design Iteration Based on Feedback"), how: genericHow, why: genericWhy },
+          crossPlatformNativeDesign: { title: "Cross-Platform & Native Design Systems", what: parseDescriptionToList("•Native iOS Human Interface Guidelines Compliance•Android Material Design Guidelines Compliance•Cross-Platform UI Consistency (React Native, Flutter)•Component-Based Design for Scalability•Device-Specific Layout Optimization (Phone, Tablet, Foldable Screens)"), how: genericHow, why: genericWhy },
+          appBrandingVisualIdentity: { title: "App Branding & Visual Identity", what: parseDescriptionToList("•App Icon Design•Splash Screen & Onboarding Graphics• App Store Screenshots & Mockup• Branded Illustration & Animation•Custom UI Kits & Design Systems"), how: genericHow, why: genericWhy },
+          motionInteractionDesign: { title: "Motion & Interaction Design", what: parseDescriptionToList("•Microanimation & Transitions•Gesture-Based Interaction Design•Motion Guidelines for Buttons, Loaders, Menus•Delight Features (e.g. haptic feedback cues, sound design)"), how: genericHow, why: genericWhy },
+          designDocHandoff: { title: "Design Documentation & Handoff", what: parseDescriptionToList("•Design Systems & Style Guides•Handoff Files for Developers (Zeplin, Figma Inspect, etc.)•Annotated UI Specifications•Redlining & Spacing Guides•Color & Typography Tokens for Dev Teams"), how: genericHow, why: genericWhy },
+          asoSupportDesign: { title: "App Store Optimization (ASO) Support (Design-Specific)", what: parseDescriptionToList("•App Icon A/B Testing•Preview Video Storyboarding•Optimized Screenshots Design•App Description Visual Alignment"), how: genericHow, why: genericWhy },
+          postLaunchDesignSupport: { title: "Post-Launch Design Support", what: parseDescriptionToList("•UI/UX Enhancements Based on Analytics•Feature Additions & Redesigns•Design Support for Version Updates•User Feedback Loop Integration•Bug Fixing (Design-Side)"), how: genericHow, why: genericWhy },
+          accessibilityInclusiveDesign: { title: "Accessibility & Inclusive Design", what: parseDescriptionToList("•VoiceOver & TalkBack Integration Guidance•Color Contrast Optimization•Text Resizing Support•Tap Target Sizing for Touch Accessibility•Localization Design for Multilingual Support"), how: genericHow, why: genericWhy }
+        }
+      },
+      appDevAgencies: { 
+        title: 'Full service mobile app development (programming) agencies.', 
+        icon: 'assets/service-icons/appDevAgencies.png',
+        subs: {
+          appProductDiscoveryTechPlanning: { title: "Product Discovery & Technical Planning", what: parseDescriptionToList("•Requirements Gathering•Feasibility Analysis•Technical Architecture Planning•MVP (Minimum Viable Product) Scoping•Agile/Scrum Planning•Project Roadmapping & Estimation"), how: genericHow, why: genericWhy },
+          mobileAppDevFrontBack: { title: "Mobile App Development (Frontend & Backend)", what: parseDescriptionToList("•Native App Development (iOS – Swift/Objective-C, Android – Kotlin/Java)•Cross-Platform Development (React Native, Flutter, Xamarin)•Hybrid App Development (Ionic, Cordova)•Backend Development (Node.js, Python, PHP, Ruby, Java, .NET)•API Development & Integration•SDK Development & Integration"), how: genericHow, why: genericWhy },
+          uiIntegration: { title: "UI Integration", what: parseDescriptionToList("•Integration of UI Designs into Code•Pixel-Perfect Frontend Implementation•Responsive Layouts for Different Devices•Animation & Gesture Implementation"), how: genericHow, why: genericWhy },
+          databaseCloudInfra: { title: "Database & Cloud Infrastructure", what: parseDescriptionToList("•Database Architecture (SQL, NoSQL, Firebase, MongoDB)•Cloud Hosting (AWS, Google Cloud, Azure)•Real-time Data Management•Scalable Backend Infrastructure•Serverless Architecture"), how: genericHow, why: genericWhy },
+          appThirdPartyIntegrations: { title: "Third-Party Integrations", what: parseDescriptionToList("•Payment Gateways (Stripe, PayPal, Apple Pay, Google Pay)•Maps & Location Services (Google Maps API, Mapbox)•Social Media Integration (Facebook, Twitter, Instagram SDKs)•Analytics (Firebase Analytics, Mixpanel, Amplitude)•CRM & Marketing Tools Integration (Salesforce, HubSpot)"), how: genericHow, why: genericWhy },
+          qaTesting: { title: "Quality Assurance & Testing", what: parseDescriptionToList("•Manual Testing (Functional, UI/UX, Regression)•Automated Testing (Unit, Integration, UI)•Performance Testing (Load, Stress, Battery, Memory)•Security Testing•Cross-Device & OS Compatibility Testing•Continuous Testing & QA Reporting"), how: genericHow, why: genericWhy },
+          appDevOpsCI: { title: "DevOps & Continuous Integration", what: parseDescriptionToList("•CI/CD Pipeline Setup (Jenkins, GitHub Actions, Bitrise)•Automated Deployment•Code Version Control (Git)•Environment Management (Staging, Production)•Crash Reporting Tools Setup (Sentry, Crashlytics)"), how: genericHow, why: genericWhy },
+          appStoreDeployOpt: { title: "App Store Deployment & Optimization", what: parseDescriptionToList("•App Store (iOS) Submission•Google Play Store Submission•Store Compliance & Guidelines Checking• App Store Optimization (ASO) Support•Beta Testing via TestFlight, Firebase, etc."), how: genericHow, why: genericWhy },
+          appMaintenanceSupport: { title: "Maintenance & Support", what: parseDescriptionToList("•Ongoing Bug Fixes•Version & Feature Updates•Monitoring & Analytics• Code Refactoring & Optimization•Security Patching"), how: genericHow, why: genericWhy },
+          appSecurityCompliance: { title: "Security & Compliance", what: parseDescriptionToList("•Data Encryption• Secure Authentication (OAuth, JWT)•GDPR/CCPA Compliance•Secure API Communication•Penetration Testing"), how: genericHow, why: genericWhy },
+          emergingTechInnovation: { title: "Emerging Tech & Innovation", what: parseDescriptionToList("•AI & Machine Learning Integration• Augmented Reality (ARKit, ARCore)•Internet of Things (IoT) Connectivity•Blockchain Integration•Voice Integration (Siri, Alexa, Google Assistant)"), how: genericHow, why: genericWhy },
+          appConsultingTechAdvisory: { title: "Consulting & Technical Advisory", what: parseDescriptionToList("•Mobile App Scalability Planning•Tech Stack Evaluation•Infrastructure & Codebase Audit•Migration Strategy (e.g. native to cross-platform)•CTO-as-a-Service"), how: genericHow, why: genericWhy }
+        }
+      },
+      designCompanies: { 
+        title: 'Full service design companies services.', 
+        icon: 'assets/service-icons/designCompanies.png',
+        subs: {
+          brandIdentityDesign: { title: "Brand & Identity Design", what: parseDescriptionToList("•Logo Design•Brand Naming & Tagline Creation•Visual Identity Systems•Brand Guidelines Documentation•Brand Strategy Development•Brand Architecture Design•Rebranding & Brand Refresh Services"), how: genericHow, why: genericWhy },
+          graphicDesign: { title: "Graphic Design", what: parseDescriptionToList("•Marketing Collateral (Brochures, Flyers, Posters)•Business Cards & Stationery•Packaging Design•Billboard & Outdoor Signage•Trade Show Graphics•Infographics & Data Visualization•Print Ad Design"), how: genericHow, why: genericWhy },
+          digitalDesign: { title: "Digital Design", what: parseDescriptionToList("•Social Media Graphics•Email Newsletter Templates•Web Banners & Ad Creatives•Presentation Decks (PowerPoint, Keynote, Google Slides)•eBooks, Reports & Digital Publications• UI Elements for Apps or Sites"), how: genericHow, why: genericWhy },
+          genUiUxDesign: { title: "UI/UX Design", what: parseDescriptionToList("•User Research & Persona Development•Wireframing & Prototyping•User Interface Design (Web & Mobile)•UX Journey Mapping•Interaction Design (Microinteractions, Gestures)•Usability Testing & Feedback Iteration"), how: genericHow, why: genericWhy },
+          genWebDesign: { title: "Web Design", what: parseDescriptionToList("•Website Concept Design•Responsive Web Design•Landing Page Design•UX-Focused Web Layouts•Blog & CMS Design•WordPress Theme Customization•Web Style Guides"), how: genericHow, why: genericWhy },
+          genAppDesign: { title: "App Design", what: parseDescriptionToList("•iOS/Android App Interface Design•Cross-platform App Design (Flutter, React Native UI)•Onboarding Flow Design•Accessibility & Inclusive Design•Interactive App Prototyping•Motion Design for Apps"), how: genericHow, why: genericWhy },
+          motionGraphicsAnimation: { title: "Motion Graphics & Animation", what: parseDescriptionToList("•2D/3D Animation•Logo Animation•Explainer Videos•Intro/Outro Video Design•UI Animation & Microinteractions•Animated Infographics"), how: genericHow, why: genericWhy },
+          illustrationCustomArt: { title: "Illustration & Custom Art", what: parseDescriptionToList("•Custom Icon Sets•Brand Mascot Design•Storyboard & Concept Art•Editorial Illustrations•Illustrated Social Posts & Campaigns•Website Illustrations"), how: genericHow, why: genericWhy },
+          environmentalExperientialDesign: { title: "Environmental & Experiential Design", what: parseDescriptionToList("•Signage & Wayfinding Systems•Event & Exhibition Design•Retail Display & In-Store Design•Office Interior Branding•Wall Murals & Installations•Branded Spaces"), how: genericHow, why: genericWhy },
+          productPackagingDesign: { title: "Product & Packaging Design", what: parseDescriptionToList("•Physical Product Mockups•Product Label Design•Sustainable Packaging Solutions•3D Renders for Products•Structural Packaging Design"), how: genericHow, why: genericWhy },
+          printProductionSupport: { title: "Print Production Support", what: parseDescriptionToList("•Print Vendor Coordination•Prepress & File Setup•Print Proofing•Material & Finish Consulting•Cost Estimation for Print Projects"), how: genericHow, why: genericWhy },
+          genDesignSystemsDoc: { title: "Design Systems & Documentation", what: parseDescriptionToList("•Design Tokens & UI Kits•Atomic Design Systems•Developer Handoff Assets•Figma/Sketch Libraries•Platform-Specific Guidelines"), how: genericHow, why: genericWhy },
+          designConsultationStrategy: { title: "Design Consultation & Strategy", what: parseDescriptionToList("•Design Thinking Workshops•Visual Audits & Competitive Benchmarking•Creative Direction & Art Direction•Accessibility & Compliance Consulting•Multichannel Design Planning•Fractional Design Leadership (Design Director as a Service)"), how: genericHow, why: genericWhy }
+        }
+      },
+      eventMgmtAgencies: { 
+        title: 'Full service event management agencies.', 
+        icon: 'assets/service-icons/eventMgmtAgencies.png',
+        subs: {
+          eventStrategyPlanning: { title: "Event Strategy & Planning", what: parseDescriptionToList("•Event Concept Development•Event Theme & Creative Direction•Event Budgeting & Forecasting•Timeline & Project Management•Target Audience Analysis•ROI & Post-Event Evaluation Strategy"), how: genericHow, why: genericWhy },
+          venueSourcingLogistics: { title: "Venue Sourcing & Logistics", what: parseDescriptionToList("•Venue Research & Booking•Site Visits & Layout Planning•Contract Negotiation•Permits & Licensing Management•Accessibility Planning•Parking & Transportation Coordination"), how: genericHow, why: genericWhy },
+          vendorManagement: { title: "Vendor Management", what: parseDescriptionToList("•Caterer & Bar Services•Audio-Visual (AV) Providers•Staging & Lighting Providers•Entertainment Booking (DJs, Performers, MCs)•Security & First Aid Staffing•Furniture, Equipment & Tent Rentals"), how: genericHow, why: genericWhy },
+          eventDesignDecor: { title: "Event Design & Decor", what: parseDescriptionToList("•Visual Theme Development•Floral Design & Installation•Event Signage & Branding•Stage Design & Fabrication• Mood Boards & Decor Prototyping•Lighting Design & Effects"), how: genericHow, why: genericWhy },
+          technicalProductionAV: { title: "Technical Production & AV", what: parseDescriptionToList("•Stage Production•Sound & Microphone Management• LED Walls & Projector Setups•Live Streaming Setup•Simultaneous Translation Services•Technical Rehearsals & Show Calling"), how: genericHow, why: genericWhy },
+          eventMarketingPromotion: { title: "Event Marketing & Promotion", what: parseDescriptionToList("•Event Branding & Identity•Digital Marketing Campaigns (Email, Social Media)•Influencer Partnerships•Event Landing Page Design & Setup•Paid Ads (Meta, Google, YouTube)•RSVP & Ticket Sales Management"), how: genericHow, why: genericWhy },
+          guestManagement: { title: "Guest Management", what: parseDescriptionToList("•Invitation Design & Distribution•Registration Platforms & Guest List Management•VIP Concierge Services•Check-in & Badge Printing•Hospitality Management•Post-Event Surveys & Feedback"), how: genericHow, why: genericWhy },
+          onSiteEventManagement: { title: "On-Site Event Management", what: parseDescriptionToList("•Event Day Coordination•Staff Briefing & Management•Vendor Supervision•Crowd Control•Real-Time Troubleshooting•Run-of-Show Execution"), how: genericHow, why: genericWhy },
+          hybridVirtualEventServices: { title: "Hybrid & Virtual Event Services", what: parseDescriptionToList("•Virtual Event Platform Setup (e.g., Hopin, Zoom, Whova)•Remote Speaker Coordination•Virtual Networking Activities•Live Chat & Moderation•Tech Support for Attendees•Event Recording & On-Demand Content Access"), how: genericHow, why: genericWhy },
+          corporateEvents: { title: "Corporate Events", what: parseDescriptionToList("•Conferences & Seminars•Product Launches•Awards Ceremonies•Annual General Meetings (AGMs)•Networking Events•Board Retreats"), how: genericHow, why: genericWhy },
+          privateSocialEvents: { title: "Private & Social Events", what: parseDescriptionToList("•Weddings & Receptions•Birthday & Anniversary Celebrations•Themed Parties & Galas•Baby Showers & Gender Reveals•Fundraising Dinners"), how: genericHow, why: genericWhy },
+          experientialMarketingBrandActivations: { title: "Experiential Marketing & Brand Activations", what: parseDescriptionToList("•Pop-up Installations•In-store Activations•Brand Roadshows•Sampling Campaigns•Immersive Brand Experiences"), how: genericHow, why: genericWhy },
+          postEventReportingAnalytics: { title: "Post-Event Reporting & Analytics", what: parseDescriptionToList("•Attendee Feedback Analysis•Event Performance Metrics•Budget vs. Actual Reporting•Sponsor ROI Reporting•Photo & Video Highlight Reels"), how: genericHow, why: genericWhy }
+        }
+      },
+      experientialAddons: { 
+        title: 'Experiential & Entertainment Add-On Services', 
+        icon: 'assets/service-icons/experientialAddons.png',
+        subs: {
+          familyFunCarnival: { title: "Family Fun & Carnival Add-Ons", what: parseDescriptionToList("•Mobile Mini Petting Zoos (goats, bunnies, ponies, etc.)•Carnival Booths (ring toss, balloon darts, etc.)•Inflatable Bounce Houses / Castles•Mechanical Bull Rides•Climbing Walls & Obstacle Courses•Dunk Tanks•Mini Ferris Wheels / Kiddie Rides•Trackless Train Rides•Face Painting & Glitter Tattoos•Balloon Twisting Artists•Clowns & Stilt Walkers•Magicians & Illusionists•Puppet Shows•Bubble Shows"), how: genericHow, why: genericWhy },
+          corporateFamilyDayEnhancements: { title: "Corporate Family Day Enhancements", what: parseDescriptionToList("•Branded Photo Booths (with digital props & printing)•Food Trucks & Themed Food Stalls•Corporate Branded Giveaways & Swag Stations•Live Music Bands & DJ Sets•Themed Treasure Hunts / Scavenger Hunts•Corporate Olympics / Team Challenges•Virtual Reality (VR) Game Booths•Caricature Artists•Lego or Craft Stations (for kids & adults)•Giant Board Games (Jenga, Connect 4, etc.)•Interactive Art Walls or Paint-by-Number Murals"), how: genericHow, why: genericWhy },
+          animalNatureBasedExperiences: { title: "Animal & Nature-Based Experiences", what: parseDescriptionToList("•Exotic Animal Encounters•Butterfly Gardens•Reptile Education Zones•Pony Rides•Dog Show Exhibitions•Pet Adoption Drives"), how: genericHow, why: genericWhy },
+          sensoryImmersiveInstallations: { title: "Sensory & Immersive Installations", what: parseDescriptionToList("•Mirror Mazes•Glow-in-the-Dark Installations•Sensory Domes (lights, sound, scent)•Immersive Storytelling Tents•Augmented Reality (AR) Experiences•Silent Disco Zones"), how: genericHow, why: genericWhy },
+          concessionEntertainmentCorners: { title: "Concession & Entertainment Corners", what: parseDescriptionToList("•Popcorn, Cotton Candy & Snow Cone Machines•DIY Food Stations (s’mores, cupcakes, tacos)•Interactive Cooking Demos (e.g. pizza tossing)•Mobile Cinema / Outdoor Movie Nights•Firework Displays & Drone Light Shows"), how: genericHow, why: genericWhy },
+          interactiveRetailBrandEngagement: { title: "Interactive Retail & Brand Engagement", what: parseDescriptionToList("•Branded Experience Booths•Custom Name Art or Calligraphy Booths•Pop-up Retail or Artisan Markets•DIY Craft Kits (kids & adults)•Personalized Souvenir Stations"), how: genericHow, why: genericWhy }
+        }
+      }
+    };
+
+    // Render all service cards
+    Object.entries(data).forEach(([key, svc]) => {
+      const card = document.createElement('div');
+      card.className = 'item';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.innerHTML = `<img src="${svc.icon}" alt="${svc.title}" class="service-card-icon">${svc.title}`;
+      
+      const openModalHandler = () => openServiceModal(card, key, svc.title);
+      card.onclick = openModalHandler;
+      card.onkeydown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault(); // Prevent page scroll on space
+          openModalHandler();
+        }
+      };
+      catsList.appendChild(card);
+    });
+
+    function openServiceModal(cardElement, serviceKey, serviceTitle) {
+      if (currentActiveCard) {
+        currentActiveCard.classList.remove('active');
+      }
+      cardElement.classList.add('active');
+      currentActiveCard = cardElement;
+
+      modalServiceTitle.textContent = serviceTitle;
+      modalSubcatsContainer.innerHTML = ''; // Clear previous content
+
+      let subIdCounter = 0;
+      Object.values(data[serviceKey].subs).forEach(sub => {
+        const accHeaderId = `acc-header-${serviceKey}-${subIdCounter}`;
+        const accContentId = `acc-content-${serviceKey}-${subIdCounter}`;
+
+        const hdr = document.createElement('div');
+        hdr.className = 'acc-header';
+        hdr.textContent = sub.title;
+        hdr.setAttribute('role', 'button');
+        hdr.setAttribute('aria-expanded', 'false');
+        hdr.setAttribute('aria-controls', accContentId);
+        hdr.id = accHeaderId;
+        hdr.tabIndex = 0; 
+
+        const cnt = document.createElement('div');
+        cnt.className = 'acc-content';
+        cnt.id = accContentId;
+        cnt.setAttribute('role', 'region');
+        cnt.setAttribute('aria-labelledby', accHeaderId);
+        
+        // Updated to handle HTML content in sub.what and ensure p tags for how/why
+        cnt.innerHTML = `
+          <h3>What is it?</h3><div class="service-features">${sub.what}</div>
+          <h3>How it works?</h3><p>${sub.how}</p>
+          <h3>Why choose us?</h3><p>${sub.why}</p>
+        `;
+
+        const toggleAccordion = () => {
+            const isThisOpen = hdr.classList.contains('open');
+            modalSubcatsContainer.querySelectorAll('.acc-header.open').forEach(otherHeader => {
+                if (otherHeader !== hdr) {
+                    otherHeader.classList.remove('open');
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    otherHeader.nextElementSibling.classList.remove('open');
+                }
+            });
+            hdr.classList.toggle('open', !isThisOpen);
+            hdr.setAttribute('aria-expanded', String(!isThisOpen));
+            cnt.classList.toggle('open', !isThisOpen);
+        };
+
+        hdr.onclick = toggleAccordion;
+        hdr.onkeydown = (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleAccordion();
+          }
+        };
+
+        modalSubcatsContainer.appendChild(hdr);
+        modalSubcatsContainer.appendChild(cnt);
+        subIdCounter++;
+      });
+
+      serviceModal.style.display = 'flex';
+      setTimeout(() => {
+        serviceModal.classList.add('open');
+        document.body.classList.add('modal-open');
+        modalCloseBtn.focus();
+      }, 10); 
+    }
+
+    function closeServiceModal() {
+      serviceModal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      
+      if (currentActiveCard) {
+        currentActiveCard.classList.remove('active');
+        currentActiveCard.focus();
+        currentActiveCard = null;
+      }
+
+      setTimeout(() => {
+        serviceModal.style.display = 'none';
+        modalSubcatsContainer.innerHTML = '';
+      }, 300);
+    }
+
+    modalCloseBtn.onclick = closeServiceModal;
+
+    serviceModal.addEventListener('click', (event) => {
+      if (event.target === serviceModal) {
+        closeServiceModal();
       }
     });
 
-    function runMainAnimations() {
-      gsap.to('.sky',   { scale: 1.1, rotate: 0, duration: 2, ease: "expo.inOut" });
-      gsap.to('.bg-img',{ scale: 1.1, rotate: 0, duration: 2, ease: "expo.inOut" });
-      gsap.to('.character', {
-        scale: 1.4,
-        x: "-50%",
-        bottom: "-25%",
-        rotate: 0,
-        duration: 2,
-        ease: "expo.inOut"
-      });
-      gsap.to('.text', { scale: 1, rotate: 0, duration: 2, ease: "expo.inOut" });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && serviceModal.classList.contains('open')) {
+        closeServiceModal();
+      }
+    });
 
-      document.querySelector('.main .landing').addEventListener('mousemove', e => {
-        const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
-        gsap.to('.text', { x: `${xMove * 0.4}%` });
-        gsap.to('.sky', { x: xMove });
-        gsap.to('.bg-img',{ x: xMove * 1.7 });
-      });
-    }
   </script>
-
 </body>
 </html>
